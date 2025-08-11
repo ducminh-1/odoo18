@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    # ----------------------------------------
+    # Form view
+    # ----------------------------------------
+
+    <record id="view_mhd_datalist_form" model="ir.ui.view">
+        <field name="name">mhd.datalist.form</field>
+        <field name="model">mhd.datalist</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_send_mail" string="Gửi Email" type="object" class="btn-primary"/>
+
+                </header>
+                <sheet>
+                    <div class="oe_title pr-0">
+                        <h3 class="d-flex flex-row justify-content-between">
+                            <field name="name" class="o_task_name text-truncate" placeholder="Tên tài sản..."/>
+                        </h3>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="mucdichthamdinh"/>
+                            <field name="phuongphapthamdinh"/>
+                        </group>
+                        <group>
+                            <field name="kinhdoanh"/>
+                            <field name="nhanvien"/>
+                            <field name="thamdinhvien"/>
+                            <field name="quanly"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="MÃ HỒ SƠ">
+                            <group>
+                                <group>
+                                    <field name="chungthu_id"/>
+                                    <field name="chungthu_date"/>
+                                    <field name="ghichu_chungthu"/>
+                                </group>
+                                <group>
+                                    <field name="hopdong_id"/>
+                                    <field name="hopdong_date"/>
+                                    <field name="ghichu_hopdong"/>
+                                </group>
+                            </group>
+
+                        </page>
+                        <page string="KHÁCH HÀNG" name="khach_hang">
+                            <span colspan="4"><b>KHÁCH HÀNG</b></span>
+                            <separator style="border-top: 1px solid #ddd; margin: 0px 0; height: 1px;" colspan="4"/>
+                            <group>
+                                <group>
+                                    <field name="khachhang_type" placeholder="Chọn kiểu khách hàng"/>
+                                    <field name="khachhang_id"/>
+                                    <field name="khachhang_cmnd" attrs="{'invisible': [('khachhang_type', '!=', 'ca_nhan')]}"/>
+                                    <field name="khachhang_cmnd_ngaycap" attrs="{'invisible': [('khachhang_type', '!=', 'ca_nhan')]}"/>
+                                    <field name="khachhang_cmnd_noicap" attrs="{'invisible': [('khachhang_type', '!=', 'ca_nhan')]}"/>
+                                    <field name="khachhang_vat" attrs="{'invisible': ['|', ('khachhang_type', '=', 'ca_nhan'), ('khachhang_type', '=', False)]}"/>
+                                    <field name="khachhang_daidien" attrs="{'invisible': ['|', ('khachhang_type', '=', 'ca_nhan'), ('khachhang_type', '=', False)]}"/>
+                                    <field name="khachhang_daidien_chucvu" attrs="{'invisible': ['|', ('khachhang_type', '=', 'ca_nhan'), ('khachhang_type', '=', False)]}"/>
+                                </group>
+                                <group>
+<!--                                    <field name="khachhang_diachi"/>-->
+                                    <span class="o_form_label o_td_label" name="address_name">
+                                        <b>Địa chỉ</b>
+                                    </span>
+                                    <div class="o_address_format">
+                                        <t><field name="khachhang_diachi_street"/><t attrs="{'invisible': [('khachhang_diachi_street', '=', False)]}">, </t></t>
+                                        <t><field name="khachhang_diachi_street2"/><t attrs="{'invisible': [('khachhang_diachi_street2', '=', False)]}">, </t></t>
+                                        <t><field name="khachhang_diachi_city"/><t attrs="{'invisible': [('khachhang_diachi_city', '=', False)]}">, </t></t>
+                                        <t><field name="khachhang_diachi_state_id"/><t attrs="{'invisible': [('khachhang_diachi_state_id', '=', False)]}">, </t><field name="khachhang_diachi_country_id"/></t>
+                                    </div>
+                                    <field name="khachhang_phone"/>
+                                    <field name="khachhang_email"/>
+                                     <field name="ghichu_hoadon_tinhtrang"/>
+                                </group>
+                            </group>
+                            <span colspan="4"><b>BÊN GIỚI THIỆU</b></span>
+                            <separator style="border-top: 1px solid #ddd; margin: 0px 0; height: 1px;" colspan="4"/>
+                            <group>
+                                <group>
+                                    <field name="doitac_id"/>
+                                    <field name="doitac_phone"/>
+                                    <field name="doitac_email"/>
+                                    <field name="doitac_relative_partner_id"/>
+                                    <field name="doitac_relative_partner_id_email"/>
+
+                                </group>
+                                <group>
+                                    <field name="doitac_groups"/>
+                                    <field name="doitac_name"/>
+                                    <field name="doitac_area"/>
+                                    <field name="doitac_relative"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="GIÁ TRỊ TÀI SẢN" name="property">
+                            <group>
+                                <group>
+                                    <strong>THÔNG TIN ĐẶC ĐIỂM CHUNG</strong>
+                                    <field name="loaitaisan"/>
+                                    <field name="motataisan"/>
+                                    <field name="loaibatdongsan"/>
+                                    <span class="o_form_label o_td_label" name="address_name">
+                                        <b attrs="{'invisible': [('loaibatdongsan', '=', False)]}">Địa chỉ</b>
+                                    </span>
+                                    <div class="o_address_format" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                        <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                            <field name="vitri_chungcu_macan" placeholder="Mã căn hộ" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                            <field name="vitri_chungcu_block" placeholder="Block - Tầng" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                        </div>
+                                        <field name="vitri_chungcu" placeholder="Tên chung cư" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                        <field name="vitri_sonha" class="o_address_street" placeholder="Số nhà/ Thửa đất, tờ bản đồ" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                        <field name="vitri_duong" class="o_address_street" placeholder="Tên đường" domain="[('vitri_quan', '=?', vitri_quan)]" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                        <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                            <field name="vitri_phuong" placeholder="Phường" domain="[('vitri_quan', '=?', vitri_quan)]"/>
+                                            <field name="vitri_quan" placeholder="Quận/ huyện"  domain="[('vitri_tinh', '=?', vitri_tinh)]"/>
+                                        </div>
+                                        <field name="vitri_tinh" class="o_address_country" placeholder="Tỉnh/ TP" />
+                                    </div>
+                                </group>
+                                <group>
+                                    <b>THÔNG TIN ĐẶC ĐIỂM VỊ TRÍ</b>
+                                    <field name="phaply_taisan"/>
+                                    <field name="dacdiem_vitri_bds" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                    <field name="dacdiem_vitri_canho" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                    <field name="dacdiem_ketcauduong" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                    <field name="dacdiem_dorongduong" placeholder="VD: 2m" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <b>THÔNG TIN GIÁ TRỊ QSD ĐẤT</b>
+                                    <field name="dat_loaidat"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                    <field name="dat_giatri_chinh"/>
+                                    <field name="dat_giatri_khac"/>
+                                    <field name="dat_giatri_total" style="font-weight:700;"/>
+                                </group>
+                                <group>
+                                    <b>THÔNG TIN GIÁ TRỊ CTXD</b>
+                                    <field name="ctxd_loaicongtrinh"/>
+                                    <field name="ctxd_dientich"/>
+                                    <field name="ctxd_dongia"/>
+                                    <field name="ctxd_clcl" widget="percentage"/>
+                                    <field name="ctxd_giatri_chinh"/>
+                                    <field name="ctxd_giatri_khac"/>
+                                    <field name="ctxd_giatri_total" style="font-weight:700;"/>
+                                    <field name="total_tstd" style="font-weight:900;"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="THANH TOÁN" name="thanh_toan">
+                            <group>
+                                <group>
+                                    <field name="thanhtoan_tongphi"/>
+                                    <field name="thanhtoan_phidichuyen"/>
+                                    <field name="thanhtoan_vat"/>
+                                </group>
+                                <group>
+                                    <field name="thanhtoan_chuathanhtoan"/>
+                                    <field name="thanhtoan_dathanhtoan"/>
+                                    <field name="thanhtoan_thoidiem"/>
+                                    <field name="full_phi"/>
+                                </group>
+                            </group>
+                            <field name="thanhtoan_line">
+                                <tree editable="bottom">
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="sotien"/>
+                                    <field name="nhanvien_tao"/>
+                                    <field name="lanthanhtoan"/>
+                                    <field name="hinhthuc"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2">
+                                    <field name="thanhtoan_dathanhtoan"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="thanhtoan_dathanhtoan"/>
+                                    </div>
+                                    <field name="thanhtoan_dathanhtoan" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                        <page string="GHI CHÚ" name="ghichu">
+                            <group>
+                                <group>
+                                    <field name="ghichu_hopdong"/>
+                                    <field name="ghichu_mabill"/>
+                                    <field name="ghichu_hoadon"/>
+                                    <field name="ghichu_khac"/>
+                                    <field name="luutru"/>
+                                </group>
+                                <group>
+                                    <field name="ghichu_chungthu"/>
+                                    <field name="ghichu_mabill_ngay"/>
+                                    <field name="ghichu_hoadon_ngay"/>
+                                    <field name="ghichu_congno"/>
+                                    <field name="chiphithang"/>
+                                    <field name="ghichu_ketoan"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <sheet>
+                    <notebook>
+                        <page string="PHỤ CẤP" name="phucap">
+                            <span colspan="4"><b>BÊN GIỚI THIỆU</b></span>
+                            <separator style="border-top: 1px solid #ddd; margin: 0px 0; height: 1px;" colspan="4"/>
+                            <group>
+                                <group>
+                                    <field name="hoahong_tienke" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="hoahong_tyle" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                </group>
+                                <group>
+                                    <field name="hoahong_thanhtien"/>
+                                    <field name="hoahong_tinhtrang"/>
+                                    <field name="ghichu_hoahong"/>
+                                </group>
+                            </group>
+                            <span colspan="4"><b>NỘI BỘ</b></span>
+                            <separator style="border-top: 1px solid #ddd; margin: 0px 0; height: 1px;" colspan="4"/>
+                            <group>
+                                <group>
+                                    <field name="tyle_hoahongnoibo" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tyle_kinhdoanh" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tyle_nhanvien" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tyle_thamdinhvien" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tyle_quanly" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tyle_backoffice" widget="percentage" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                                    <field name="tinhtrang_phucap"/>
+                                </group>
+                                <group>
+                                    <field name="sotien_hoahongnoibo"/>
+                                    <field name="sotien_kinhdoanh"/>
+                                    <field name="sotien_khuvuc"/>
+                                    <field name="sotien_nhanvien"/>
+                                    <field name="sotien_thamdinhvien"/>
+                                    <field name="sotien_quanly"/>
+                                    <field name="sotien_backoffice"/>
+                                </group>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Search view
+    # ----------------------------------------
+    <record id="view_datalist_search" model="ir.ui.view">
+        <field name="name">mhd.datalist.search</field>
+        <field name="model">mhd.datalist</field>
+        <field name="arch" type="xml">
+            <search string="Datalist">
+                <field name="name" filter_domain="['|', '|', ('name', 'ilike', self), ('chungthu_id', 'ilike', self), ('vitri_duong', 'ilike', self)]"/>
+                <field name="chungthu_id"/>
+                <field name="vitri_duong"/>
+                <field name="vitri_quan"/>
+                <filter string="Nhà phố" name="nha_pho" domain="[('loaibatdongsan', '=', 'nha_pho')]"/>
+                <filter string="Căn hộ" name="can_ho" domain="[('loaibatdongsan', '=', 'can_ho')]"/>
+                <filter string="Đất trống" name="dat_trong" domain="[('loaibatdongsan', '=', 'dat_trong')]"/>
+                <separator/>
+                <filter string="Hồ sơ phát hành trong ngày" name="ho_so_trong_ngay"
+                    domain="[('chungthu_date', '>=', context_today().strftime('%Y-%m-%d'))]"
+                    help="Hiển thị tất cả hồ sơ tạo trong ngày hôm nay"/>
+                <filter string="Hồ sơ phát hành trong tháng" name="ho_so_trong_thang" domain="[('chungthu_date','&gt;=',context_today().strftime('%%Y-%%m-01')),('chungthu_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01'))]"/>
+                <filter string="Hồ sơ phát hành trong năm" name="ho_so_trong_nam" domain="[('chungthu_date','&gt;=',context_today().strftime('%%Y-01-01')),('chungthu_date','&lt;',(context_today()+relativedelta(months=12)).strftime('%%Y-01-01'))]"/>
+                <filter string="Hồ sơ tuần trước" invisible="1" name="week" domain="[('chungthu_date','&gt;', (context_today() - datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter string="Hồ sơ tháng trước" invisible="1" name="month" domain="[('chungthu_date','&gt;', (context_today() - datetime.timedelta(days=30)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter string="Hồ sơ năm trước" invisible="1"  name="year" domain="[('chungthu_date','&gt;', (context_today() - datetime.timedelta(days=365)).strftime('%%Y-%%m-%%d'))]"/>
+                <separator/>
+                <filter string="Hồ sơ gửi trong tháng" name="ho_so_gui_trong_thang" domain="[('ghichu_mabill_ngay','&gt;=',context_today().strftime('%%Y-%%m-01')),('ghichu_mabill_ngay','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01'))]"/>
+                <separator/>
+                <filter string="Đã thu full phí" name="thu_full" domain="[('full_phi', '=', True)]"/>
+                <filter string="Đã hủy" name="da_huy" domain="[('ghichu_hopdong', '=', 'huy')]"/>
+                <separator/>
+                <filter string="Hồ sơ tôi thực hiện" name="ho_so_cua_toi" domain="[('nhanvien', '=', uid)]"/>
+                <filter string="Hồ sơ tôi kiểm soát" name="ho_so_cua_toi" domain="[('thamdinhvien', '=', uid)]"/>
+                <separator/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="doitac_groups" string="Nhóm khách hàng" context="{'group_by' : 'doitac_groups'}"/>
+                    <filter name="doitac_area" string="Trụ sở/ Chi nhánh" context="{'group_by' : 'doitac_area'}"/>
+                    <filter name="doitac_id" string="Tên tín dụng/ Đối tác" context="{'group_by' : 'doitac_id'}"/>
+                    <separator/>
+                    <filter name="nhanvien" string="Nhân viên thực hiện" context="{'group_by' : 'nhanvien'}"/>
+                    <filter name="thamdinhvien" string="Kiểm soát viên" context="{'group_by' : 'thamdinhvien'}"/>
+                    <filter name="quanly" string="Quản lý" context="{'group_by' : 'quanly'}"/>
+                    <separator/>
+                    <filter name="thanhtoan_thoidiem" string="Thời điểm thanh toán" context="{'group_by' : 'thanhtoan_thoidiem'}"/>
+                    <filter name="ghichu_chungthu" string="Tình trạng chứng thư" context="{'group_by' : 'ghichu_chungthu'}"/>
+                    <filter name="ghichu_hopdong" string="Tình trạng hợp đồng" context="{'group_by' : 'ghichu_hopdong'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Tree view
+    # ----------------------------------------
+
+    <record id="mhd_datalist_tree_view" model="ir.ui.view">
+            <field name="name">mhd.datalist.tree.view</field>
+            <field name="model">mhd.datalist</field>
+            <field name="arch" type="xml">
+                <tree string="Data List" create="0" multi_edit="1">
+                    <field name="chungthu_id" optional="show"/>
+                    <field name="chungthu_date" optional="hide"/>
+                    <field name="ghichu_chungthu" optional="hide"/>
+                    <field name="hopdong_id" optional="hide"/>
+                    <field name="hopdong_date" optional="hide"/>
+                    <field name="ghichu_hopdong" optional="hide"/>
+                    <field name="name" optional="show"/>
+                    <field name="khachhang_id" optional="show"/>
+                    <field name="khachhang_email" optional="hide"/>
+                    <field name="khachhang_phone" optional="hide"/>
+                    <field name="kinhdoanh" optional="hide"/>
+                    <field name="nhanvien" optional="show"/>
+                    <field name="thamdinhvien" optional="show"/>
+                    <field name="quanly" optional="hide"/>
+                    <field name="doitac_groups" optional="hide"/>
+                    <field name="doitac_area" optional="hide"/>
+                    <field name="doitac_relative" optional="hide"/>
+                    <field name="doitac_id" optional="show"/>
+                    <field name="doitac_name" optional="hide"/>
+                    <field name="vitri_sonha" optional="hide"/>
+                    <field name="vitri_duong" optional="hide"/>
+                    <field name="vitri_chungcu" optional="hide"/>
+                    <field name="vitri_phuong" optional="hide"/>
+                    <field name="vitri_tinh" optional="hide"/>
+                    <field name="dacdiem_vitri_bds" optional="hide"/>
+                    <field name="vitri_quan" optional="show"/>
+                    <field name="phuongphapthamdinh" optional="hide"/>
+                    <field name="loaitaisan" optional="hide"/>
+                    <field name="mucdichthamdinh" optional="hide"/>
+                    <field name="motataisan" optional="hide"/>
+                    <field name="dacdiem_vitri_canho" optional="hide"/>
+                    <field name="dacdiem_dorongduong" optional="hide"/>
+                    <field name="dat_loaidat" optional="hide"/>
+                    <field name="dat_dientich" optional="hide"/>
+                    <field name="dat_dongia" optional="hide"/>
+                    <field name="dat_giatri_total" optional="hide"/>
+                    <field name="ctxd_giatri_total" optional="hide"/>
+                    <field name="total_tstd" optional="hide" sum="Tổng giá trị thẩm định"/>
+                    <field name="thanhtoan_tongphi" sum="Tổng phí" optional="show"/>
+                    <field name="thanhtoan_dathanhtoan" optional="show" sum="Đã thanh toán"/>
+                    <field name="thanhtoan_chuathanhtoan" optional="show" sum="Phí còn lại"/>
+                    <field name="full_phi" optional="hide"/>
+                    <field name="thanhtoan_thoidiem" optional="hide"/>
+                    <field name="thanhtoan_vat" optional="hide"/>
+                    <field name="hoahong_tienke" optional="hide" sum="Tổng phụ tiền kê" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="hoahong_tyle" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="hoahong_tinhtrang" optional="hide"/>
+                    <field name="hoahong_thanhtien" optional="show" sum="Tổng hoa hồng"/>
+                    <field name="tyle_hoahongnoibo" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="tyle_kinhdoanh" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="tyle_nhanvien" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="tyle_thamdinhvien" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="tyle_quanly" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="tyle_backoffice" widget="percentage" optional="hide" groups="mhd_valuation.nhan_vien_ke_toan"/>
+                    <field name="sotien_hoahongnoibo" optional="hide" sum="Tổng hoa hồng nội bộ"/>
+                    <field name="sotien_kinhdoanh" optional="hide" sum="Tổng phụ cấp KD"/>
+                    <field name="sotien_nhanvien" optional="hide" sum="Tổng phụ cấp NV"/>
+                    <field name="sotien_thamdinhvien" optional="hide" sum="Tổng phụ cấp TĐV"/>
+                    <field name="sotien_quanly" optional="hide" sum="Tổng phụ cấp QL"/>
+                    <field name="sotien_backoffice" optional="hide" sum="Tổng phụ cấp BO"/>
+                    <field name="tinhtrang_phucap" optional="hide"/>
+                    <field name="ghichu_hoadon" optional="hide"/>
+                    <field name="ghichu_hoadon_ngay" optional="hide"/>
+                    <field name="ghichu_congno" optional="hide"/>
+                    <field name="chiphithang" optional="hide"/>
+                    <field name="ghichu_ketoan" optional="hide"/>
+                    <field name="ghichu_mabill" optional="hide"/>
+                    <field name="ghichu_mabill_ngay" optional="hide"/>
+                    <field name="ghichu_khac" optional="hide"/>
+                    <field name="ghichu_hoadon_tinhtrang" optional="hide"/>
+                    <field name="note" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="datalist_view_graph" model="ir.ui.view">
+            <field name="name">mhd.datalist.view.graph</field>
+            <field name="model">mhd.datalist</field>
+            <field name="arch" type="xml">
+                <graph string="MHD Datalist" type="pie" sample="1">
+                    <field name="doitac_id"/>
+                    <field name="thanhtoan_tongphi" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+
+    # ----------------------------------------
+    # Menu
+    # ----------------------------------------
+    <record id="action_mhd_datalist" model="ir.actions.act_window">
+        <field name="name">Data List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.datalist</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mhd_datalist_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mhd_valuation.view_mhd_datalist_form')})]"/>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo hồ sơ đầu tiên!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_vitri_duong" model="ir.actions.act_window">
+        <field name="name">Tên đường</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.duong</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo tuyến đường!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_mhd_valuation_root"
+              name="MHD Valuation"
+              sequence="10" web_icon="mhd_valuation,static/description/icon.png"/>
+
+    <menuitem id="menu_datalist"
+              name="Data List"
+              parent="menu_mhd_valuation_root"
+              action="action_mhd_datalist"
+              sequence="10"/>
+
+    <menuitem id="menu_setting"
+              name="Cấu hình"
+              parent="menu_mhd_valuation_root"
+              sequence="10"/>
+    <menuitem id="menu_setting_vitri"
+              name="Vị trí"
+              parent="menu_setting"
+              sequence="10"/>
+    <menuitem id="menu_setting_vitri_duong"
+              name="Tên đường"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_duong"
+              sequence="10"/>
+
+
+</odoo>

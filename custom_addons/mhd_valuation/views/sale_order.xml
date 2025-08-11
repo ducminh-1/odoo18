@@ -1,0 +1,51 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <record id="sale_order_view_form" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.form.inherit.event.sale</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//notebook/page[@name='order_lines']" position="after">-->
+<!--                <page string="Sơ bộ tài sản">-->
+<!--                    <field name="land_line" widget="section_and_note_one2many">-->
+<!--                        <tree editable="bottom">-->
+<!--                            <field name="dat_loaidat"/>-->
+<!--                            <field name="dat_quyhoach"/>-->
+<!--                            <field name="dat_dientich"/>-->
+<!--                            <field name="dat_dongia"/>-->
+<!--                            <field name="dat_subtotal"/>-->
+<!--                        </tree>-->
+<!--                    </field>-->
+<!--                </page>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='name']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--&lt;!&ndash;            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace">&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" context="{'partner_id': parent.partner_id,'quantity': product_uom_qty,'pricelist': parent.pricelist_id,'uom': product_uom,'company_id': parent.company_id}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </xpath>&ndash;&gt;-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_invoiced']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_unit']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="replace">-->
+<!--                &lt;!&ndash; empty &ndash;&gt;-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_delivered']" position="replace">-->
+<!--                <field name="dat_loaidat"/>-->
+<!--                <field name="dat_quyhoach"/>-->
+<!--                <field name="dat_dientich"/>-->
+<!--                <field name="dat_dongia"/>-->
+<!--                <field name="dat_subtotal"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+         <!--  Partners inherited form -->
+        <record id="view_project_hopdong_form" model="ir.ui.view">
+            <field name="name">project.hopdong.form.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="tentaisan" domain="[('nhanvien', '=', uid)]"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="khachhang_type" attrs="{'invisible': [('tentaisan', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="doitac_id" attrs="{'invisible': [('tentaisan', '=', False)]}"/>
+                    <field name="doitac_email" attrs="{'invisible': [('doitac_id', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='description_page']" position="after">
+                    <page string="Hợp đồng chứng thư" attrs="{'invisible': [('tentaisan', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="hopdong_id"/>
+                                <field name="chungthu_id"/>
+                            </group>
+                            <group>
+                                <field name="ghichu_hopdong"/>
+                                <field name="ghichu_chungthu"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Người thực hiện" attrs="{'invisible': [('tentaisan', '=', False)]}">
+                        <group>
+                            <field name="kinhdoanh_id"/>
+                            <field name="user_id"/>
+                            <field name="thamdinhvien_id" domain="[('id', '=', uid)]"/>
+                            <field name="quanly_id"/>
+                        </group>
+                    </page>
+                    <page string="Thông tin tài sản" name="property" attrs="{'invisible': [('tentaisan', '=', False)]}">
+                        <group>
+                            <group>
+                                <strong>THÔNG TIN ĐẶC ĐIỂM CHUNG</strong>
+                                <field name="loaitaisan"/>
+                                <field name="motataisan"/>
+                                <field name="loaibatdongsan"/>
+                                <span class="o_form_label o_td_label" name="address_name">
+                                    <b attrs="{'invisible': [('loaibatdongsan', '=', False)]}">Địa chỉ</b>
+                                </span>
+                                <div class="o_address_format" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                    <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                        <field name="vitri_chungcu_macan" placeholder="Mã căn hộ" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                        <field name="vitri_chungcu_block" placeholder="Block - Tầng" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                    </div>
+                                    <field name="vitri_chungcu" placeholder="Tên chung cư" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                    <field name="vitri_sonha" class="o_address_street" placeholder="Số nhà/ Thửa đất, tờ bản đồ" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                    <field name="vitri_duong" class="o_address_street" placeholder="Tên đường" domain="[('vitri_quan', '=?', vitri_quan)]" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                    <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                        <field name="vitri_phuong" placeholder="Phường" domain="[('vitri_quan', '=?', vitri_quan)]"/>
+                                        <field name="vitri_quan" placeholder="Quận/ huyện"  domain="[('vitri_tinh', '=?', vitri_tinh)]"/>
+                                    </div>
+                                    <field name="vitri_tinh" class="o_address_country" placeholder="Tỉnh/ TP" />
+                                </div>
+                            </group>
+                            <group>
+                                <b>THÔNG TIN ĐẶC ĐIỂM VỊ TRÍ</b>
+                                <field name="phaply_taisan"/>
+                                <field name="dacdiem_vitri_bds" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                <field name="dacdiem_vitri_canho" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                <field name="dacdiem_ketcauduong" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                <field name="dacdiem_dorongduong" placeholder="VD: 2m" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <b>THÔNG TIN GIÁ TRỊ QSD ĐẤT</b>
+                                <field name="dat_loaidat"/>
+                                <field name="dat_dientich"/>
+                                <field name="dat_dongia"/>
+                                <field name="dat_giatri_chinh"/>
+                                <field name="dat_giatri_khac"/>
+                                <field name="dat_giatri_total" style="font-weight:700;"/>
+                            </group>
+                            <group>
+                                <b>THÔNG TIN GIÁ TRỊ CTXD</b>
+                                <field name="ctxd_loaicongtrinh"/>
+                                <field name="ctxd_dientich"/>
+                                <field name="ctxd_dongia"/>
+                                <field name="ctxd_clcl" widget="percentage"/>
+                                <field name="ctxd_giatri_chinh"/>
+                                <field name="ctxd_giatri_khac"/>
+                                <field name="ctxd_giatri_total" style="font-weight:700;"/>
+                                <field name="total_tstd" style="font-weight:900;"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Thanh toán" name="thanh_toan" attrs="{'invisible': [('tentaisan', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="thanhtoan_tongphi"/>
+                                <field name="thanhtoan_phidichuyen"/>
+                                <field name="sotien_khuvuc"/>
+                            </group>
+                            <group>
+                                <field name="thanhtoan_vat"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                        <field name="thanhtoan_line">
+                            <tree editable="bottom">
+                                <field name="date"/>
+                                <field name="name"/>
+                                <field name="sotien"/>
+                                <field name="nhanvien_tao" domain="[('id', '=', uid)]"/>
+                                <field name="lanthanhtoan"/>
+                                <field name="hinhthuc"/>
+                            </tree>
+                        </field>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                                <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2">
+                                <field name="thanhtoan_dathanhtoan"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="thanhtoan_dathanhtoan"/>
+                                </div>
+                                <field name="thanhtoan_dathanhtoan" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                    </page>
+                    <page string="Ghi chú" name="ghi_chu" attrs="{'invisible': [('tentaisan', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="ghichu_mabill"/>
+                                <field name="ghichu_hoadon"/>
+                                <field name="luutru"/>
+                            </group>
+                            <group>
+                                <field name="ghichu_mabill_ngay"/>
+                                <field name="ghichu_hoadon_ngay"/>
+                                <field name="ghichu_hoadon_tinhtrang"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+       </record>
+
+    <record id="view_project_kanban_kethua" model="ir.ui.view">
+            <field name="name">project.kanban.kethua</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[contains(@class, 'o_kanban_record_headings')]/br" position="after">
+                    <field name="tentaisan"/>
+                </xpath>
+            </field>
+    </record>
+
+    <record id="view_project_tree_view" model="ir.ui.view">
+            <field name="name">project.tree.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" optional="hide"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="tentaisan" optional="show"/>
+                    <field name="chungthu_id" optional="hide"/>
+                    <field name="doitac_id" optional="hide"/>
+                    <field name="ghichu_hopdong" optional="show"/>
+                    <field name="thanhtoan_tongphi" optional="show" sum="Tổng phí"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="thamdinhvien_id" optional="show"/>
+                </xpath>
+
+            </field>
+    </record>
+
+    <record id="view_project_search_view" model="ir.ui.view">
+            <field name="name">project.search.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="tentaisan" string="Tên tài sản"/>
+                    <field name="doitac_id" string="Đối tác"/>
+                    <field name="chungthu_id" string="Số chứng thư"/>
+                </xpath>
+            </field>
+    </record>
+
+</odoo>

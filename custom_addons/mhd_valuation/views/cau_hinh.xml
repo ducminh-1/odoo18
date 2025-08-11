@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    # ----------------------------------------
+    # Menu Action
+    # ----------------------------------------
+
+    <record id="action_base_document_layout_configurator" model="ir.actions.act_window">
+        <field name="name">Thiết lập giao diện xuất sơ bộ</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">base.document.layout</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="web.view_base_document_layout"/>
+    </record>
+
+    <record id="action_mhd_vitri_chungcu" model="ir.actions.act_window">
+        <field name="name">Tên Chung cư</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.chungcu</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Chung cư!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_vitri_duong" model="ir.actions.act_window">
+        <field name="name">Tên đường</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.duong</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo tuyến đường!
+            </p>
+        </field>
+    </record>
+	
+	<record id="action_mhd_vitri_phuong" model="ir.actions.act_window">
+        <field name="name">Tên phường</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.phuong</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo phường đầu tiên!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_vitri_quan" model="ir.actions.act_window">
+        <field name="name">Tên Quận/ Huyện</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.quan</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Quận/ Huyện!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_vitri_tinh" model="ir.actions.act_window">
+        <field name="name">Tên Tỉnh/ TP</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.vitri.tinh</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Tỉnh/ TP!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_customer_groups" model="ir.actions.act_window">
+        <field name="name">Nhóm khách hàng</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.customer.groups</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo nhóm khách hàng!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_customer_name" model="ir.actions.act_window">
+        <field name="name">Đối tượng khách hàng</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.customer.name</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Đối tượng khách hàng!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_phuongphap" model="ir.actions.act_window">
+        <field name="name">Phương pháp thẩm định</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.phuongphap</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Phương pháp thẩm định!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mhd_mucdich" model="ir.actions.act_window">
+        <field name="name">Mục đích thẩm định</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.mucdichthamdinh</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo Mục đích thẩm định!
+            </p>
+        </field>
+    </record>
+    # ----------------------------------------
+    # Form view
+    # ----------------------------------------
+
+    <record id="view_mhd_vitri_tinh_form" model="ir.ui.view">
+        <field name="name">mhd.vitri.tinh.form</field>
+        <field name="model">mhd.vitri.tinh</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="matinh"/>
+                                <field name="tinhly"/>
+                                <field name="khuvuc"/>
+                            </group>
+                            <group>
+                                <field name="danso"/>
+                                <field name="dientich"/>
+                                <field name="donvihanhchinh"/>
+                                <field name="biensoxe"/>
+                                <field name="mavung"/>
+                            </group>
+                        </group>
+                        <field name="vitri_quan">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="maquan"/>
+                            </tree>
+                        </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_mhd_customer_groups_form" model="ir.ui.view">
+        <field name="name">mhd.customer.groups.form</field>
+        <field name="model">mhd.customer.groups</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Tên nhóm khách hàng"/>
+                        </h1>
+                    </div>
+                        <group>
+                            <field name="khachhang_name">
+                                <tree editable="bottom">
+                                    <field name="name" placeholder="Tên Đối tượng khách hàng"/>
+                                </tree>
+                            </field>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    # ----------------------------------------
+    # Tree view
+    # ----------------------------------------
+    <record id="mhd_vitri_chungcu_tree_view" model="ir.ui.view">
+        <field name="name">mhd.vitri.chungcu.tree.view</field>
+        <field name="model">mhd.vitri.chungcu</field>
+        <field name="arch" type="xml">
+            <tree string="Chung cư">
+                <field name="name"/>
+                <field name="vitri_quan"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mhd_vitri_duong_tree_view" model="ir.ui.view">
+        <field name="name">mhd.vitri.duong.tree.view</field>
+        <field name="model">mhd.vitri.duong</field>
+        <field name="arch" type="xml">
+            <tree string="Tên đường">
+                <field name="name"/>
+                <field name="vitri_quan"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mhd_vitri_quan_tree_view" model="ir.ui.view">
+        <field name="name">mhd.vitri.quan.tree.view</field>
+        <field name="model">mhd.vitri.quan</field>
+        <field name="arch" type="xml">
+            <tree string="Tên Quận/ Huyện">
+                <field name="name"/>
+                <field name="maquan"/>
+                <field name="vitri_tinh"/>
+                <field name="dientich" sum="Tổng diện tích"/>
+                <field name="danso" sum="Tổng dân số"/>
+                <field name="donvihanhchinh" sum="Tổng số đơn vị hành chính"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mhd_vitri_tinh_tree_view" model="ir.ui.view">
+            <field name="name">mhd.vitri.tinh.tree.view</field>
+            <field name="model">mhd.vitri.tinh</field>
+            <field name="arch" type="xml">
+                <tree string="Tinh/ TP">
+                    <field name="name"/>
+                    <field name="matinh"/>
+                    <field name="tinhly"/>
+                    <field name="khuvuc"/>
+                    <field name="danso" sum="Tổng dân số"/>
+                    <field name="dientich" sum="Tổng diện tích"/>
+                    <field name="donvihanhchinh" sum="Tổng số đơn vị hành chính"/>
+                    <field name="biensoxe"/>
+                    <field name="mavung"/>
+                </tree>
+            </field>
+        </record>
+
+
+    <menuitem id="menu_setting"
+              name="Cấu hình"
+              parent="menu_mhd_valuation_root"
+              sequence="15"/>
+    <menuitem id="menu_setting_vitri"
+              name="Vị trí"
+              parent="menu_setting"
+              sequence="10"/>
+    <menuitem id="menu_setting_vitri_chungcu"
+              name="Chung cư"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_chungcu"
+              sequence="6"/>
+    <menuitem id="menu_setting_vitri_duong"
+              name="Đường phố"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_duong"
+              sequence="7"/>
+    <menuitem id="menu_setting_vitri_phuong"
+              name="Phường/ xã"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_phuong"
+              sequence="8"/>
+    <menuitem id="menu_setting_vitri_quan"
+              name="Quận/ Huyện"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_quan"
+              sequence="9"/>
+    <menuitem id="menu_setting_vitri_tinh"
+              name="Tỉnh/ TP"
+              parent="menu_setting_vitri"
+              action="action_mhd_vitri_tinh"
+              sequence="10"/>
+    <menuitem id="menu_setting_khachhang"
+              name="Khách hàng"
+              parent="menu_setting"
+              sequence="10"/>
+    <menuitem id="menu_setting_customer_groups"
+              name="Nhóm khách hàng"
+              parent="menu_setting_khachhang"
+              action="action_mhd_customer_groups"
+              sequence="10"/>
+    <menuitem id="menu_setting_customer_name"
+              name="Đối tượng khách hàng"
+              parent="menu_setting_khachhang"
+              action="action_mhd_customer_name"
+              sequence="10"/>
+    <menuitem id="menu_setting_mucdich_phuongphap"
+              name="Mục đích và Phương pháp"
+              parent="menu_setting"
+              sequence="10"/>
+    <menuitem id="menu_setting_mucdich"
+              name="Mục đích thẩm định"
+              parent="menu_setting_mucdich_phuongphap"
+              action="action_mhd_mucdich"
+              sequence="10"/>
+    <menuitem id="menu_setting_phuongphap"
+              name="Phương pháp thẩm định"
+              parent="menu_setting_mucdich_phuongphap"
+              action="action_mhd_phuongphap"
+              sequence="10"/>
+    <menuitem id="menu_setting_layout_sobo"
+              name="Xuất file sơ bộ"
+              parent="menu_setting"
+              action="action_base_document_layout_configurator"
+              sequence="10"/>
+
+
+</odoo>

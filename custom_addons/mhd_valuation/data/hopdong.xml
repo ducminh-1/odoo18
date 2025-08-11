@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+<!-- Sequences for purchase.order -->
+        <record id="seq_hopdong_order" model="ir.sequence">
+            <field name="name">Số hợp đồng</field>
+            <field name="code">mhd.hopdong</field>
+            <field name="prefix">%(range_month)s%(range_y)s</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_hopdong_order_lan2" model="ir.sequence">
+            <field name="name">Số hợp đồng sau 1-7</field>
+            <field name="code">mhd.hopdong.lan2</field>
+            <field name="prefix">056/%(year)s/</field>
+            <field name="padding">0</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_chungthu_order" model="ir.sequence">
+            <field name="name">Số chứng thư</field>
+            <field name="code">mhd.chungthu</field>
+            <field name="prefix">%(range_month)s%(range_y)s</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_chungthu_order_lan2" model="ir.sequence">
+            <field name="name">Số chứng thư sau ngày 1-7-2024</field>
+            <field name="code">mhd.chungthu.lan2</field>
+            <field name="prefix">056/%(year)s/</field>
+            <field name="padding">0</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_hoso" model="ir.sequence">
+            <field name="name">ID hồ sơ</field>
+            <field name="code">mhd.hoso</field>
+            <field name="prefix">MHD%(y)s</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_sobo" model="ir.sequence">
+            <field name="name">ID hồ sơ sơ bộ</field>
+            <field name="code">mhd.realestate.draft</field>
+            <field name="prefix">SB%(range_month)s%(y)s</field>
+            <field name="padding">4</field>
+            <field name="use_date_range">True</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

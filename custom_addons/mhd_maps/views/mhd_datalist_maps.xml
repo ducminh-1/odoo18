@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mhd_datalist_google_map" model="ir.ui.view">
+        <field name="name">view.mhd.datalist.google_map</field>
+        <field name="model">mhd.datalist</field>
+        <field name="arch" type="xml">
+            <google_map string="Maps" lat="customer_latitude" lng="customer_longitude" color="orange" sidebar_title="name" limit="5000">
+                <field name="customer_latitude"/>
+                <field name="customer_longitude"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content">
+                            <div>
+                                <strong class="o_kanban_record_title"><span>Đơn giá: <field name="dat_dongia"/> - Diện tích: <field name="dat_dientich"/> m2</span></strong>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle"><field name="name"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Vị trí: <field name="dacdiem_vitri_bds"/> rộng: <field name="dacdiem_dorongduong"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Ngày chứng thư: <field name="chungthu_date"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Người thực hiện: <field name="nhanvien"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Kiểm soát: <field name="thamdinhvien"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </google_map>
+        </field>
+    </record>
+    <record id="action_mhd_datalist_map" model="ir.actions.act_window">
+        <field name="name">Google Map</field>
+        <field name="res_model">mhd.datalist</field>
+        <field name="view_mode">google_map</field>
+        <field name="view_id" ref="mhd_maps.view_mhd_datalist_google_map"/>
+<!--        <field name="domain">[('id', '=', active_id)]</field>-->
+    </record>
+    <record id="view_mhd_datalist_form_google_maps_inherit" model="ir.ui.view">
+        <field name="name">view.mhd.datalist.form.google_maps.inherit</field>
+        <field name="model">mhd.datalist</field>
+        <field name="inherit_id" ref="mhd_valuation.view_mhd_datalist_form"/>
+        <field name="priority" eval="1000"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="geo_field">{'lat': 'customer_latitude', 'lng': 'customer_longitude'}</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='property']" position="after">
+                <page name="geolocalize" string="VỊ TRÍ">
+                    <group colspan="2" col="2">
+                        <separator string="Tọa độ tài sản" colspan="2"/>
+<!--                        <button string="Geolocalize" name="geo_localize" type="object" icon="fa-check" colspan="2"/>-->
+
+                        <div>
+                            <span class="oe_inline"> ( </span>
+                            <span> Vĩ độ : </span>
+                            <field name="customer_latitude" class="oe_inline" no_label="1" readonly="0" widget="nhap_toado"/>
+                            <span> : Kinh độ : </span>
+                            <field name="customer_longitude" class="oe_inline" nolabel="1" readonly="0" widget="nhap_toado"/>
+                            <span>) </span><br/>
+                            <span>Nhập vào tọa độ tài sản Google Maps, lưu ý, thay đổi dấu chấm thành dấu phẩy khi copy từ google, Ví dụ: ( Vĩ độ : 10,81305 : Kinh độ : 106,68785)</span>
+                        </div>
+                    </group>
+                    <widget name="gmap_marker" lat="customer_latitude" lng="customer_longitude"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="mhd_valuation.action_mhd_datalist" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,graph,pivot,google_map</field>
+    </record>
+
+</odoo>

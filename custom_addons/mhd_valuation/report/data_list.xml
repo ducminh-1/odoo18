@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_thong_tin_trich_luc" >
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div>
+                        <style>
+                            table {
+                              font-family: arial, sans-serif;
+                              border-collapse: collapse;
+                              width: 100%;
+                            }
+
+                            td, th {
+                              border: 1px solid #dddddd;
+                              text-align: left;
+                              padding: 8px;
+                            }
+
+                            tr:nth-child(even) {
+                              background-color: #dddddd;
+                            }
+                        </style>
+                        <h4 class="text-center" style="font-family:Verdana, Arial,sans-serif; ">THÔNG TIN TRÍCH LỤC HỒ SƠ</h4>
+                        <h5 class="text-center" style="font-family:Verdana, Arial,sans-serif; ">(ID: #<span t-field="o.chungthu_id"/>)</h5>
+                        <br/>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left">
+                                    <div>
+                                        <strong>A. THÔNG TIN TÀI SẢN THẨM ĐỊNH GIÁ</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        1. Đối tượng khách hàng
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.khachhang_type"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        2. Tên khách hàng
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.khachhang_id"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        3. Tài sản thẩm định
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.motataisan"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        4. Vị trí tài sản
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.name"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        5. Mục đích thẩm định
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.mucdichthamdinh"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        6. Phương pháp thẩm định
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.phuongphapthamdinh"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        7. Phiếu yêu cầu/ Hợp đồng
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 25%;">
+                                    <div>
+                                        <span t-field="o.hopdong_id"/>
+                                    </div>
+                                </td>
+                                <td align="center" style="width: 25%;">
+                                    <div>
+                                        Ngày
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 20%;">
+                                    <div>
+                                        <span t-field="o.hopdong_date"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        8. Số chứng thư
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 25%;">
+                                    <div>
+                                        <span t-field="o.chungthu_id"/>
+                                    </div>
+                                </td>
+                                <td align="center" style="width: 25%;">
+                                    <div>
+                                        Ngày
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 20%;">
+                                    <div>
+                                        <span t-field="o.chungthu_date"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        9. Giá trị tài sản thẩm định
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.total_tstd"/> đồng
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left">
+                                    <div>
+                                        <strong>B. THÔNG TIN NGƯỜI THỰC HIỆN</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        Người thực hiện
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.nhanvien"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        Kiểm soát viên
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.thamdinhvien"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        Quản lý
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.quanly"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        Nhân viên kinh doanh
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.kinhdoanh"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left">
+                                    <div>
+                                        <strong>C. THÔNG TIN ĐỐI TÁC</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; font-family:Verdana, Arial,sans-serif; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        1. Tên đối tác
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.doitac_id"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        2. Đơn vị
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.doitac_area"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        3. Email
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.doitac_email"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width: 30%;">
+                                    <div>
+                                        4. Điện thoại
+                                    </div>
+                                </td>
+                                <td align="left" style="width: 70%;">
+                                    <div>
+                                        <span t-field="o.doitac_phone"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

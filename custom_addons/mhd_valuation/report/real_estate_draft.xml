@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_realestate_draft" >
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">THÔNG TIN SƠ BỘ</h2>
+                        <p class="text-center">Mã hồ sơ: <span t-field="o.name"/> - Ngày: <span t-field="o.date"/></p>
+                        <p t-if="docs.khachhang.name != false" class="text-left">NGƯỜI YÊU CẦU: <strong><span t-field="o.khachhang"/></strong></p>
+                        <p class="text-left">NGƯỜI THỰC HIỆN: <strong><span t-field="o.create_uid"/></strong></p>
+                        <p t-if="docs.loaibatdongsan == 'can_ho'" class="text-left">ĐỊA CHỈ TÀI SẢN: <strong><span t-field="o.vitri_chungcu_macan"/> <span t-field="o.vitri_chungcu_block"/> <span t-field="o.vitri_chungcu"/> <span t-field="o.vitri_phuong"/> <span t-field="o.vitri_quan"/> <span t-field="o.vitri_tinh"/></strong></p>
+                        <p t-if="docs.loaibatdongsan != 'can_ho'" class="text-left">ĐỊA CHỈ TÀI SẢN: <strong><span t-field="o.vitri_sonha"/> <span t-field="o.vitri_duong"/> <span t-field="o.vitri_phuong"/> <span t-field="o.vitri_quan"/> <span t-field="o.vitri_tinh"/></strong></p>
+                        <p t-if="docs.khuvuc != false" class="text-left">KHU VỰC/ VỊ TRÍ: <strong><span t-field="o.khuvuc"/></strong></p>
+                        <p t-if="docs.phithamdinh != 0" class="text-left">PHÍ THẨM ĐỊNH DỰ KIẾN: <strong><span t-field="o.phithamdinh"/></strong> đồng (gồm VAT)</p>
+                        <p t-if="docs.phithamdinh == 0" class="text-left">PHÍ THẨM ĐỊNH DỰ KIẾN: <strong>Thỏa thuận</strong></p>
+                    </div>
+                    <table t-if="docs.loaibatdongsan != 'can_ho'" class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_id" class="text-left">HẠNG MỤC</th>
+                                <th name="th_description" class="text-center">MÔ TẢ</th>
+                                <th name="th_quantity" class="text-right">DIỆN TÍCH</th>
+                                <th name="th_priceunit" class="text-right">ĐƠN GIÁ</th>
+                                <th name="th_taxes" class="text-right">GIÁ TRỊ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs.land_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="loaidat" class="text-left">
+                                        <span t-field="line.dat_loaidat"/>
+                                    </td>
+                                    <td name="quyhoach" class="text-center">
+                                        <span t-field="line.dat_quyhoach"/>
+                                    </td>
+                                    <td name="dientich" class="text-right">
+                                        <span t-field="line.dat_dientich"/>
+                                    </td>
+                                    <td name="dongia" class="text-right">
+                                        <span t-field="line.dat_dongia"/>
+                                    </td>
+                                    <td name="giatri" class="text-right">
+                                        <span t-field="line.dat_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <table t-if="docs.loaibatdongsan == 'nha_pho'" class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_id" class="text-left">HẠNG MỤC</th>
+                                <th name="th_quantity" class="text-right">DIỆN TÍCH</th>
+                                <th name="th_priceunit" class="text-right">ĐƠN GIÁ</th>
+                                <th name="th_description" class="text-right">CLCL</th>
+                                <th name="th_taxes" class="text-right">GIÁ TRỊ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs.build_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="tencongtrinh" class="text-left">
+                                        <span t-field="line.ctxd_name"/>
+                                    </td>
+                                    <td name="dientich" class="text-right">
+                                        <span t-field="line.ctxd_dientich"/>
+                                    </td>
+                                    <td name="dongia" class="text-right">
+                                        <span t-field="line.ctxd_dongia"/>
+                                    </td>
+                                    <td name="clcl" class="text-right">
+                                        <span t-field="line.ctxd_clcl" t-options="{'widget': 'percentage'}"/>
+                                    </td>
+                                    <td name="giatri" class="text-right">
+                                        <span t-field="line.build_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <table t-if="docs.loaibatdongsan == 'biet_thu'" class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_id" class="text-left">HẠNG MỤC</th>
+                                <th name="th_quantity" class="text-right">DIỆN TÍCH</th>
+                                <th name="th_priceunit" class="text-right">ĐƠN GIÁ</th>
+                                <th name="th_description" class="text-right">CLCL</th>
+                                <th name="th_taxes" class="text-right">GIÁ TRỊ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs.build_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="tencongtrinh" class="text-left">
+                                        <span t-field="line.ctxd_name"/>
+                                    </td>
+                                    <td name="dientich" class="text-right">
+                                        <span t-field="line.ctxd_dientich"/>
+                                    </td>
+                                    <td name="dongia" class="text-right">
+                                        <span t-field="line.ctxd_dongia"/>
+                                    </td>
+                                    <td name="clcl" class="text-right">
+                                        <span t-field="line.ctxd_clcl" t-options="{'widget': 'percentage'}"/>
+                                    </td>
+                                    <td name="giatri" class="text-right">
+                                        <span t-field="line.build_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <table t-if="docs.loaibatdongsan == 'nha_xuong'" class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_id" class="text-left">HẠNG MỤC</th>
+                                <th name="th_quantity" class="text-right">DIỆN TÍCH</th>
+                                <th name="th_priceunit" class="text-right">ĐƠN GIÁ</th>
+                                <th name="th_description" class="text-right">CLCL</th>
+                                <th name="th_taxes" class="text-right">GIÁ TRỊ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs.build_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="tencongtrinh" class="text-left">
+                                        <span t-field="line.ctxd_name"/>
+                                    </td>
+                                    <td name="dientich" class="text-right">
+                                        <span t-field="line.ctxd_dientich"/>
+                                    </td>
+                                    <td name="dongia" class="text-right">
+                                        <span t-field="line.ctxd_dongia"/>
+                                    </td>
+                                    <td name="clcl" class="text-right">
+                                        <span t-field="line.ctxd_clcl" t-options="{'widget': 'percentage'}"/>
+                                    </td>
+                                    <td name="giatri" class="text-right">
+                                        <span t-field="line.build_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div t-if="docs.loaibatdongsan != 'can_ho'" class="clearfix" name="so_total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                <table class="table table-sm">
+                                    <tr class="border-black o_subtotal" style="">
+                                        <td name="td_amount_untaxed_label"><strong>Giá trị đất</strong></td>
+                                        <td name="td_amount_untaxed" class="text-right">
+                                            <span t-field="docs.dat_total"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="docs.loaibatdongsan != 'dat_trong'" style="">
+                                        <td name="td_amount_untaxed_label"><strong>Giá trị CTXD</strong></td>
+                                        <td name="td_amount_untaxed" class="text-right">
+                                            <span t-field="docs.build_total"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="docs.loaibatdongsan != 'dat_trong'" class="border-black o_total">
+                                        <td name="td_amount_total_label"><strong>TỔNG GIÁ TRỊ</strong></td>
+                                        <td name="td_amount_total" class="text-right">
+                                            <strong><span t-field="docs.tstd_total"/></strong>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="docs.loaibatdongsan == 'dat_trong'" class="border-black o_total">
+                                        <td name="td_amount_total_label"><strong>TỔNG GIÁ TRỊ TSTĐ</strong></td>
+                                        <td name="td_amount_total" class="text-right">
+                                            <strong><span t-field="docs.dat_total"/></strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <table t-if="docs.loaibatdongsan == 'can_ho'" class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_id" class="text-left">HẠNG MỤC</th>
+                                <th name="th_quantity" class="text-right">DIỆN TÍCH</th>
+                                <th name="th_priceunit" class="text-right">ĐƠN GIÁ</th>
+                                <th name="th_taxes" class="text-right">GIÁ TRỊ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs.canho_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td name="taisan" class="text-left">
+                                        <span t-field="line.canho_loaidientich"/>
+                                    </td>
+                                    <td name="dientich" class="text-right">
+                                        <span t-field="line.canho_dientich"/>
+                                    </td>
+                                    <td name="dongia" class="text-right">
+                                        <span t-field="line.canho_dongia"/>
+                                    </td>
+                                    <td name="giatri" class="text-right">
+                                        <span t-field="line.canho_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div t-if="docs.loaibatdongsan == 'can_ho'" class="clearfix" name="so_total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                <table class="table table-sm">
+                                    <tr class="border-black o_subtotal" style="">
+                                        <td name="td_amount_untaxed_label"><strong>TỔNG GIÁ TRỊ CĂN HỘ</strong></td>
+                                        <td name="td_amount_untaxed" class="text-right">
+                                            <strong><span t-field="docs.canho_total"/></strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="docs.note != false" class="page">
+                        <p><strong>LƯU Ý:</strong></p>
+                        <p>
+                            <span t-field="o.note"/>
+                        </p>
+                    </div>
+                    <div class="page">
+                        <p><strong>GHI CHÚ:</strong></p>
+                        <p>- Giá sơ bộ <b>trong điều kiện bình thường</b> có phạm vi <b>sai lệch <span t-field="o.ghichu_sailech"/></b>;</p>
+                        <p>- Giá sơ bộ chỉ là giá ước lượng khi chưa khảo sát hiện trạng tài sản và <b>sẽ thay đổi sau khi khảo sát thực tế</b>;</p>
+                        <p>- Phí tạm ứng khi đi khảo sát thực địa chưa bao gồm VAT;</p>
+                        <p><span t-field="o.ghichu_phidichuyen"/></p>
+<!--                        <p>- Khu vực thuộc các huyện Củ Chi, Cần Giờ, phí định giá sẽ bằng mức phí trên cộng thêm 500 nghìn (chi phí đi lại)</p>-->
+<!--                        <p>- Khu vực thuộc huyện Hóc Môn; phường Long Bình, Long Phước thành phố Thủ Đức; xã Lê Minh Xuân, Phạm Văn Hai, Bình Lợi, Đa Phước, Tân Nhựt, Tân Túc, Quy Đức, Hưng Long, Tân Quý Tây huyện Bình Chánh; xã Hiệp Phước huyện Nhà Bè, phí định giá sẽ bằng mức phí trên cộng thêm 100 nghìn (chi phí đi lại)</p>-->
+                        <p t-if="docs.quyhoach_vanban != false">- Thông tin quy hoạch (phía dưới) chỉ mang tính tham khảo; thông tin này cần được kiểm chứng lại bởi cán bộ tín dụng.</p>
+                    </div>
+                    <div t-if="docs.quyhoach_vanban != false">
+                        <p>
+                            <span t-field="o.ghichu"/>
+                        </p>
+                        <p>
+                            THÔNG TIN QUY HOẠCH THAM KHẢO: <span t-field="o.quyhoach_vanban" style="font-weight:bold;"/>
+                        </p>
+                    </div>
+                    <div t-if="docs.quyhoach_hinhanh != false">
+                        <p>
+                            <span t-field="o.quyhoach_hinhanh" t-options='{"widget": "image"}'/>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

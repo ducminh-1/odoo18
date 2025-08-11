@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="form_tao_hop_dong" model="ir.ui.view">
+            <field name="name">mhd.hopdong.wizard</field>
+            <field name="model">mhd.hopdong</field>
+            <field name="arch" type="xml">
+                <form string="Tạo hợp đồng">
+                    <sheet>
+                        <div class="oe_title pr-0">
+                            <h1 class="d-flex flex-row justify-content-between">
+                                <field name="name" class="o_task_name text-truncate" placeholder="Tên tài sản"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+    <!--                            <field name="datalist_id"/>-->
+                                <field name="datalist_id" widget="many2many_tags"/>
+                                <field name="nhanvien"/>
+                                <field name="hopdong_date" placeholder="Số hợp đồng tự động lấy dựa theo ngày"/>
+                                <field name="thanhtoan_tongphi"/>
+                                <field name="thanhtoan_vat"/>
+                                <field name="tinhtrangkyket"/>
+                                <span class="o_form_label o_td_label" name="address_name">
+                                    <b>Thông tin đối tác</b>
+                                </span>
+                                <field name="doitac_id" placeholder="Chọn tên đối tác/ Tín dụng"/>
+                                <field name="doitac_groups" attrs="{'invisible': [('doitac_id', '=', False)]}"/>
+                                <field name="doitac_name" attrs="{'invisible': [('doitac_id', '=', False)]}"/>
+                                <field name="doitac_area" attrs="{'invisible': [('doitac_id', '=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="hopdong_type"/>
+                                <field name="khachhang_id" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                <span class="o_form_label o_td_label" name="address_name">
+                                    <b attrs="{'invisible': [('hopdong_type', '=', False)]}">Địa chỉ</b>
+                                </span>
+                                <div class="o_address_format">
+                                    <field name="khachhang_street" placeholder="Street..." class="o_address_street" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                    <field name="khachhang_street2" placeholder="Street 2..." class="o_address_street" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                    <field name="khachhang_city" placeholder="City" class="o_address_city" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" attrs="{'invisible': [('hopdong_type', '=', False)]}" context="{'country_id': country_id}"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                </div>
+                                <field name="khachhang_phone" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                <field name="khachhang_email" attrs="{'invisible': [('hopdong_type', '=', False)]}"/>
+                                <field name="khachhang_cmnd" attrs="{'invisible': [('hopdong_type', '!=', 'ca_nhan')]}"/>
+                                <field name="khachhang_vat" attrs="{'invisible': [('hopdong_type', '!=', 'cong_ty')]}"/>
+                                <field name="khachhang_daidien" attrs="{'invisible': [('hopdong_type', '!=', 'cong_ty')]}"/>
+                                <field name="khachhang_daidien_chucvu" attrs="{'invisible': [('hopdong_type', '!=', 'cong_ty')]}"/>
+
+                            </group>
+    <!--                         <field name="hopdong_line">-->
+    <!--                             <tree editable="bottom">-->
+    <!--                                <field name="hopdong_id"/>-->
+    <!--                                <field name="hopdong_date"/>-->
+    <!--                            </tree>-->
+    <!--                         </field>-->
+                        </group>
+                        <notebook>
+                            <page string="Nhiệm vụ" name="nhiem_vu">
+                                <field name="project_task_line" widget = "section_and_note_one2many">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="project_id"/>
+                                        <field name="company_id"/>
+                                        <field name="user_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button name="create_hop_dong" id="create_hop_dong" string="Xác nhận 2" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="tao_hop_dong" model="ir.actions.act_window">
+            <field name="name">Tạo hợp đồng</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mhd.hopdong</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="view_id" ref="form_tao_hop_dong" />
+<!--            <field name="binding_view_types">list</field>-->
+        </record>
+
+</odoo>

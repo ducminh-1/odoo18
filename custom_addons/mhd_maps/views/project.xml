@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+            <record id="view_project_task_google_map" model="ir.ui.view">
+            <field name="name">view.project.task.google_map</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <google_map string="Maps" lat="customer_latitude" lng="customer_longitude" color="orange" sidebar_title="name">
+                    <field name="customer_latitude"/>
+                    <field name="customer_longitude"/>
+    <!--                <field name="contact_name"/>-->
+    <!--                <field name="priority"/>-->
+    <!--                <field name="tag_ids"/>-->
+    <!--                <field name="user_id"/>-->
+    <!--                <field name="activity_ids"/>-->
+    <!--                <field name="activity_state"/>-->
+    <!--                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>-->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content">
+                                <div>
+                                    <strong class="o_kanban_record_title"><span>Đơn giá: <field name="dat_dongia"/> - Diện tích: <field name="dat_dientich"/> m2</span></strong>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle"><field name="tentaisan"/></span>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle">Vị trí: <field name="dacdiem_vitri_bds"/></span>
+                                </div>
+<!--                                <div>-->
+<!--                                    <span class="o_kanban_record_subtitle">Ngày chứng thư: <field name="chungthu_date"/></span>-->
+<!--                                </div>-->
+                                <div>
+                                    <span class="o_kanban_record_subtitle">Người thực hiện: <field name="user_id"/></span>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle">Kiểm soát: <field name="thamdinhvien_id"/></span>
+                                </div>
+    <!--                            <div class="o_kanban_record_bottom">-->
+    <!--                                <div class="oe_kanban_bottom_left">-->
+    <!--                                    <field name="name" widget="priority"/>-->
+    <!--                                    <div class="o_kanban_inline_block">-->
+    <!--                                        <field name="name" widget="kanban_activity"/>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                                <div class="oe_kanban_bottom_right">-->
+    <!--                                    <field name="user_id" widget="many2one_avatar_user"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+                            </div>
+                        </t>
+                    </templates>
+                </google_map>
+            </field>
+        </record>
+        <record id="action_project_task_map" model="ir.actions.act_window">
+            <field name="name">Google Map</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">google_map</field>
+            <field name="view_id" ref="mhd_maps.view_project_task_google_map"/>
+    <!--        <field name="domain">[('id', '=', active_id)]</field>-->
+        </record>
+
+         <!--  Partners inherited form -->
+        <record id="view_project_hopdong_form" model="ir.ui.view">
+            <field name="name">project.hopdong.form.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//form" position="attributes">-->
+<!--                    <attribute name="geo_field">{'lat': 'customer_latitude', 'lng': 'customer_longitude'}</attribute>-->
+<!--                </xpath>-->
+                <xpath expr="//notebook" position="inside">
+                    <page name="geolocalize" string="Google Maps">
+                        <group colspan="2" col="2">
+                            <separator string="Tọa độ tài sản" colspan="2"/>
+                            <div>
+                                <span class="oe_inline"> ( </span>
+                                <span> Vĩ độ : </span>
+                                <field name="customer_latitude" class="oe_inline" no_label="1" widget="nhap_toado"/>
+                                <span> : Kinh độ : </span>
+                                <field name="customer_longitude" class="oe_inline" nolabel="1" widget="nhap_toado"/>
+                                <span>) </span><br/>
+                                <span>Nhập vào tọa độ tài sản Google Maps, lưu ý, thay đổi dấu chấm thành dấu phẩy khi copy từ google, Ví dụ: ( Vĩ độ : 10,81305 : Kinh độ : 106,68785)</span>
+                            </div>
+                        </group>
+                        <widget name="gmap_marker" lat="customer_latitude" lng="customer_longitude"/>
+                </page>
+                </xpath>
+            </field>
+       </record>
+
+<!--        <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">-->
+<!--            <field name="view_mode">kanban,tree,form,calendar,pivot,graph,activity,google_map</field>-->
+<!--        </record>-->
+
+
+</odoo>

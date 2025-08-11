@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="form_tao_chung_thu" model="ir.ui.view">
+            <field name="name">mhd.chungthu.wizard</field>
+            <field name="model">mhd.chungthu</field>
+            <field name="arch" type="xml">
+                <form string="Tạo chứng thư">
+                    <sheet>
+                        <div class="oe_title pr-0">
+                            <h1 class="d-flex flex-row justify-content-between">
+                                <field name="name" class="o_task_name text-truncate" placeholder="Tên tài sản"/>
+                            </h1>
+                        </div>
+                        <group>
+                        <group>
+                            <field name="datalist_id" placeholder="Chọn tên tài sản cần lấy số" options="{'no_open': True, 'no_create': True}" domain="[('nhanvien', '=', uid)]"/>
+                            <field name="nhanvien" placeholder="Nhân viên thực hiện"/>
+                            <field name="chungthu_date"/>
+                            <field name="tinhtrangphathanh"/>
+                        </group>
+                        <group>
+                            <field name="hopdong_id"/>
+                            <field name="phuongphapthamdinh"/>
+                            <field name="mucdichthamdinh"/>
+                            <field name="loaitaisan"/>
+                        </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="create_chung_thu" id="create_chung_thu" string="Xác nhận" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="tao_chung_thu" model="ir.actions.act_window">
+            <field name="name">Tạo chứng thư</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mhd.chungthu</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="view_id" ref="form_tao_chung_thu" />
+<!--            <field name="binding_view_types">list</field>-->
+        </record>
+
+</odoo>

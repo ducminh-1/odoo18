@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    # ----------------------------------------
+    # Form view
+    # ----------------------------------------
+
+    <record id="view_mhd_thanhtoan_form" model="ir.ui.view">
+        <field name="name">mhd.thanhtoan.form</field>
+        <field name="model">mhd.thanhtoan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title pr-0">
+                        <h1 class="d-flex flex-row justify-content-between">
+                            <field name="name" class="o_task_name text-truncate" placeholder="Nhập nội dung thanh toán..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="nhanvien_tao" placeholder="Nhân viên tạo thanh toán" domain="[('id', '=', uid)]" options="{'no_edit': True, 'no_open': True}"/>
+                            <field name="date" placeholder="Chọn ngày thanh toán"/>
+                            <field name="hinhthuc" placeholder="Chọn hình thức thanh toán"/>
+                            <field name="taikhoan" placeholder="Chọn tài khoản nhận tiền" attrs="{'invisible': [('hinhthuc', '!=', 'chuyen_khoan')]}"/>
+                            <field name="sotien" placeholder="Nhập số tiền thanh toán"/>
+                        </group>
+                        <group>
+                            <field name="tinhtrang" placeholder="Tình trạng xác nhận phí"/>
+                            <field name="nhanvien_xacnhan" placeholder="Nhân viên xác nhận" domain="[('id', '=', uid)]"/>
+                            <field name="datalist_id" placeholder="Thanh toán cho tài sản nào?" options="{'no_open': True, 'no_create': True}" domain="[('nhanvien', '=', uid)]"/>
+                            <field name="chungthu" placeholder="Số chứng thư tương ứng"/>
+                            <field name="lanthanhtoan" placeholder="Chọn tiến độ thanh toán"/>
+                            <field name="thanhtoan_tongphi"/>
+                            <field name="thanhtoan_dathanhtoan"/>
+                            <field name="full_phi"/>
+                            <field name="thanhtoan_thoidiem" placeholder="Thời điểm thanh toán Full"/>
+                            <field name="ghichu"/>
+
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Search view
+    # ----------------------------------------
+    <record id="view_thanhtoan_search" model="ir.ui.view">
+        <field name="name">mhd.thanhtoan.search</field>
+        <field name="model">mhd.thanhtoan</field>
+        <field name="arch" type="xml">
+            <search string="Thanh toán">
+                <field name="chungthu"/>
+                <filter string="Chưa xác nhận" name="chua_xac_nhan" domain="[('tinhtrang', '=', 'chua_xac_nhan')]"/>
+                <filter string="Đã xác nhận" name="da_xac_nhan" domain="[('tinhtrang', '=', 'da_xac_nhan')]"/>
+                <separator/>
+                <filter string="Chuyển khoản" name="chuyen_khoan" domain="[('hinhthuc', '=', 'chuyen_khoan')]"/>
+                <filter string="Tiền mặt" name="tien_mat" domain="[('hinhthuc', '=', 'tien_mat')]"/>
+            </search>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Tree view
+    # ----------------------------------------
+
+    <record id="mhd_thanhtoan_tree_view" model="ir.ui.view">
+            <field name="name">mhd.thanhtoan.tree.view</field>
+            <field name="model">mhd.thanhtoan</field>
+            <field name="arch" type="xml">
+                <tree string="Data List" multi_edit="1">
+                    <field name="tinhtrang" optional="show"/>
+                    <field name="date" optional="show"/>
+                    <field name="hinhthuc" optional="show"/>
+                    <field name="taikhoan" optional="show"/>
+                    <field name="sotien" optional="show" sum="Tổng tiền thanh toán"/>
+                    <field name="name" optional="show"/>
+                    <field name="chungthu" optional="show"/>
+                    <field name="ghichu" optional="hide"/>
+                    <field name="nhanvien_tao" optional="show"/>
+                    <field name="nhanvien_xacnhan" optional="show"/>
+                    <field name="lanthanhtoan" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+
+    # ----------------------------------------
+    # Menu
+    # ----------------------------------------
+    <record id="action_mhd_thanhtoan" model="ir.actions.act_window">
+        <field name="name">Thanh toán</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.thanhtoan</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot</field>
+        <field name="context">{'search_default_chua_xac_nhan':'chua_xac_nhan'}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo thanh toán đầu tiên!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_mhd_valuation_root"
+              name="MHD Valuation"
+              sequence="10"/>
+
+    <menuitem id="menu_thanhtoan"
+              name="Thanh toán"
+              parent="menu_mhd_valuation_root"
+              action="action_mhd_thanhtoan"
+              sequence="10"/>
+
+</odoo>

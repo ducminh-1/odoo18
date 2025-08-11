@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Maps view-->
+    <record id="view_draft_assets_google_map" model="ir.ui.view">
+        <field name="name">view.draft_assets.google_map</field>
+        <field name="model">mhd.realestate.draft</field>
+        <field name="arch" type="xml">
+            <google_map string="Maps" lat="center_latitude" lng="center_longitude" color="orange" sidebar_title="tentaisan" limit="2000">
+                <field name="center_latitude"/>
+                <field name="center_longitude"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content">
+                            <div>
+                                <strong class="o_kanban_record_title"><span>Đơn giá: <field name="dongiasobo"/> - Diện tích: <field name="dientich"/> m2</span></strong>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle"><field name="tentaisan"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Vị trí: <field name="dacdiem_vitri_bds"/> khu vực: <field name="khuvuc"/></span>
+                            </div>
+                            <div>
+                                <span class="o_kanban_record_subtitle">Người sơ bộ: <field name="nhanvien"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </google_map>
+        </field>
+    </record>
+    <!--Action Google view-->
+    <record id="action_draft_assets_google_map" model="ir.actions.act_window">
+        <field name="name">Google Map</field>
+        <field name="res_model">mhd.realestate.draft</field>
+        <field name="view_mode">google_map</field>
+        <field name="view_id" ref="view_draft_assets_google_map"/>
+    </record>
+
+    # ----------------------------------------
+    # Form view
+    # ----------------------------------------
+
+    <record id="view_mhd_real_estate_daft_form" model="ir.ui.view">
+        <field name="name">mhd.realestate.draft.form</field>
+        <field name="model">mhd.realestate.draft</field>
+        <field name="arch" type="xml">
+            <form>
+<!--                <header>-->
+<!--                    <button name="print_report" type="object"-->
+<!--                            string="In Báo giá" class="oe_highlight" />-->
+<!--                </header>-->
+                <sheet>
+                    <div class="oe_title pr-0">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="loaibatdongsan"/>
+                            <span class="o_form_label o_td_label" name="address_name">
+                                <b attrs="{'invisible': [('loaibatdongsan', '=', False)]}">Địa chỉ</b>
+                            </span>
+                            <div class="o_address_format" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                <field name="vitri_tinh" class="o_address_country" placeholder="Tỉnh/ TP" />
+                                <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                    <field name="vitri_quan" placeholder="Quận/ huyện"  domain="[('vitri_tinh', '=?', vitri_tinh)]"/>
+                                    <field name="vitri_phuong" placeholder="Phường" domain="[('vitri_quan', '=?', vitri_quan)]"/>
+                                </div>
+                                <field name="vitri_duong" class="o_address_street" placeholder="Tên đường" domain="[('vitri_quan', '=?', vitri_quan)]" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                <field name="vitri_sonha" class="o_address_street" placeholder="Số nhà/ Thửa đất, tờ bản đồ" attrs="{'invisible': [('loaibatdongsan', '=', 'can_ho')]}"/>
+                                <field name="vitri_chungcu" placeholder="Tên chung cư" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}" domain="[('vitri_quan', '=?', vitri_quan)]"/>
+                                <div class="o_row" attrs="{'invisible': [('loaibatdongsan', '=', False)]}">
+                                    <field name="vitri_chungcu_macan" placeholder="Mã căn hộ" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                    <field name="vitri_chungcu_block" placeholder="Block - Tầng" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}"/>
+                                </div>
+                            </div>
+                            <field name="khuvuc" placeholder="Nhập vào KV/ Vị trí/ Tầng cao"/>
+                            <field name="dacdiem_vitri_bds" attrs="{'invisible': [('loaibatdongsan', '==', 'can_ho')]}"/>
+                            <field name="coordinate_input"/>
+                            <field name="search_radius"/>
+                            <field name="center_latitude" readonly="1" widget="nhap_toado"/>
+                            <field name="center_longitude" readonly="1" widget="nhap_toado"/>
+                            <field name="average_price"/>
+                            <field name="dongiasobo"/>
+                            <field name="dientich"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="khachhang"/>
+                            <field name="khachhang_chinhanh"/>
+                            <field name="khoanggiatri"/>
+                            <field name="phithamdinh"/>
+                            <field name="phithamdinhthuchien"/>
+                            <field name="tinhtrang"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Nhà phố" name="nha_pho" attrs="{'invisible': [('loaibatdongsan', '!=', 'nha_pho')]}">
+                            <field name="land_line" widget="section_and_note_one2many">
+                                <tree decoration-bf="display_type" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="note" widget="section_and_note_text" optional="show"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="dat_loaidat"/>
+                                    <field name="dat_quyhoach"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                    <field name="dat_subtotal"/>
+                                    <control>
+                                        <create name="add_line_control" string="Add a line"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                </tree>
+                            </field>
+                            <field name="build_line">
+                                <tree editable="bottom">
+                                    <field name="ctxd_name"/>
+                                    <field name="ctxd_dientich"/>
+                                    <field name="ctxd_dongia"/>
+                                    <field name="ctxd_clcl" widget="percentage"/>
+                                    <field name="build_subtotal"/>
+                                </tree>
+                            </field>
+                                <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                    <group colspan="4">
+                                        <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                                    </group>
+                                    <group class="oe_subtotal_footer oe_right" colspan="2">
+                                        <field name="dat_total"/>
+                                        <field name="build_total"/>
+                                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                            <label for="tstd_total"/>
+                                        </div>
+                                        <field name="tstd_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                    </group>
+                                    <div class="oe_clear"/>
+                                </group>
+                        </page>
+                        <page string="Biệt thự" name="biet_thu" attrs="{'invisible': [('loaibatdongsan', '!=', 'biet_thu')]}">
+                            <field name="land_line" widget="section_and_note_one2many">
+                                <tree decoration-bf="display_type" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="note" widget="section_and_note_text" optional="show"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="dat_loaidat"/>
+                                    <field name="dat_quyhoach"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                    <field name="dat_subtotal"/>
+                                    <control>
+                                        <create name="add_line_control" string="Add a line"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                </tree>
+                            </field>
+                            <field name="build_line">
+                                <tree editable="bottom">
+                                    <field name="ctxd_name"/>
+                                    <field name="ctxd_dientich"/>
+                                    <field name="ctxd_dongia"/>
+                                    <field name="ctxd_clcl" widget="percentage"/>
+                                    <field name="build_subtotal"/>
+                                </tree>
+                            </field>
+                                <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                    <group colspan="4">
+                                        <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                                    </group>
+                                    <group class="oe_subtotal_footer oe_right" colspan="2">
+                                        <field name="dat_total"/>
+                                        <field name="build_total"/>
+                                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                            <label for="tstd_total"/>
+                                        </div>
+                                        <field name="tstd_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                    </group>
+                                    <div class="oe_clear"/>
+                                </group>
+                        </page>
+                        <page string="Nhà xưởng" name="nha_xuong" attrs="{'invisible': [('loaibatdongsan', '!=', 'nha_xuong')]}">
+                            <field name="land_line" widget="section_and_note_one2many">
+                                <tree decoration-bf="display_type" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="note" widget="section_and_note_text" optional="show"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="dat_loaidat"/>
+                                    <field name="dat_quyhoach"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                    <field name="dat_subtotal"/>
+                                    <control>
+                                        <create name="add_line_control" string="Add a line"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                </tree>
+                            </field>
+                            <field name="build_line">
+                                <tree editable="bottom">
+                                    <field name="ctxd_name"/>
+                                    <field name="ctxd_dientich"/>
+                                    <field name="ctxd_dongia"/>
+                                    <field name="ctxd_clcl" widget="percentage"/>
+                                    <field name="build_subtotal"/>
+                                </tree>
+                            </field>
+                                <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                    <group colspan="4">
+                                        <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                                    </group>
+                                    <group class="oe_subtotal_footer oe_right" colspan="2">
+                                        <field name="dat_total"/>
+                                        <field name="build_total"/>
+                                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                            <label for="tstd_total"/>
+                                        </div>
+                                        <field name="tstd_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                    </group>
+                                    <div class="oe_clear"/>
+                                </group>
+                        </page>
+                        <page string="Đất trống" name="dat_trong" attrs="{'invisible': [('loaibatdongsan', '!=', 'dat_trong')]}">
+                            <field name="land_line">
+                                <tree editable="bottom">
+                                    <field name="dat_loaidat"/>
+                                    <field name="dat_quyhoach"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                    <field name="dat_subtotal"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2">
+                                    <field name="dat_total"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="dat_total"/>
+                                    </div>
+                                    <field name="dat_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                        <page string="Căn hộ" name="can_ho" attrs="{'invisible': [('loaibatdongsan', '!=', 'can_ho')]}">
+                            <field name="canho_line">
+                                <tree editable="bottom">
+                                    <field name="canho_loaidientich"/>
+                                    <field name="canho_dientich"/>
+                                    <field name="canho_dongia"/>
+                                    <field name="canho_subtotal"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="note" nolabel="1" placeholder="Lưu ý khác nếu có...gõ mỗi lưu ý trên 1 dòng, bắt đầu bằng dấu (-)"/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2">
+                                    <field name="canho_total"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="canho_total"/>
+                                    </div>
+                                    <field name="canho_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                        <page string="Quy hoạch" name="quy_hoach" attrs="{'invisible': [('loaibatdongsan', '==', False)]}">
+                            <group>
+                                <field name="quyhoach_vanban"/>
+                                <field name="ghichu" type="html"/>
+<!--                                <field name="quyhoach_hinhanh" class="image" widget="image"/>-->
+                            </group>
+                        </page>
+                        <page string="Tùy biến Form" name="tuy_bien" attrs="{'invisible': [('loaibatdongsan', '==', False)]}">
+                            <group>
+                                <field name="ghichu_sailech"/>
+                                <field name="ghichu_phidichuyen"/>
+                            </group>
+                        </page>
+                        <page name="so_sanh" string="Tài sản so sánh" attrs="{'invisible': [('loaibatdongsan', '==', False)]}">
+                            <field name="properties">
+                                <tree editable="bottom">
+                                    <field name="chungthu_id"/>
+                                    <field name="name"/>
+                                    <field name="vitri_chungcu"/>
+                                    <field name="dacdiem_vitri_bds"/>
+                                    <field name="dacdiem_dorongduong"/>
+                                    <field name="vitri_duong"/>
+                                    <field name="dat_dientich"/>
+                                    <field name="dat_dongia"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Search view
+    # ----------------------------------------
+    <record id="view_mhd_realestate_daft_search" model="ir.ui.view">
+        <field name="name">mhd.realestate.draft.search</field>
+        <field name="model">mhd.realestate.draft</field>
+        <field name="arch" type="xml">
+            <search string="Địa chỉ">
+                <field name="name" filter_domain="['|', '|', '|', ('name', 'ilike', self), ('khachhang', 'ilike', self), ('vitri_duong', 'ilike', self), ('vitri_chungcu', 'ilike', self)]"/>
+                <field name="loaibatdongsan"/>
+                <field name="vitri_sonha"/>
+                <filter string="Biệt thự" name="biet_thu" domain="[('loaibatdongsan', '=', 'biet_thu')]"/>
+                <filter string="Nhà phố" name="nha_pho" domain="[('loaibatdongsan', '=', 'nha_pho')]"/>
+                <filter string="Căn hộ" name="can_ho" domain="[('loaibatdongsan', '=', 'can_ho')]"/>
+                <filter string="Đất trống" name="dat_trong" domain="[('loaibatdongsan', '=', 'dat_trong')]"/>
+                <separator/>
+                <filter string="Sơ bộ của tôi" name="my_tasks" domain="[('create_uid', '=', uid)]"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="create_uid" string="Người sơ bộ" context="{'group_by' : 'create_uid'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    # ----------------------------------------
+    # Tree view
+    # ----------------------------------------
+
+    <record id="mhd_real_estate_draft_tree_view" model="ir.ui.view">
+            <field name="name">mhd.realestate.draft.tree.view</field>
+            <field name="model">mhd.realestate.draft</field>
+            <field name="arch" type="xml">
+                <tree string="Real Estate Draft">
+                    <field name="name" optional="show"/>
+                    <field name="date" optional="show"/>
+                    <field name="create_uid" string="Tạo bởi" optional="hide"/>
+                    <field name="khachhang" optional="show"/>
+                    <field name="loaibatdongsan" optional="show"/>
+                    <field name="khuvuc" optional="show"/>
+                    <field name="vitri_sonha" optional="show"/>
+                    <field name="vitri_chungcu_macan" optional="hide"/>
+                    <field name="vitri_chungcu_block" optional="hide"/>
+                    <field name="vitri_chungcu" optional="hide"/>
+                    <field name="vitri_duong" optional="show"/>
+                    <field name="vitri_phuong" optional="hide"/>
+                    <field name="vitri_quan" optional="show"/>
+                    <field name="dientich" optional="show"/>
+                    <field name="dongiasobo" optional="show" avg="Đơn giá bình quân"/>
+                    <field name="phithamdinh" sum="Phí tạm tính" optional="hide"/>
+                    <field name="phithamdinhthuchien" sum="Phí thực hiện" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+    # ----------------------------------------
+    # Menu
+    # ----------------------------------------
+    <record id="action_real_estate_draft" model="ir.actions.act_window">
+        <field name="name">Sơ bộ tài sản</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mhd.realestate.draft</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot,google_map</field>
+        <field name="context">{'search_default_my_tasks': uid}</field>
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo hồ sơ sơ bộ mới!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_real_estate_draft"
+              name="Sơ bộ tài sản"
+              parent="menu_mhd_valuation_root"
+              action="action_real_estate_draft"
+              sequence="10"/>
+
+</odoo>

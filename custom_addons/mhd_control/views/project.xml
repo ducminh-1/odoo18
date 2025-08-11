@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+         <!--  Partners inherited form -->
+        <record id="view_project_hopdong_form" model="ir.ui.view">
+            <field name="name">project.hopdong.form.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button name="%(mhd_valuation.tao_hop_dong)d" string="Tạo hợp đồng" type="action" class="btn-primary"/>
+                    <button name="%(mhd_valuation.tao_chung_thu)d" string="Tạo chứng thư" type="action" class="btn-primary"/>
+                </xpath>
+            </field>
+       </record>
+
+</odoo>

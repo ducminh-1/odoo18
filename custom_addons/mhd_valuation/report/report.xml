@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_euro_no_margin" model="report.paperformat">
+        <field name="name">European A4 without borders</field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">30</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">20</field>
+    </record>
+
+
+    <record id="action_report_realestate_draft" model="ir.actions.report">
+        <field name="name">Giá sơ bộ</field>
+        <field name="model">mhd.realestate.draft</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mhd_valuation.report_realestate_draft</field>
+        <field name="report_file">mhd_valuation.report_realestate_draft</field>
+        <field name="print_report_name">'Report ID - %s' % (object.name or 'Attendee').replace('/','')</field>
+        <field name="paperformat_id" ref="paperformat_euro_no_margin"/>
+        <field name="binding_model_id" ref="model_mhd_realestate_draft"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_thong_tin_trich_luc" model="ir.actions.report">
+        <field name="name">Trích lục hồ sơ</field>
+        <field name="model">mhd.datalist</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mhd_valuation.report_thong_tin_trich_luc</field>
+        <field name="report_file">mhd_valuation.report_thong_tin_trich_luc</field>
+        <field name="print_report_name">'Report ID - %s' % (object.chungthu_id.name or 'Attendee').replace('/','')</field>
+        <field name="paperformat_id" ref="paperformat_euro_no_margin"/>
+        <field name="binding_model_id" ref="model_mhd_datalist"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>
