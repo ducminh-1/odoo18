@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <record id="employee_clothing_code_view_form" model="ir.ui.view">
+        <field name="name">hr.clothing.code.form</field>
+        <field name="model">hr.clothing.code</field>
+        <field name="arch" type="xml">
+            <form string="Clothing Code">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code" required="1" />
+                            <field name="employee_id" readonly="1" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_clothing_code_view_tree" model="ir.ui.view">
+        <field name="name">hr.clothing.code.tree</field>
+        <field name="model">hr.clothing.code</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="code" required="1" />
+                <field name="employee_id" />
+                <field name="create_date" optional="hide" />
+                <field name="create_uid" optional="hide" />
+                <field name="write_date" optional="hide" />
+                <field name="write_uid" optional="hide" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hr_clothing_code_action" model="ir.actions.act_window">
+        <field name="name">Clothing Code</field>
+        <field name="res_model">hr.clothing.code</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem
+        id="hr_clothing_code_menu"
+        name="Clothing Code"
+        action="hr_clothing_code_action"
+        parent="hr.menu_config_employee"
+        sequence="9"
+        groups="hr.group_hr_manager"
+    />
+</odoo>

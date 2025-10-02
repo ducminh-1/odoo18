@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <record id="slide_channel_view_form_inherit" model="ir.ui.view">
+        <field name="name">slide.channel.view.form.inherit</field>
+        <field name="model">slide.channel</field>
+        <field name="inherit_id" ref="website_slides.view_slide_channel_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page//group/field[@name='website_id']" position="after">
+                <field name="allowed_department_ids" widget="many2many_tags"/>
+                <field name="job_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+<!-- View tree -->
+    <record id="slide_channel_view_tree_inherit" model="ir.ui.view">
+        <field name="name">slide.channel.view.tree.inherit</field>
+        <field name="model">slide.channel</field>
+        <field name="inherit_id" ref="website_slides.slide_channel_view_tree" />
+        <field name="arch" type="xml">
+            <field name="visibility" position="after">
+                <field name="create_date" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

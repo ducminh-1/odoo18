@@ -1,0 +1,144 @@
+<odoo>
+    <record id="staffing_plan_list_view" model="ir.ui.view">
+        <field name="name">hr.staffing.plan.list</field>
+        <field name="model">hr.staffing.plan</field>
+        <field name="arch" type="xml">
+            <list
+                string="Staffing Plan"
+                decoration-info="state == 'draft'"
+                decoration-danger="state == 'rejected'"
+                decoration-muted="state == 'done'"
+            >
+                <field name="state" />
+                <field name="name" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="department_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="staffing_plan_form_view" model="ir.ui.view">
+        <field name="name">hr.staffing.plan.form</field>
+        <field name="model">hr.staffing.plan</field>
+        <field name="arch" type="xml">
+            <form string="Staffing Plan">
+                <field name="state" invisible="1" />
+                <header>
+                    <button
+                        name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state in ('draft', 'confirmed', 'done')"
+                    />
+                    <button
+                        name="action_confirm"
+                        string="Confirm"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft' or state == 'done'"
+                    />
+                    <button
+                        name="action_reject"
+                        string="Reject"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'confirmed' or state == 'done'"
+                    />
+                    <button
+                        name="action_done"
+                        string="Done"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'confirmed' or state == 'done'"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,rejected,confirmed,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field
+                                name="date_from"
+                                class="oe_inline"
+                                widget="daterange"
+                                options="{'end_date_field': 'date_to'}"
+                                readonly="state != 'draft'"
+                            />
+                            <field name="date_to" invisible="1" />
+                            <field name="department_id" readonly="state != 'draft'" />
+                            <field name="currency_id" readonly="state != 'draft'" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Staffing Plan Lines">
+                            <!--<field name="line_ids" nolabel="1" readonly="state != 'draft'">-->
+                            <field name="line_ids" nolabel="1">
+                                <list string="Staffing Plan Lines" editable="bottom">
+                                    <field name="currency_id" column_invisible="1" />
+                                    <field name="sequence" widget="handle" />
+                                    <field
+                                        name="job_id"
+                                        readonly="parent.state != 'draft'"
+                                    />
+                                    <field
+                                        name="no_of_positions"
+                                        readonly="parent.state != 'draft'"
+                                    />
+                                    <field
+                                        name="estimated_cost"
+                                        readonly="parent.state != 'draft'"
+                                    />
+                                    <field name="amount" sum="Total" />
+                                    <field name="actual_no_of_positions" />
+                                    <field name="actual_cost" />
+                                    <field name="difference" />
+                                    <field
+                                        name="difference_percentage"
+                                        widget="percentage"
+                                    />
+                                    <field name="notes" />
+                                    <field name="responsible_id" />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Approval Details">
+                            <group>
+                                <field name="confirmed_by" readonly="1" />
+                                <field name="confirmed_date" readonly="1" />
+                            </group>
+                            <group>
+                                <field name="rejected_by" readonly="1" />
+                                <field name="rejected_date" readonly="1" />
+                            </group>
+                            <group>
+                                <field name="done_by" readonly="1" />
+                                <field name="done_date" readonly="1" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="staffing_plan_action" model="ir.actions.act_window">
+        <field name="name">Staffing Plan</field>
+        <field name="res_model">hr.staffing.plan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="staffing_plan_menu"
+        name="Staffing Plan"
+        parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        action="staffing_plan_action"
+    />
+</odoo>

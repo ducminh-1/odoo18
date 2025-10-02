@@ -1,0 +1,76 @@
+<?xml version='1.0' ?>
+<odoo>
+    <record id="hr_payslip_import_view" model="ir.ui.view">
+        <field name="name">hr_payslip_import_view</field>
+        <field name="model">hr.payslip.import</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <group>
+                    <field name="file" />
+                </group>
+                <notebook>
+                    <page string="Description">
+                        <div>
+                            <strong>
+                                <i>Excel File Format Example</i>
+                            </strong>
+                        </div>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Payslip</th>
+                                    <th>Employee</th>
+                                    <th>Type<br />INPUT/WORK_DAYS</th>
+                                    <th>Name</th>
+                                    <th>Work days</th>
+                                    <th>Work hours</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SLIP/123</td>
+                                    <td>Nguyen Van A</td>
+                                    <td>WORK_DAYS</td>
+                                    <td>Attendance</td>
+                                    <td>24</td>
+                                    <td>192</td>
+                                    <td />
+                                </tr>
+                                <tr>
+                                    <td>SLIP/012</td>
+                                    <td>Nguyen Thi B</td>
+                                    <td>INPUT</td>
+                                    <td>Orther Input</td>
+                                    <td />
+                                    <td />
+                                    <td>100.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </page>
+                </notebook>
+                <footer>
+                    <button
+                        name="action_import"
+                        string="Import"
+                        type="object"
+                        invisible="file == False"
+                    />
+                    <button
+                        name="cancel"
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_import_payslip" model="ir.actions.act_window">
+        <field name="name">Import Payslip</field>
+        <field name="res_model">hr.payslip.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

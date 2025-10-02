@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="user_profile_header_inherit" inherit_id="website_profile.user_profile_header">
+        <xpath expr="//div" position="attributes">
+            <attribute name="class" add="o_wprofile_gradient_custom position-relative text-white" remove="o_wprofile_gradient" separator=" "/>
+        </xpath>
+    </template>
+</odoo>

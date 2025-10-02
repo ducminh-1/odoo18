@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <record id="metatech_inherit_hr_contract_view_search" model="ir.ui.view">
+        <field name="name">metatech.inherit.hr.contract.search</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='not_running']" position="after">
+                <filter
+                    string="Contracts expire soon"
+                    name="expire_soon"
+                    domain="[('is_expiring_soon', '=', True),('state', '=', 'open')]"
+                />
+            </xpath>
+            <xpath expr="//filter[@name='group_by_job']" position="after">
+                <filter
+                    string="Policy"
+                    name="group_by_policy"
+                    context="{'group_by':'policy_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="metatech_inherit_hr_contract_view_form" model="ir.ui.view">
+        <field name="name">metatech.inherit.hr.contract.view.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='contract_type_id']" position="after">
+                <field
+                    name="policy_id"
+                    options="{'no_create': True, 'no_edit': True}"
+                />
+            </xpath>
+            <xpath expr="//group[@name='yearly_benefits']" position="after">
+                <separator string="Salary Type" />
+                <field name="hr_salary_type_line">
+                    <list editable="bottom">
+                        <field name="sequence" widget="handle" />
+                        <field
+                            name="salary_type_id"
+                            required="1"
+                            options="{'no_create': True, 'no_edit': True}"
+                        />
+                        <field name="amount" required="1" />
+                        <field name="currency_id" column_invisible="1" />
+                    </list>
+                </field>
+            </xpath>
+            <xpath expr="//field[@name='wage']" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='hourly_wage']" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other']" position="after">
+                <page string="Salary Type Tracking" name="salary_type_tracking">
+                    <field name="salary_type_tracking" readonly="1" nolabel="1">
+                        <list>
+                            <field name="salary_type_id" string="Updated content" />
+                            <field
+                                name="create_date"
+                                string="Update date"
+                                widget="date"
+                            />
+                            <field name="old_value" widget="monetary" />
+                            <field name="new_value" widget="monetary" />
+                            <field name="currency_id" column_invisible="1" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="metatech_inherit_hr_contract_view_tree" model="ir.ui.view">
+        <field name="name">metatech.inherit.hr.contract.view.tree</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field
+                    name="policy_id"
+                    options="{'no_create': True, 'no_edit': True}"
+                    readonly="1"
+                />
+                <field
+                    name="hourly_wage"
+                    optional="hide"
+                    widget="monetary"
+                    readonly="1"
+                />
+            </xpath>
+            <xpath expr="//field[@name='wage']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <group name="salary" position="inside">
+                <field name="luong_co_ban_bhxh" string="Lương cơ bản BHXH"/>
+                <field name="phu_cap_tien_an" string="Phụ cấp tiền ăn"/>
+                <field name="phu_cap_xang_xe" string="Phụ cấp xăng xe"/>
+                <field name="phu_cap_khac" string="Phụ cấp khác"/>
+            </group>
+            <group name="yearly_benefits" position="inside">
+                <field name="is_ssnid" string="Tham gia BHXH" />
+                <field name="is_ssnid_only" string="Chỉ tham gia BHXH" />
+                <field name="is_trade_union" string="Tham gia công đoàn" />
+            </group>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_ethnicity_user,access_hr_ethnicity_user,model_hr_ethnicity,hr.group_hr_user,1,1,1,0
+access_hr_ethnicity_manager,access_hr_ethnicity_manager,model_hr_ethnicity,hr.group_hr_manager,1,1,1,1
+access_hr_dependent,access_hr_dependent,model_hr_dependent,hr.group_hr_user,1,1,1,1
+access_hr_policy_user,access_hr_policy_user,model_hr_policy,hr.group_hr_user,1,0,0,0
+access_hr_policy_manager,access_hr_policy_manager,model_hr_policy,hr.group_hr_manager,1,1,1,1
+access_hr_salary_type_user,access_hr_salary_type_user,model_hr_salary_type,hr.group_hr_user,1,0,0,0
+access_hr_salary_type_manager,access_hr_salary_type_manager,model_hr_salary_type,hr.group_hr_manager,1,1,1,1
+access_hr_salary_type_line,access_hr_salary_type_line,model_hr_salary_type_line,hr.group_hr_user,1,1,1,1
+access_salary_type_tracking,access_salary_type_tracking,model_salary_type_tracking,hr.group_hr_user,1,1,1,1
+access_hr_clothing_code_user,access_hr_clothing_code_user,model_hr_clothing_code,hr.group_hr_user,1,0,0,0
+access_hr_clothing_code_manager,access_hr_clothing_code_manager,model_hr_clothing_code,hr.group_hr_manager,1,1,1,1

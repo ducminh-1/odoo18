@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="certification_report_view_general_inherit" inherit_id="survey.certification_report_view_general">
+        <xpath expr="//div[@id='o_survey_certification']" position="attributes">
+            <attribute name="t-attf-class" add="certification-wrapper-custom" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('certification-seal')]" position="attributes">
+            <attribute name="class" add="certification-seal-red" remove="certification-seal" separator=" "/>
+        </xpath>
+    </template>
+</odoo>

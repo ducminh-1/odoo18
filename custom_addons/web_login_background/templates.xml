@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--License MIT (https://opensource.org/licenses/MIT).
+    Copyright 2021 Ivan Yelizariev <https://twitter.com/yelizariev>
+-->
+<odoo>
+    <template id="web_login_background_template" inherit_id="web.login_layout">
+        <xpath expr="//div[hasclass('body_login')]" position="before">
+            <t t-if="picture_url">
+                <style>
+                   body {
+              background: none;
+              background-image: url(<t t-out="picture_url" />);
+              background-size: cover;
+              }
+                </style>
+            </t>
+        </xpath>
+    </template>
+</odoo>

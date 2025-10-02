@@ -1,0 +1,19 @@
+.certification-wrapper-custom {
+    background-color: #a80503 !important;
+    position: relative;
+    display: flex;
+    margin-left: -4mm;
+    margin-right: -4mm;
+    &.modern {
+        .certification-seal-red{
+            position: absolute;
+            background-size: 100%;
+            top: -7mm;
+            right: 20mm;
+            width: 22mm;
+            height: 42mm;
+            background-image: url("/metatech_hr/static/img/seal_red.svg") !important;
+            background-repeat: no-repeat;
+        }
+    }
+}

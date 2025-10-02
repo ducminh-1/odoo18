@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="nsv_hr_application_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.hr.application.form.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='source_id']" position="after">
+                <field name="interview_type" string="Hình thức phỏng vấn"/>
+                <field name="interview_time" string="Thời gian phỏng vấn"/>
+                <field name="interview_address" string="Địa điểm phỏng vấn"/>
+            </xpath>
+        </data>
+        </field>
+    </record>
+</odoo>
+
