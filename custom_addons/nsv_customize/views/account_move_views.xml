@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_account_move_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <!--<field name="ref" string="Customer Reference" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>-->
+                <field
+                    name="ref"
+                    string="Customer Reference"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                />
+                <!--<field name="sale_id" string="Sale Order" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>-->
+                <field
+                    name="sale_id"
+                    string="Sale Order"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                />
+                <!--<field name="channel_id" string="Channel" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>-->
+                <field
+                    name="channel_id"
+                    string="Channel"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                />
+                <!--<field name="pos_account_tag_id" string="POS" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>-->
+                <field
+                    name="pos_analytic_account_id"
+                    string="POS"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                />
+                <!--<field name="employee_id" string="Employee" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"/>-->
+                <field
+                    name="employee_id"
+                    string="Employee"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                />
+                <!--<field name="invoice_number" string="Số hoá đơn" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"/>-->
+                <field
+                    name="invoice_number"
+                    string="Số hoá đơn"
+                    invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/list/field[@name='price_total']"
+                position="after"
+            >
+                <field name="price_rule" readonly="1" optional="hide" />
+                <field
+                    name="difference_ratio"
+                    readonly="1"
+                    widget="percentage"
+                    optional="hide"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="nsv_account_move_tree_inherit" model="ir.ui.view">
+        <field name="name">nsv.account.move.tree.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_origin']" position="after">
+                <field name="channel_id" string="Channel" optional="show" />
+                <!--<field name="pos_account_tag_id" string="POS" optional="show"/>-->
+                <field name="pos_analytic_account_id" string="POS" optional="show" />
+                <field name="employee_id" string="Employee" optional="show" />
+            </xpath>
+            <xpath expr="//list[1]/field[@name='invoice_date'][2]" position="after">
+                <field name="invoice_number" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter" model="ir.ui.view">
+        <field name="name">account.move.select.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//search[1]/field[@name='date']" position="after">
+                    <field name="invoice_origin" />
+                    <field name="employee_id" />
+                </xpath>
+                <filter name="to_check" position="after">
+                    <filter
+                        string="Needs Landed Costs"
+                        name="need_landed_costs"
+                        domain="[('landed_costs_visible', '=', True)]"
+                    />
+                </filter>
+            </data>
+        </field>
+    </record>
+</odoo>

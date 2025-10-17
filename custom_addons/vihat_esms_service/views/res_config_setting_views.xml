@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sms_res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sms</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="30" />
+        <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='email_template']" position="after">
+                <!--<setting id="email_template" title="Sending an email is useful if you need to share specific information or content about a product (instructions, rules, links, media, etc.). Create and set the email template from the product detail form (in Accounting tab)." string="Deliver Content by Email" help="Send a product-specific email once the invoice is validated">-->
+                <!--    <field name="module_product_email_template"/>-->
+                <!--</setting>-->
+                <!--<setting id="stock_packaging" title="Ability to select a package type in sales orders and to force a quantity that is a multiple of the number of units per package." help="Sell products by multiple of unit # per package">-->
+                <!--    <field name="group_stock_packaging"/>-->
+                <!--</setting>-->
+
+                <!--<div class="col-12 col-lg-6 o_setting_box" id="sale_sms_rating_setting" groups="sales_team.group_sale_manager">-->
+                <!--    <div class="o_setting_right_pane">-->
+                <!--        <span class="o_form_label">SMS Rating</span>-->
+                <!--        <div class="text-muted">-->
+                <!--                Automatic SMS sent after the customer has paid order.-->
+                <!--        </div>-->
+                <!--        <div class="row mt16">-->
+                <!--            <label for="sms_rating_template_id" string="SMS Template" class="col-lg-4 o_light_label"/>-->
+                <!--            <field name="sms_rating_template_id" class="oe_inline"/>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+
+                <setting
+                    id="sale_sms_rating_setting"
+                    title="SMS Rating"
+                    groups="sales_team.group_sale_manager"
+                    help="Automatic SMS sent after the customer has paid order"
+                >
+                    <div title="SMS Rating">
+                        <!--    <label for="quotation_validity_days"/>-->
+                        <!--    <field name="quotation_validity_days" class="text-center" style="width: 3rem;"/>-->
+                        <!--    <div class="d-inline-block">days</div>-->
+                        <!--    <span class="fa fa-lg fa-building-o p-2"-->
+                        <!--          title="Values set here are company-specific."-->
+                        <!--          groups="base.group_multi_company"/>-->
+                        <label for="sms_rating_template_id" />
+                        <field name="sms_rating_template_id" />
+                    </div>
+                    <div class="text-muted">
+                        Automatic SMS sent after the customer has paid order
+                    </div>
+                </setting>
+
+                <!--<div class="col-12 col-lg-6 o_setting_box" id="birthday_coupon_setting" groups="sales_team.group_sale_manager">-->
+                <!--    <div class="o_setting_right_pane">-->
+                <!--        <span class="o_form_label">Birthday Coupon Settings</span>-->
+                <!--        <div class="row mt16">-->
+                <!--            <label for="sms_birthday_coupon_template_id" string="SMS Template" class="col-lg-4 o_light_label"/>-->
+                <!--            <field name="sms_birthday_coupon_template_id" class="oe_inline"/>-->
+                <!--        </div>-->
+                <!--        <div class="text-muted">-->
+                <!--                SMS Template for Birthday Coupon-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--    <div class="o_setting_right_pane">-->
+                <!--        <div class="row mt16">-->
+                <!--            <label for="sms_birthday_coupon_brandname_id" string="Brand" class="col-lg-4 o_light_label"/>-->
+                <!--            <field name="sms_birthday_coupon_brandname_id" class="oe_inline"/>-->
+                <!--        </div>-->
+                <!--        <div class="text-muted">-->
+                <!--                Brand for Birthday Coupon-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+
+                <!--<div class="col-12 col-lg-6 o_setting_box" id="sale_sms_rating_setting" groups="sales_team.group_sale_manager">-->
+                <!--    <div class="o_setting_right_pane">-->
+                <!--        <label string="Zalo OA" for="zalo_oa_id"/>-->
+                <!--        <div class="text-muted">-->
+                <!--            Settings on this page will apply to this Zalo OA-->
+                <!--        </div>-->
+                <!--        <div class="mt16">-->
+                <!--            <field name="zalo_oa_id" widget="selection"/>-->
+                <!--        </div>-->
+                <!--        <span class="o_form_label">ZNS Rating</span>-->
+                <!--        <div class="text-muted">-->
+                <!--                Automatic Zalo OA Message sent after the customer has paid order.-->
+                <!--        </div>-->
+                <!--        <div class="row mt16">-->
+                <!--            <label for="zns_rating_template_id" string="ZNS Template" class="col-lg-4 o_light_label"/>-->
+                <!--            <field name="zns_rating_template_id" class="oe_inline" domain="[('type','=','qweb'),('name','ilike', 'ZNS Template: '),('zalo_oa_id','=',zalo_oa_id)]"/>-->
+                <!--        </div>-->
+                <!-- khi nào mở ZNS cho birthday sẽ hiển thị -->
+                <!-- <div class="text-muted">
+                                Birthday Coupon ZNS Template.
+                        </div>
+                        <div class="row mt16">
+                            <label for="zns_birthday_coupon_template_id" string="Birth Coupon ZNS Template" class="col-lg-4 o_light_label"/>
+                            <field name="zns_birthday_coupon_template_id" class="oe_inline" domain="[('type', '=', 'qweb'), ('name', 'ilike', 'ZNS Template: '), ('zalo_oa_id', '=', zalo_oa_id)]"/>
+                        </div> -->
+                <!--    </div>-->
+                <!--</div>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

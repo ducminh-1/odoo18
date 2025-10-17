@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- External page: rate and submit feedback -->
+    <template id="rating_web_form_submit" name="Rating Page Submit">
+        <t t-call="vihat_esms_rating.vihat_esms_rating_layout">
+            <div class="container card mb-5 mt-4 o_rating_page_submit">
+                <div class="card-body">
+                    <div class="row text-center justify-content-center">
+                        <h1 class="col-12 mt-5">
+                            Xin chào Quý khách
+                            <b style="color:red;">
+                            <t t-esc="partner_id and partner_id.name or ''" />
+                        </b>
+                        </h1>
+                        <br />
+                        <div class="col-12" style="font-size: 20px">
+                            <span
+                            >Quý khách có cảm nhận như thế nào về trải nghiệm dịch vụ cũng như sản phẩm vừa rồi tại </span>
+                            <b style="color:red;">
+                                <t t-esc="brand_name" />
+                            </b>
+                        </div>
+                        <form
+                            t-attf-action="/customer-rating/#{token}/submit_rating"
+                            method="post"
+                            style="padding-top: 10px"
+                            class="form_rating"
+                            id="rating-form"
+                        >
+                            <div
+                                class="btn-group btn-group-toggle row"
+                                data-toggle="buttons"
+                            >
+                                <t t-foreach="rate_names" t-as="rate_name">
+                                    <label
+                                        t-attf-class="col-xs-12 btn o_rating_label shadow-none"
+                                        style="width: 20% !important; padding: 0px !important; opacity: 1 !important;"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="rate"
+                                            t-attf-id="rate_{{rate_name}}"
+                                            t-att-value="rate_name"
+                                            class="d-none"
+                                        />
+                                        <a class="o_rating" href="#">
+                                            <img
+                                                t-attf-src="/vihat_esms_rating/static/src/img/rating_#{rate_name}.png"
+                                                t-att-alt="rate_name_value"
+                                                t-att-title="rate_name_value"
+                                                class="image_rating"
+                                            />
+                                        </a>
+                                    </label>
+                                </t>
+                            </div>
+                            <div class="col-12 warning_required">
+                                <span
+                                    style="color: red"
+                                >*Bắt buộc chọn tiêu chí đánh giá</span>
+                            </div>
+                            <div
+                                class="col-12 content_end"
+                                style="font-size: 20px; padding-bottom: 10px"
+                            >
+                                <b style="color:red;">
+                                    <t t-esc="brand_name" />
+                                </b>
+                                <span
+                                > cần cải thiện gì để phục vụ quý khách tốt hơn?</span>
+                            </div>
+                            <t t-if="model_name == 'sale.order'">
+                                <div class="col-12">
+                                    <label
+                                        for="rating_seller"
+                                        style="font-size: 20px;"
+                                    >Đánh giá dịch vụ bán hàng:</label>
+                                    <select
+                                        id="rating_seller"
+                                        name="rating_seller"
+                                        form="rating-form"
+                                        style="font-size: 20px; padding: 5px; background: #f4f4f4; border:none;text-align: center;border-radius: 11px;"
+                                    >
+                                        <option value="good">Tốt</option>
+                                        <option value="bad">Chưa tốt</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label
+                                        for="rating_delivery"
+                                        style="font-size: 20px;"
+                                    >Đánh giá dịch vụ giao hàng:</label>
+                                    <select
+                                        id="rating_delivery"
+                                        name="rating_delivery"
+                                        form="rating-form"
+                                        style="font-size: 20px; padding: 5px; background: #f4f4f4; border:none;text-align: center;border-radius: 11px;"
+                                    >
+                                        <option value="good">Tốt</option>
+                                        <option value="bad">Chưa tốt</option>
+                                    </select>
+                                </div>
+                            </t>
+                            <div class="clearfix" />
+                            <input
+                                type="hidden"
+                                name="csrf_token"
+                                t-att-value="request.csrf_token()"
+                            />
+                            <textarea
+                                style="padding-top: 10px; font-size: 20px"
+                                class="form-control"
+                                name="feedback"
+                                rows="8"
+                                t-att-value="rating.feedback"
+                                placeholder="Nội dung đánh giá"
+                            />
+                            <button
+                                type="submit"
+                                class="btn btn-primary d-none js_btn_submit"
+                                style="margin-top:18px; font-size: 20px"
+                            >Hoàn thành</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- External page : thanks message -->
+    <template id="rating_web_page_done" name="Rating Page Done">
+        <t t-call="vihat_esms_rating.vihat_esms_rating_layout">
+            <div class="container pt-5">
+                <div class="text-center mt-5 pt-5">
+                    <h3 class="d-inline">Cảm ơn những phản hồi của Quý khách!</h3>
+                </div>
+                <!-- <div class="text-center">
+                    <a role="button" t-att-href="web_base_url" class="btn btn-primary my-5">Go back to the Homepage</a>
+                </div> -->
+            </div>
+        </t>
+    </template>
+
+    <template
+        id="vihat_esms_rating_layout"
+        name="Vihat Rating Layout"
+        inherit_id="web.frontend_layout"
+        primary="True"
+    >
+        <xpath expr="//header" position="replace">
+            <div />
+        </xpath>
+        <xpath expr="//footer" position="replace">
+            <div />
+        </xpath>
+    </template>
+</odoo>

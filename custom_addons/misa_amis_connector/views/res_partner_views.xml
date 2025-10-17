@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.misa_amis_connector</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="misa_account_object_code" />
+                <field name="misa_account_object_name" />
+                <field name="misa_account_object_address" />
+                <field name="misa_account_object_tax_code" />
+                <field name="misa_invoice_buyer_id" />
+                <field name="is_retail_no_invoice" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.misa_amis_connector</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='complete_name']" position="after">
+                <field name="misa_account_object_code" />
+                <field name="misa_account_object_name" />
+                <field name="misa_account_object_address" />
+                <field name="misa_account_object_tax_code" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- <record id="view_bank_statement_line_inherit_form" model="ir.ui.view">
+        <field name="name">bank.statement.line.inherit.form</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account.view_bank_statement_line_form"/>
+        <field name="arch" type="xml">
+            <field name="move_id" position="after">
+                <field name="payment_id"/>
+                <field name="journal_id"/>
+                <field name="payer"/>
+            </field>
+        </field>
+    </record> -->
+    <!--<record id="view_bank_statement_inherit_form" model="ir.ui.view">-->
+    <!--    <field name="name">bank.statement.inherit.form</field>-->
+    <!--    <field name="model">account.bank.statement</field>-->
+    <!--    <field name="inherit_id" ref="account_accountant.view_bank_statement_form_bank_rec_widget"/>-->
+    <!--    <field name="arch" type="xml">-->
+    <!--        <xpath expr="//field[@name='line_ids']/tree/button" position="after">-->
+    <!--            <field name="show_print" invisible='1'/>-->
+    <!--            <button name="print_receipts_pay_slip" string="" type="object" icon="fa-print" invisible="not show_print"/>-->
+    <!--        </xpath>-->
+    <!--        <xpath expr="//tree//field[@name='partner_id']" position="after">-->
+    <!--            <field name="payer"/>-->
+    <!--            <field name="number" string="Số" optional="hidden"/>-->
+    <!--        </xpath>-->
+    <!--    </field>-->
+    <!--</record>-->
+    <record id="view_bank_statement_line_form_bank_rec_widget" model="ir.ui.view">
+        <field
+            name="name"
+        >account.bank.statement.line.form.bank_rec_widget.inherit</field>
+        <field name="model">account.bank.statement.line</field>
+        <field
+            name="inherit_id"
+            ref="account_accountant.view_bank_statement_line_form_bank_rec_widget"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="before">
+                <field name="show_print" invisible='1' />
+                <!--<button name="print_receipts_pay_slip" string="" type="object" icon="fa-print" attrs="{'invisible': [('show_print','=',False)]}"/>-->
+                <button
+                    name="print_receipts_pay_slip"
+                    string=""
+                    type="object"
+                    icon="fa-print"
+                    invisible="not show_print"
+                />
+            </xpath>
+            <field name="partner_id" position="after">
+                <field name="payer" />
+                <field name="number" string="Số" optional="hidden" />
+            </field>
+        </field>
+    </record>
+</odoo>

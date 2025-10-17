@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="misa_push_wizard_form" model="ir.ui.view">
+        <field name="name">MISA Push Configuration</field>
+        <field name="model">misa.push.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Push to MISA Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="product_count" invisible="1"/>
+                            Push <field name="product_count" class="oe_inline"/> Product(s) to MISA
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group string="MISA Configuration">
+                            <field name="misa_app_id" 
+                                   placeholder="Select MISA Application..."
+                                   options="{'no_create': True, 'no_open': True}"
+                                   required="1"/>
+                            <field name="misa_branch_id"
+                                    placeholder="Select MISA Branch..."
+                                    options="{'no_create': True, 'no_open': True}"
+                                    domain="[('misa_app_id', '=', misa_app_id)]"
+                                    required="1"/>
+                        </group>
+                        
+                        <group string="Summary">
+                            <field name="product_count" string="Products to Push" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Summary Section -->
+                    <notebook>
+                        <page string="Summary" name="summary">
+                            <field name="summary_info" nolabel="1"/>
+                        </page>
+                        
+                        <page string="Products" name="products">
+                            <field name="product_ids" widget="many2many" nolabel="1" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <footer>
+                    <button name="action_push_to_misa" 
+                            string="Push to MISA" 
+                            type="object" 
+                            class="btn-primary"
+                            confirm="Bạn có chắc chắn muốn đẩy sản phẩm đã chọn lên MISA không?"
+                            invisible="product_count == 0"/>
+                    <button name="action_cancel" 
+                            string="Cancel" 
+                            type="object" 
+                            class="btn-secondary"/>
+                    <div class="float-left" invisible="product_count > 0">
+                        <span class="text-muted">No products selected</span>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_misa_push_wizard" model="ir.actions.act_window">
+        <field name="name">Push to MISA</field>
+        <field name="res_model">misa.push.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{
+            'default_product_ids': context.get('active_ids', []) if context.get('active_model') == 'product.product' else [],
+        }</field>
+    </record>
+
+</odoo>

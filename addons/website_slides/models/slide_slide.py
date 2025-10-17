@@ -671,6 +671,7 @@ class Slide(models.Model):
 
         res = super(Slide, self).write(values)
         if values.get('is_published'):
+            # import pdb; pdb.set_trace()
             self.date_published = datetime.datetime.now()
             self._post_publication()
 
@@ -906,7 +907,7 @@ class Slide(models.Model):
 
     def _action_mark_completed(self):
         uncompleted_slides = self.filtered(lambda slide: not slide.user_has_completed)
-
+        # import pdb; pdb.set_trace()
         target_partner = self.env.user.partner_id
         uncompleted_slides._action_set_quiz_done()
         SlidePartnerSudo = self.env['slide.slide.partner'].sudo()

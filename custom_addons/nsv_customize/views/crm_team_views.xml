@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_crm_team_salesteams_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.crm.team.form.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='right']" position="inside">
+                    <field name="analytic_account_id" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+    <record id="nsv_crm_team_salesteams_view_tree_inherit" model="ir.ui.view">
+        <field name="name">nsv.crm.team.tree.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="analytic_account_id" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_crm_lead2opportunity_partner_inherit" model="ir.ui.view">
+        <field name="name">crm.lead2opportunity.partner.form.inherit</field>
+        <field name="model">crm.lead2opportunity.partner</field>
+        <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="stage_id" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!--<record id="crm.crm_menu_root" model="ir.ui.menu">-->
+    <!--    <field name="action" ref="sales_team.crm_team_salesteams_pipelines_act"/>-->
+    <!--</record>-->
+</odoo>

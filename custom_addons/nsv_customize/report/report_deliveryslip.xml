@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id='stock_report_delivery_aggregated_move_lines_inherit'
+        inherit_id='stock.stock_report_delivery_aggregated_move_lines'
+    >
+        <xpath expr="//td[@name='move_line_aggregated_quantity']" position="after">
+            <td class="text-center" name="move_line_weight">
+                <span t-esc="'%.4f'% aggregated_lines[line]['weight']" />
+            </td>
+            <td class="text-center" name="move_line_volume">
+                <span t-esc="'%.4f' % aggregated_lines[line]['volume']" />
+            </td>
+        </xpath>
+    </template>
+    <template
+        id="stock_report_delivery_has_serial_move_line_inherit_nsv_customize"
+        inherit_id="stock.stock_report_delivery_has_serial_move_line"
+    >
+        <xpath expr="//td[@name='move_line_lot_quantity']" position="after">
+            <td class="text-center" name="move_line_weight">
+                <span t-esc="'%.4f'% move_line.weight" />
+            </td>
+            <td class="text-center" name="move_line_volume">
+                <span t-esc="'%.5f'% move_line.volume" />
+            </td>
+        </xpath>
+    </template>
+    <template
+        id="report_delivery_document_inherit"
+        inherit_id="stock.report_delivery_document"
+    >
+        <xpath expr="//table[@name='stock_move_line_table']/tbody" position="after">
+            <thead />
+            <tr>
+                <td class="border-table text-center">Tổng cộng:</td>
+                <t t-if="has_serial_number">
+                    <td class="border-table" />
+                </t>
+                <td class="th_sml_quantity text-center">
+                    <span t-esc="sum(o.move_ids_without_package.mapped('quantity'))" />
+                    <span t-field="o.move_line_ids_without_package.product_uom_id" />
+                </td>
+                <td />
+                <td class="th_sml_weight text-center">
+                    <span
+                        t-esc="'%.4f'% sum(o.move_line_ids_without_package.mapped('weight'))"
+                    />
+                </td>
+                <td class="th_sml_volume text-center">
+                    <span
+                        t-esc="'%.4f'% sum(o.move_line_ids_without_package.mapped('volume'))"
+                    />
+                </td>
+            </tr>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']/thead/tr" position="inside">
+            <th name="th_sml_weight" class="text-center">
+                <strong>Weight</strong>
+            </th>
+            <th name="th_sml_volume" class="text-center">
+                <strong>Volume</strong>
+            </th>
+        </xpath>
+    </template>
+</odoo>

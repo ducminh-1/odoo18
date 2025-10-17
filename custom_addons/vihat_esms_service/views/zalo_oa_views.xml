@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="zalo_oa_tree_view">
+            <field name="name">zalo.oa.tree</field>
+            <field name="model">zalo.oa</field>
+            <field name="arch" type="xml">
+                <list editable="top">
+                    <field name="name" required="1" />
+                    <field name='oa_id' required="1" />
+                    <field name="create_date" />
+                </list>
+            </field>
+        </record>
+
+        <record id="zalo_oa_view_form" model="ir.ui.view">
+            <field name="name">zalo.oa.view.form</field>
+            <field name="model">zalo.oa</field>
+            <field name="arch" type="xml">
+                <form string="Zalo OA">
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name" />
+                            </div>
+                            <h1>
+                                <field name="name" required="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='oa_id' required="1" />
+                                <field
+                                    name="company_id"
+                                    widget="selection"
+                                    groups="base.group_multi_company"
+                                />
+                                <field name="create_date" readonly="1" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_open_zalo_oa">
+            <field name="name">Zalo OA</field>
+            <field name="res_model">zalo.oa</field>
+            <field name="view_mode">list</field>
+        </record>
+
+        <menuitem
+            id="zalo_oa_menu"
+            parent="phone_validation.phone_menu_main"
+            action="action_open_zalo_oa"
+            name="Zalo OA"
+            sequence="12"
+        />
+    </data>
+</odoo>

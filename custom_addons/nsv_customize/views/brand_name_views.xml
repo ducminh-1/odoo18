@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- Brand Name View -->
+    <record id="view_brand_name_list" model="ir.ui.view">
+        <field name="name">brand.name.list</field>
+        <field name="model">brand.name</field>
+        <field name="arch" type="xml">
+            <list string="Physician Rank">
+                <field name="name" />
+                <field name="create_date" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_brand_name_form" model="ir.ui.view">
+        <field name="name">brand.name.form</field>
+        <field name="model">brand.name</field>
+        <field name="arch" type="xml">
+            <form string="HSM Branch">
+                <header />
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="create_date" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+                <!--<div class="oe_chatter">-->
+                <!--    <field name="message_follower_ids" widget="mail_followers"/>-->
+                <!--    <field name="activity_ids" widget="mail_activity"/>-->
+                <!--    <field name="message_ids" widget="mail_thread"/>-->
+                <!--</div>-->
+            </form>
+        </field>
+    </record>
+    <record id="action_open_brand_name" model="ir.actions.act_window">
+        <field name="name">Brand Name</field>
+        <field name="res_model">brand.name</field>
+        <field name="view_mode">list,form</field>
+        <field name="context" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Brand Name.
+            </p>
+        </field>
+    </record>
+    <menuitem
+        id="brand_name_config"
+        name="Brand Name"
+        parent="sale.menu_sale_config"
+        action="action_open_brand_name"
+        sequence="2"
+    />
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="token_webhook_vaobep" model="ir.config_parameter">
+        <field name="key">token.access.webhooks.vaobep</field>
+        <field name="value">ff5eb201-c6d6-468a-93a4-37149373f287</field>
+    </record>
+</odoo>

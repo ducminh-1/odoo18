@@ -1,0 +1,5 @@
+<odoo>
+    <record id="misa_invoice_buyer_default" model="misa.invoice.buyer">
+        <field name="name">Người mua không cung cấp (đầy đủ) thông tin - Không lấy hóa đơn</field>
+    </record>
+</odoo>

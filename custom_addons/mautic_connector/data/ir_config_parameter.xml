@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="mautic_api_base_url" model="ir.config_parameter">
+        <field name="key">mautic_api_base_url</field>
+        <field name="value">http://localhost</field>
+    </record>
+    <record id="mautic_api_user" model="ir.config_parameter">
+        <field name="key">mautic_api_user</field>
+        <field name="value">admin</field>
+    </record>
+    <record id="mautic_api_password" model="ir.config_parameter">
+        <field name="key">mautic_api_password</field>
+        <field name="value">admin123</field>
+    </record>
+</odoo>

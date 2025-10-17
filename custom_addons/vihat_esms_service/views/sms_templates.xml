@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="template_helpdesk_ticket_sms"
+        name="SMS Template: Helpdesk Ticket Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_helpdesk_ticket_sms"><t
+            t-esc="object.partner_id.name"
+        /> la ma dat lai mat khau Baotrixemay cua ban</t>
+    </template>
+    <template
+        id="template_account_followup_sms"
+        name="SMS Template: Account Follow-up Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_account_followup_sms"><t
+            t-esc="object.name"
+        /> la ma xac minh dang ky Baotrixemay cua ban</t>
+    </template>
+    <!-- Buheung -->
+    <record id="zns_template_buheung_confirm_sale_order" model="ir.ui.view">
+        <field name="name">ZNS Template: Buheung - XÁC NHẬN ĐƠN HÀNG</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_buheung')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250419</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_buheung_confirm_order">
+                XÁC NHẬN ĐƠN HÀNG
+
+                Buheung Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Buheung Official xin xác nhận đơn hàng của Quý khách như sau:
+
+                Mã đơn hàng: <t t-esc="object.name" />
+
+                Điện thoại: <t t-esc="object.partner_id.phone" />
+
+                Địa chỉ: <t t-esc="object.partner_id.partner_address" />
+
+                Số tiền thanh toán: <t t-esc="object.amount_total" />
+
+                Ghi chú Quý khách nhấn "Quan Tâm" để đăng ký bảo hành điện tử và nhận được chăm sóc tốt hơn nhé!
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_buheung_confirm_guarantee" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Buheung - XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_buheung')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250422</field>
+        <field name="arch" type="xml">
+            <t
+                t-name="vihat_esms_service.zns_template_buheung_confirm_repair_guarantee"
+            >
+                XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA
+
+                Buheung Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Buheung Official xin xác nhận đơn Bảo hành/ Sửa chữa của <t
+                t-esc="object.partner_id.title.name"
+            /> như sau:
+
+                Mã đơn hàng: <t t-esc="object.id" />
+
+                Điện thoại: <t t-esc="object.customer_phone" />
+
+                Sản phẩm: <t t-esc="object.product_id.name" />
+
+                Ngày nhận: <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            />
+
+                Ghi chú 1 Sản phẩm của <t
+                t-esc="object.partner_id.title.name"
+            /> sẽ được kiểm tra từ 3-5 ngày.
+
+                Ghi chú 2 Để Buheung Official chăm sóc <t
+                t-esc="object.partner_id.title.name"
+            /> tốt hơn vui lòng nhấn Quan Tâm hoặc gọi Hotline
+            </t>
+        </field>
+    </record>
+
+    <!-- Magic Eco Official -->
+    <record id="zns_template_magic_eco_confirm_sale_order" model="ir.ui.view">
+        <field name="name">ZNS Template: Magic Eco - XÁC NHẬN ĐƠN HÀNG</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_magic_eco')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250445</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_magic_eco_confirm_order">
+                XÁC NHẬN ĐƠN HÀNG
+
+                Magic Eco Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Magic Eco Official xin xác nhận đơn hàng của Quý khách như sau:
+
+                Mã đơn hàng: <t t-esc="object.name" />
+
+                Điện thoại: <t t-esc="object.partner_id.phone" />
+
+                Địa chỉ: <t t-esc="object.partner_id.partner_address" />
+
+                Số tiền thanh toán: <t t-esc="object.amount_total" />
+
+                Ghi chú Quý khách nhấn "Quan Tâm" để đăng ký bảo hành điện tử và nhận được chăm sóc tốt hơn nhé!
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_magic_eco_confirm_guarantee" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Magic Eco - XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_magic_eco')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250448</field>
+        <field name="arch" type="xml">
+            <t
+                t-name="vihat_esms_service.zns_template_magic_eco_confirm_repair_guarantee"
+            >
+                XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA
+
+                Magic Eco Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Magic Eco Official xin xác nhận đơn Bảo hành/ Sửa chữa của <t
+                t-esc="object.partner_id.title.name"
+            /> như sau:
+
+                Mã đơn hàng: <t t-esc="object.id" />
+
+                Điện thoại: <t t-esc="object.customer_phone" />
+
+                Sản phẩm: <t t-esc="object.product_id.name" />
+
+                Ngày nhận: <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            />
+
+                Ghi chú 1 Sản phẩm của <t
+                t-esc="object.partner_id.title.name"
+            /> sẽ được kiểm tra từ 3-5 ngày.
+
+                Ghi chú 2 Để Magic Eco Official chăm sóc <t
+                t-esc="object.partner_id.title.name"
+            /> tốt hơn vui lòng nhấn Quan Tâm hoặc gọi Hotline
+            </t>
+        </field>
+    </record>
+
+    <!-- NSV Official -->
+    <record id="zns_template_nsv_confirm_sale_order" model="ir.ui.view">
+        <field name="name">ZNS Template: NSV Official - XÁC NHẬN ĐƠN HÀNG</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_nsv')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250658</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_nsv_confirm_order">
+                XÁC NHẬN ĐƠN HÀNG
+
+                Nguồn Sống Việt Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Nguồn Sống Việt Official xin xác nhận đơn hàng của Quý khách như sau:
+
+                Mã đơn hàng: <t t-esc="object.name" />
+
+                Điện thoại: <t t-esc="object.partner_id.phone" />
+
+                Địa chỉ: <t t-esc="object.partner_id.partner_address" />
+
+                Số tiền thanh toán: <t t-esc="object.amount_total" />
+
+                Ghi chú: Quý khách nhấn "Quan Tâm" để đăng ký bảo hành điện tử và nhận được chăm sóc tốt hơn nhé!
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_nsv_confirm_guarantee" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: NSV Official - XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_nsv')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250378</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_nsv_confirm_repair_guarantee">
+                XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA
+
+                Nguồn Sống Việt cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Nguồn Sống Việt Official xin xác nhận đơn Bảo hành/Sửa chữa của <t
+                t-esc="object.partner_id.title.name"
+            /> như sau:
+
+                Mã đơn hàng: <t t-esc="object.id" />
+
+                Điện thoại: <t t-esc="object.customer_phone" />
+
+                Sản phẩm: <t t-esc="object.product_id.name" />
+
+                Ngày nhận: <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            />
+
+                Ghi chú 1 Sản phẩm củasẽ được kiểm tra từ 3-5 ngày.
+
+                Ghi chú 2 Để Nguồn Sống Việt chăm sóc <t
+                t-esc="object.partner_id.title.name"
+            /> tốt hơn vui lòng nhấn Quan Tâm hoặc gọi Hotline
+            </t>
+        </field>
+    </record>
+
+    <!-- Gymaster Official -->
+    <record id="zns_template_gymaster_confirm_sale_order" model="ir.ui.view">
+        <field name="name">ZNS Template: Gymaster Official - XÁC NHẬN ĐƠN HÀNG</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_gymaster')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250156</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_gymaster_confirm_order">
+                XÁC NHẬN ĐƠN HÀNG
+
+                Gymaster Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Gymaster Official xin xác nhận đơn hàng của Quý khách như sau:
+
+                Mã đơn hàng:  <t t-esc="object.name" />
+
+                Điện thoại:  <t t-esc="object.partner_id.phone" />
+
+                Địa chỉ:  <t t-esc="object.partner_id.partner_address" />
+
+                Số tiền thanh toán:  <t t-esc="object.amount_total" />
+
+                Ghi chú  Quý khách nhấn "Quan Tâm" để đăng ký bảo hành điện từ và nhận được chăm sóc tốt hơn nhé!
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_gymaster_confirm_guarantee" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Gymaster Official - XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_gymaster')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">249721</field>
+        <field name="arch" type="xml">
+            <t
+                t-name="vihat_esms_service.zns_template_gymaster_confirm_repair_guarantee"
+            >
+                XÁC NHẬN ĐƠN BẢO HÀNH/SỬA CHỮA
+
+                Gymaster Official cảm ơn <t
+                t-esc="object.partner_id.name"
+            />! Gymaster Official xin xác nhận đơn Bảo hành/Sửa chữa của <t
+                t-esc="object.partner_id.title.name"
+            /> như sau:
+
+                Mã đơn hàng:  <t t-esc="object.id" />
+
+                Điện thoại:  <t t-esc="object.customer_phone" />
+
+                Sản phẩm:  <t t-esc="object.product_id.name" />
+
+                Ngày nhận:  <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            />
+
+                Ghi chú 1  Sản phẩm của <t
+                t-esc="object.partner_id.title.name"
+            /> sẽ được kiểm tra từ 3-5 ngày.
+
+                Ghi chú 2  Để Gymaster Official chăm sóctốt hơn vui lòng nhấn Quan Tâm hoặc gọi Hotline
+            </t>
+        </field>
+    </record>
+</odoo>

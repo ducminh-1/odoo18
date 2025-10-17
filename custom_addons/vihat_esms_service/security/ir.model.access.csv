@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vihat_send_sms_wizard,access_vihat_send_sms_wizard,model_vihat_send_sms_wizard,base.group_user,1,1,1,1
+access_sms_brandname,access_sms_brandname,model_sms_brandname,base.group_user,1,1,1,1
+access_ir_ui_view_internal,access_ir_ui_view_internal,base.model_ir_ui_view,base.group_user,1,1,0,0
+access_ir_model_fields_internal,access_ir_model_fields_internal,base.model_ir_model_fields,base.group_user,1,1,0,0
+access_zns_template_val,access_zns_template_val,model_zns_template_val,base.group_user,1,1,1,1
+access_zalo_oa,access_zalo_oa,model_zalo_oa,base.group_user,1,1,1,1
+access_helpdesk_stage_zalo_oa,access_helpdesk_stage_zalo_oa,model_helpdesk_stage_zalo_oa,base.group_user,1,1,1,1

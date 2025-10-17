@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_account_analytic_account_form">
+        <field
+            name="name"
+        >analytic.analytic.account.form.inherit.misa_amis_connector</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='main']" position="inside">
+                <group name="misa_amis_connector">
+                    <field name="misa_app_id" />
+                    <field name="misa_branch_id" invisible="not misa_app_id" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

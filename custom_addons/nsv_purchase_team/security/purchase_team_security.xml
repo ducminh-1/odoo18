@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="group_purchase_all_docs" model="res.groups">
+        <field name="name">User: Purchase All Documents</field>
+        <field name="implied_ids" eval="[(4,ref('purchase.group_purchase_user'))]" />
+    </record>
+    <record id="purchase.group_purchase_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_purchase_all_docs'))]" />
+    </record>
+
+    <record id="purchase_team_rule" model="ir.rule">
+        <field name="name">Purchase Team multi-company</field>
+        <field ref="model_purchase_team" name="model_id" />
+        <field
+            name="domain_force"
+        >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_purchase_team_user" model="ir.rule">
+        <field name="name">Purchase Order Personal</field>
+        <field name="model_id" ref="model_purchase_order" />
+        <field
+            name="domain_force"
+        >['|', '|', ('user_id','=',False),('user_id', '=', user.id),('team_id.member_ids', '=', user.id)]</field>
+        <field name="groups" eval="[(4,ref('purchase.group_purchase_user'))]" />
+    </record>
+    <record id="rule_purchase_team_all" model="ir.rule">
+        <field name="name">Purchase Order All Documents</field>
+        <field name="model_id" ref="model_purchase_order" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4,ref('group_purchase_all_docs'))]" />
+    </record>
+    <record id="rule_purchase_team_manager" model="ir.rule">
+        <field name="name">Purchase Order Manager</field>
+        <field name="model_id" ref="model_purchase_order" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4,ref('purchase.group_purchase_manager'))]" />
+    </record>
+</odoo>

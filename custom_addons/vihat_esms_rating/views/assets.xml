@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="assets_frontend_rating_custom"
+        inherit_id="web.assets_frontend"
+        name="Website Assets user custom"
+        priority="99"
+    >
+        <xpath expr="//link[last()]" position="after">
+            <!-- Custom empty file for user custom rules -->
+            <link
+                rel="stylesheet"
+                type="text/scss"
+                href="/vihat_esms_rating/static/src/scss/rating.scss"
+            />
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script
+                type="text/javascript"
+                src="/vihat_esms_rating/static/src/js/rating_form.js"
+            />
+        </xpath>
+    </template>
+</odoo>

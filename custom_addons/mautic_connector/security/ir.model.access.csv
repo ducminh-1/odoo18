@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mautic_segment,mautic_segment_manager,model_mautic_segment,sales_team.group_sale_salesman,1,1,0,0
+access_mautic_segment_manager,mautic_segment_manager,model_mautic_segment,sales_team.group_sale_manager,1,1,1,1
+access_mautic_config_manager,mautic_config_manager,model_mautic_migrate_config,sales_team.group_sale_manager,1,1,1,1
+access_mautic_confirm_migration,mautic.confirm.migration,model_mautic_confirm_migration,sales_team.group_sale_salesman,1,1,1,1

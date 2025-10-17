@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mautic_confirm_migration_view_form" model="ir.ui.view">
+        <field name="name">mautic.confirm.migration.form</field>
+        <field name="model">mautic.confirm.migration</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Lead Migration">
+                <!--<div class="info alert-info oe_edit_only" role="alert" attrs="{'invisible': ['|', ('config_state', '=', 'done'), ('response_ok', '=', False)]}">-->
+                <!--    The status is <b>Not confirmed</b>. You must confirm it to able to migrate the leads from Mautic!-->
+                <!--</div>-->
+                <div
+                    class="info alert-info oe_edit_only"
+                    role="alert"
+                    invisible="config_state == 'done' or not response_ok"
+                >
+                The status is <b
+                >Not confirmed</b>. You must confirm it to able to migrate the leads from Mautic!
+            </div>
+                <!--<div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('response_ok', '=', True)]}">-->
+                <!--    The Mautic connection have some problems. Please check the your <b>configuration information</b> or contact to your System Administrator!-->
+                <!--</div>-->
+                <div
+                    class="alert alert-warning oe_edit_only"
+                    role="alert"
+                    invisible="response_ok"
+                >
+                The Mautic connection have some problems. Please check the your <b
+                >configuration information</b> or contact to your System Administrator!
+            </div>
+                <!--<group attrs="{'invisible': [('response_ok', '=', true)]}">-->
+                <group invisible="response_ok">
+                    <div class="oe_title">
+                        <label for="error_content" string="Error Details:" />
+                        <field name="error_content" readonly="1" />
+                    </div>
+                </group>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="response_ok" invisible="1" />
+                            <!--<div class="oe_inline" attrs="{'invisible': [('response_ok', '=', False)]}">-->
+                            <div class="oe_inline" invisible="not response_ok">
+                                <span
+                                    class="text-success"
+                                >Mautic Connection is OK!</span>
+                            </div>
+                            <!--<field name="config_id" readonly="1" attrs="{'invisible': [('response_ok', '=', False)]}"/>-->
+                            <field
+                                name="config_id"
+                                readonly="1"
+                                invisible="not response_ok"
+                            />
+                            <field name="config_state" invisible="1" />
+                            <!--<div class="oe_inline" attrs="{'invisible': [('response_ok', '=', False)]}">-->
+                            <!--    <strong><field name="lead_count" class="oe_inline text-bold" readonly="1"/> leads</strong> will be created!-->
+                            <!--</div>-->
+                            <div class="oe_inline" invisible="not response_ok">
+                            <strong><field
+                                name="lead_count"
+                                class="oe_inline text-bold"
+                                readonly="1"
+                            /> leads</strong> will be created!
+                        </div>
+                        </group>
+                    </group>
+                    <footer>
+                        <!--<button name="process_migrate_contact" string="GENERATE LEADS" type="object" class="oe_highlight"-->
+                        <!--        attrs="{'invisible': ['|', '|', ('config_state', '=', 'draft'), ('response_ok', '=', False), ('lead_count', '=', 0)]}"/>-->
+                        <button
+                            name="process_migrate_contact"
+                            string="GENERATE LEADS"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="config_state == 'draft' or not response_ok or lead_count == 0"
+                        />
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

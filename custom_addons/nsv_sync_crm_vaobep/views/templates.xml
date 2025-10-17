@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="form_guarantee_registers" name="Form Guarantee Registers">
+        <t t-call="nsv_sync_crm_vaobep.form_guarantee_registers_layout">
+            <t t-set="additional_title">Đăng ký bảo hành sản phẩm | Nguồn Sống Việt</t>
+            <t t-set="additional_title">Đăng ký bảo hành sản phẩm | Nguồn Sống Việt</t>
+            <section id="form-guarantee-registers" style="padding: 50px 0;">
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="col-12 text-center">
+                            <h1>Đăng ký bảo hành sản phẩm</h1>
+                        </div>
+                    </div>
+                    <form class="checkout_autoformat">
+                        <input
+                            type="hidden"
+                            name="csrf_token"
+                            t-att-value="request.csrf_token()"
+                        />
+                        <div class="row form-inputs">
+                            <!-- Start field -->
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="contact_name"
+                                >Họ tên</label>
+                                <em style="color: red">*</em>
+                                <input
+                                    type="text"
+                                    id="contact_name"
+                                    name="contact_name"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="birthday"
+                                >Năm sinh</label>
+                                <input
+                                    type="date"
+                                    id="birthday"
+                                    name="birthday"
+                                    class="form-control"
+                                    value=""
+                                    t-att-max="today"
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="phone"
+                                >Số điện thoại</label>
+                                <em style="color: red">*</em>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label class="col-form-label" for="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="buy_date"
+                                >Ngày mua hàng</label>
+                                <em style="color: red">*</em>
+                                <input
+                                    type="date"
+                                    id="buy_date"
+                                    name="buy_date"
+                                    class="form-control"
+                                    value=""
+                                    t-att-max="today"
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="sku"
+                                >Mã sản phẩm</label>
+                                <em style="color: red">*</em>
+                                <input
+                                    type="text"
+                                    id="sku"
+                                    name="sku"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-12">
+                                <label
+                                    class="col-form-label"
+                                    for="buy_at"
+                                >Nơi mua hàng </label>
+                                <em style="color: red">*</em>
+                                <em
+                                > (Ví dụ: Nguyễn Kim, Thiên Hòa, Điện Máy Xanh, Tiki, SCJ, Huyndai, HTV Coop, Aeon, Emart, Pico,...)</em>
+                                <input
+                                    type="text"
+                                    id="buy_at"
+                                    name="buy_at"
+                                    class="form-control mt-2"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="bill_img"
+                                >Hình ảnh hóa đơn</label>
+                                <em style="color: red">*</em>
+                                <em> (Hình ảnh đuôi *.jpg hoặc *.png)</em>
+                                <input
+                                    type="file"
+                                    id="bill_img"
+                                    accept="image/png, image/jpeg"
+                                    name="bill_img"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="total_amount"
+                                >Tổng giá trị sản phẩm</label>
+                                <input
+                                    type="number"
+                                    step="1"
+                                    id="total_amount"
+                                    name="total_amount"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div class="form-group col-xl-6">
+                                <label
+                                    class="col-form-label"
+                                    for="street"
+                                >Địa chỉ của bạn</label>
+                                <input
+                                    type="text"
+                                    id="street"
+                                    name="street"
+                                    class="form-control"
+                                    value=""
+                                />
+                            </div>
+                            <div t-attf-class="form-group col-xl-6 div_city">
+                                <label
+                                    class="col-form-label"
+                                    for="city_id"
+                                >City / Province</label>
+                                <select
+                                    id="city_id"
+                                    name="city_id"
+                                    t-attf-class="form-control"
+                                >
+                                    <option value="">City / Province...</option>
+                                    <t t-foreach="country_cities" t-as="c">
+                                        <option t-att-value="c.id">
+                                            <t t-esc="c.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div t-attf-class="form-group col-xl-6 div_district">
+                                <label
+                                    class="col-form-label"
+                                    for="district_id"
+                                >District</label>
+                                <select
+                                    name="district_id"
+                                    id="district_id"
+                                    t-attf-class="form-control"
+                                >
+                                    <option value="">District</option>
+                                </select>
+                            </div>
+                            <div t-attf-class="form-group col-xl-6 div_ward">
+                                <label class="col-form-label" for="ward_id">Ward</label>
+                                <select
+                                    name="ward_id"
+                                    id="ward_id"
+                                    t-attf-class="form-control"
+                                >
+                                    <option value="">Ward</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row py-3">
+                            <div class="col-12 text-center">
+                                <button
+                                    type="button"
+                                    rule="button"
+                                    id="submit"
+                                    class="btn btn-outline-alpha btn-lg js_btn_submit_guarantee"
+                                >Gửi đi</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template
+        id="form_guarantee_registers_layout"
+        name="Form Guarantee Registers Layout"
+        inherit_id="web.frontend_layout"
+        primary="True"
+    >
+        <xpath expr="//header" position="replace">
+            <div />
+        </xpath>
+        <xpath expr="//footer" position="replace">
+            <div />
+        </xpath>
+    </template>
+</odoo>

@@ -683,6 +683,7 @@ class Channel(models.Model):
     @api.depends('prerequisite_channel_ids', 'channel_partner_ids.member_status')
     @api.depends_context('uid')
     def _compute_prerequisite_user_has_completed(self):
+        # import pdb; pdb.set_trace()
         completed_prerequisite_channels = self.env['slide.channel.partner'].sudo().search([
             ('partner_id', '=', self.env.user.partner_id.id),
             ('channel_id', 'in', self.prerequisite_channel_ids.ids),

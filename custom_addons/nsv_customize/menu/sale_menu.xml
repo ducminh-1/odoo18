@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_sale_order_lines"
+        name="Sale Items"
+        parent="sale.sale_order_menu"
+        action="action_sale_order_lines"
+        sequence="1"
+    />
+    <!--<record id="crm.crm_menu_root" model="ir.ui.menu">-->
+    <!--    <field name="action" ref="sales_team.crm_team_salesteams_pipelines_act"/>-->
+    <!--</record>-->
+</odoo>

@@ -1,0 +1,403 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template
+        id="nsv_report_repairorder_document_inherit"
+        inherit_id="repair.report_repairorder"
+    >
+        <xpath expr="//t" position="replace">
+            <t t-call="nsv_customize.nsv_sale_external_layout">
+                <t t-set="o" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+                <div
+                    class="row row mt32 mb32"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;"
+                >
+                    <div class="col-12">
+                        <p class="text-dark">
+                            <b>Khách hàng: </b>
+                            <span t-field="o.partner_id.title" />
+                            &#160;
+                            <span t-field="o.partner_id" />
+                        </p>
+                        <p
+                            t-if="o.partner_id == o.sale_order_id.partner_shipping_id"
+                            class="text-dark"
+                        >
+                            <b>Địa chỉ giao hàng: </b>
+                            <span t-field="o.partner_id.partner_address" />
+                        </p>
+                        <p t-else="" class="text-dark">
+                            <b>Địa chỉ: </b>
+                            <span t-field="o.partner_id.partner_address" />
+                        </p>
+                        <p t-if="o.partner_id.vat">
+                            <b>MST: </b>
+                            <span t-field="o.partner_id.vat" />
+                        </p>
+                        <p t-if="o.partner_id != o.sale_order_id.partner_shipping_id">
+                            <b class="text-dark">Địa chỉ giao hàng: </b>
+                            <span
+                                t-field="o.sale_order_id.partner_shipping_id.partner_address"
+                            />
+                        </p>
+                        <p>
+                            <b>Người liên hệ: </b>
+                            <span t-field="o.sale_order_id.partner_shipping_id.title" />
+                            <span t-field="o.sale_order_id.partner_shipping_id.name" />
+                        </p>
+                        <p t-if="o.sale_order_id.partner_shipping_id.function">
+                            <b>Bộ phận: </b>
+                            <span
+                                t-field="o.sale_order_id.partner_shipping_id.function"
+                            />
+                        </p>
+                        <p t-if="o.sale_order_id.partner_shipping_id.phone">
+                            <b>Số điện thoại: </b>
+                            <span t-field="o.sale_order_id.partner_shipping_id.phone" />
+                        </p>
+                        <p t-if="o.sale_order_id.partner_shipping_id.mobile">
+                            <b>Di động: </b>
+                            <span
+                                t-field="o.sale_order_id.partner_shipping_id.mobile"
+                            />
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="page"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+                >
+                    <div class="oe_structure" />
+
+                    <h2>
+                        <span t-if="o.state != 'draft'">Phiếu sửa chữa #:</span>
+                        <span t-if="o.state == 'draft'">Báo giá sửa chữa #:</span>
+                        <span t-field="o.name" />
+                    </h2>
+
+                    <div id="informations" class="row mt32 mb32">
+                        <div t-if="o.product_id.name" class="col-3 bm-2">
+                            <strong>Sản phẩm sửa:</strong>
+                            <p t-field="o.product_id.name" class="m-0" />
+                        </div>
+                        <div class="col-3 bm-2" groups="stock.group_production_lot">
+                            <strong>Số Lot/Seri:</strong>
+                            <t t-if="o.lot_id">
+                                <span t-field="o.lot_id.name" />
+                            </t>
+                        </div>
+                        <div t-if="o.schedule_date" class="col-3 bm-2">
+                            <strong>Hạn bảo hành:</strong>
+                            <p t-field="o.schedule_date" class="m-0" />
+                        </div>
+                        <div class="col-3 bm-2">
+                            <strong>Ngày in:</strong>
+                            <p
+                                t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"
+                                t-options="{'widget': 'date'}"
+                                class="m-0"
+                            />
+                        </div>
+                    </div>
+
+                    <h2>Parts</h2>
+                    <table class="o_total_table table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Mô tả</th>
+                                <th class="text-end">Số lượng</th>
+                                <!--<t t-if="o.invoice_method != 'none'">-->
+                                <!--<th class="text-right">Đơn giá</th>-->
+                                <!--<th class="text-center">Thuế</th>-->
+                                <!--<th class="text-right">Thành tiền</th>-->
+                                <!--</t>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="o.move_ids">
+                                <tr class="bg-200 o_line_section">
+                                    <td colspan="5">
+                                        <strong>Linh kiện</strong>
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o.move_ids" t-as="line">
+                                    <!--<t t-set="price_subtotal" t-value="line.price_unit * line.product_uom_qty"/>-->
+                                    <td>
+                                        <p t-if="line.repair_line_type == 'add'">
+                                            <i>(Lắp)</i>
+                                            <span t-field="line.name" />
+                                        </p>
+                                        <p t-if="line.repair_line_type == 'remove'">(<i
+                                        >Gỡ</i>) <span t-field="line.name" /></p>
+                                        <p t-if="line.repair_line_type == 'recycle'">(<i
+                                        >Tái chế</i>) <span t-field="line.name" /></p>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-field="line.product_uom_qty" />
+                                        <span
+                                            groups="uom.group_uom"
+                                            t-field="line.product_uom.name"
+                                        />
+                                    </td>
+                                    <!--<t t-if="(line.repair_id.invoice_method != 'none')">-->
+                                    <!--<td class="text-right">-->
+                                    <!--    <span t-field="line.price_unit"/>-->
+                                    <!--</td>-->
+                                    <!--<td class="text-center">-->
+                                    <!--    <span t-esc="','.join(map( lambda x: x.name, line.tax_id))"/>-->
+                                    <!--</td>-->
+                                    <!-- <td class="text-right o_price_total">-->
+                                    <!--     <span t-esc="price_subtotal" t-options='{"widget": "monetary", "display_currency": o.sale_order_id.pricelist_id.currency_id}'/>-->
+                                    <!--</td>-->
+                                    <!--</t>-->
+                                </tr>
+                            </t>
+                            <!--<t t-if="o.fees_lines">-->
+                            <!--    <tr class="bg-200 o_line_section"><td colspan="5"><strong>Phí dịch vụ</strong></td></tr>-->
+                            <!--    <tr t-foreach="o.fees_lines" t-as="fees">-->
+                            <!--        <td>-->
+                            <!--            <span t-field="fees.name"/>-->
+                            <!--        </td>-->
+                            <!--        <td class="text-right">-->
+                            <!--            <span t-field="fees.product_uom_qty"/>-->
+                            <!--            <span groups="uom.group_uom" t-field="fees.product_uom.name"/>-->
+                            <!--        </td>-->
+                            <!--        <t t-if="(fees.repair_id.invoice_method != 'none')">-->
+                            <!--            <td class="text-right">-->
+                            <!--                <span t-field="fees.price_unit"/>-->
+                            <!--            </td>-->
+                            <!--            <td class="text-center">-->
+                            <!--                <span t-esc="','.join(map( lambda x: x.name, fees.tax_id))"/>-->
+                            <!--            </td>-->
+                            <!--            <td class="text-right o_price_total">-->
+                            <!--                <span t-field="fees.price_subtotal"-->
+                            <!--                    t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>-->
+                            <!--           </td>-->
+                            <!--        </t>-->
+                            <!--    </tr>-->
+                            <!--</t>-->
+                        </tbody>
+                    </table>
+                    <t t-if="o.sale_order_id">
+                        <h2>Phí dịch vụ</h2>
+                        <table
+                            class="o_has_total_table table o_main_table table-borderless"
+                        >
+                            <thead>
+                                <tr>
+                                    <th
+                                        name="th_description"
+                                        class="text-left border-bottom border-0"
+                                    >Sản Phẩm</th>
+                                    <th
+                                        name="th_quantity"
+                                        class="text-right border-bottom border-0"
+                                    >Số Lượng</th>
+                                    <th
+                                        name="th_priceunit"
+                                        class="text-right border-bottom border-0"
+                                    >Đơn Giá</th>
+                                    <!--<th name="th_discount" t-if="display_discount" class="text-right border-bottom border-0" groups="product.group_discount_per_so_line">-->
+                                    <!--    <span>Giảm %</span>-->
+                                    <!--</th>-->
+                                    <th
+                                        name="th_taxes border-bottom border-0"
+                                        class="text-right border-bottom border-0"
+                                    >Thuế</th>
+                                    <th
+                                        name="th_subtotal"
+                                        class="text-right border-bottom border-0"
+                                    >
+                                        <!--<t groups="account.group_show_line_subtotals_tax_excluded">Thành tiền</t>-->
+                                        <!--<t groups="account.group_show_line_subtotals_tax_included">Thành tiền</t>-->
+                                        Thành tiền
+                                    </th>
+                                    <!--<th name="th_weight" class="text-right border-bottom border-0">Khối lượng</th>-->
+                                    <!--<th name="th_volume" class="text-right border-bottom border-0">Thể tích</th>-->
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-set="current_subtotal" t-value="0" />
+
+                                <t t-foreach="doc.sale_order_id.order_line" t-as="line">
+                                    <!--<t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>-->
+                                    <!--<t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>-->
+                                    <!--<t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"/>-->
+
+                                    <tr
+                                        t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''"
+                                    >
+                                        <t t-if="not line.display_type">
+                                            <td
+                                                name="td_name"
+                                                class="border-bottom border-0"
+                                            >
+                                                <span t-field="line.name" />
+                                            </td>
+                                            <td
+                                                name="td_quantity"
+                                                class="text-right border-bottom border-0"
+                                            >
+                                                <span t-field="line.product_uom_qty" />
+                                                <span
+                                                    t-field="line.product_uom"
+                                                    groups="uom.group_uom"
+                                                />
+                                            </td>
+                                            <td
+                                                name="td_priceunit"
+                                                class="text-right border-bottom border-0"
+                                            >
+                                                <span t-field="line.price_unit" />
+                                            </td>
+                                            <!--<td t-if="display_discount" class="text-right border-bottom border-0" groups="product.group_discount_per_so_line">-->
+                                            <!--    <span t-field="line.discount"/>-->
+                                            <!--</td>-->
+                                            <td
+                                                name="td_taxes"
+                                                class="text-right border-bottom border-0"
+                                            >
+                                                <span
+                                                    t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"
+                                                />
+                                            </td>
+                                            <td
+                                                name="td_subtotal"
+                                                class="text-right o_price_total border-bottom border-0"
+                                            >
+                                                <span t-field="line.price_subtotal" />
+                                                <!--<span t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>-->
+                                            </td>
+                                            <!--<td name="td_weight" class="text-right border-bottom border-0">-->
+                                            <!--    <span t-field="line.weight"/>-->
+                                            <!--</td>-->
+                                            <!--<td name="td_volume" class="text-right border-bottom border-0">-->
+                                            <!--    <span t-field="line.volume"/>-->
+                                            <!--</td>-->
+                                        </t>
+                                        <t t-if="line.display_type == 'line_section'">
+                                            <td name="td_section_line" colspan="99">
+                                                <span t-field="line.name" />
+                                            </td>
+                                            <!--<t t-set="current_section" t-value="line"/>-->
+                                            <!--<t t-set="current_subtotal" t-value="0"/>-->
+                                        </t>
+                                        <t t-if="line.display_type == 'line_note'">
+                                            <td name="td_note_line" colspan="99">
+                                                <span t-field="line.name" />
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <!--<t t-if="current_section and (line_last or doc.sale_order_id.order_line[line_index+1].display_type == 'line_section')">-->
+                                    <!--    <tr class="is-subtotal text-right">-->
+                                    <!--        <td name="td_section_subtotal" colspan="99">-->
+                                    <!--            <strong class="mr16">Tổng</strong>-->
+                                    <!--            <span t-esc="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>-->
+                                    <!--        </td>-->
+                                    <!--    </tr>-->
+                                    <!--</t>-->
+                                </t>
+                                <!--<tr>-->
+                                <!--<td class="text-right">-->
+                                <!--    <strong>Tổng</strong>-->
+                                <!--</td>-->
+                                <!--<td class="text-center">-->
+                                <!--    <strong t-esc="sum(doc.sale_order_id.order_line.mapped('product_uom_qty'))"/>-->
+                                <!--</td>-->
+                                <!--<td/>-->
+                                <!--<td/>-->
+                                <!--<td/>-->
+                                <!--<td class="text-right">-->
+                                <!--    <span t-esc="'%.4f' % sum(doc.sale_order_id.order_line.mapped('weight'))"/>-->
+                                <!--  </td>-->
+                                <!--  <td class="text-right">-->
+                                <!--    <span t-esc="'%.4f' % sum(doc.sale_order_id.order_line.mapped('volume'))"/>-->
+                                <!--  </td>-->
+                                <!--</tr>-->
+                            </tbody>
+                        </table>
+
+                        <div class="clearfix" name="so_total_summary">
+                            <div id="total" class="row mt-n3" name="total">
+                                <div
+                                    t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto"
+                                >
+                                    <table class="o_total_table table table-borderless">
+                                        <!-- Tax totals -->
+                                        <t t-call="sale.document_tax_totals">
+                                            <t
+                                                t-set="tax_totals"
+                                                t-value="doc.sale_order_id.tax_totals"
+                                            />
+                                            <t
+                                                t-set="currency"
+                                                t-value="doc.sale_order_id.currency_id"
+                                            />
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                    <!--<div id="total" class="row justify-content-end">-->
+                    <!--    <div class="col-4">-->
+                    <!--        <table class="o_total_table table table-borderless">-->
+                    <!--            <t t-if="o.invoice_method !='none'">-->
+                    <!--                <tr class="border-black o_subtotal">-->
+                    <!--                    <td><strong>Tổng chưa thuế</strong></td>-->
+                    <!--                    <td class="text-right">-->
+                    <!--                        <span t-field="o.amount_untaxed"-->
+                    <!--                            t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>-->
+                    <!--                    </td>-->
+                    <!--                </tr>-->
+                    <!--                <tr>-->
+                    <!--                    <td>Thuế</td>-->
+                    <!--                    <td class="text-right o_price_total">-->
+                    <!--                        <span t-field="o.amount_tax"-->
+                    <!--                            t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>-->
+                    <!--                    </td>-->
+                    <!--                </tr>-->
+                    <!--                <tr class="border-black o_total">-->
+                    <!--                    <td><strong>Tổng</strong></td>-->
+                    <!--                    <td class="text-right o_price_total">-->
+                    <!--                        <span t-field="o.amount_total"-->
+                    <!--                            t-options='{"widget": "monetary", "display_currency": o.pricelist_id.currency_id}'/>-->
+                    <!--                    </td>-->
+                    <!--                </tr>-->
+                    <!--            </t>-->
+                    <!--        </table>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+
+                    <t t-if="o.sale_order_id">
+                        <p t-field="o.sale_order_id.note" />
+                        <div class="oe_structure" />
+                        <p t-if="o.sale_order_id.payment_term_id.note">
+                            <span t-field="o.sale_order_id.payment_term_id.note" />
+                        </p>
+                    </t>
+                    <br />
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <div>
+                                <b>Người mua</b>
+                            </div>
+                            <div>
+                                <i>(Ký, họ tên)</i>
+                            </div>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div>
+                                <b>Người bán</b>
+                            </div>
+                            <div>
+                                <i>(Ký, họ tên)</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

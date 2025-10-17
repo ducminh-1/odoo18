@@ -9,6 +9,22 @@
                 <field name="allowed_department_ids" widget="many2many_tags"/>
                 <field name="job_ids" widget="many2many_tags"/>
             </xpath>
+            <xpath expr="//page//field//field[@name='is_preview']" position="after">
+                <field name="date_published"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="slide_slide_view_form_inherit" model="ir.ui.view">
+        <field name="name">slide.slide.view.form.inherit</field>
+        <field name="model">slide.slide</field>
+        <field name="inherit_id" ref="website_slides.view_slide_slide_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page//group//group/field[@name='image_binary_content']" position="after">
+               <field name="prerequisite_slide_ids" widget="many2many_tags"/>
+                <field name="slide_complete"/>
+            </xpath>
         </field>
     </record>
 <!-- View tree -->

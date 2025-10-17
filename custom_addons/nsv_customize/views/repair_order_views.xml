@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_repair_order_form_inherit_custom" model="ir.ui.view">
+        <field name="name">repair.order.form.view.inherit</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="analytic_account_id" />
+                <field name="channel_id" />
+                <!--<field name="channel_account_tag_id" invisible="1"/>-->
+                <!--<field name="pos_account_tag_id" domain="[('tag_type', '=', 'pos')]" options="{'no_create': True}"/>-->
+                <field name="pos_analytic_account_id" options="{'no_create': True}" />
+                <!--<field name="payment_term_id" attrs="{'readonly': [('invoiced', '=', True)], 'invisible': [('invoice_method', '=', 'none')]}"/>-->
+                <!--<field name="payment_term_id" invisible="invoice_method == 'none'" readonly="invoiced"/>-->
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="options">{'always_reload': True}</attribute>
+            </xpath>
+            <!--<xpath expr="//field[@name='operations']/form/group/group/field[@name='name']" position="after">-->
+            <!--    <field name="analytic_tag_ids" widget="many2many_tags"/>-->
+            <!--</xpath>-->
+            <!--<xpath expr="//field[@name='operations']/list/field[@name='name']" position="after">-->
+            <!--    <field name="analytic_tag_ids" widget="many2many_tags" optional="show"/>-->
+            <!--</xpath>-->
+            <!--<xpath expr="//field[@name='fees_lines']/form/group/field[@name='name']" position="after">-->
+            <!--    <field name="analytic_tag_ids" widget="many2many_tags"/>-->
+            <!--</xpath>-->
+            <!--<xpath expr="//field[@name='fees_lines']/list/field[@name='name']" position="after">-->
+            <!--    <field name="analytic_tag_ids" widget="many2many_tags" optional="show"/>-->
+            <!--</xpath>-->
+        </field>
+    </record>
+    <record id="view_repair_order_tree_inherit" model="ir.ui.view">
+        <field name="name">repair.order.tree.view.inherit</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <!--<field name="amount_total"/>-->
+                    <!--<field name="invoice_method"/>-->
+                    <field name="payment_term_id" />
+                </xpath>
+                <!--<xpath expr="//field[@name='state']" position="after">-->
+                <!--    <field name="invoice_id"/>-->
+                <!--</xpath>-->
+            </data>
+        </field>
+    </record>
+</odoo>

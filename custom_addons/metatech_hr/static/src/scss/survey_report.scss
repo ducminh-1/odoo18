@@ -4,16 +4,44 @@
     display: flex;
     margin-left: -4mm;
     margin-right: -4mm;
+        .certification-content {
+            p {
+                .user-name-font-custom {
+                    font-family: 'Montserrat', sans-serif !important;
+                    font-weight: bold;
+                    font-size: 50pt;
+                    line-height: 2;
+                    color: #282f33;
+                    border-bottom: 1pt solid #282f33;
+                }
+                .certification-name-bold {
+                    font-weight: bold;
+                    font-size: 18pt;
+                    line-height: 1.5;
+                    text-transform: uppercase;
+                    color: #282f33;
+                }
+            }
+        }
     &.modern {
-        .certification-seal-red{
-            position: absolute;
-            background-size: 100%;
-            top: -7mm;
-            right: 20mm;
-            width: 22mm;
-            height: 42mm;
-            background-image: url("/metatech_hr/static/img/seal_red.svg") !important;
-            background-repeat: no-repeat;
+        .certification-font-custom {
+            font-family: 'Montserrat', sans-serif !important;
+            width: 272mm;
+            height: 185mm;
+            margin: 12.5mm;
+            background-color: #f2f2f2;
+            text-align: center;
+
+            .certification-seal-red{
+                position: absolute;
+                background-size: 100%;
+                top: -7mm;
+                right: 20mm;
+                width: 22mm;
+                height: 42mm;
+                background-image: url("/metatech_hr/static/img/seal_red.svg") !important;
+                background-repeat: no-repeat;
+            }
         }
     }
 }

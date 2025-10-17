@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sms_view_picking_inherit_form" model="ir.ui.view">
+        <field name="name">sms.stock.picking.inherit.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <!--<button name="%(vihat_esms_service.action_send_sms_wizard)d" string="Send SMS" type="action" icon="fa-cogs" attrs="{'invisible': ['|',('picking_type_code','!=','outgoing'),('state','!=','done')]}"/>-->
+                <button
+                    name="%(vihat_esms_service.action_send_sms_wizard)d"
+                    string="Send SMS"
+                    type="action"
+                    icon="fa-cogs"
+                    invisible="picking_type_code != 'outgoing' or state != 'done'"
+                />
+            </button>
+        </field>
+    </record>
+</odoo>

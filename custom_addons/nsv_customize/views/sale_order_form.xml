@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_sale_order_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.sale.order.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//header" position="after">
+                    <field
+                        name="is_have_applicable_loyalty_counpon_program"
+                        invisible="1"
+                    />
+                    <!--<div class="alert alert-primary" role="alert" attrs="{'invisible': [('is_have_applicable_loyalty_counpon_program', '=', False)]}">-->
+                    <div
+                        class="alert alert-primary"
+                        role="alert"
+                        invisible="not is_have_applicable_loyalty_counpon_program"
+                    >
+                        <div>
+                            <span
+                            class="fa fa-info-circle"
+                        /> There is applicable loyalty coupon program(s) for this order
+                            <button
+                            name="action_view_applicable_loyalty_coupon_program"
+                            type="object"
+                            class="btn btn-link"
+                            groups="sales_team.group_sale_salesman"
+                            icon="fa-arrow-right"
+                        >View</button>
+                        </div>
+                        <div>
+                            <field
+                                name="applicable_loyalty_coupon_program_display_string"
+                            />
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <!--<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='other_information']/group[2]/group[@name='sale_shipping']/field[@name='warehouse_id']" position="move"/>-->
+                    <!--<field name="channel_account_tag_id" invisible="1"/>-->
+                    <field name="channel_id" options="{'no_create': True}" />
+                    <!--<field name="pos_account_tag_id" domain="[('tag_type', '=', 'pos')]" options="{'no_create': true}"/>-->
+                    <field
+                        name="pos_analytic_account_id"
+                        options="{'no_create': True}"
+                    />
+                    <xpath expr="//field[@name='client_order_ref']" position="move" />
+                    <!--<field name="invoice_number" string="Số hoá đơn" attrs="{'invisible': [('invoice_number', '=', False)]}"/>-->
+                    <field name="invoice_number" string="Số hoá đơn" />
+                </xpath>
+                <!--<xpath expr="//field[@name='pos_account_tag_id']" position="after">-->
+                <!--    <xpath expr="//field[@name='analytic_account_id']" position="move"/>-->
+                <!--    <xpath expr="//field[@name='client_order_ref']" position="move"/>-->
+                <!--</xpath>-->
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <xpath expr="//field[@name='user_id']" position="move" />
+                    <field name="employee_id" />
+                    <xpath expr="//field[@name='team_id']" position="move" />
+                    <label for="commitment_date" string="Delivery Date" />
+                    <div class="o_row">
+                        <field name="commitment_date" />
+                        <span class="text-muted">Expected: <field
+                            name="expected_date"
+                            widget="date"
+                        />
+                        </span>
+                    </div>
+                    <field name="loyalty_level_id" string="Loyalty Level" />
+                    <field name="customer_birthday" string="Customer Birthday" />
+                    <field
+                        name="customer_loyalty_point_amount"
+                        string="Loyalty Point Amount"
+                    />
+                    <field name="customer_tag" string="Tag" widget="many2many_tags" />
+                </xpath>
+                <!--<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/form[1]/group[1]/group[2]/field[@name='analytic_tag_ids']" position="attributes">-->
+                <!--    <attribute name="optional">show</attribute>-->
+                <!--</xpath>-->
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]/field[@name='name']"
+                    position="attributes"
+                >
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position='attributes'>
+                    <attribute
+                        name="context"
+                    >{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True,'show_phone': True, 'show_mobile': True}</attribute>
+                </xpath>
+                <xpath
+                    expr="//field[@name='partner_shipping_id']"
+                    position='attributes'
+                >
+                    <attribute
+                        name="context"
+                    >{'default_type':'delivery', 'show_phone': True, 'show_mobile': True, 'show_address': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_invoice_id']" position='attributes'>
+                    <attribute
+                        name="context"
+                    >{'default_type':'delivery', 'show_phone': True, 'show_mobile': True, 'show_address': True}</attribute>
+                </xpath>
+
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]/field[@name='tax_id']"
+                    position="after"
+                >
+                    <field name="product_size" optional="hide" />
+                    <field name="carton_size" optional="hide" widget="many2many_tags" />
+                    <field name="weight" sum='Total Weight' optional="hide" />
+                    <field name="volume" sum='Total Volume' optional="hide" />
+                    <field
+                        name="price_rule"
+                        readonly="1"
+                        force_save="1"
+                        optional="hide"
+                    />
+                    <field
+                        name="difference_ratio"
+                        widget="percentage"
+                        readonly="1"
+                        optional="hide"
+                    />
+                </xpath>
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]//field[@name='product_uom_qty']"
+                    position="attributes"
+                >
+                    <attribute name="sum">Qty</attribute>
+                </xpath>
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]//field[@name='qty_delivered']"
+                    position="attributes"
+                >
+                    <attribute name="sum">Delivered</attribute>
+                </xpath>
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]//field[@name='qty_invoiced']"
+                    position="attributes"
+                >
+                    <attribute name="sum">Invoiced</attribute>
+                </xpath>
+                <xpath
+                    expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/list[1]"
+                    position="attributes"
+                >
+                    <attribute
+                        name="decoration-danger"
+                    >difference_ratio != 0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='pricelist_id']" position='attributes'>
+                    <attribute
+                        name="domain"
+                    >[('request_status', '=', 'approved')]</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="nsv_sale_stock_order_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.sale_stock.order.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <xpath expr="//field[@name='warehouse_id'][2]" position="move" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="nsv_quotation_sale_order_list_view_inherit" model="ir.ui.view">
+        <field name="name">nsv.sale.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="employee_id" />
+                    <field name="loyalty_level_id" optional="show" />
+                    <field name="channel_id" options="{'no_create': True}" />
+                    <!--<field name="pos_account_tag_id" domain="[('tag_type', '=', 'pos')]" options="{'no_create': True}"/>-->
+                    <field
+                        name="pos_analytic_account_id"
+                        options="{'no_create': True}"
+                    />
+                    <field name="client_order_ref" optional="show" />
+                    <field name="invoice_number" optional="show" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="nsv_sale_order_list_view_inherit" model="ir.ui.view">
+        <field name="name">nsv.sale.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="customer_phone" />
+                    <field name="loyalty_level_id" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="channel_id" options="{'no_create': True}" />
+                    <!--<field name="pos_account_tag_id" domain="[('tag_type', '=', 'pos')]" options="{'no_create': True}"/>-->
+                    <field
+                        name="pos_analytic_account_id"
+                        options="{'no_create': True}"
+                    />
+                    <field name="client_order_ref" optional="show" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+    <record id="view_sales_order_filter_inherit" model="ir.ui.view">
+        <field name="name">sale.order.list.select</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']" position="after">
+                <field
+                    name="partner_shipping_id"
+                    string="Shipping Address"
+                    filter_domain="['|', ('partner_shipping_id.street', 'ilike', self), ('partner_shipping_id.street2', 'ilike', self)]"
+                />
+            </xpath>
+            <xpath expr="//filter[@name='order_month']" position="after">
+                <filter
+                    string="Kênh"
+                    name="channel_id"
+                    domain="[]"
+                    context="{'group_by': 'channel_id'}"
+                />
+                <!--<filter string="Pos tag" name="pos_account_tag_id" domain="[]" context="{'group_by': 'pos_account_tag_id'}"/>-->
+                <filter
+                    string="Pos tag"
+                    name="pos_analytic_account_id"
+                    domain="[]"
+                    context="{'group_by': 'pos_analytic_account_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_view_form_inherit_button" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+                <!--<button class="oe_stat_button" type="object" name="action_view_ticket_from_sale_order"-->
+                <!--    icon="fa-life-ring" attrs="{'invisible': [('ticket_count', '=', 0)]}">-->
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_view_ticket_from_sale_order"
+                    icon="fa-life-ring"
+                    invisible="not ticket_count or ticket_count == 0"
+                >
+                    <div class="o_stat_info">
+                        <field name="ticket_count" class="o_stat_value" />
+                        <span class="o_stat_text"> Tickets</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_sale_order_lines" model="ir.actions.act_window">
+        <field name="name">Sale Items</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_mode">list,form,pivot</field>
+    </record>
+
+    <record id="view_sales_order_line_filter_nsv_inherit" model="ir.ui.view">
+        <field name="name">sale.order.line.select.nsv.inherit</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_sales_order_line_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='to_invoice']" position="after">
+                <separator />
+                <filter
+                    string="Difference price rule"
+                    name="difference_ratio"
+                    domain="[('difference_ratio', '!=', 0)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sales_order_filter_inherit_nsv" model="ir.ui.view">
+        <field name="name">sale.order.list.select.inherit.nsv</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <separator />
+                <filter
+                    string="Price difference orders"
+                    name="price_difference_order"
+                    domain="[('price_difference_order', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

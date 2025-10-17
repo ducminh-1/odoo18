@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_hr_contract_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.hr.contract.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <!--<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='information']/group[@name='main_info']/group[@name='salary_and_advantages']/div[@name='wage']" position="after">-->
+            <xpath expr="//group[@name='salary']" position="inside">
+                <field name="social_ins_wage" />
+                <label for="extra_allowance" string="Phụ cấp công việc" />
+                <div class="o_row">
+                    <field name="extra_allowance" />
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='salary_info']" position="after">
+                <group name="orther_advantages">
+                    <group name="allowances" string="Các khoản khác">
+                        <label for="telephone_allowance" string="Điện thoại" />
+                        <div class="o_row">
+                            <field name="telephone_allowance" />
+                        </div>
+                        <label for="gasoline_allowance" string="Xăng" />
+                        <div class="o_row">
+                            <field name="gasoline_allowance" />
+                        </div>
+                        <label for="respons_allowance" string="Trách nhiệm" />
+                        <div class="o_row">
+                            <field name="respons_allowance" />
+                        </div>
+                        <label for="toxic_allowance" string="Độc hại" />
+                        <div class="o_row">
+                            <field name="toxic_allowance" />
+                        </div>
+                    </group>
+                    <group name="right_column" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

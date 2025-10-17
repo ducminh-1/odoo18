@@ -33,6 +33,7 @@
         "views/slide_channel.xml",
         "views/website_profile.xml",
         "views/survey_templates.xml",
+        "views/slide_templates.xml",
     ],
     "assets": {
         "web.assets_backend": [
@@ -40,6 +41,8 @@
         ],
         "web.assets_frontend": [
             "metatech_hr/static/src/scss/website_profile.scss",
+            "metatech_hr/static/src/scss/disable_link.scss",
+            "metatech_hr/static/src/js/slide_sidebar.js",
         ],
         'web.report_assets_common': [
             "metatech_hr/static/src/scss/survey_report.scss",

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_journal_form_print_report" model="ir.ui.view">
+        <field name="name">account.journal.form.print.report</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="is_print" invisible="type != 'cash'" />
+                <field name="receipt_pay_sequence_id" invisible="not is_print" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

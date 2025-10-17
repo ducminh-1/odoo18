@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vaobep_event,vaobep.event,model_vaobep_event,base.group_user,1,1,1,0
+access_vaobep_crm,vaobep.crm,model_vaobep_crm,base.group_user,1,1,1,0
+access_guarantee_registers,guarantee.registers,model_guarantee_registers,base.group_user,1,1,1,0

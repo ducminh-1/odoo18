@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_product_failure_report_pivot" model="ir.ui.view">
+        <field name="name">product.failure.report.pivot</field>
+        <field name="model">product.failure.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Product Failure Report" sample="1">
+                <field name="product_id" type="row" />
+                <field name="date" type="col" />
+                <field name="failure_rate" type="measure" />
+                <field name="sold_qty" type="measure" />
+                <field name="qty_maintenance" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="product_failure_report_search" model="ir.ui.view">
+        <field name="name">product.failure.report.search</field>
+        <field name="model">product.failure.report</field>
+        <field name="arch" type="xml">
+            <search string="Product Failure Analysis">
+                <field name="ticket_id" />
+                <field name="product_id" />
+                <!-- <field name="sale_id"/> -->
+                <separator />
+                <filter name="filter_date" date="date" default_period="year" />
+                <separator />
+                <!-- <group expand="1" string="Group By">
+                    <filter string="Ticket" name="Ticket" context="{'group_by':'ticket_id'}"/>
+                    <separator/>
+                    <filter string="Product" name="Product" context="{'group_by':'product_id'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_failure_report_all" model="ir.actions.act_window">
+        <field name="name">Product Failure Report</field>
+        <field name="res_model">product.failure.report</field>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" />
+        <!-- force empty -->
+        <field name="search_view_id" ref="product_failure_report_search" />
+        <field name="context">{'search_default_filter_date':1,'group_by':[]}</field>
+    </record>
+</odoo>

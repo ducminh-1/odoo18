@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="coupon_program_view_promo_program_form" model="ir.ui.view">
+        <field name="name">coupon.program.form.inherit.nsv_customize</field>
+        <field name="model">coupon.program</field>
+        <field name="inherit_id" ref="coupon.coupon_program_view_promo_program_form" />
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="is_loyalty_program" />
+                <field name="show_coupon_prefix" invisible="1" />
+                <field
+                    name="coupon_prefix"
+                    attrs="{'invisible': [('show_coupon_prefix', '=', False)]}"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="coupon_program_view_coupon_program_form" model="ir.ui.view">
+        <field name="name">coupon.program.form.inherit.nsv_customize</field>
+        <field name="model">coupon.program</field>
+        <field name="inherit_id" ref="coupon.coupon_program_view_coupon_program_form" />
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="show_coupon_prefix" invisible="1" />
+                <field
+                    name="coupon_prefix"
+                    attrs="{'invisible': [('show_coupon_prefix', '=', False)]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_rating_rating"
+        name="Ratings"
+        parent="sale.menu_sale_report"
+        action="rating.rating_rating_action"
+        sequence="4"
+    />
+</odoo>

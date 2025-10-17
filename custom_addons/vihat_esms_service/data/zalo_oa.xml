@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="zalo.oa" id="zalo_oa_buheung">
+        <field name="name">Buheung Official</field>
+        <field name="oa_id">121347358858961573</field>
+    </record>
+    <record model="zalo.oa" id="zalo_oa_nsv">
+        <field name="name">Nguồn Sống Việt Official</field>
+        <field name="oa_id">766187954457102752</field>
+    </record>
+    <record model="zalo.oa" id="zalo_oa_gymaster">
+        <field name="name">Gymaster Official</field>
+        <field name="oa_id">4458443909154412259</field>
+    </record>
+    <record model="zalo.oa" id="zalo_oa_magic_eco">
+        <field name="name">Magic Eco Official</field>
+        <field name="oa_id">2640547518492604589</field>
+    </record>
+</odoo>

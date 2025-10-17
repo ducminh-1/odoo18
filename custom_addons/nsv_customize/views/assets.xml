@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template
+            id="assets_backend"
+            name="nsv_customize assets"
+            inherit_id="web.assets_backend"
+        >
+            <xpath expr="." position="inside">
+                <script
+                    type="text/javascript"
+                    src="/nsv_customize/static/src/js/thread_needaction_preview.js"
+                />
+                <script
+                    type="text/javascript"
+                    src="/nsv_customize/static/src/js/chatter_topbar.js"
+                />
+            </xpath>
+        </template>
+    </data>
+</odoo>

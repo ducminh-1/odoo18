@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record
+        id="hr_employee_public_view_kanban_inherit_nsv_customize"
+        model="ir.ui.view"
+    >
+        <field name="name">hr.employee.kanban.inherit.nsv.customize</field>
+        <field name="model">hr.employee.public</field>
+        <field name="inherit_id" ref="hr.hr_employee_public_view_kanban" />
+        <field name="arch" type="xml">
+            <field name="image_128" position="replace" />
+            <xpath expr="//aside[hasclass('o_kanban_aside_full')]" position="replace" />
+        </field>
+    </record>
+</odoo>

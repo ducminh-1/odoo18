@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="misa_app_view_list" model="ir.ui.view">
+        <field name="name">misa.app.list</field>
+        <field name="model">misa.app</field>
+        <field name="arch" type="xml">
+            <list string="MISA App">
+                <field name="access_code" />
+                <field name="org_company_code" />
+                <field name="app_id" />
+                <field name="access_token" />
+                <field name="access_token_expiry" />
+                <field name="tenant_code" />
+                <field name="app_name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="misa_app_view_form" model="ir.ui.view">
+        <field name="name">misa.app.form</field>
+        <field name="model">misa.app</field>
+        <field name="arch" type="xml">
+            <form string="MISA App">
+                <header>
+                    <button
+                        name="action_test_connection"
+                        type="object"
+                        string="Test Connection"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="action_get_branches"
+                        type="object"
+                        string="Get Branches"
+                        class="oe_highlight"
+                    />
+                    <button name="action_sync_products" 
+                        string="Sync Products" 
+                        type="object" 
+                        class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="access_code" />
+                        <field name="org_company_code" />
+                        <field name="app_id" />
+                        <field name="access_token" />
+                        <field name="access_token_expiry" />
+                        <field name="tenant_code" />
+                        <field name="app_name" />
+                    </group>
+                    <notebook>
+                        <page string="Branches">
+                            <field name="branch_ids">
+                                <list>
+                                    <field name="misa_id" />
+                                    <field name="name" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="misa_app_action" model="ir.actions.act_window">
+        <field name="name">MISA App</field>
+        <field name="res_model">misa.app</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

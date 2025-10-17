@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="receipt_payslip_seq_custom" model="ir.sequence">
+        <field name="name">Trinh tu phieu thu chi</field>
+        <field name="code">receipt.payslip.seq.custom</field>
+        <field name="prefix">%(y)s%(month)s</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

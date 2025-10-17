@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_account_analytic_tag_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.account.analytic.tag.form.inherit</field>
+        <field name="model">account.analytic.tag</field>
+        <field name="inherit_id" ref="analytic.account_analytic_tag_form_view" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <!--<field name="tag_type"/>-->
+                </xpath>
+            </data>
+        </field>
+    </record>
+    <record id="nsv_account_analytic_tag_view_tree_inherit" model="ir.ui.view">
+        <field name="name">nsv.account.analytic.tag.tree.inherit</field>
+        <field name="model">account.analytic.tag</field>
+        <field name="inherit_id" ref="analytic.account_analytic_tag_tree_view" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <!--<field name="tag_type"/>-->
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

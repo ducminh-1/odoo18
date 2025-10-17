@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="template_helpdesk_ticket_rating_sms"
+        name="SMS Template: Helpdesk Ticket Rating Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_helpdesk_ticket_rating_sms"><t
+            t-set="url_rating"
+            t-value="object.get_url_rating().short_url"
+        />Chuc mung sinh nhat <t
+            t-esc="url_rating"
+        />. Kinh chuc QK co nhieu suc khoe, thanh cong va hanh phuc! Nhan dip sinh nhat xin gui den &#60;bien thay doi&#62; coupon &#60;bien thay doi&#62;. Tran trong.</t>
+    </template>
+    <template
+        id="template_gurantee_rating_sms"
+        name="SMS Template: Gurantee Rating Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_gurantee_rating_sms"><t
+            t-set="url_rating"
+            t-value="object.get_url_rating().short_url"
+        />Thong tin lap dat/bao tri cua Quy khach da hoan thanh. Nham nang cao chat luong dich vu, Quy khach vui long danh gia chat luong dich vu theo Link: <t
+            t-esc="url_rating"
+        />. Xin cam on!</t>
+    </template>
+    <template
+        id="template_installation_rating_sms"
+        name="SMS Template: Installation Rating Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_installation_rating_sms"><t
+            t-set="url_rating"
+            t-value="object.get_url_rating().short_url"
+        />Thong tin sua chua/bao hanh cua Quy khach da hoan thanh. Nham nang cao chat luong dich vu, Quy khach vui long danh gia chat luong dich vu theo Link: <t
+            t-esc="url_rating"
+        />. Xin cam on!</t>
+    </template>
+    <!-- <template id="template_sale_order_sms" name="SMS Template: Sale Order Vihat-SMS">
+    <t t-name="vihat_esms_service.template_installation_rating_sms">Cam on Quy khach da tin dung san pham cua <t t-if="object.brandname_id"><t t-esc="object.brandname_id.name"/></t>. Neu can ho tro san pham, Quy khach vui long lien he Hotline: 18006977 hoac truy cap web: <t t-if="object.brandname_id and object.brandname_id.sms_brandname_id and object.brandname_id.sms_brandname_id.website_id and object.brandname_id.sms_brandname_id.website_id.domain"><t t-esc="object.brandname_id.sms_brandname_id.website_id.domain"/></t> . Xin cam on!</t>
+    </template> -->
+    <template
+        id="template_sale_order_rating_sms"
+        name="SMS Template: Sale Order Rating Vihat-SMS"
+    >
+        <t t-name="vihat_esms_service.template_installation_rating_sms"><t
+            t-set="url_rating"
+            t-value="object.get_url_rating().short_url"
+        />Cam on <t t-if="object.partner_id">
+            <t t-esc="object.partner_id.name" />
+        </t> da tin yeu <t t-if="object.brandname_id">
+            <t t-esc="object.brandname_id.name" />
+        </t>! Quy khach oi, Hay danh 1 phut de giup <t t-if="object.brandname_id">
+            <t t-esc="object.brandname_id.name" />
+        </t> phuc vu QK duoc tot hon. Danh gia chat luong dich vu tai day <t
+            t-esc="url_rating"
+        /></t>
+    </template>
+    <!-- buheung -->
+    <record id="zns_template_buheung_helpdesk_confirm_install" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Buheung - GIAO HÀNG - LẮP ĐẶT HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_buheung')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250446</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_buheung_confirm_install">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn hàng của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã giao hàng thành công vào ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Buheung Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_buheung_guarantee_done" model="ir.ui.view">
+        <field name="name">ZNS Template: Buheung - BẢO HÀNH/SỬA CHỮA HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_buheung')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250447</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.template_account_followup_sms">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn Bảo hành/Sửa chữa của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã hoàn thành ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Buheung Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <!-- magic eco -->
+    <record id="zns_template_magic_eco_helpdesk_confirm_install" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Magic Eco - BẢO HÀNH/SỬA CHỮA HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_magic_eco')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250477</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_magic_eco_confirm_install">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn Bảo hành/Sửa chữa của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã hoàn thành ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Magic Eco Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_magic_eco_helpdesk_guarantee_done" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Magic Eco - GIAO HÀNG - LẮP ĐẶT HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_magic_eco')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250478</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_magic_eco_guarantee_done">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn hàng của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã giao hàng thành công vào ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Magic Eco Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <!-- NSV -->
+    <record id="zns_template_nsv_helpdesk_confirm_install" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: NSV Official - BẢO HÀNH/SỬA CHỮA HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_nsv')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250430</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_nsv_confirm_install">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn Bảo hành/Sửa chữa của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã hoàn thành ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Nguồn Sống Việt Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_nsv_helpdesk_guarantee_done" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: NSV Official - GIAO HÀNG - LẮP ĐẶT HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_nsv')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250450</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_nsv_guarantee_done">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn hàng của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã giao hàng thành công vào ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Nguồn Sống Việt Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_nsv_guarantee_register_done" model="ir.ui.view">
+        <field name="name">ĐĂNG KÝ BẢO HÀNH ONLINE THÀNH CÔNG - NSV Official</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_nsv')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">375834</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_nsv_guarantee_register_done">
+                Xin chào Quý khách
+                <t t-set="zns_customer_name" t-value="object.partner_id.name" />
+                <t t-set="zns_phone" t-value="object.phone" />
+                <t t-set="zns_id" t-value="object.id" />
+                <t
+                t-set="zns_product_name"
+                t-value="object.product_id and object.product_id.name or object.sku"
+            />
+                <t t-set="zns_date" t-value="object.buy_date.strftime('%d/%m/%Y')" />
+                <t
+                t-esc="zns_customer_name"
+            /> thân mến, Thông tin đăng ký bảo hành Online của Quý khách đã thành công và được lưu trữ theo thông tin bên dưới:
+                - Họ tên Khách hàng: <t t-esc="zns_customer_name" />
+                - Điện thoại: <t t-esc="zns_phone" />
+                - Mã số bảo hành: <t t-esc="zns_id" />
+                - Sản phẩm: <t t-esc="zns_product_name" />
+                - Ngày mua hàng: <t t-esc="zns_date" />
+                </t>
+        </field>
+    </record>
+    <!-- gymaster -->
+    <record id="zns_template_gymaster_helpdesk_confirm_install" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Gymaster Official - BẢO HÀNH/SỬA CHỮA HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_gymaster')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250623</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_gymaster_confirm_install">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn Bảo hành/Sửa chữa của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã hoàn thành ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            />. Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Gymaster Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+    <record id="zns_template_gymaster_helpdesk_guarantee_done" model="ir.ui.view">
+        <field
+            name="name"
+        >ZNS Template: Gymaster Official - GIAO HÀNG - LẮP ĐẶT HOÀN THÀNH</field>
+        <field name="zalo_oa_id" eval="ref('vihat_esms_service.zalo_oa_gymaster')" />
+        <field name="type">qweb</field>
+        <field name="zns_template_id">250624</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.zns_template_gymaster_guarantee_done">
+                Xin chào Quý khách
+
+                <t
+                t-esc="object.partner_id.name"
+            /> thân mến, Đơn hàng của Quý khách có mã DH <t
+                t-esc="object.id"
+            /> đã giao hàng thành công vào ngày <t
+                t-esc="object.done_date or datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"
+            /> . Với mong muốn cung cấp cho Quý khách những dịch vụ tốt nhất, Quý khách chỉ cần bấm nút "Đánh Giá" để gửi đánh giá dịch vụ.
+
+                Gymaster Official Cảm ơn những đóng góp chân thành từ Quý khách. Chúc Quý khách một ngày tốt lành!
+
+                <t t-esc="object.get_url_rating().code" />
+            </t>
+        </field>
+    </record>
+</odoo>

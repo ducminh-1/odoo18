@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- MISA Product Views -->
+    <record id="view_misa_product_tree" model="ir.ui.view">
+        <field name="name">misa.product.tree</field>
+        <field name="model">misa.product</field>
+        <field name="arch" type="xml">
+            <list string="MISA Products" default_order="inventory_item_name">
+                <field name="inventory_item_code" string="Mã hàng"/>
+                <field name="inventory_item_name" string="Tên hàng"/>
+                <field name="inventory_item_type" string="Loại"/>
+                <field name="unit_name" string="ĐVT" optional="show"/>
+                <field name="sale_price1" string="Giá bán" optional="show"/>
+                <field name="unit_price" string="Giá vốn" optional="show"/>
+                <field name="misa_app_id" string="MISA App"/>
+                <field name="branch_id" string="Chi nhánh"/>
+                <field name="odoo_product_id" string="Sản phẩm Odoo"/>
+                <field name="mapping_method" string="Mapping"/>
+                <field name="created_date" string="Ngày tạo"/>
+                <field name="created_by" string="Người tạo"/>
+                <field name="modified_date" string="Ngày sửa"/>
+                <field name="modified_by" string="Người sửa"/>
+                <field name="last_sync_time" string="Sync cuối"/>
+                <field name="inactive" string="Ngừng SD" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_misa_product_form" model="ir.ui.view">
+        <field name="name">misa.product.form</field>
+        <field name="model">misa.product</field>
+        <field name="arch" type="xml">
+            <form string="MISA Product">
+                <header>
+                    <button name="action_open_odoo_product" string="Open Odoo Product" type="object" 
+                            class="btn-info" invisible="not odoo_product_id"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_odoo_product" type="object" 
+                                class="oe_stat_button" icon="fa-external-link"
+                                invisible="not odoo_product_id">
+                            <field string="Odoo Product" name="odoo_product_id" widget="statinfo"/>
+                        </button>
+                    </div>
+                    
+                    <widget name="web_ribbon" title="Mapped" bg_color="bg-success" 
+                            invisible="not odoo_product_id"/>
+                    <widget name="web_ribbon" title="Unmapped" bg_color="bg-warning" 
+                            invisible="odoo_product_id"/>
+                    
+                    <group>
+                        <group string="Basic Information">
+                            <field name="misa_app_id" readonly="1"/>
+                            <field name="branch_id" readonly="1"/>
+                            <field name="inventory_item_id" readonly="1"/>
+                            <field name="inventory_item_code"/>
+                            <field name="inventory_item_name"/>
+                            <field name="inventory_item_type"/>
+                            <field name="unit_name"/>
+                            <field name="inactive"/>
+                        </group>
+                        <group string="Mapping Information">
+                            <field name="odoo_product_id"/>
+                            <field name="mapping_method" readonly="1"/>
+                            <field name="last_sync_time" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Pricing">
+                        <group>
+                            <field name="unit_price"/>
+                            <field name="fixed_unit_price"/>
+                            <field name="sale_price1"/>
+                            <field name="sale_price2"/>
+                        </group>
+                        <group>
+                            <field name="sale_price3"/>
+                            <field name="fixed_sale_price"/>
+                            <field name="minimum_stock"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Tax Information">
+                        <group>
+                            <field name="import_tax_rate"/>
+                            <field name="export_tax_rate"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Accounts">
+                        <group>
+                            <field name="inventory_account"/>
+                            <field name="cogs_account"/>
+                        </group>
+                        <group>
+                            <field name="sale_account"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Category">
+                        <field name="inventory_item_category_code_list"/>
+                        <field name="inventory_item_category_name_list"/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" widget="html"/>
+                        </page>
+                        <page string="Units">
+                            <field name="unit_list" widget="ace" options="{'mode': 'json'}"/>
+                        </page>
+                        <page string="Mapping Notes">
+                            <field name="mapping_notes" widget="text"/>
+                        </page>
+                        <page string="Audit">
+                            <group>
+                                <group>
+                                    <field name="created_date" readonly="1"/>
+                                    <field name="created_by" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="modified_date" readonly="1"/>
+                                    <field name="modified_by" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_misa_product_search" model="ir.ui.view">
+        <field name="name">misa.product.search</field>
+        <field name="model">misa.product</field>
+        <field name="arch" type="xml">
+            <search string="Search MISA Products">
+                <field name="inventory_item_code" string="Mã hàng"/>
+                <field name="inventory_item_name" string="Tên hàng"/>
+                <field name="misa_app_id" string="MISA App"/>
+                <field name="branch_id" string="Chi nhánh"/>
+                <field name="odoo_product_id" string="Sản phẩm Odoo"/>
+                
+                <filter string="Mapped" name="mapped" domain="[('odoo_product_id', '!=', False)]"/>
+                <filter string="Unmapped" name="unmapped" domain="[('odoo_product_id', '=', False)]"/>
+                <filter string="Active" name="active" domain="[('inactive', '=', False)]"/>
+                <filter string="Inactive" name="inactive" domain="[('inactive', '=', True)]"/>
+                
+                <separator/>
+                <filter string="Products" name="products" domain="[('inventory_item_type', '=', 0)]"/>
+                <filter string="Services" name="services" domain="[('inventory_item_type', '=', 2)]"/>
+                
+                <group expand="0" string="Group By">
+                    <filter string="MISA App" name="group_misa_app" context="{'group_by': 'misa_app_id'}"/>
+                    <filter string="Branch" name="group_branch" context="{'group_by': 'branch_id'}"/>
+                    <filter string="Type" name="group_type" context="{'group_by': 'inventory_item_type'}"/>
+                    <filter string="Mapping Status" name="group_mapping" 
+                            context="{'group_by': 'mapping_method'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- MISA Product Action -->
+    <record id="action_misa_product" model="ir.actions.act_window">
+        <field name="name">MISA Products</field>
+        <field name="res_model">misa.product</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_unmapped': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No MISA products found!
+            </p>
+            <p>
+                Use the "Sync Products" button in MISA Apps to import products from MISA.
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_open_crm_leads" model="ir.actions.act_window">
+        <field name="name">Leads</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('mautic_config_id', '=', active_id)]</field>
+    </record>
+    <record id="view_mautic_migrate_config_form" model="ir.ui.view">
+        <field name="name">mautic.migrate.config.form</field>
+        <field name="model">mautic.migrate.config</field>
+        <field name="arch" type="xml">
+            <form string="Mautic Migrate Configurations">
+                <header>
+                    <field name="active" invisible="1" />
+                    <field name="state" widget="statusbar" />
+                    <!--<button string="Confirm" type="object" name="button_confirm" states="draft"/>-->
+                    <!--<button string="Reset to draft" type="object" name="button_set_draft" states="done"/>-->
+                    <button
+                        string="Confirm"
+                        type="object"
+                        name="button_confirm"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        string="Reset to draft"
+                        type="object"
+                        name="button_set_draft"
+                        invisible="state != 'done'"
+                    />
+                    <!--<button string="Check Lead Migration" class="oe_highlight" type="object" name="action_open_wizard_confirm"-->
+                    <!--        attrs="{'invisible': ['|', ('active', '=', False), ('state', '=', 'done')]}"/>-->
+                    <!--<button string="Check &amp; Migrate Leads" class="oe_highlight" type="object" name="action_open_wizard_confirm"-->
+                    <!--        attrs="{'invisible': ['|', ('active', '=', False), ('state', '=', 'draft')]}"/>-->
+                    <button
+                        string="Check Lead Migration"
+                        class="oe_highlight"
+                        type="object"
+                        name="action_open_wizard_confirm"
+                        invisible="not active or state == 'done'"
+                    />
+                    <button
+                        string="Check &amp; Migrate Leads"
+                        class="oe_highlight"
+                        type="object"
+                        name="action_open_wizard_confirm"
+                        invisible="not active or state == 'draft'"
+                    />
+                    <button
+                        string="Update Segments"
+                        type="object"
+                        name="action_update_contact_segment"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            icon="fa-list"
+                            type="action"
+                            string="Leads"
+                            name="%(action_open_crm_leads)d"
+                            invisible="lead_count == 0"
+                        >
+                            <field name="lead_count" nolabel="1" widget="statinfo" />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <!--<label for="name" class="oe_edit_only" attrs="{'readonly': [('state', '!=', 'draft')]}"/>-->
+                        <label
+                            for="name"
+                            class="oe_edit_only"
+                            readonly="state != 'draft'"
+                        />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Options">
+                            <field name="convert_type" />
+                            <field name="execute_method" />
+                            <field name="tag_filter" />
+                            <!--<field name="tag_name" attrs="{'invisible': [('tag_filter', '=', False)], 'required': [('tag_filter', '=', True)]}"/>-->
+                            <field
+                                name="tag_name"
+                                invisible="not tag_filter"
+                                required="tag_filter"
+                            />
+                            <field name="segment_filter_type" />
+                            <!--<field name="segment_ids" widget="many2many_tags" attrs="{'invisible': [('segment_filter_type', '=', 'none')], 'required': [('segment_filter_type', '!=', 'none')]}"/>-->
+                            <field
+                                name="segment_ids"
+                                widget="many2many_tags"
+                                invisible="segment_filter_type == 'none'"
+                                required="segment_filter_type != 'none'"
+                            />
+                        </group>
+                        <group string="Lead Configurations">
+                            <field name="lead_type" />
+                            <field name="team_id" />
+                            <field name="user_id" />
+                            <field name="stage_id" string="Default Stage" />
+                            <label for="date_deadline" />
+                            <div class="o_row">
+                                <field name="date_deadline" />
+                                <span> days</span>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Extra Information">
+                            <field name="date" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+                <!--<div class="oe_chatter">-->
+                <!--    <field name="message_follower_ids" widget="mail_followers"/>-->
+                <!--    <field name="activity_ids" widget="mail_activity"/>-->
+                <!--    <field name="message_ids" widget="mail_thread"/>-->
+                <!--</div>-->
+            </form>
+        </field>
+    </record>
+    <record id="view_mautic_migrate_config_tree" model="ir.ui.view">
+        <field name="name">mautic.migrate.config.tree</field>
+        <field name="model">mautic.migrate.config</field>
+        <field name="priority" eval="1" />
+        <field name="arch" type="xml">
+            <list delete="1" decoration-info="state == 'draft'" edit="false">
+                <field name="name" />
+                <field name="execute_method" />
+                <field name="tag_filter" />
+                <field name="tag_name" />
+                <field name="segment_filter_type" />
+                <field name="team_id" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+    <record id="action_open_mautic_config" model="ir.actions.act_window">
+        <field name="name">Mautic Config</field>
+        <field name="res_model">mautic.migrate.config</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="view_mautic_migrate_config_tree" />
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_set_is_invoice_machine" model="ir.actions.server">
+        <field name="name">Đặt là hóa đơn máy tính tiền</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+records.write({'is_invoice_machine': True})
+        </field>
+    </record>
+    <record id="action_unset_is_invoice_machine" model="ir.actions.server">
+        <field name="name">Bỏ đặt là hóa đơn máy tính tiền</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+records.write({'is_invoice_machine': False})
+        </field>
+    </record>
+</odoo>

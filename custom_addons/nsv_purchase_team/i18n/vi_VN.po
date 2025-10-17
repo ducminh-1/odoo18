@@ -1,0 +1,365 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nsv_purchase_team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 05:02+0000\n"
+"PO-Revision-Date: 2025-04-02 05:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__access_warning
+msgid "Access warning"
+msgstr "Cảnh báo truy cập"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_needaction
+msgid "Action Needed"
+msgstr "Hành động cần thiết"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__active
+msgid "Active"
+msgstr "Có hiệu lực"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_ids
+msgid "Activities"
+msgstr "Các hoạt động"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Hành động ngoại lệ"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_state
+msgid "Activity State"
+msgstr "Trạng thái hoạt động"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Biểu tượng kiểu hoạt động"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_attachment_count
+msgid "Attachment Count"
+msgstr "Số lượng tập tin đính kèm"
+
+#. module: nsv_purchase_team
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_module_purchase_team_form
+msgid "Avatar"
+msgstr "Ảnh đại diện"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__company_id
+msgid "Company"
+msgstr "Công ty"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__create_date
+msgid "Created on"
+msgstr "Thời điểm tạo"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__access_url
+msgid "Customer Portal URL"
+msgstr "Đường dẫn cổng thông tin khách hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_follower_ids
+msgid "Followers"
+msgstr "Người theo dõi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Người theo dõi (Kênh)"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font biểu tượng ví dụ: fa-tasks"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__has_message
+msgid "Has Message"
+msgstr "Có tin nhắn"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_exception_icon
+msgid "Icon"
+msgstr "Biểu tượng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Biểu tượng để chỉ ra một hoạt động ngoại lệ."
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Nếu chọn, các tin nhắn mới yêu cầu sự có mặt của bạn."
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__message_has_error
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Nếu đánh dấu thì một số thông điệp có lỗi."
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__active
+msgid ""
+"If the active field is set to false, it will allow you to hide the Purchase "
+"Team without removing it."
+msgstr ""
+"Nếu trường hoạt động được đặt thành sai, nó sẽ cho phép bạn ẩn Đội mua hàng "
+"mà không cần xóa nó."
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_is_follower
+msgid "Is Follower"
+msgstr "Trở thành người theo dõi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_has_error
+msgid "Message Delivery error"
+msgstr "Thông báo gửi đi gặp lỗi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_ids
+msgid "Messages"
+msgstr "Tin nhắn"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Hạn chót cho hành động kế tiếp"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_summary
+msgid "Next Activity Summary"
+msgstr "Tóm tắt hoạt động tiếp theo"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_type_id
+msgid "Next Activity Type"
+msgstr "Kiểu hoạt động kế tiếp"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Số lượng hành động"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_has_error_counter
+msgid "Number of errors"
+msgstr "Số lỗi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Số thông báo cần xử lý"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Số lượng tin gửi đi bị lỗi"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__access_url
+msgid "Portal Access URL"
+msgstr "URL truy cập cổng thông tin"
+
+#. module: nsv_purchase_team
+#: model:ir.model,name:nsv_purchase_team.model_purchase_order
+msgid "Purchase Order"
+msgstr "Đơn mua hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.model,name:nsv_purchase_team.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Dòng đơn mua hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.model,name:nsv_purchase_team.model_purchase_report
+msgid "Purchase Report"
+msgstr "Báo cáo mua hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_order_line__user_id
+msgid "Purchase Representative"
+msgstr "Đại diện mua hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.actions.act_window,name:nsv_purchase_team.action_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_order__team_id
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_report__team_id
+#: model:ir.ui.menu,name:nsv_purchase_team.menu_action_purchase_team_id
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_module_purchase_team_form
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_module_purchase_team_tree
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_purchase_filter_extended
+msgid "Purchase Team"
+msgstr "Đội mua hàng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_res_users__purchase_team_ids
+msgid ""
+"Purchase Team the user is member of. Used to compute the members of a "
+"Purchase Team through the inverse one2many"
+msgstr ""
+"Đội mua hàng mà người dùng là thành viên. Được sử dụng để tính toán các "
+"thành viên của một Đội mua hàng thông qua một2 nhiều nghịch đảo"
+
+#. module: nsv_purchase_team
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_module_purchase_team_form
+msgid "Purchaseteam name..."
+msgstr "Tên đội mua hàng..."
+
+#. module: nsv_purchase_team
+#: model:mail.message.subtype,name:nsv_purchase_team.mt_rfq_new_approved
+msgid "RFQ Approved"
+msgstr "RFQ đã được phê duyệt"
+
+#. module: nsv_purchase_team
+#: model:mail.message.subtype,name:nsv_purchase_team.mt_rfq_new_confirmed
+msgid "RFQ Confirmed"
+msgstr "RFQ đã được xác nhận"
+
+#. module: nsv_purchase_team
+#: model:mail.message.subtype,name:nsv_purchase_team.mt_rfq_new_done
+msgid "RFQ Done"
+msgstr "RFQ đã hoàn thành"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__rating_ids
+msgid "Ratings"
+msgstr "Xếp hạng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__activity_user_id
+msgid "Responsible User"
+msgstr "Người phụ trách"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Lỗi gửi SMS"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__access_token
+msgid "Security Token"
+msgstr "Mã bảo mật"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Trạng thái dựa trên hoạt động\n"
+"Quá hạn: Ngày đến hạn phải được chuyển\n"
+"Hôm nay: Hôm nay là ngày phải thực hiện\n"
+"Kế hoạch: Các hoạt động trong tương lai."
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__user_id
+msgid "Team Leader"
+msgstr "Trưởng nhóm"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__member_ids
+#: model_terms:ir.ui.view,arch_db:nsv_purchase_team.view_module_purchase_team_form
+msgid "Team Members"
+msgstr "Thành viên nhóm"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Loại hoạt động ngoại lệ trên hồ sơ."
+
+#. module: nsv_purchase_team
+#: model:ir.model,name:nsv_purchase_team.model_res_users
+msgid "User"
+msgstr "Người dùng"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_res_users__purchase_team_ids
+msgid "User's Purchase Team"
+msgstr "Đội mua hàng của người dùng"
+
+#. module: nsv_purchase_team
+#: model:res.groups,name:nsv_purchase_team.group_purchase_all_docs
+msgid "User: Purchase All Documents"
+msgstr "Người dùng: Tất cả tài liệu"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,field_description:nsv_purchase_team.field_purchase_team__website_message_ids
+msgid "Website Messages"
+msgstr "Thông báo Website"
+
+#. module: nsv_purchase_team
+#: model:ir.model.fields,help:nsv_purchase_team.field_purchase_team__website_message_ids
+msgid "Website communication history"
+msgstr "Lịch sử thông tin liên lạc website"
+
+#. module: nsv_purchase_team
+#: model:ir.model,name:nsv_purchase_team.model_purchase_team
+msgid "purchase team"
+msgstr "đội mua hàng"
+
+#. module: nsv_purchase_team
+#: model:res.groups,comment:nsv_purchase_team.group_purchase_all_docs
+msgid "the user will have access to all records of everyone."
+msgstr "người dùng sẽ có quyền truy cập vào tất cả đơn mua hàng."

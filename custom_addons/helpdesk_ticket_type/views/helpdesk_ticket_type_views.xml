@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="helpdesk_ticket_type_view_list" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.type.list</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="arch" type="xml">
+            <list editable="top" string="Tag" sample="1">
+                <field name="sequence" widget="handle" groups="base.group_no_one" />
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_action" model="ir.actions.act_window">
+        <field name="name">Ticket Type</field>
+        <field name="res_model">helpdesk.ticket.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            No types found. Let's create one!
+          </p>
+            <p>
+            Types are perfect to categorize your tickets.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="helpdesk_ticket_type_menu"
+        action="helpdesk_ticket_type_action"
+        sequence="1"
+        parent="helpdesk.helpdesk_menu_config"
+    />
+</odoo>

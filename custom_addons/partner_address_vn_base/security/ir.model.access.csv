@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_city_user,res.city,model_res_city,base.group_user,1,0,0,0
+access_res_city_portal,res.city,model_res_city,base.group_portal,1,0,0,0
+access_res_city_public,res.city,model_res_city,base.group_public,1,0,0,0
+access_res_city_setting,res.city,model_res_city,base.group_erp_manager,1,1,1,1
+access_res_district_user,res.district,model_res_district,base.group_user,1,0,0,0
+access_res_district_portal,res.district,model_res_district,base.group_portal,1,0,0,0
+access_res_district_public,res.district,model_res_district,base.group_public,1,0,0,0
+access_res_district_setting,res.district,model_res_district,base.group_erp_manager,1,1,1,1
+access_res_ward_user,res.ward,model_res_ward,base.group_user,1,0,0,0
+access_res_ward_portal,res.ward,model_res_ward,base.group_portal,1,0,0,0
+access_res_ward_public,res.ward,model_res_ward,base.group_public,1,0,0,0
+access_res_ward_setting,res.ward,model_res_ward,base.group_erp_manager,1,1,1,1

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="name">nsv.sale.channel.form</field>
+        <field name="model">sale.channel</field>
+        <field name="arch" type="xml">
+            <form string="Sale Channel">
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <!--<widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>-->
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        invisible="not active"
+                    />
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Channel" />
+                        <h1>
+                            <field name="name" placeholder="Sales Channel name..." />
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="left">
+                            <field name="active" invisible="1" />
+                            <!--<field name="analytic_account_id" options="{'no_create': True}" domain="[('tag_type', '=', 'channel')]" groups="account.group_account_manager"/>-->
+                            <field
+                                name="analytic_account_id"
+                                options="{'no_create': True}"
+                                groups="account.group_account_manager"
+                            />
+                            <field
+                                name="company_id"
+                                options="{'no_create': True}"
+                                groups="base.group_multi_company"
+                            />
+                        </group>
+                        <group name="right" />
+                    </group>
+                </sheet>
+                <chatter />
+                <!--<div class="oe_chatter">-->
+                <!--    <field name="message_follower_ids" widget="mail_followers" help="Follow this sale channel to automatically track the events associated to users of this team."/>-->
+                <!--    <field name="message_ids" widget="mail_thread"/>-->
+                <!--</div>-->
+            </form>
+        </field>
+    </record>
+    <record id="sale_channel_tree" model="ir.ui.view">
+        <field name="name">nsv.sale.channel.tree</field>
+        <field name="model">sale.channel</field>
+        <field name="arch" type="xml">
+            <list string="Sale Channel">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="active" invisible="1" />
+                <!--<field name="analytic_account_id" options="{'no_create': True}" groups="account.group_account_manager"/>-->
+                <field
+                    name="analytic_account_id"
+                    options="{'no_create': True}"
+                    groups="account.group_account_manager"
+                />
+                <field name="company_id" groups="base.group_multi_company" />
+            </list>
+        </field>
+    </record>
+    <record id="action_sale_channel" model="ir.actions.act_window">
+        <field name="name">Channel</field>
+        <field name="res_model">sale.channel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="sale_channel_tree" />
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

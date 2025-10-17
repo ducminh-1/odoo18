@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="action_confirm" model="ir.actions.server">
+        <field name="name">Confirm Order</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.state in ('draft', 'sent'):
+                    record.action_confirm()
+                else:
+                    raise UserError("You cannot confirm list orders. Only draft orders can be confirmed.")
+        </field>
+    </record>
+    <record id="action_lock" model="ir.actions.server">
+        <field name="name">Lock Order</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+try:
+    records.filtered(lambda r: r.state == 'sale').action_done()
+except Exception as e:
+    raise UserError(e)
+        </field>
+    </record>
+    <record id="action_unlock" model="ir.actions.server">
+        <field name="name">Unlock Order</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+try:
+    records.filtered(lambda r: r.state == 'done').action_unlock()
+except Exception as e:
+    raise UserError(e)
+        </field>
+    </record>
+
+    <record id="action_purchase_batch_bills_separated" model="ir.actions.server">
+        <field name="name">Create Separated Vendor Bills</field>
+        <field name="model_id" ref="purchase.model_purchase_order" />
+        <field name="binding_model_id" ref="purchase.model_purchase_order" />
+        <field name='groups_id' eval="[(4, ref('account.group_account_invoice'))]" />
+        <field name="state">code</field>
+        <field name="code">
+action = {'type': 'ir.actions.act_window_close'}
+move_action = None
+ids = []
+if records:
+    for purchase_order in records:
+        purchase_action_result = purchase_order.action_create_invoice()
+        if 'res_id' in purchase_action_result:
+            ids.append(purchase_action_result['res_id'])
+            if not move_action:
+              move_action = purchase_action_result
+if ids and move_action:
+    move_action.pop('res_id')
+    move_action['views'] = [(False, 'tree'), (False, 'kanban'), (False, 'form')]
+    action = dict(move_action, domain=[('id', 'in', ids)])
+        </field>
+    </record>
+</odoo>

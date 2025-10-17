@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.misa_amis_connector</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="misa_inventory_item_code" />
+                <field name="misa_inventory_item_name" />
+                <field name="misa_inventory_unit_name" />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="MISA" name="misa_page">
+                    <group>
+                        <group string="Trạng thái đồng bộ MISA">
+                            <field name="misa_pushed" readonly="1" />
+                            <field name="misa_last_push_date" readonly="1" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_misa_product_list_inline_v2" model="ir.ui.view">
+        <field name="name">misa.product.list.inline.v2</field>
+        <field name="model">misa.product</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="inventory_item_code"/>
+                <field name="inventory_item_name"/>
+                <field name="misa_app_id"/>
+                <field name="branch_id"/>
+                <field name="mapping_method"/>
+                <field name="last_sync_time"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_product_form_view" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.misa_amis_connector.v2</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//notebook" position="inside">
+                <page string="MISA Products" name="misa_products_page">
+                    <field name="misa_product_ids"
+                            mode="list,form"
+                            views="[(ref('misa_amis_connector.view_misa_product_list_inline_v2'),'list')]"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Product Product List View -->
+    <record id="product_product_list_view_misa" model="ir.ui.view">
+        <field name="name">product.product.list.inherit.misa</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="misa_app_ids" optional="show" widget="many2many_tags"/>
+                <field name="misa_branch_ids" optional="show" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_search_view_misa" model="ir.ui.view">
+        <field name="name">product.product.search.inherit.misa</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_search_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter name="misa_app_ids" string="MISA App" domain="[]" context="{'group_by':'misa_app_ids'}"/>
+                <filter name="misa_branch_ids" string="MISA Branch" domain="[]" context="{'group_by':'misa_branch_ids'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

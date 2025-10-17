@@ -1,0 +1,49 @@
+<odoo>
+    <record id="sms_helpdesk_ticket_view_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.sms.form.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position='inside'>
+                <button
+                    name="%(vihat_esms_service.action_send_sms_wizard)d"
+                    string="Send SMS"
+                    type="action"
+                    icon="fa-cogs"
+                    class="oe_highlight"
+                />
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position='after'>
+                <field
+                    name="brandname_id"
+                    options="{'no_create': True, 'no_create_edit': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="helpdesk_stage_view_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.stage.form.inherit</field>
+        <field name="model">helpdesk.stage</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_stage_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='template_id']" position='after'>
+                <field
+                    name="sms_view_template_id"
+                    options="{'no_create': True, 'no_create_edit': True}"
+                />
+                <field name="is_send_oa_message" string="Send OA Nessage?" />
+                <!--<field name="config_zl_oa_ids" attrs="{'invisible': [('is_send_oa_message','=',False)]}">-->
+                <field name="config_zl_oa_ids" invisible="not is_send_oa_message">
+                    <list editable="bottom">
+                        <field name="zl_oa_id" widget="selection" />
+                        <field
+                            name="zns_template_id"
+                            widget="selection"
+                            domain="[('type','=','qweb'),('name','ilike', 'ZNS Template: '),('zalo_oa_id','=',zl_oa_id)]"
+                        />
+                    </list>
+                </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

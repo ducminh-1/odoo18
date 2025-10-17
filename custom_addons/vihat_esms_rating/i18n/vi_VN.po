@@ -1,0 +1,158 @@
+# Translation of Odoo Server.
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_helpdesk_ticket_rating_sms
+msgid ""
+". Kinh chuc QK co nhieu suc khoe, thanh cong va hanh phuc! Nhan dip sinh "
+"nhat xin gui den &lt;bien thay doi&gt; coupon &lt;bien thay doi&gt;. Tran "
+"trong."
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_gurantee_rating_sms
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_installation_rating_sms
+msgid ". Xin cam on!"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_form_submit
+msgid "<span> cần cải thiện gì để phục vụ quý khách tốt hơn?</span>"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_form_submit
+msgid ""
+"<span>Quý khách có cảm nhận như thế nào về trải nghiệm dịch vụ cũng như sản "
+"phẩm vừa rồi tại </span>"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_helpdesk_ticket_rating_sms
+msgid "Chuc mung sinh nhat"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_page_done
+msgid "Cảm ơn những phản hồi của Quý khách!"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_helpdesk_ticket__display_name
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_link_tracker__display_name
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_sms_brandname__display_name
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_vihat_send_sms_wizard__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: vihat_esms_rating
+#: model:ir.model,name:vihat_esms_rating.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Thẻ hỗ trợ"
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_form_submit
+msgid "Hoàn thành"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_helpdesk_ticket__id
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_link_tracker__id
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_sms_brandname__id
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_vihat_send_sms_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_helpdesk_ticket____last_update
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_link_tracker____last_update
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_sms_brandname____last_update
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_vihat_send_sms_wizard____last_update
+msgid "Last Modified on"
+msgstr "Sửa lần cuối"
+
+#. module: vihat_esms_rating
+#: model:ir.model,name:vihat_esms_rating.model_link_tracker
+msgid "Link Tracker"
+msgstr "Kiểm soát đường dẫn"
+
+#. module: vihat_esms_rating
+#: model_terms:ir.actions.act_window,help:vihat_esms_rating.action_open_rating_views
+msgid "No rating yet"
+msgstr "Chưa có xếp hạng"
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_form_submit
+msgid "Nội dung đánh giá"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model:ir.ui.menu,name:vihat_esms_rating.helpdesk_rating
+msgid "Rating"
+msgstr "Xếp hạng"
+
+#. module: vihat_esms_rating
+#: model:ir.actions.act_window,name:vihat_esms_rating.action_open_rating_views
+msgid "Ratings"
+msgstr "Xếp hạng"
+
+#. module: vihat_esms_rating
+#: model:ir.model,name:vihat_esms_rating.model_sms_brandname
+msgid "SMS Brandname"
+msgstr "Tin nhắn thương hiệu"
+
+#. module: vihat_esms_rating
+#: model_terms:ir.actions.act_window,help:vihat_esms_rating.action_open_rating_views
+msgid "There is no rating for this object at the moment."
+msgstr "Chưa có xếp hạng nào cho đối tượng này."
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_gurantee_rating_sms
+msgid ""
+"Thong tin lap dat/bao tri cua Quy khach da hoan thanh. Nham nang cao chat "
+"luong dich vu, Quy khach vui long danh gia chat luong dich vu theo Link:"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.template_installation_rating_sms
+msgid ""
+"Thong tin sua chua/bao hanh cua Quy khach da hoan thanh. Nham nang cao chat "
+"luong dich vu, Quy khach vui long danh gia chat luong dich vu theo Link:"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_link_tracker__short_url
+msgid "Tracked URL"
+msgstr "Theo dõi đường dẫn"
+
+#. module: vihat_esms_rating
+#: model:ir.model,name:vihat_esms_rating.model_vihat_send_sms_wizard
+msgid "Vihat Send SMS Wizard"
+msgstr "Gửi tin"
+
+#. module: vihat_esms_rating
+#: model:ir.model.fields,field_description:vihat_esms_rating.field_sms_brandname__website_id
+msgid "Website"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: model_terms:ir.ui.view,arch_db:vihat_esms_rating.rating_web_form_submit
+msgid "Xin chào Quý khách"
+msgstr ""
+
+#. module: vihat_esms_rating
+#: code:addons/vihat_esms_rating/controller/main.py:0
+#, python-format
+msgid "highly dissatisfied"
+msgstr "Rất không hài lòng"
+
+#. module: vihat_esms_rating
+#: code:addons/vihat_esms_rating/controller/main.py:0
+#, python-format
+msgid "not satisfied"
+msgstr "Không hài lòng"
+
+#. module: vihat_esms_rating
+#: code:addons/vihat_esms_rating/controller/main.py:0
+#, python-format
+msgid "satisfied"
+msgstr "Hài lòng"

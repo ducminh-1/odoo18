@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.crm</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="5" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div
+                    class="app_settings_block"
+                    data-string="guarantee_register"
+                    string="Guarantee Register"
+                    data-key="base"
+                    groups="sales_team.group_sale_manager"
+                >
+                    <block title="Gurantee Register Notification">
+                        <setting
+                            help="Automatic SMS sent after the customer has registered the guarantee."
+                        >
+                            <field
+                                name="guarantee_registers_sms_brand_name_id"
+                                class="oe_inline"
+                            />
+                            <div invisible="not guarantee_registers_sms_brand_name_id">
+                                <button
+                                    type="action"
+                                    name="%(crm.crm_recurring_plan_action)d"
+                                    string="Manage Recurring Plans"
+                                    icon="oi-arrow-right"
+                                    class="oe_link"
+                                />
+                            </div>
+                        </setting>
+
+                        <setting
+                            id="guarantee_registers_sms_brand_name_id"
+                            title="SMS Brandname"
+                            help="Automatic SMS sent after the customer has registered the guarantee."
+                        >
+                            <field name="guarantee_registers_sms_brand_name_id" />
+                            <div invisible="not guarantee_registers_sms_brand_name_id">
+                                <button
+                                    type="action"
+                                    name="%(crm.crm_recurring_plan_action)d"
+                                    string="Manage Recurring Plans"
+                                    icon="oi-arrow-right"
+                                    class="oe_link"
+                                />
+                            </div>
+                        </setting>
+                    </block>
+                    <!--<h2>Gurantee Register Notification</h2>-->
+                    <!--<div class="col-12 col-lg-6 o_setting_box" id="guarantee_register_noti" groups="sales_team.group_sale_manager">-->
+                    <!--    <div class="o_setting_right_pane">-->
+                    <!--        <div class="text-muted">-->
+                    <!--                Automatic SMS sent after the customer has registered the guarantee.-->
+                    <!--        </div>-->
+                    <!--        <div class="row mt16">-->
+                    <!--            <label for="guarantee_registers_sms_brand_name_id" string="SMS Brandname" class="col-lg-4 o_light_label"/>-->
+                    <!--            <field name="guarantee_registers_sms_brand_name_id" class="oe_inline"/>-->
+                    <!--        </div>-->
+                    <!--        <div class="row mt16" attrs="{'invisible': [('guarantee_registers_sms_brand_name_id', '=', False)]}">-->
+                    <!--            <field name="guarantee_registers_zalo_oa_id" class="oe_inline" invisible="1"/>-->
+                    <!--            <label for="guarantee_register_zns_template_id" string="Zalo ZNS Template" class="col-lg-4 o_light_label"/>-->
+                    <!--            <field name="guarantee_register_zns_template_id" class="oe_inline"/>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

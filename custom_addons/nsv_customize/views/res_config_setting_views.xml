@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--    <field name="name">res.config.settings.view.form.inherit.repair</field>-->
+    <!--    <field name="model">res.config.settings</field>-->
+    <!--    <field name="priority" eval="30"/>-->
+    <!--    <field name="inherit_id" ref="base.res_config_settings_view_form"/>-->
+    <!--    <field name="arch" type="xml">-->
+    <!--        <xpath expr="//div[hasclass('settings')]" position="inside">-->
+    <!--            <div class="app_settings_block" data-string="Repair" string="Repair" data-key="repair" groups="stock.group_stock_manager">-->
+    <!--                <h2>Default location configuration</h2>-->
+    <!--                <div class="row mt16 o_settings_container">-->
+    <!--                    <div class="col-12 col-lg-6 o_setting_box">-->
+    <!--                        <div class="o_setting_right_pane">-->
+    <!--                            <span class="o_form_label">Add Parts</span>-->
+    <!--                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/>-->
+    <!--                            <div class="text-muted">-->
+    <!--                            Set the location where added parts are-->
+    <!--                            </div>-->
+    <!--                            <div class="content-group">-->
+    <!--                                <div class="mt16 row">-->
+    <!--                                    <label for="add_repair_src_location_id" string="From Location" class="col-3 col-lg-3 o_light_label"/>-->
+    <!--                                    <field name="add_repair_src_location_id" class="oe_inline"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="content-group">-->
+    <!--                                <div class="mt16 row">-->
+    <!--                                    <label for="add_repair_des_location_id" string="To Location" class="col-3 col-lg-3 o_light_label"/>-->
+    <!--                                    <field name="add_repair_des_location_id" class="oe_inline"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="col-12 col-lg-6 o_setting_box">-->
+    <!--                        <div class="o_setting_right_pane">-->
+    <!--                            <span class="o_form_label">Remove Parts</span>-->
+    <!--                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/>-->
+    <!--                            <div class="text-muted">-->
+    <!--                            Set the location where removed parts are-->
+    <!--                            </div>-->
+    <!--                            <div class="content-group">-->
+    <!--                                <div class="mt16">-->
+    <!--                                    <label for="rm_repair_src_location_id" string="From Location" class="col-3 col-lg-3 o_light_label"/>-->
+    <!--                                    <field name="rm_repair_src_location_id" class="oe_inline"/>-->
+    <!--                                </div>-->
+    <!--                                <div class="mt16">-->
+    <!--                                    <label for="rm_repair_des_location_id" string="To Location" class="col-3 col-lg-3 o_light_label"/>-->
+    <!--                                    <field name="rm_repair_des_location_id" class="oe_inline"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </field>-->
+    <!--</record>-->
+    <record id="crm_res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="30" />
+        <field name="inherit_id" ref="crm.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='crm_lead']" position="after">
+                <!--<div class="row mt16 o_settings_container">-->
+                <!--    <div class="col-12 col-lg-6 o_setting_box">-->
+                <!--        <div class="o_setting_right_pane">-->
+                <!--            <span class="o_form_label">Default Informations</span>-->
+                <!--            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." role="img"/>-->
+                <!--            <div class="text-muted">-->
+                <!--                Set the salesperson/ team sale for birthday lead-->
+                <!--            </div>-->
+                <!--            <div class="content-group">-->
+                <!--                <div class="mt16 row">-->
+                <!--                    <label for="birthday_lead_user_id" string="Salesperson" class="col-3 col-lg-3 o_light_label"/>-->
+                <!--                    <field name="birthday_lead_user_id" class="oe_inline"/>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <div class="content-group">-->
+                <!--                <div class="mt16 row">-->
+                <!--                    <label for="birthday_lead_team_id" string="Sale Team" class="col-3 col-lg-3 o_light_label"/>-->
+                <!--                    <field name="birthday_lead_team_id" class="oe_inline"/>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <setting
+                    string="Set the salesperson/ team sale for birthday lead"
+                    help="Set the salesperson/ team sale for birthday lead"
+                    company_dependent="1"
+                >
+                    <!--<field name="crm_use_auto_assignment"/>-->
+                    <!--<div class="text-muted">-->
+                    <!--    <span>Periodically assign leads based on rules</span><br />-->
+                    <!--    <span invisible="not crm_use_auto_assignment">-->
+                    <!--        All sales teams will use this setting by default unless-->
+                    <!--        specified otherwise.-->
+                    <!--    </span>-->
+                    <!--</div>-->
+                    <div class="row flex-row flex-nowrap mt16">
+                        <label
+                            string="Salesperson"
+                            for="birthday_lead_user_id"
+                            class="col-lg-3 o_light_label"
+                        />
+                        <field name="birthday_lead_user_id" />
+                        <!--<button name="action_crm_assign_leads" type="object" class="btn-link w-auto">-->
+                        <!--    <i title="Update now" role="img" aria-label="Update now" class="fa fa-fw fa-refresh"></i>-->
+                        <!--</button>-->
+                    </div>
+                    <div class="row mt16">
+                        <label
+                            string="Sale Team"
+                            for="birthday_lead_team_id"
+                            class="col-lg-3 o_light_label"
+                        />
+                        <field name="birthday_lead_team_id" />
+
+                        <!--<field name="crm_auto_assignment_interval_type"-->
+                        <!--    class="oe_inline"-->
+                        <!--    required="crm_use_auto_assignment and crm_auto_assignment_action == 'auto'"/>-->
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+    <record
+        id="loyalty_downgrade_res_config_settings_view_form_inherit"
+        model="ir.ui.view"
+    >
+        <field name="name">res.config.settings.view.form.inherit.nsv_customize</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="30" />
+        <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <!--<xpath expr="//div[hasclass('settings')]/div[contains(@data-string,'Sales')]/div[@name='quotation_order_setting_container']/div[@id='order_warnings']" position="after">-->
+            <!--    <div class="col-12 col-lg-6 o_setting_box" id="loyalty_downgrade_settings" groups="sales_team.group_sale_manager">-->
+            <!--        <div class="o_setting_right_pane">-->
+            <!--            <span class="o_form_label">Months to downgrade</span>-->
+            <!--            <div class="text-muted">-->
+            <!--                Set the number of months without order to downgrade a customer to a lower loyalty level.-->
+            <!--            </div>-->
+            <!--            <div class="row mt16">-->
+            <!--                <label for="months_to_downgrade" string="Months to downgrade" class="col-lg-4 o_light_label"/>-->
+            <!--                <field name="months_to_downgrade" class="oe_inline"/>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</xpath>-->
+            <xpath expr="//setting[@id='quotation_validity_days']" position="after">
+                <setting
+                    string="Months to downgrade"
+                    help="Set the number of months without order to downgrade a customer to a lower loyalty level."
+                    company_dependent="1"
+                >
+                    <div class="row mt16">
+                        <label
+                            for="months_to_downgrade"
+                            string="Months to downgrade"
+                            class="col-lg-4 o_light_label"
+                        />
+                        <field name="months_to_downgrade" class="oe_inline" />
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

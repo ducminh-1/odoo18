@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_view_form_inherit" model="ir.ui.view">
+        <field name="name">ir.ui.view form.inherit</field>
+        <field name="model">ir.ui.view</field>
+        <field name="inherit_id" ref="base.view_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='xml_id']" position="after">
+                <field name="model" invisible="1" />
+                <field
+                    name="zalo_oa_id"
+                    options="{'invisible': [('zalo_oa_id','=',False)]}"
+                />
+                <field
+                    name="zns_template_id"
+                    options="{'invisible': [('zns_template_id','=',False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_view_stock_quant_tree_editable_inherit" model="ir.ui.view">
+        <field name="name">nsv.stock.quant.tree.editable.inherit</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_editable" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="product_categ_id" readonly="1" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+    <record id="nsv_quant_search_view_inherit" model="ir.ui.view">
+        <field name="name">nsv.stock.quant.search.inherit</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.quant_search_view" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//filter[@name='productgroup']" position="after">
+                    <filter
+                        string='Product Category'
+                        name="product_categ_group"
+                        context="{'group_by': 'product_categ_id'}"
+                    />
+                    <filter
+                        string='Product Report Category'
+                        name="product_category_group"
+                        context="{'group_by': 'product_report_category'}"
+                    />
+                    <!--<filter string='Product Brand' name="product_brand_group" context="{'group_by': 'product_brand_id'}"/>-->
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

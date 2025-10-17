@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_misa_sa_vouchers"
+        name="Misa SA Vouchers"
+        parent="account.menu_finance_receivables"
+        action="misa_sa_voucher_action"
+        sequence="22"
+        groups="account.group_account_user"
+    />
+    <menuitem
+        id="menu_misa_configuration"
+        name="Misa Settings"
+        parent="account.menu_finance_configuration"
+        sequence="12"
+        groups="account.group_account_manager"
+    >
+        <menuitem
+            id="menu_misa_app"
+            name="Misa App"
+            action="misa_app_action"
+            sequence="1"
+            groups="account.group_account_manager"
+        />
+        <menuitem
+            id="menu_misa_products"
+            name="MISA Products"
+            action="action_misa_product"
+            sequence="2"
+            groups="account.group_account_manager"
+        />
+    </menuitem>
+</odoo>

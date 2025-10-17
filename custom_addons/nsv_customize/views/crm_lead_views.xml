@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="nsv_crm_lead_view_form" model="ir.ui.view">
+        <field name="name">nsv.crm.lead.view.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field
+                    name="employee_id"
+                    options="{'no_create': True, 'no_edit': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

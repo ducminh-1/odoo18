@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_stock_warehouse_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.stock.warehouse.form.view.inherit</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_resupply']" position="after">
+                <group
+                    name="analytic_account"
+                    string="Accounting Analytics"
+                    groups="account.group_account_manager"
+                >
+                    <!--    <field name="analytic_tag_id" domain="[('tag_type', '=', 'pos')]" options="{'no_create': True}"/>-->
+                    <field name="analytic_account_id" options="{'no_create': True}" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="nsv_stock_warehouse_tree_inherit" model="ir.ui.view">
+        <field name="name">nsv.stock.warehouse.tree.view.inherit</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_stock_id']" position="after">
+                <!--<field name="analytic_tag_id" widget="tag" options="{'no_create': True}"/>-->
+                <field name="analytic_account_id" options="{'no_create': True}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

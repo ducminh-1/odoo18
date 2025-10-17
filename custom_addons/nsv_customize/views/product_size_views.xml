@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="product_size_view_form" model="ir.ui.view">
+            <field name="name">nsv.product.size.form</field>
+            <field name="model">res.size</field>
+            <field name="arch" type="xml">
+                <form string="Size">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="length" />
+                            <field name="width" />
+                            <field name="height" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="product_size_tree" model="ir.ui.view">
+            <field name="name">nsv.product.size.tree</field>
+            <field name="model">res.size</field>
+            <field name="arch" type="xml">
+                <list string="Product Size">
+                    <field name="name" />
+                    <field name="length" />
+                    <field name="width" />
+                    <field name="height" />
+                </list>
+            </field>
+        </record>
+        <record id="action_product_size" model="ir.actions.act_window">
+            <field name="name">Product Size</field>
+            <field name="res_model">res.size</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>

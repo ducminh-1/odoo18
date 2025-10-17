@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="ir_cron_lead_partner_birthday" model="ir.cron" forcecreate="True">
+        <field name="name">Leads Partner Birthday</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <!--<field name="numbercall">-1</field>-->
+        <field name="model_id" ref="model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">model.cron_partner_birthday_lead()</field>
+    </record>
+    <record
+        id="ir_cron_update_partner_loyalty_level"
+        model="ir.cron"
+        forcecreate="True"
+    >
+        <field name="name">Update Partner Loyalty Level</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <!--<field name="numbercall">-1</field>-->
+        <field name="model_id" ref="model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">model.cron_update_loyalty_level()</field>
+    </record>
+    <record
+        id="ir_cron_update_partner_wrong_loyalty_point"
+        model="ir.cron"
+        forcecreate="True"
+    >
+        <field name="name">Update Partner Wrong Loyalty Point</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <!--<field name="numbercall">-1</field>-->
+        <field name="model_id" ref="model_res_partner" />
+        <field name="state">code</field>
+        <field name="code">model.cron_update_wrong_loyalty_point()</field>
+    </record>
+</odoo>

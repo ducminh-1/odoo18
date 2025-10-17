@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="voip_call_log_tree_view" model="ir.ui.view">
+        <field name="name">voip.call.log.tree</field>
+        <field name="model">voip.call.log</field>
+        <field name="arch" type="xml">
+            <list string="Voip Call Logs" create="0" edit="0">
+                <field name="name" />
+                <field name="commercial_partner_id" />
+                <field name="source_number" />
+                <field name="destination_number" />
+                <field name="user_id" />
+                <field name="direction" />
+                <field name="disposition" />
+                <field name="duration" />
+                <field name="create_date" />
+            </list>
+        </field>
+    </record>
+    <record id="voip_call_log_form_view" model="ir.ui.view">
+        <field name="name">voip.call.log.tree.form.view</field>
+        <field name="model">voip.call.log</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="direction" />
+                            <field name="source_number" />
+                            <field name="destination_number" />
+                        </group>
+                        <group>
+                            <field name="disposition" />
+                            <field name="record_seconds" />
+                            <field name="duration" />
+                            <field name="time_start_to_answer" />
+                            <field name="create_date" />
+                            <field name="write_date" />
+                            <field name="recording_file" groups="base.group_system" />
+                        </group>
+                        <group>
+                            <field name="sip_user" />
+                            <field name="user_fullname" string="User Name" />
+                            <field name="user_id" />
+                        </group>
+                        <group>
+                            <field name="customer_fullname" string="Customer Name" />
+                            <field name="partner_id" />
+                            <field name="commercial_partner_id" />
+                            <field name="note" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="open_call_logs" model="ir.actions.act_window">
+        <field name="name">Omicall Logs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">voip.call.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_call_logs"
+        name="Omicall Logs"
+        parent="contacts.menu_contacts"
+        action="open_call_logs"
+        sequence="3"
+    />
+</odoo>

@@ -1,0 +1,301 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* approvals_pricelist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-08 09:02+0000\n"
+"PO-Revision-Date: 2025-04-08 09:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__apply_partner_ids
+msgid "Apply to Partners"
+msgstr "Áp dụng cho đối tác"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "Approve"
+msgstr "Duyệt"
+
+#. module: approvals_pricelist
+#: model:mail.activity.type,name:approvals_pricelist.mail_activity_data_product_pricelist
+msgid "Approve product.pricelist"
+msgstr "Phê duyệt bảng giá"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__approved
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__request_status__approved
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__approved
+msgid "Approved"
+msgstr "Đã duyệt"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__approver_sequence
+msgid "Approver Sequence"
+msgstr "Trình tự phê duyệt"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "Approver(s)"
+msgstr "Người duyệt"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__approver_ids
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.view_company_form
+msgid "Approvers"
+msgstr "Người duyệt"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__can_view_lognote
+msgid "Can View Lognote"
+msgstr "Có thể xem ghi chú"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__cancel
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__request_status__cancel
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__cancel
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: approvals_pricelist
+#: model:ir.model,name:approvals_pricelist.model_res_company
+msgid "Companies"
+msgstr "Công ty"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__company_id
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__company_id
+msgid "Company"
+msgstr "Công ty"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__create_uid
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__create_date
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__display_name
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__edit_from_approved
+msgid "Edit From Approved"
+msgstr "Chỉnh sửa từ đã duyệt"
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "Edit Pricelist"
+msgstr "Chỉnh sửa bảng giá"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__existing_user_ids
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__existing_user_ids
+msgid "Existing User"
+msgstr "Người dùng hiện tại"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__from_price_list_id
+msgid "From Pricelist"
+msgstr "Từ bảng giá"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view_search
+msgid "Group By"
+msgstr "Nhóm theo"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__id
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__id
+msgid "ID"
+msgstr "ID"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__write_uid
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__write_date
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: approvals_pricelist
+#: model:ir.model,name:approvals_pricelist.model_model_approver
+msgid "Model Approver"
+msgstr "Phê duyệt model"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__new
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__new
+msgid "New"
+msgstr "Mới"
+
+#. module: approvals_pricelist
+#: model:ir.model,name:approvals_pricelist.model_product_pricelist
+msgid "Pricelist"
+msgstr "Bảng giá"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__pricelist_approval
+msgid "Pricelist Approval"
+msgstr "Phê duyệt bảng giá"
+
+#. module: approvals_pricelist
+#: model:ir.model,name:approvals_pricelist.model_pricelist_approver
+#: model:ir.model.fields,field_description:approvals_pricelist.field_res_company__pricelist_approver_ids
+msgid "Pricelist Approvers"
+msgstr "Người duyệt bảng giá"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view_search
+msgid "Pricelist Name"
+msgstr "Tên bảng giá"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "Refuse"
+msgstr "Từ chối"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__refused
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__request_status__refused
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__refused
+msgid "Refused"
+msgstr "Từ chối"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__request_status
+msgid "Request Status"
+msgstr "Trạng thái phê duyệt"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__required
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__required
+msgid "Required"
+msgstr "Bắt buộc"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__res_id
+msgid "Resource ID"
+msgstr "Mã tài nguyên"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__res_model
+msgid "Resource Model"
+msgstr "Mô hình tài nguyên"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__sequence
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__sequence
+msgid "Sequence"
+msgstr "Trình tự"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__status
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view_search
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "Submit"
+msgstr "Gửi"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__request_status__pending
+msgid "Submitted"
+msgstr "Đã gửi"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__pending
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__pending
+msgid "To Approve"
+msgstr "Đang chờ duyệt"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__request_status__new
+msgid "To Submit"
+msgstr "Chờ gửi duyệt"
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "Update"
+msgstr "Cập nhật"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_model_approver__user_id
+#: model:ir.model.fields,field_description:approvals_pricelist.field_pricelist_approver__user_id
+msgid "User"
+msgstr "Người dùng"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields,field_description:approvals_pricelist.field_product_pricelist__user_status
+msgid "User Status"
+msgstr "Trạng thái người dùng"
+
+#. module: approvals_pricelist
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__model_approver__status__waiting
+#: model:ir.model.fields.selection,name:approvals_pricelist.selection__product_pricelist__user_status__waiting
+msgid "Waiting"
+msgstr "Đang chờ"
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You cannot approve before the previous approver."
+msgstr "Bạn không thể duyệt khi người duyệt trước chưa duyệt."
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You cannot archive a pricelist."
+msgstr "Bạn không thể lưu trữ bảng giá."
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You cannot copy a pricelist."
+msgstr "Bạn không thể sao chép bảng giá."
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You cannot modify an approved pricelist."
+msgstr "Bạn không thể sửa đổi bảng giá đã được phê duyệt."
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You cannot unarchive a pricelist."
+msgstr "Bạn không thể bỏ lưu trữ bảng giá."
+
+#. module: approvals_pricelist
+#. odoo-python
+#: code:addons/approvals_pricelist/models/product_pricelist.py:0
+msgid "You have to add at least one approver."
+msgstr "Bạn phải thêm ít nhất một người duyệt."
+
+#. module: approvals_pricelist
+#: model_terms:ir.ui.view,arch_db:approvals_pricelist.product_pricelist_view
+msgid "approver"
+msgstr "người duyệt"

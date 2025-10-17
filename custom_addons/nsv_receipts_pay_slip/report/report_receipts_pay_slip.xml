@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="print_receipts_pay_slip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="data_report_dpi" t-value="90" />
+                <t t-call="nsv_customize.nsv_internal_layout">
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;line-height: 14px;"
+                    >
+                        <div class="row">
+                            <div class="col-xs-7">
+                                <div>
+                                    <b>
+                                        <span t-esc="o.company_id.name" />
+                                    </b>
+                                </div>
+                                <div>
+                                    <span t-esc="o.company_id.street" />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 text-center">
+                                <b>Mẫu số: 01-TT</b>
+                                <br />
+                                <i>(Ban hành theo QĐ số 15/2006/QĐ-BTC<br
+                                />ngày 20/03/2006 của Bộ trưởng BTC)</i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div
+                                class="col-3"
+                                style="margin-top: 10px; margin-bottom:40px;"
+                            >
+                                <br />
+                            </div>
+                            <div class="col-6 text-center">
+	                			<div style="font-size: 28px;">
+                                <b>
+                                    <t t-if="o.amount&lt;0">
+                                        <strong>PHIẾU CHI</strong>
+                                    </t>
+                                    <t t-else="">
+                                        <strong>PHIẾU THU</strong>
+                                    </t>
+                                </b>
+                            </div>`
+                				<div>
+                                <i>
+                                    <span
+                                        t-esc="o.date.strftime('Ngày %d tháng %m năm %Y')"
+                                    />
+                                </i>
+                            </div>
+	                		</div>
+                            <div class="col-3">
+                                <div>
+                                    <div>Quyển sổ:
+										<span t-esc="o.journal_id.code" />
+									</div>
+                                    <div>Số: <span t-esc="o.number or ''" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="box_boss">
+                                <table
+                                    class="o_total_table table table-borderless"
+                                    style="width:180px; float:right;"
+                                >
+                                    <tr>
+                                        <td style="widht:60px">Nợ:</td>
+                                        <td>
+                                            <t
+                                                t-esc="o.get_account_debit_credit().get('debit', '')"
+                                            />
+                                        </td>
+                                        <td class="text-right">
+                                            <t
+                                                t-esc="'{:20,.0f}'.format(o.amount &gt; 0 and o.amount or o.amount*-1)"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Có:</td>
+                                        <td>
+                                            <t
+                                                t-esc="o.get_account_debit_credit().get('credit', '')"
+                                            />
+                                        </td>
+                                        <td class="text-right">
+                                            <t
+                                                t-esc="'{:20,.0f}'.format(o.amount &gt; 0 and o.amount or o.amount*-1)"
+                                            />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table
+                                    class="o_total_table table table-borderless"
+                                    style="width: 645px; float:left;"
+                                >
+                                    <tr>
+                                        <td>
+                                            <t t-if="o.amount&lt;0">Người nhận tiền</t>
+                                            <t t-else="">Người nộp tiền</t>
+                                            <t>: </t>
+                                            <t t-esc="o.payer or ''" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Địa chỉ: <span
+                                            t-esc="o.partner_id.name"
+                                        /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lý do <t t-if="o.amount&lt;0">chi</t><t
+                                            t-else=""
+                                        >nộp</t>: <t t-esc="o.payment_ref" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Số tiền:<span
+                                            style="margin-left: 50px;"
+                                            t-esc="'{:20,.0f}'.format(o.amount &gt; 0 and o.amount or o.amount*-1)"
+                                        /> <t
+                                            t-esc="o.journal_id.currency_id.name"
+                                        /></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="40px">
+                                            <div
+                                                style="height:100%; float: left; margin-right: 30px;"
+                                            >Viết bằng chữ:</div>
+                                            <span t-esc="o.get_amount_text(o.amount)" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kèm theo: <span style="margin-left: 30px;">
+                                            <u>0 Chứng từ gốc</u>
+                                        </span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7">
+                                <br />
+                            </div>
+                            <div class="col-xs-5 text-center">
+                                <i>
+                                    <span
+                                        style="margin-bottom: 10px;"
+                                        t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                                    />
+                                </i>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 75px; margin-top:10px">
+                            <table
+                                class="o_total_table table table-borderless"
+                                width="100%"
+                            >
+                                <tr style="line-height: 15px;">
+                                    <td width="20%" class="text-center">
+                                        <b>Thủ trưởng đơn vị</b>
+                                    </td>
+                                    <td width="20%" class="text-center">
+                                        <b>Kế toán trưởng</b>
+                                    </td>
+                                    <td width="20%" class="text-center">
+                                        <b>
+                                            <t t-if="o.amount&lt;0">Thủ quỹ</t>
+                                            <t t-else="">Người nộp tiền</t>
+                                        </b>
+                                    </td>
+                                    <td width="20%" class="text-center">
+                                        <b>Người lập biểu</b>
+                                    </td>
+                                    <td width="20%" class="text-center">
+                                        <b>
+                                            <t t-if="o.amount&lt;0">Người nhận tiền</t>
+                                            <t t-else="">Thủ quỹ</t>
+                                        </b>
+                                    </td>
+                                </tr>
+                                <tr style="line-height: 15px;">
+                                    <td class="text-center">
+                                        <i>(Ký, họ tên, đóng dấu)</i>
+                                    </td>
+                                    <td class="text-center">
+                                        <i>(Ký, họ tên)</i>
+                                    </td>
+                                    <td class="text-center">
+                                        <i>(Ký, họ tên)</i>
+                                    </td>
+                                    <td class="text-center">
+                                        <i>(Ký, họ tên)</i>
+                                    </td>
+                                    <td class="text-center">
+                                        <i>(Ký, họ tên)</i>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <span t-esc="'Đã nhận đủ số tiền (Viết bằng chữ): '" />
+                            <span
+                                style="border-bottom: 1px solid; width: 100%;"
+                                t-esc="o.get_amount_text(o.amount)"
+                            />
+
+                            <!--<div class="inline text-nowrap">Đã nhận đủ số tiền (Viết bằng chữ): </div>-->
+                            <!--<div class="col-6" style="border-bottom: 1px solid; " t-esc="o.get_amount_text(o.amount)"/>-->
+                        </div>
+                        <div class="row">
+                            <div
+                                class="box_boss text-right"
+                                style="margin-top: 20px;font-size: 14px;"
+                            >
+                                <span
+                                    style="text-transform: lowercase;"
+                                    t-esc="context_timestamp(datetime.datetime.now()).strftime('%I:%M:%S %p')"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                		.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+						  position: relative;
+						  float: left;
+						}
+						.col-xs-9 {
+						  width: 75%;
+						}
+						.col-xs-8 {
+						  width: 66.66666667%;
+						}
+						.col-xs-7 {
+						  width: 58.33333333%;
+						}
+						.col-xs-6 {
+						  width: 50%;
+						}
+						.col-xs-5 {
+						  width: 41.66666667%;
+						}
+						.col-xs-4 {
+						  width: 33.33333333%;
+						}
+						.col-xs-3 {
+						  width: 25%;
+						}
+                		.text-center {
+                			text-align: center;
+                		}
+                		.text-right {
+                			text-align: right;
+                		}
+                		.box_boss {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+                		.loan {
+						    position: absolute;
+						    top: 0;
+						    right: 0;
+						    width: 250px;
+						    text-align: -webkit-left;
+						}
+						.loan table {
+						    width: 100%;
+						}
+						.loan table td{
+						    text-align: right;
+						}
+			        </style>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="account_print_receipts_pay_slip" model="ir.actions.report">
+        <field name="name">Print receipts pay slip</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_receipts_pay_slip.print_receipts_pay_slip</field>
+        <field name="report_file">nsv_receipts_pay_slip.print_receipts_pay_slip</field>
+        <field
+            name="binding_model_id"
+            ref="account.model_account_bank_statement_line"
+        />
+        <field name="binding_type">report</field>
+        <field
+            name="paperformat_id"
+            ref="nsv_customize.nsv_internal_paperformat_a5_lanscape"
+        />
+    </record>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nsv_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ref']" position="after">
+                <!--<field name="invoice_number" string="Số hoá đơn" attrs="{'invisible': [('invoice_number', '=', False)]}"/>-->
+                <field
+                    name="invoice_number"
+                    string="Số hoá đơn"
+                    invisible="not invoice_number"
+                />
+            </xpath>
+            <xpath expr="//div[@name='date_planned_div']" position="after">
+                <field name="user_id" position="move" />
+                <field name="company_id" position="move" />
+                <xpath expr="//field[@name='picking_type_id']" position="move" />
+                <xpath expr="//field[@name='payment_term_id']" position="move" />
+            </xpath>
+            <field name="taxes_id" position="after">
+                <field name="product_size" optional="hide" />
+                <field name="carton_size" optional="hide" widget="many2many_tags" />
+                <field name="weight" sum="Total Weight" optional="hide" />
+                <field name="volume" sum="Total Volume" optional="hide" />
+            </field>
+            <!--TODO: Bao voi anh Huy khong co may thong tin nay dau-->
+            <!--<xpath expr="//field[@name='order_line']//field[@name='account_analytic_id']" position="attributes">-->
+            <!--	<attribute name="groups" add="account.group_account_manager" separator=","/>-->
+            <!--         </xpath>-->
+            <!--<xpath expr="//field[@name='order_line']//field[@name='analytic_tag_ids']" position="attributes">-->
+            <!--	<attribute name="groups" add="account.group_account_manager" separator=","/>-->
+            <!--         </xpath>-->
+        </field>
+    </record>
+</odoo>

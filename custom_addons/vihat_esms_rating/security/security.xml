@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record model="ir.model.access" id="link_tracker.access_link_tracker_user">
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">0</field>
+        </record>
+    </data>
+</odoo>

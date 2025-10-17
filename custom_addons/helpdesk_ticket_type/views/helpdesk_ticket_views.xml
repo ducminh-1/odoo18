@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="helpdesk_sla_view_form_inherit_helpdesk_ticket_type" model="ir.ui.view">
+        <field name="name">helpdesk.sla.view.form.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.sla</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_sla_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='priority']" position="after">
+                <field name="ticket_type_id" widget="selection" />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_tickets_view_search_inherit_helpdesk_ticket_type"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >helpdesk.ticket.search.base.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='team']" position="after">
+                <filter
+                    string="Ticket Type"
+                    name="ticket_type_id"
+                    context="{'group_by':'ticket_type_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_ticket_view_search_analysis_closed_inherit_helpdesk_ticket_type"
+        model="ir.ui.view"
+    >
+        <field name="name">helpdesk.ticket.search.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field
+            name="inherit_id"
+            ref="helpdesk.helpdesk_ticket_view_search_analysis_closed"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="ticket_type_id" />
+            </field>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_tickets_view_tree_inherit_helpdesk_ticket_type"
+        model="ir.ui.view"
+    >
+        <field name="name">helpdesk.ticket.list.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="ticket_type_id" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_ticket_view_search_analysis_inherit_helpdesk_ticket_type"
+        model="ir.ui.view"
+    >
+        <field name="name">helpdesk.ticket.search.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_search_analysis" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="ticket_type_id" />
+            </field>
+            <xpath expr="//filter[@name='team']" position="after">
+                <filter
+                    string="Ticket Type"
+                    name="ticket_type_id"
+                    context="{'group_by':'ticket_type_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_ticket_view_form_inherit_helpdesk_ticket_type"
+        model="ir.ui.view"
+    >
+        <field name="name">helpdesk.ticket.form.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+        <field name="arch" type="xml">
+            <field name="domain_user_ids" position="after">
+                <field name="ticket_type_id" />
+            </field>
+        </field>
+    </record>
+</odoo>

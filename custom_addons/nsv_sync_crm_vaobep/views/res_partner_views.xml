@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_partners_form_crm1_inherit_guarantee" model="ir.ui.view">
+            <field name="name">res.partner.inherit.guarantee</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="crm.view_partners_form_crm1" />
+            <field name="arch" type="xml">
+                <button name="action_view_opportunity" position="after">
+                    <!--<button class="oe_stat_button o_res_partner_tip_opp" type="object" name="action_view_patient_opportunity" icon="fa-wrench" attrs="{'invisible': [('guarantee_count','=',0)]}">-->
+                    <!--    <field string="Guarantee Registers" name="guarantee_count" widget="statinfo"/>-->
+                    <!--</button>-->
+                    <button
+                        class="oe_stat_button o_res_partner_tip_opp"
+                        type="object"
+                        name="action_view_patient_opportunity"
+                        icon="fa-wrench"
+                        invisible="guarantee_count == 0"
+                    >
+                        <field
+                            string="Guarantee Registers"
+                            name="guarantee_count"
+                            widget="statinfo"
+                        />
+                    </button>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

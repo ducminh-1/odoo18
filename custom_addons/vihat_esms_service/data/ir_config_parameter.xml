@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!--API authentication Bulk SMS WebService informations-->
+    <record model="ir.config_parameter" id="vihat_api_key">
+        <field name="key">vihat_api_key</field>
+        <field name="value">870FD07C45CA2AF182471C4B1852E9</field>
+    </record>
+
+    <record model="ir.config_parameter" id="vihat_secret_key">
+        <field name="key">vihat_secret_key</field>
+        <field name="value">9C617EFA75C78497147E17FA554622</field>
+    </record>
+
+    <record model="ir.config_parameter" id="vihat_sms_callback_url">
+        <field name="key">vihat_sms_callback_url</field>
+        <field name="value">https://erp.nguonsongviet.vn/sms/receivecallback</field>
+    </record>
+
+    <record model="ir.config_parameter" id="vihat_sms_url">
+        <field name="key">vihat_sms_url</field>
+        <field
+            name="value"
+        >https://rest.esms.vn/MainService.svc/json/MultiChannelMessage/</field>
+    </record>
+</odoo>

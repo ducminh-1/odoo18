@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="loyalty_level_view_form" model="ir.ui.view">
+            <field name="name">nsv.loyalty.level.form</field>
+            <field name="model">loyalty.level</field>
+            <field name="arch" type="xml">
+                <form string="Loyalty Level">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="point_policy" />
+                            <field
+                                name="birthday_coupon_program_id"
+                                options="{'no_create': True}"
+                                domain="[('program_type','in', ('gift_card', 'ewallet'))]"
+                            />
+                            <field name="color" widget="color_picker" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="loyalty_level_view_tree" model="ir.ui.view">
+            <field name="name">nsv.loyalty.level.tree</field>
+            <field name="model">loyalty.level</field>
+            <field name="arch" type="xml">
+                <list string="Loyalty Chanel" editable="bottom">
+                    <field name="name" />
+                    <field name="point_policy" />
+                    <field
+                        name="birthday_coupon_program_id"
+                        options="{'no_create': True}"
+                        domain="[('program_type','in', ('gift_card', 'ewallet'))]"
+                    />
+                    <field name="color" widget="color_picker" />
+                </list>
+            </field>
+        </record>
+
+        <record id="action_loyalty_level_view" model="ir.actions.act_window">
+            <field name="name">Loyalty Levels</field>
+            <field name="res_model">loyalty.level</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="loyalty_level_view_tree" />
+            <field name="view_mode">list</field>
+        </record>
+        <menuitem
+            id="menu_loyalty_level"
+            parent="contacts.res_partner_menu_config"
+            action="action_loyalty_level_view"
+            sequence="2"
+        />
+    </data>
+</odoo>

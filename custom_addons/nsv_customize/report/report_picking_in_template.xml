@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_picking_in">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_internal_layout">
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="row report_header">
+                            <div class="report_header_left">
+                                <p class="mgb-5">
+                                    <b>
+                                        <t
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.name"
+                                        />
+                                    </b>
+                                </p>
+                                <p class="mgb-5">
+                                    <b>
+                                        <t
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.partner_address"
+                                        />
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="report_header_right">
+                                <div class="text-center">
+                                    <b>Mẫu số: 01-VT</b>
+                                </div>
+                                <div class="text-center">
+                                    <i
+                                    >(Ban hành theo QĐ số 15/2006 /QĐ-BTC ngày 20/03/2006 của Bộ trưởng BTC)</i>
+                                </div>
+                            </div>
+                            <div class="row zero_min_height">
+                                <div class="col-12">
+                                    <!--<div style="border-bottom: 1px solid black;"/>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="text-center box_boss">
+                                <span class="title">
+                                    <b>PHIẾU NHẬP KHO</b>
+                                </span>
+                                <br />
+                                <div>
+                                    <i
+                                        t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                                    />
+                                </div>
+                                <div>Số phiếu: <t t-esc="o.name" /></div>
+                            </div>
+                            <!--	                		<div style="position: relative;">-->
+                            <!--	                			<div class="loan">-->
+                            <!--		                			<table>-->
+                            <!--		                				<tr>-->
+                            <!--		                					<td style="widht:60px">Nợ</td>-->
+                            <!--		                					<td><t t-esc="get_account_debit(s)"/></td>-->
+                            <!--		                				</tr>-->
+                            <!--		                				<tr>-->
+                            <!--		                					<td>Có</td>-->
+                            <!--		                					<td><t t-esc="get_account_credit(s)"/></td>-->
+                            <!--		                				</tr>-->
+                            <!--		                			</table>-->
+                            <!--                				</div>-->
+                            <!--                			</div>-->
+                        </div>
+                        <div class="row mb32">
+                            <div class="address-info">
+                                <div class="info-line">
+                                    <span>- Họ và tên người giao:</span>
+                                    <span class="info-content">
+                                        <t t-if="o.user_id.name">
+                                            <t t-esc="o.user_id.name" />
+                                        </t>
+                                    </span>
+                                    <span class="underlined" />
+                                </div>
+                                <div class="info-line">
+                                    <span
+                                    >- Theo ........số.........ngày........tháng........năm............của:</span>
+                                    <span class="info-content" />
+                                    <span class="underlined" />
+                                </div>
+                                <div class="info-line">
+                                    <span>- Địa điểm nguồn:</span>
+                                    <span class="info-content">
+                                        <t
+                                            t-esc="o.location_id and o.location_id.display_name or '' or ''"
+                                        />
+                                    </span>
+                                    <span class="underlined" />
+                                </div>
+                                <div class="info-line">
+                                    <span>- Diễn giải:</span>
+                                    <!--<span class="info-content" style="white-space: pre-wrap;"><t t-esc="o.note"/></span>-->
+                                    <!--<span class="underlined"/>-->
+                                    <div class="oe_structure" />
+                                    <p t-field="o.note" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <table width="100%" class="border-table text-center">
+                                <thead>
+                                    <tr style="background-color: #BBFFC3;">
+                                        <th class="border-table" width="8%">STT</th>
+                                        <th class="border-table">Mã số</th>
+                                        <th class="border-table">Tên vật tư</th>
+                                        <th class="border-table">Kho</th>
+                                        <th class="border-table">Đvt</th>
+                                        <th class="border-table">SL</th>
+                                        <th class="border-table">Đơn giá</th>
+                                        <th class="border-table">Thành tiền</th>
+                                        <th class="border-table">Khối lượng</th>
+                                        <th class="border-table">Thể tích</th>
+                                    </tr>
+                                    <tr style="background-color: #BBFFC3;">
+                                        <td class="border-table">A</td>
+                                        <td class="border-table">B</td>
+                                        <td class="border-table">C</td>
+                                        <td class="border-table">D</td>
+                                        <td class="border-table">E</td>
+                                        <td class="border-table">1</td>
+                                        <td class="border-table">2</td>
+                                        <td class="border-table">3</td>
+                                        <td class="border-table">4</td>
+                                        <td class="border-table">5</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t
+                                        t-set="lines"
+                                        t-value="o.move_ids_without_package.filtered(lambda m: m.quantity)"
+                                    />
+                                    <t t-foreach="lines" t-as="line">
+                                        <t t-set="i" t-value="0" />
+                                        <tr>
+                                            <t t-set="i" t-value="i + 1" />
+                                            <td class="border-table">
+                                                <span t-esc="i" />
+                                            </td>
+                                            <td class="border-table text-left">
+                                                <span
+                                                    t-esc="line.product_id.default_code"
+                                                />
+                                            </td>
+                                            <td class="border-table text-left">
+                                                <span t-esc="line.product_id.name" />
+                                            </td>
+                                            <td class="border-table text-left">
+                                                <t
+                                                    t-esc="o.location_dest_id.display_name or ''"
+                                                />
+                                            </td>
+                                            <td class="border-table text-center">
+                                                <span t-esc="line.product_uom.name" />
+                                            </td>
+                                            <td class="border-table text-right">
+                                                <span t-esc="line.quantity" />
+                                            </td>
+                                            <td class="border-table text-right">
+                                                <span
+                                                    t-esc="'{0:,.0f}'.format(line.product_id.lst_price)"
+                                                />
+                                            </td>
+                                            <td class="border-table text-right">
+                                                <span
+                                                    t-esc="'{0:,.0f}'.format(line.product_id.lst_price*line.quantity)"
+                                                />
+                                            </td>
+                                            <td class="border-table text-center">
+                                                <span t-esc="'%.4f' % line.weight" />
+                                            </td>
+                                            <td class="border-table text-center">
+                                                <span t-esc="'%.4f' % line.volume" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr style="font-weight: bold;">
+                                        <td
+                                            class="border-table"
+                                            colspan="5"
+                                        >Tổng cộng:</td>
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="sum(lines.mapped('quantity'))"
+                                            />
+                                        </td>
+                                        <td class="border-table" />
+                                        <t
+                                            t-set="total_ammount"
+                                            t-value="sum(l.product_id.lst_price*l.quantity*1 for l in o.move_ids_without_package.filtered(lambda m: m.product_qty))"
+                                        />
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'{0:,.0f}'.format(total_ammount)"
+                                            />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('weight')), 4)"
+                                            />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('volume')), 4)"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row mgb-5">- Tổng số tiền(Viết bằng chữ): <span
+                            style="margin-left:10px"
+                            t-esc="o.get_amount_text(total_ammount)"
+                        /></div>
+                        <div class="row mgb-5">- Số chứng từ gốc kèm theo:<span
+                            style="margin-left:80px"
+                        >Chứng từ gốc</span></div>
+                        <div class="row text-center">
+                            <div class="col-xs-3">
+                                <br />
+                            </div>
+                            <div class="col-xs-3">
+                                <br />
+                            </div>
+                            <div class="col-xs-2">
+                                <br />
+                            </div>
+                            <div class="col-xs-4 mgb-5">
+                                <i
+                                    t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                                />
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-xs-3">
+                                <div>
+                                    <b>Người lập phiếu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div>
+                                    <b>Người giao hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div>
+                                    <b>Thủ kho</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div>
+                                    <b>Kế toán trưởng</b>
+                                </div>
+                                <div>(Hoặc bộ phận có nhu cầu nhập)<br /><i
+                                >(Ký, họ tên)</i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                		.col-xs-4 {
+						  position: relative;
+						  float: left;
+						  width: 33.33333333%;
+						}
+						.col-xs-3{
+						  position: relative;
+						  float: left;
+						  width: 25%;
+						}
+                		.text-center {
+	                		text-align: center;
+	                	}
+	                	.text-right {
+	                		text-align: right;
+	                	}
+	                	.text-left {
+	                		text-align: left;
+	                	}
+						.report_header_left{
+						  position: relative;
+						  float: left;
+						  width: 60%;
+						}
+						.report_header_right{
+						  position: relative;
+						  float: left;
+						  width: 40%;
+						}
+						.title{
+						    font-size: 28px;
+						    margin-top: 20px;
+						    width: 100%;
+						}
+						.address-info .title {
+						    font-size: 14px;
+						    font-weight: bold;
+						    margin-top: 3px;
+						    float: left;
+						}
+						.mgb-5{
+							margin-bottom: 5px;
+						}
+						.mgb-0{
+							margin-bottom: 0px;
+						}
+						.address-info,.info-line {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.address-info span {
+						    height: 30px;
+						    float: left;
+						    background: #fff;
+						    padding-right: 10px;
+						}
+						.address-info .underlined {
+						    border-bottom: 1px solid #000;
+						    height: 100%;
+						    width: 100%;
+						    position: absolute;
+						    left: 0;
+						    top: 1;
+						    z-index: -1;
+						    height: 20px;
+						}
+						.address-info .info-content{
+							background:none;
+							padding-left: 5px;
+						}
+						.border-table{
+							border: 1px solid #000;
+							padding: 0 5px;
+						}
+						.box_boss {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.loan {
+						    position: absolute;
+						    top: 45px;
+						    right: 0;
+						    width: 100px;
+						    text-align: -webkit-left;
+						}
+						.loan table {
+						    width: 100%;
+						}
+                	</style>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Print 'Phiếu Nhập kho' -->
+    <!--<report-->
+    <!--        id="account_report_picking_in"-->
+    <!--        model="stock.picking"-->
+    <!--        string="Phiếu Nhập Kho"-->
+    <!--        report_type="qweb-pdf"-->
+    <!--        name="nsv_customize.report_picking_in"-->
+    <!--        file="nsv_customize.report_picking_in"-->
+    <!--        menu="True"-->
+    <!--        paperformat="nsv_customize.nsv_paperformat_a4_portrait"-->
+    <!--    />-->
+    <record id="action_report_picking_in" model="ir.actions.report">
+        <field name="name">Phiếu Nhập Kho</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.report_picking_in</field>
+        <field name="report_file">nsv_customize.report_picking_in</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nsv_customize.nsv_paperformat_a4_portrait" />
+    </record>
+</odoo>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="nsv_report_payment_receipt_document">
+        <t t-call="nsv_customize.nsv_internal_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)" />
+            <div
+                class="page"
+                style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 12px;"
+            >
+                <h2 class="text-center">
+                    <span>PHIẾU THANH TOÁN</span>
+                </h2>
+                <br />
+                <div class="row mt64">
+                    <div class="col-7" t-if="o.date">
+                        <strong>Nội dung thanh toán: </strong>
+                        <span t-field="o.name" />
+                    </div>
+                    <div class="col-5" t-if="o.date">
+                        <strong>Ngày thanh toán: </strong>
+                        <span t-field="o.date" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7" t-if="o.partner_type">
+                        <t t-if="o.partner_type == 'customer'">
+                            <strong>Khách hàng: </strong>
+                        </t>
+                        <t t-if="o.partner_type == 'supplier'">
+                            <strong>Nhà cung cấp: </strong>
+                        </t>
+                        <span t-field="o.partner_id" />
+                    </div>
+                    <div class="col-5" t-if="o.payment_method_id">
+                        <strong>Phương thức thanh toán: </strong>
+                        <span t-field="o.payment_method_id.name" />
+                    </div>
+                </div>
+                <div class="row mb64">
+                    <div class="col-7" t-if="o.amount">
+                        <strong>Số tiền thanh toán: </strong>
+                        <span
+                            t-field="o.amount"
+                            t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                        />
+                    </div>
+                    <div class="col-5" t-if="o.memo">
+                        <strong>Ghi chú: </strong>
+                        <span t-field="o.memo" />
+                    </div>
+                </div>
+                <!--                <t i-if="len(o.reconciled_invoice_ids) > 0">-->
+                <!--                <table class="table table-sm">-->
+                <!--                    <thead>-->
+                <!--                        <tr>-->
+                <!--                            <th><span>Ngày lên hoá đơn</span></th>-->
+                <!--                            <th><span>Số hoá đơn</span></th>-->
+                <!--                            <th><span>Liên quan</span></th>-->
+                <!--                            <th class="text-right"><span>Số tiền gốc</span></th>-->
+                <!--                            <th class="text-right"><span>Tổng đã trả</span></th>-->
+                <!--                            <th class="text-right"><span>Số dư</span></th>-->
+                <!--                        </tr>-->
+                <!--                    </thead>-->
+                <!--                    <tbody>-->
+                <!--                        <tr t-foreach="o.reconciled_invoice_ids" t-as="inv">-->
+                <!--                            <td><span t-field="inv.invoice_date"/></td>-->
+                <!--                            <td><span t-field="inv.name"/></td>-->
+                <!--                            <td><span t-field="inv.ref"/></td>-->
+                <!--                            <td class="text-right"><span t-field="inv.amount_total"/></td>-->
+                <!--                            <td class="text-right"><span t-esc="o._get_invoice_payment_amount(inv)" t-options="{'widget': 'monetary', 'display_currency': inv.currency_id}"/></td>-->
+                <!--                            <td class="text-right"><span t-field="inv.amount_residual"/></td>-->
+                <!--                        </tr>-->
+                <!--                    </tbody>-->
+                <!--                </table>-->
+                <!--                </t>-->
+                <br />
+                <div class="row" style="margin-bottom: 100px; margin-top:10px">
+                    <table width="100%">
+                        <tr style="line-height: 15px;">
+                            <td width="20%" class="text-center">
+                                <b>Thủ trưởng đơn vị</b>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <b>Kế toán trưởng</b>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <b>
+                                    <t
+                                        t-if="o.partner_type == 'customer'"
+                                    >Người nộp tiền</t>
+                                    <t t-if="o.partner_type == 'supplier'">Thủ quỹ</t>
+                                </b>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <b>Người lập biểu</b>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <b>
+                                    <t t-if="o.partner_type == 'customer'">Thủ quỹ</t>
+                                    <t
+                                        t-if="o.partner_type == 'supplier'"
+                                    >Người nhận tiền</t>
+                                </b>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 15px;">
+                            <td class="text-center">
+                                <i>(Ký, họ tên, đóng dấu)</i>
+                            </td>
+                            <td class="text-center">
+                                <i>(Ký, họ tên)</i>
+                            </td>
+                            <td class="text-center">
+                                <i>(Ký, họ tên)</i>
+                            </td>
+                            <td class="text-center">
+                                <i>(Ký, họ tên)</i>
+                            </td>
+                            <td class="text-center">
+                                <i>(Ký, họ tên)</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="nsv_report_payment_receipt">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang" />
+                <t
+                    t-call="nsv_customize.nsv_report_payment_receipt_document"
+                    t-lang="lang"
+                />
+            </t>
+        </t>
+    </template>
+    <!--<report-->
+    <!--    id="action_report_payment_receipt"-->
+    <!--    model="account.payment"-->
+    <!--    string="Phiếu Thanh Toán"-->
+    <!--    report_type="qweb-pdf"-->
+    <!--    name="nsv_customize.nsv_report_payment_receipt"-->
+    <!--    file="nsv_customize.nsv_report_payment_receipt"-->
+    <!--    menu="True"-->
+    <!--    paperformat="nsv_customize.nsv_paperformat_a4_portrait"-->
+    <!--/>-->
+    <record id="action_report_payment_receipt" model="ir.actions.report">
+        <field name="name">Phiếu Thanh Toán</field>
+        <field name="model">account.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.nsv_report_payment_receipt</field>
+        <field name="report_file">nsv_customize.nsv_report_payment_receipt</field>
+        <field name="binding_model_id" ref="account.model_account_payment" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nsv_customize.nsv_paperformat_a4_portrait" />
+    </record>
+</odoo>

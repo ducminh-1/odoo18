@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="nsv_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-3 mb4">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="image_data_uri(company.logo)"
+                        style="max-height: 60px;"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="col-9 text-right">
+                    <div>
+                        <strong t-field="company.partner_id.display_name" />
+                    </div>
+                    <div>
+                        <span
+                            style="color: rgb(255, 126, 0);"
+                            t-field="company.partner_id.partner_address"
+                        />
+                    </div>
+                    <div style="color: rgb(255, 126, 0);">
+                        <span>MST: </span>
+                        <span t-field="company.partner_id.vat" />
+                        <span> | </span>
+                        <span>ĐT: </span>
+                        <span t-field="company.partner_id.phone" />
+                    </div>
+                </div>
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;" />
+                </div>
+            </div>
+        </div>
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <div class="row">
+                    <div class="col-10 text-center">
+                        <ul class="list-inline mb4">
+                            <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                                 adding d-inline class fixes the problem-->
+                            <li t-if="company.phone" class="list-inline-item">
+                                <i
+                                    class="fa fa-phone"
+                                    role="img"
+                                    aria-label="Phone"
+                                    title="Phone"
+                                />
+                                <span t-field="company.phone" />
+                            </li>
+                            <li t-if="company.email" class="list-inline-item">
+                                <i
+                                    class="fa fa-at"
+                                    role="img"
+                                    aria-label="Email"
+                                    title="Email"
+                                />
+                                <span t-field="company.email" />
+                            </li>
+                            <li t-if="company.website" class="list-inline-item">
+                                <i
+                                    class="fa fa-globe"
+                                    role="img"
+                                    aria-label="Website"
+                                    title="Website"
+                                />
+                                <span t-field="company.website" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-left">
+                        <div t-if="report_type == 'pdf'">
+                            Trang: <span class="page" /> / <span class="topage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="nsv_sale_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+        <t t-set="branch" t-value="o.warehouse_id.partner_id" />
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div
+                class="row"
+                style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+            >
+                <div class="col-3 mb4">
+                    <img
+                        t-if="branch.image_1920"
+                        t-att-src="image_data_uri(branch.image_1920)"
+                        style="max-height: 60px;"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="col-9 text-right">
+                    <div>
+                        <strong t-field="branch.display_name" />
+                    </div>
+                    <div>
+                        <span
+                            style="color: rgb(255, 126, 0);"
+                            t-field="branch.partner_address"
+                        />
+                    </div>
+                    <div style="color: rgb(255, 126, 0);">
+                        <span t-if="branch.vat">MST: </span>
+                        <span t-field="branch.vat" />
+                        <span t-if="branch.vat and branch.phone"> | </span>
+                        <span t-if="branch.phone">ĐT: </span>
+                        <span t-field="branch.phone" />
+                    </div>
+                </div>
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;" />
+                </div>
+            </div>
+        </div>
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <div
+                    class="row"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+                >
+                    <div class="col-10 text-center">
+                        <ul class="list-inline mb4">
+                            <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                                 adding d-inline class fixes the problem-->
+                            <li t-if="branch.phone" class="list-inline-item">
+                                <i
+                                    class="fa fa-phone"
+                                    role="img"
+                                    aria-label="Phone"
+                                    title="Phone"
+                                />
+                                <span t-field="branch.phone" />
+                            </li>
+                            <li t-if="branch.email" class="list-inline-item">
+                                <i
+                                    class="fa fa-at"
+                                    role="img"
+                                    aria-label="Email"
+                                    title="Email"
+                                />
+                                <span t-field="branch.email" />
+                            </li>
+                            <li t-if="branch.website" class="list-inline-item">
+                                <i
+                                    class="fa fa-globe"
+                                    role="img"
+                                    aria-label="Website"
+                                    title="Website"
+                                />
+                                <span t-field="branch.website" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-left">
+                        <div t-if="report_type == 'pdf'">
+                            Trang: <span class="page" /> / <span class="topage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Layout Gymaster -->
+    <template id="nsv_sale_gymaster_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+        <t t-set="branch" t-value="o.warehouse_id.partner_id" />
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div
+                class="row"
+                style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+            >
+                <div class="col-3 mb4">
+                    <img
+                        src="/nsv_customize/static/src/img/gymaster.png"
+                        style="max-height: 60px;"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="col-9 text-right">
+                    <b>CTCP QUỐC TẾ GYMASTER</b>
+                    <div
+                        style="color: rgb(255, 126, 0);"
+                    > 233A-235-237 Đường số 9A, Khu dân cư Trung Sơn, Bình Chánh, Hồ Chí Minh</div>
+                    <div style="color: rgb(255, 126, 0);">
+                        <span>MST: 0314534475</span>
+                        <span>|</span>
+                        <span>DT: 0985 315 998</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;" />
+                </div>
+            </div>
+        </div>
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <div
+                    class="row"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+                >
+                    <div class="col-10 text-center">
+                        <ul class="list-inline mb4">
+                            <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                                 adding d-inline class fixes the problem-->
+                            <li class="list-inline-item">
+                                <i
+                                    class="fa fa-phone"
+                                    role="img"
+                                    aria-label="Phone"
+                                    title="Phone"
+                                />
+                                <span>DT: 0985 315 998</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i
+                                    class="fa fa-at"
+                                    role="img"
+                                    aria-label="Email"
+                                    title="Email"
+                                />
+                                <span>Email: cskh@gymaster.vn</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i
+                                    class="fa fa-globe"
+                                    role="img"
+                                    aria-label="Website"
+                                    title="Website"
+                                />
+                                <span>Website: gymaster.vn</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-left">
+                        <div t-if="report_type == 'pdf'">
+                            Trang: <span class="page" /> / <span class="topage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="nsv_helpdesk_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+        <t t-set="branch" t-value="o.team_id.partner_id" />
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-3 mb4">
+                    <img
+                        t-if="branch.image_1920"
+                        t-att-src="image_data_uri(branch.image_1920)"
+                        style="max-height: 60px;"
+                        alt="Logo"
+                    />
+                </div>
+                <div
+                    class="col-9 text-right"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;line-height: 1.7;"
+                >
+                    <div>
+                        <strong t-field="branch.display_name" />
+                    </div>
+                    <div>
+                        <span t-field="branch.partner_address" />
+                    </div>
+                    <div>
+                        <span t-if="branch.vat">MST: </span>
+                        <span t-field="branch.vat" />
+                        <span t-if="branch.vat and branch.phone"> | </span>
+                        <span t-if="branch.phone">ĐT: </span>
+                        <span t-field="branch.phone" />
+                    </div>
+                </div>
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;" />
+                </div>
+            </div>
+        </div>
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <div
+                    class="row"
+                    style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;line-height: 1.7;"
+                >
+                    <div class="col-10 text-center">
+                        <ul class="list-inline mb4">
+                            <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                                 adding d-inline class fixes the problem-->
+                            <li t-if="branch.phone" class="list-inline-item">
+                                <i
+                                    class="fa fa-phone"
+                                    role="img"
+                                    aria-label="Phone"
+                                    title="Phone"
+                                />
+                                <span t-field="branch.phone" />
+                            </li>
+                            <li t-if="branch.email" class="list-inline-item">
+                                <i
+                                    class="fa fa-at"
+                                    role="img"
+                                    aria-label="Email"
+                                    title="Email"
+                                />
+                                <span t-field="branch.email" />
+                            </li>
+                            <li t-if="branch.website" class="list-inline-item">
+                                <i
+                                    class="fa fa-globe"
+                                    role="img"
+                                    aria-label="Website"
+                                    title="Website"
+                                />
+                                <span t-field="branch.website" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-left">
+                        <div t-if="report_type == 'pdf'">
+                            Trang: <span class="page" /> / <span class="topage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="nsv_internal_layout">
+        <!--<t t-if="not o" t-set="o" t-value="doc"/>-->
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div
+            class="article"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <t t-out="0" />
+        </div>
+        <div t-attf-class="footer {{report_type != 'pdf' and 'mt-auto'}}">
+            <div
+                class="o_footer_content d-flex justify-content-between border-top pt-2"
+                style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+            >
+                <t t-if="o._name == 'stock.picking'">
+                    <div class="text-start text-muted flex-grow-1">
+                        <t t-if="o.name" t-out="o.name" />
+                    </div>
+
+                    <div class="text-center text-muted flex-grow-1">
+                        <t t-if="o.sale_id" t-out="o.sale_id.name" />
+                    </div>
+
+                    <div class="text-end text-muted flex-grow-1">
+                        <div class="text-nowrap"><span class="page" /> / <span
+                            class="topage"
+                        /></div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </template>
+</odoo>

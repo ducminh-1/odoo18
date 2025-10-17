@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="birthday" />
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <!--<attribute name="attrs">{"required": [['company_type','=','person']]}</attribute>-->
+                <attribute
+                    name="required"
+                    add="company_type == 'person'"
+                    separator=" or "
+                />
+            </xpath>
+            <xpath
+                expr="//notebook//field[@name='child_ids']/form//field[@name='phone']"
+                position="attributes"
+            >
+                <!--<attribute name="attrs">{"required": True}</attribute>-->
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <group string="Đặc điểm khách hàng" name="customer_characteristics">
+                    <group>
+                        <field
+                            name="hobby_id"
+                            widget="many2many_tags"
+                            string="Sở thích"
+                        />
+                        <field
+                            name="matter_of_concern_id"
+                            widget="many2many_tags"
+                            string="Vấn đề quan tâm"
+                        />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_partner_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='complete_name']" position="after">
+                    <field name="ref" />
+                </xpath>
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="bought_amount" />
+                    <field
+                        name="total_invoiced"
+                        optional="show"
+                        groups="account.group_account_invoice"
+                    />
+                    <field name="loyalty_level_id" />
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="attributes">
+                    <!--<attribute name="attrs">{}</attribute>-->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="channel_id" />
+                    <field name="create_uid" optional="hide" />
+                    <field name="debit" invisible="1" />
+                    <field name="credit" invisible="1" />
+                    <field
+                        name="total_overdue"
+                        invisible="1"
+                        groups="account.group_account_invoice"
+                    />
+                    <field name="upgraded_date" optional="hide" />
+                    <field name="downgraded_date" optional="hide" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="customer_statements_search_view" model="ir.ui.view">
+        <field name="name">customer.statements.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="mode">primary</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//search[1]/field[@name='name']" position="after">
+                    <field name="ref" />
+                </xpath>
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="vat" />
+                </xpath>
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <filter
+                        string="No care within 30 days"
+                        name="filter_no_care_30"
+                        domain="[('opportunity_ids.create_date', '&lt;=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]"
+                    />
+                    <filter
+                        string="No care within 60 days"
+                        name="filter_no_care_60"
+                        domain="[('opportunity_ids.create_date', '&lt;=', (context_today() - relativedelta(days=60)).strftime('%Y-%m-%d'))]"
+                    />
+                    <filter
+                        string="No care within 90 days"
+                        name="filter_no_care_90"
+                        domain="[('opportunity_ids.create_date', '&lt;=', (context_today() - relativedelta(days=90)).strftime('%Y-%m-%d'))]"
+                    />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_partner_base_vat_form" model="ir.ui.view">
+        <field name="name">view.partner.base.vat.form.inherit.nsv_customize</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base_vat.view_partner_base_vat_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='vat_vies_container']" position="after">
+                <xpath expr="//field[@name='ref']" position="move" />
+                <field name="channel_id" options="{'no_create': True}" />
+                <field name="loyalty_level_id" options="{'no_create': True}" />
+                <field name="bought_amount" readonly="1" />
+                <field name="loyalty_point_amount" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

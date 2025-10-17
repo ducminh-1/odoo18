@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <!-- The group allowed to create and edit product information-->
+        <record id="group_create_edit_product" model="res.groups">
+            <field name="name">Create &amp; Edit Product</field>
+            <field name="category_id" ref="base.module_category_usability" />
+        </record>
+        <!-- Customized Group allowed to show Accounting Report -->
+        <record id="group_view_product_standard_prices" model="res.groups">
+            <field name="name">Allow To View Standard Prices</field>
+            <field name="category_id" ref="base.module_category_usability" />
+        </record>
+        <!-- Add customized Group to inherit for Accounting / Advisor -->
+        <record id="account.group_account_manager" model="res.groups">
+            <field
+                name="implied_ids"
+                eval="[(4, ref('nsv_customize.group_view_product_standard_prices'))]"
+            />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="guarantee_registers_view_form" model="ir.ui.view">
+        <field name="name">guarantee.registers.form</field>
+        <field name="model">guarantee.registers</field>
+        <field name="arch" type="xml">
+            <form string="Guarantees">
+                <header>
+                    <field name="state" widget="statusbar" />
+                    <!--<button name="btn_set_to_draft" string="Set Draft" type="object" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>-->
+                    <!--<button name="btn_confirm" string="Confirm" type="object" attrs="{'invisible': [('state', 'not in', ('new'))]}"/>-->
+                    <!--<button name="btn_manager_confirm" string="Manager Confirm" type="object" attrs="{'invisible': [('state', 'not in', ('confirmed'))]}"/>-->
+                    <!--<button name="btn_cancel" string="Cancel" type="object" attrs="{'invisible': [('state', '=', 'cancel')]}"/>-->
+                    <!--<button name="btn_create_contact" string="Create Partner" type="object" attrs="{'invisible': ['|',('partner_id', '!=', False),('state','=','cancel')]}"/>-->
+                    <button
+                        name="btn_set_to_draft"
+                        string="Set Draft"
+                        type="object"
+                        invisible="state != 'cancel'"
+                    />
+                    <button
+                        name="btn_confirm"
+                        string="Confirm"
+                        type="object"
+                        invisible="state not in ('new')"
+                    />
+                    <button
+                        name="btn_manager_confirm"
+                        string="Manager Confirm"
+                        type="object"
+                        invisible="state not in ('confirmed')"
+                    />
+                    <button
+                        name="btn_cancel"
+                        string="Cancel"
+                        type="object"
+                        invisible="state == 'cancel'"
+                    />
+                    <button
+                        name="btn_create_contact"
+                        string="Create Partner"
+                        type="object"
+                        invisible="partner_id or state == 'cancel'"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Customer Information">
+                            <!--<field name="name" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="contact_name" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="birthday" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="phone" required="1" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="email" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="full_address" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="partner_id" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <field name="name" readonly="state != 'new'" />
+                            <field name="contact_name" readonly="state != 'new'" />
+                            <field name="birthday" readonly="state != 'new'" />
+                            <field
+                                name="phone"
+                                required="1"
+                                readonly="state != 'new'"
+                            />
+                            <field name="email" readonly="state != 'new'" />
+                            <field name="full_address" readonly="state != 'new'" />
+                            <field name="partner_id" readonly="state != 'new'" />
+                        </group>
+                        <group string="Order Information">
+                            <!--<field name="product_id" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="buy_date" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="total_amount" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="buy_at" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="sku" required="1"/>-->
+                            <!--<field name="lot_name" attrs="{'invisible': [('lot_name','=',False)]}"/>-->
+                            <!--<field name="filename" invisible="1" attrs="{'readonly': [('state','!=','new')]}"/>-->
+                            <!--<field name="bill_img" string="Bill Image" filename="filename"/>-->
+                            <field name="product_id" readonly="state != 'new'" />
+                            <field name="buy_date" readonly="state != 'new'" />
+                            <field name="total_amount" readonly="state != 'new'" />
+                            <field name="buy_at" readonly="state != 'new'" />
+                            <field name="sku" required="1" />
+                            <field name="lot_name" invisible="not lot_name" />
+                            <field
+                                name="filename"
+                                invisible="1"
+                                readonly="state != 'new'"
+                            />
+                            <field
+                                name="bill_img"
+                                string="Bill Image"
+                                filename="filename"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+                <!--<div class="oe_chatter">-->
+                <!--    <field name="message_follower_ids" widget="mail_followers"/>-->
+                <!--    <field name="message_ids" widget="mail_thread"/>-->
+                <!--</div>-->
+            </form>
+        </field>
+    </record>
+    <record id="guarantee_registers_view_tree" model="ir.ui.view">
+        <field name="name">guarantee.registers.tree</field>
+        <field name="model">guarantee.registers</field>
+        <field name="arch" type="xml">
+            <list string="Guarantees">
+                <header>
+                    <button
+                        name="btn_create_contact"
+                        string="Create Contact"
+                        type="object"
+                    />
+                </header>
+                <field name="name" />
+                <field name="contact_name" required="1" />
+                <field name="partner_id" />
+                <field name="buy_date" />
+                <field name="sku" />
+                <field name="lot_name" />
+                <field name="buy_at" />
+            </list>
+        </field>
+    </record>
+
+    <record id="action_guarantee_registers" model="ir.actions.act_window">
+        <field name="name">Guarantee Registers</field>
+        <field name="res_model">guarantee.registers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="guarantee_registers_view_tree" />
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem
+        id="menu_guarantee_registers"
+        name="Guarantees"
+        parent="helpdesk.menu_helpdesk_root"
+        action="action_guarantee_registers"
+        sequence="99"
+    />
+</odoo>

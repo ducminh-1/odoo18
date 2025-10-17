@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="rating_rating_view_form_inherit" model="ir.ui.view">
+        <field name="name">rating.rating.form.inherit</field>
+        <field name="model">rating.rating</field>
+        <field name="inherit_id" ref="rating.rating_rating_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='rated_partner_id']" position="after">
+                <field name="employee_id" readonly="1" />
+                <field name="rating_seller" readonly="1" />
+                <field name="rating_delivery" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="rating_rating_view_tree_inherit" model="ir.ui.view">
+        <field name="name">rating.rating.tree.inherit</field>
+        <field name="model">rating.rating</field>
+        <field name="inherit_id" ref="rating.rating_rating_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='rated_partner_id']" position="after">
+                <field name="employee_id" readonly="1" />
+                <field name="res_create_date" readonly="1" />
+                <field name="res_create_uid" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

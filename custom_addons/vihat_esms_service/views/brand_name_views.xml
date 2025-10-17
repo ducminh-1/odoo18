@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_brand_name_form_inherit" model="ir.ui.view">
+        <field name="name">brand.name.inherit.form</field>
+        <field name="model">brand.name</field>
+        <field name="inherit_id" ref="nsv_customize.view_brand_name_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="before">
+                <field
+                    name="sms_brandname_id"
+                    options="{'no_create': True, 'no_create_edit': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

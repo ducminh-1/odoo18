@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="mautic_menu" parent="crm.crm_menu_root" name="Mautic" sequence="25" />
+    <menuitem
+        id="mautic_menu_segment"
+        parent="mautic_menu"
+        name="Mautic Segments"
+        action="action_open_mautic_segment"
+        sequence="1"
+    />
+    <menuitem
+        id="mautic_menu_config"
+        parent="mautic_menu"
+        name="Mautic Config"
+        action="action_open_mautic_config"
+        sequence="1"
+    />
+</odoo>

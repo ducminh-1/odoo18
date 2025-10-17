@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_sms_sms"
+        name="SMS"
+        parent="sale.menu_sale_report"
+        action="sms.sms_sms_action"
+        sequence="5"
+    />
+</odoo>

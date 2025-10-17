@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_picking_out">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_internal_layout">
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="row report_header">
+                            <div class="report_header_left">
+                                <p class="mgb-5">
+                                    <b>
+                                        <t
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.name"
+                                        />
+                                    </b>
+                                </p>
+                                <p class="mgb-5">
+                                    <b>
+                                        <t
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.partner_address"
+                                        />
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="row zero_min_height">
+                                <div class="col-12">
+                                    <!--<div style="border-bottom: 1px solid black;"/>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center box_boss" style="margin-top:15px">
+                                <span class="title">
+                                    <b>PHIẾU XUẤT KHO</b>
+                                </span>
+                                <br />
+                                <i
+                                    t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                                />
+                            </div>
+                        </div>
+                        <div class="row mt32 mb16">
+                            <div class="col-8" t-if="o.partner_id">
+                                <!--								<div><span>Người nhận hàng: </span><span t-field="o.name"/></div>-->
+                                <p>Số phiếu: <span t-field="o.name" /></p>
+                                <p>Tham chiếu KH: <span t-field="o.order_ref" /></p>
+                                <p>Khách hàng: <span
+                                    t-field="o.partner_id.title"
+                                />&#160;<span t-field="o.partner_id.name" /></p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.origin">Số đơn hàng: <span
+                                        t-field="o.origin"
+                                    /></t>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt16 mb32">
+                            <div class="col-12" t-if="o.partner_id">
+                                <p>Địa chỉ giao hàng: <span
+                                    t-esc="o.partner_id.partner_address"
+                                /></p>
+                                <p>Điện thoại: <span t-esc="o.partner_id.phone" /></p>
+                                <p t-if="o.note">Nội dung: <span t-esc="o.note" /></p>
+                                <p>Điểm bán: <span
+                                    t-esc="o.location_id.display_name"
+                                /></p>
+                                <p>Địa điểm đích: <span
+                                    t-esc="o.location_dest_id and o.location_dest_id.display_name or '' or ''"
+                                /></p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px; line-height: 28px;">
+                            <t
+                                t-set="has_serial_number"
+                                t-value="o.move_line_ids.mapped('lot_id')"
+                            />
+                            <table width="100%" class="border-table text-center">
+                                <thead>
+                                    <tr
+                                        class="text-center"
+                                        style="background-color: #BBFFC3;"
+                                    >
+                                        <th class="border-table" width="8%">STT</th>
+                                        <th class="border-table">Mã hàng</th>
+                                        <th class="border-table">Tên hàng</th>
+                                        <th class="border-table">ĐVT</th>
+                                        <t name="lot_serial" t-if="has_serial_number">
+                                            <th class="border-table">Số lô/sê-ri</th>
+                                        </t>                                       
+                                        <th class="border-table">Số lượng</th>                                       
+                                        <th class="border-table">Khối lượng</th>
+                                        <th class="border-table">Thể tích</th>
+                                    </tr>
+                                </thead>
+                                <t t-set="i" t-value="0" />
+                                <t
+                                    t-set="lines"
+                                    t-value="o.move_ids.filtered(lambda m: m.quantity)"
+                                />
+                                <t t-set="total_quantity" t-value="0" />
+                                <t t-foreach="lines" t-as="line">
+                                    <tr>
+                                        <t t-set="i" t-value="i + 1" />
+                                        <td
+                                            class="border-table text-center"
+                                            t-esc="i"
+                                        />
+                                        <td class="border-table">
+                                            <span
+                                                t-esc="line.product_id.default_code"
+                                            />
+                                        </td>
+                                        <td class="border-table">
+                                            <span t-esc="line.product_id.name" />
+                                        </td>
+                                        <td class="border-table text-center">
+                                            <span t-esc="line.product_uom.name" />
+                                        </td>
+                                        <t t-if="has_serial_number">
+                                            <td class="border-table text-center">
+                                                <span
+                                                    t-esc="','.join(line.lot_ids.mapped('name'))"
+                                                />
+                                            </td>
+                                        </t>                                        
+                                        <t t-if="line.state == 'done'">
+                                            <td class="border-table text-right">
+                                                <span t-esc="line.quantity" />
+                                            </td>
+                                            <t
+                                                t-set="total_quantity"
+                                                t-value="total_quantity + line.quantity"
+                                            />
+                                        </t>
+                                        <t t-else="">
+                                            <td class="border-table text-right">
+                                                <span t-esc="'0.00'" />
+                                            </td>
+                                        </t>                                        
+                                        <td class="border-table text-right">
+                                            <span t-esc="'%.4f' % line.weight" />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span t-esc="'%.4f' % line.volume" />
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <tr style="font-weight: bold;">
+                                        <td
+                                            class="border-table"
+                                            t-att-colspan="has_serial_number and 5 or 4"
+                                        >Tổng cộng:</td>
+                                        <td class="border-table text-right">
+                                            <span t-esc="total_quantity" />
+                                        </td>                                      
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('weight')), 4)"
+                                            />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('volume')), 4)"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row text-center" style="margin-top: 20px;">
+                            <div class="col-xs-4">
+                                <br />
+                            </div>
+                            <div class="col-xs-4">
+                                <br />
+                            </div>
+                            <i
+                                t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                            />
+                        </div>
+                        <div class="row text-center" style="margin-top: 20px;">
+                            <div class="col-20">
+                                <div>
+                                    <b>Người lập biểu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Người nhận hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Thủ kho</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Kế toán trưởng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Thủ trưởng đơn vị</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                		.col-xs-4 {
+						  position: relative;
+						  float: left;
+						  width: 33.33333333%;
+						}
+                		.text-center {
+	                		text-align: center;
+	                	}
+	                	.text-right {
+	                		text-align: right;
+	                	}
+	                	.col-20 {
+						  position: relative;
+						  float: left;
+						  width: 20%;
+						}
+						.report_header_left{
+						  position: relative;
+						  float: left;
+						  width: 80%;
+						}
+						.report_header_right{
+						  position: relative;
+						  float: left;
+						  width: 40%;
+						}
+						.title{
+						    font-size: 28px;
+						    margin-top: 20px;
+						    width: 100%;
+						}
+						.address-info .title {
+						    font-size: 14px;
+						    font-weight: bold;
+						    margin-top: 3px;
+						    float: left;
+						}
+						.mgb-5{
+							margin-bottom: 5px;
+						}
+						.mgb-0{
+							margin-bottom: 0px;
+						}
+						.address-info,.info-line {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.address-info span {
+						    height: 30px;
+						    float: left;
+						    background: #fff;
+						    padding-right: 10px;
+						}
+						.address-info .underlined {
+						    border-bottom: 1px solid #000;
+						    height: 100%;
+						    width: 100%;
+						    position: absolute;
+						    left: 0;
+						    top: 1;
+						    z-index: -1;
+						    height: 20px;
+						}
+						.address-info .info-content{
+							background:none;
+							padding-left: 5px;
+						}
+						.border-table{
+							border: 1px solid #000;
+							padding: 0 5px;
+						}
+						.box_boss {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.loan {
+						    position: absolute;
+						    top: 0;
+						    right: 0;
+						    width: 100px;
+						    text-align: -webkit-left;
+						}
+						.loan table {
+						    width: 100%;
+						}
+                	</style>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_picking_out_gymaster">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_internal_layout">
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="row report_header">
+                            <div class="report_header_left">
+                                <p class="mgb-5">
+                                    <b>CTCP QUỐC TẾ GYMASTER</b>
+                                </p>
+                                <p class="mgb-5">
+                                    <b
+                                    >CTCP QUỐC TẾ GYMASTER 233A-235-237 Đường số 9A, Khu dân cư Trung Sơn, Bình Chánh, Hồ Chí Minh</b>
+                                </p>
+                            </div>
+                            <div class="row zero_min_height">
+                                <div class="col-12">
+                                    <!--		<div style="border-bottom: 1px solid black;"/>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center box_boss" style="margin-top:15px">
+                                <span class="title">
+                                    <b>PHIẾU XUẤT KHO</b>
+                                </span>
+                                <br />
+                                <i
+                                    t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                                />
+                            </div>
+                        </div>
+                        <div class="row mt32 mb16">
+                            <div class="col-8" t-if="o.partner_id">
+                                <!--								<div><span>Người nhận hàng: </span><span t-field="o.name"/></div>-->
+                                <p>Số phiếu: <span t-field="o.name" /></p>
+                                <p>Tham chiếu KH: <span t-field="o.order_ref" /></p>
+                                <p>Khách hàng: <span
+                                    t-field="o.partner_id.title"
+                                />&#160;<span t-field="o.partner_id.name" /></p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.origin">Số đơn hàng: <span
+                                        t-field="o.origin"
+                                    /></t>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt16 mb32">
+                            <div class="col-12" t-if="o.partner_id">
+                                <p>Địa chỉ giao hàng: <span
+                                    t-esc="o.partner_id.partner_address"
+                                /></p>
+                                <p>Điện thoại: <span t-esc="o.partner_id.phone" /></p>
+                                <p t-if="o.note">Nội dung: <span t-esc="o.note" /></p>
+                                <p>Điểm bán: <span
+                                    t-esc="o.location_id.display_name"
+                                /></p>
+                                <p>Địa điểm đích: <span
+                                    t-esc="o.location_dest_id and o.location_dest_id.display_name or '' or ''"
+                                /></p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px; line-height: 28px;">
+                            <t
+                                t-set="has_serial_number"
+                                t-value="o.move_line_ids.mapped('lot_id')"
+                            />
+                            <table width="100%" class="border-table text-center">
+                                <thead>
+                                    <tr
+                                        class="text-center"
+                                        style="background-color: #BBFFC3;"
+                                    >
+                                        <th class="border-table" width="8%">STT</th>
+                                        <th class="border-table">Mã hàng</th>
+                                        <th class="border-table">Tên hàng</th>
+                                        <th class="border-table">ĐVT</th>
+                                        <t name="lot_serial" t-if="has_serial_number">
+                                            <th class="border-table">Số lô/sê-ri</th>
+                                        </t>                                        
+                                        <th class="border-table">Số lượng</th>                                        
+                                        <th class="border-table">Khối lượng</th>
+                                        <th class="border-table">Thể tích</th>
+                                    </tr>
+                                </thead>
+                                <t t-set="i" t-value="0" />
+                                <t
+                                    t-set="lines"
+                                    t-value="o.move_ids.filtered(lambda m: m.quantity)"
+                                />
+                                <t t-set="total_quantity" t-value="0" />
+                                <t t-foreach="lines" t-as="line">
+                                    <tr>
+                                        <t t-set="i" t-value="i + 1" />
+                                        <td
+                                            class="border-table text-center"
+                                            t-esc="i"
+                                        />
+                                        <td class="border-table">
+                                            <span
+                                                t-esc="line.product_id.default_code"
+                                            />
+                                        </td>
+                                        <td class="border-table">
+                                            <span t-esc="line.product_id.name" />
+                                        </td>
+                                        <td class="border-table text-center">
+                                            <span t-esc="line.product_uom.name" />
+                                        </td>
+                                        <t t-if="has_serial_number">
+                                            <td class="border-table text-center">
+                                                <span
+                                                    t-esc="','.join(line.lot_ids.mapped('name'))"
+                                                />
+                                            </td>
+                                        </t>                                        
+                                        <t t-if="line.state == 'done'">
+                                            <td class="border-table text-right">
+                                                <span t-esc="line.quantity" />
+                                            </td>
+                                            <t
+                                                t-set="total_quantity"
+                                                t-value="total_quantity + line.quantity"
+                                            />
+                                        </t>
+                                        <t t-else="">
+                                            <td class="border-table text-right">
+                                                <span t-esc="'0.00'" />
+                                            </td>
+                                        </t>                                       
+                                        <td class="border-table text-right">
+                                            <span t-esc="'%.4f' % line.weight" />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span t-esc="'%.4f' % line.volume" />
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <tr style="font-weight: bold;">
+                                        <td
+                                            class="border-table"
+                                            t-att-colspan="has_serial_number and 5 or 4"
+                                        >Tổng cộng:</td>
+                                        <td class="border-table text-right">
+                                            <!--<span t-esc="sum(lines.mapped('quantity'))"/>-->
+                                            <span t-esc="total_quantity" />
+                                        </td>                                       
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('weight')), 4)"
+                                            />
+                                        </td>
+                                        <td class="border-table text-right">
+                                            <span
+                                                t-esc="'%.4f' % round(sum(lines.mapped('volume')), 4)"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row text-center" style="margin-top: 20px;">
+                            <div class="col-xs-4">
+                                <br />
+                            </div>
+                            <div class="col-xs-4">
+                                <br />
+                            </div>
+                            <i
+                                t-esc="context_timestamp(datetime.datetime.now()).strftime('Ngày %d tháng %m năm %Y')"
+                            />
+                        </div>
+                        <div class="row text-center" style="margin-top: 20px;">
+                            <div class="col-20">
+                                <div>
+                                    <b>Người lập biểu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Người nhận hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Thủ kho</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Kế toán trưởng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <div>
+                                    <b>Thủ trưởng đơn vị</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                		.col-xs-4 {
+						  position: relative;
+						  float: left;
+						  width: 33.33333333%;
+						}
+                		.text-center {
+	                		text-align: center;
+	                	}
+	                	.text-right {
+	                		text-align: right;
+	                	}
+	                	.col-20 {
+						  position: relative;
+						  float: left;
+						  width: 20%;
+						}
+						.report_header_left{
+						  position: relative;
+						  float: left;
+						  width: 80%;
+						}
+						.report_header_right{
+						  position: relative;
+						  float: left;
+						  width: 40%;
+						}
+						.title{
+						    font-size: 28px;
+						    margin-top: 20px;
+						    width: 100%;
+						}
+						.address-info .title {
+						    font-size: 14px;
+						    font-weight: bold;
+						    margin-top: 3px;
+						    float: left;
+						}
+						.mgb-5{
+							margin-bottom: 5px;
+						}
+						.mgb-0{
+							margin-bottom: 0px;
+						}
+						.address-info,.info-line {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.address-info span {
+						    height: 30px;
+						    float: left;
+						    background: #fff;
+						    padding-right: 10px;
+						}
+						.address-info .underlined {
+						    border-bottom: 1px solid #000;
+						    height: 100%;
+						    width: 100%;
+						    position: absolute;
+						    left: 0;
+						    top: 1;
+						    z-index: -1;
+						    height: 20px;
+						}
+						.address-info .info-content{
+							background:none;
+							padding-left: 5px;
+						}
+						.border-table{
+							border: 1px solid #000;
+							padding: 0 5px;
+						}
+						.box_boss {
+						    float: left;
+						    width: 100%;
+						    position: relative;
+						}
+						.loan {
+						    position: absolute;
+						    top: 0;
+						    right: 0;
+						    width: 100px;
+						    text-align: -webkit-left;
+						}
+						.loan table {
+						    width: 100%;
+						}
+                	</style>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Print 'Picking Out' -->
+    <!--<report-->
+    <!--        id="account_report_picking_out"-->
+    <!--        model="stock.picking"-->
+    <!--        string="Phiếu Xuất Kho"-->
+    <!--        report_type="qweb-pdf"-->
+    <!--        name="nsv_customize.report_picking_out"-->
+    <!--        file="nsv_customize.report_picking_out"-->
+    <!--        menu="True"-->
+    <!--        paperformat="nsv_customize.nsv_paperformat_a4_portrait"-->
+    <!--    />-->
+    <record id="action_report_picking_out" model="ir.actions.report">
+        <field name="name">Phiếu Xuất Kho</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.report_picking_out</field>
+        <field name="report_file">nsv_customize.report_picking_out</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="paperformat_id" ref="nsv_customize.nsv_paperformat_a4_portrait" />
+    </record>
+
+    <!-- Action Print 'Picking Out' -->
+    <!--<report-->
+    <!--        id="account_report_picking_out_gymaster"-->
+    <!--        model="stock.picking"-->
+    <!--        string="Gymaster - Phiếu Xuất Kho"-->
+    <!--        report_type="qweb-pdf"-->
+    <!--        name="nsv_customize.report_picking_out_gymaster"-->
+    <!--        file="nsv_customize.report_picking_out_gymaster"-->
+    <!--        menu="True"-->
+    <!--        paperformat="nsv_customize.nsv_paperformat_a4_portrait"-->
+    <!--    />-->
+    <record id="action_report_picking_out_gymaster" model="ir.actions.report">
+        <field name="name">Gymaster - Phiếu Xuất Kho</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.report_picking_out_gymaster</field>
+        <field name="report_file">nsv_customize.report_picking_out_gymaster</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="paperformat_id" ref="nsv_customize.nsv_paperformat_a4_portrait" />
+    </record>
+</odoo>

@@ -7,5 +7,14 @@
         <xpath expr="//div[hasclass('certification-seal')]" position="attributes">
             <attribute name="class" add="certification-seal-red" remove="certification-seal" separator=" "/>
         </xpath>
+        <xpath expr="//div[hasclass('certification')]" position="attributes">
+            <attribute name="class" add="certification-font-custom" separator=" "/>
+        </xpath>
+        <xpath expr="//span[hasclass('user-name')]" position="attributes">
+            <attribute name="class" add="user-name-font-custom" remove="user-name" separator=" "/>
+        </xpath>
+        <xpath expr="//span[hasclass('certification-name')]" position="attributes">
+            <attribute name="class" add="certification-name-bold" remove="certification-name" separator=" "/>
+        </xpath>
     </template>
 </odoo>

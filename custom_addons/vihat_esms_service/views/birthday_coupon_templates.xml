@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="birthday_coupon_sms_template" name="SMS Template: Birthday Coupon">
+        <t t-name="vihat_esms_service.birthday_coupon_sms_template"><t
+            t-set="coupon"
+            t-value="object.birthday_coupon_id"
+        /><t
+            t-set="brandname"
+            t-value="object._get_default_brandname()"
+        />Chuc Mung Sinh Nhat, <t t-esc="brandname.name" /> gui rieng QK <t
+            t-esc="object.name"
+        /> ma: <t t-esc="coupon.code" /> - <t
+            t-esc="coupon.program_id.discount_percentage and '{:2,.0f}'.format(coupon.program_id.discount_percentage) or '0'"
+        />% SP. HSD <t
+            t-esc="coupon.expiration_date"
+        />. Vui long trinh CCCD &amp; SMS. Chi tiết https://nguonsongviet.com/khtt/</t>
+    </template>
+    <record id="birthday_coupon_zns_template" model="ir.ui.view">
+        <field name="name">ZNS Template: Birthday Coupon</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="vihat_esms_service.birthday_coupon_sms_template"><t
+                t-set="coupon"
+                t-value="object.birthday_coupon_id"
+            /><t t-set="brandname" t-value="object._get_default_brandname()" /><t
+                t-set="message_by_reward_type"
+                t-if="coupon.program_id.reward_type == 'discount'"
+                t-value="'giảm %s%%' % (coupon.program_id.discount_percentage)"
+            /><t
+                t-set="message_by_reward_type"
+                t-if="coupon.program_id.reward_type == 'product'"
+                t-value="'tặng %s' % (coupon.program_id.reward_product_id.name)"
+            />Chuc Mung Sinh Nhat, <t t-esc="brandname.name" /> gui rieng QK <t
+                t-esc="object.name"
+            /> ma: <t t-esc="coupon.code" /> -<t
+                t-esc="message_by_reward_type"
+            /> SP. HSD <t
+                t-esc="coupon.expiration_date"
+            />. Vui long trinh CCCD &#38; SMS. Chi tiết https://nguonsongviet.com/khtt/</t>
+        </field>
+    </record>
+</odoo>

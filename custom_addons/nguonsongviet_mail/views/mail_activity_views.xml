@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mail_activity_view_tree" model="ir.ui.view">
+        <field name="name">mail.activity.view.list.inherit.nguonsongviet_mail</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_tree" />
+        <field name="mode">primary</field>
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <list position="attributes">
+                <attribute
+                    name="decoration-danger"
+                    separator="or"
+                    add="working_state in ('late')"
+                />
+                <attribute
+                    name="decoration-success"
+                    separator="or"
+                    add="working_state in ('on_time', 'early')"
+                />
+            </list>
+            <xpath expr="/list/header" position="replace">
+                <header />
+            </xpath>
+            <field name="date_done" position="after">
+                <field name="state" />
+                <field name="hours_diff" optional="hide" widget="float_time" />
+                <field name="days_diff" optional="hide" widget="float_time" />
+                <field name="working_state" optional="hide" />
+            </field>
+            <xpath expr="/list/button[@name='action_done']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="/list/button[@name='unlink']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="/list/button[@name='action_snooze']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mail_activity_my_activities_action" model="ir.actions.act_window">
+        <field name="name">Activities</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="view_id" ref="mail_activity_view_tree" />
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record>
+
+    <record id="mail_activity_activities_manager_action" model="ir.actions.act_window">
+        <field name="name">Activities</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="view_id" ref="mail_activity_view_tree" />
+        <!-- TODO: check group -->
+        <field
+            name="groups_id"
+            eval="[(4, ref('nsv_customize.mail_activity_manager_group'))]"
+        />
+    </record>
+
+    <record
+        id="mail_activity_my_activities_action_view_list"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="1" />
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="mail_activity_view_tree" />
+        <field name="act_window_id" ref="mail_activity_my_activities_action" />
+    </record>
+
+    <record
+        id="mail_activity_my_activities_action_view_form"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="2" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="mail.mail_activity_view_form" />
+        <field name="act_window_id" ref="mail_activity_my_activities_action" />
+    </record>
+
+    <record
+        id="mail_activity_activities_manager_action_view_list"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="1" />
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="mail_activity_view_tree" />
+        <field name="act_window_id" ref="mail_activity_activities_manager_action" />
+    </record>
+
+    <record
+        id="mail_activity_activities_manager_action_view_form"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="2" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="mail.mail_activity_view_form" />
+        <field name="act_window_id" ref="mail_activity_activities_manager_action" />
+    </record>
+
+    <menuitem
+        name="My Activities"
+        id="mail_activity_my_activities_menu"
+        action="mail_activity_my_activities_action"
+        parent="mail.menu_root_discuss"
+        groups="base.group_user"
+    />
+    <!-- TODO: check group -->
+
+    <menuitem
+        name="Activities"
+        id="mail_activity_activities_manager_menu"
+        action="mail_activity_activities_manager_action"
+        parent="mail.menu_root_discuss"
+        groups="nsv_customize.mail_activity_manager_group"
+    />
+    <!-- TODO: check group -->
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_misa_app,access_misa_app,model_misa_app,base.group_user,1,1,1,1
+access_misa_branch,access_misa_branch,model_misa_branch,base.group_user,1,1,1,1
+access_misa_product,access_misa_product,model_misa_product,base.group_user,1,1,1,1
+access_misa_sa_voucher,access_misa_sa_voucher,model_misa_sa_voucher,base.group_user,1,1,1,1
+access_misa_sa_voucher_line,access_misa_sa_voucher_line,model_misa_sa_voucher_line,base.group_user,1,1,1,1
+access_inv_make_sa_voucher,access_inv_make_sa_voucher,model_inv_make_sa_voucher,base.group_user,1,1,1,1
+access_misa_invoice_buyer,access_misa_invoice_buyer,model_misa_invoice_buyer,base.group_user,1,1,1,1
+access_misa_push_wizard,access_misa_push_wizard,model_misa_push_wizard,base.group_user,1,1,1,1
+access_misa_product_sync_wizard,access_misa_product_sync_wizard,model_misa_product_sync_wizard,base.group_user,1,1,1,1
+access_misa_product_sync_result,access_misa_product_sync_result,model_misa_product_sync_result,base.group_user,1,1,1,1

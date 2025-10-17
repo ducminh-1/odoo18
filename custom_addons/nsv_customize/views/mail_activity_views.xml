@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="mail_activity_my_activities_action" model="ir.actions.act_window">
+        <field name="name">Activities</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record>
+
+    <record id="mail_activity_activities_manager_action" model="ir.actions.act_window">
+        <field name="name">Activities</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('nsv_customize.mail_activity_manager_group'))]"
+        />
+    </record>
+
+    <menuitem
+        name="My Activities"
+        id="mail_activity_my_activities_menu"
+        action="mail_activity_my_activities_action"
+        parent="mail.menu_root_discuss"
+        groups="base.group_user"
+    />
+
+    <menuitem
+        name="Activities"
+        id="mail_activity_activities_manager_menu"
+        action="mail_activity_activities_manager_action"
+        parent="mail.menu_root_discuss"
+        groups="nsv_customize.mail_activity_manager_group"
+    />
+</odoo>

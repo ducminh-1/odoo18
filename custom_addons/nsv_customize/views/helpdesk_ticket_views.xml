@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="helpdesk_ticket_view_form_detail_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.detail.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="employee_id" />
+                <field name="create_uid" />
+            </xpath>
+            <xpath expr="//field[@name='sale_order_id']" position="after">
+                <field name="expiry_date" />
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="rating_count" />
+                <field name="rating_avg" />
+                <field name="rating_last_value" />
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="customer_phone" string="Customer Phone" />
+                <field name="customer_address" string="Customer Address" />
+            </xpath>
+            <xpath expr="//field[@name='partner_phone']" position="after">
+                <field name="partner_email" />
+                <field name="loyalty_level_id" string="Loyalty Level" />
+                <field name="customer_birthday" string="Customer Birthday" />
+                <field
+                    name="customer_loyalty_point_amount"
+                    string="Loyalty Point Amount"
+                />
+                <field name="customer_tag" string="Tag" widget="many2many_tags" />
+            </xpath>
+
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <notebook>
+                    <page name="ticket_detail" string="Ticket Details">
+                        <field
+                            name="ticket_detail_ids"
+                            no_label="True"
+                            widget="one2many_list"
+                        >
+                            <list editable="bottom">
+                                <control>
+                                    <create
+                                        name="add_product_control"
+                                        string="Add a line"
+                                    />
+                                </control>
+                                <field name="sequence" widget="handle" />
+                                <field name="name" />
+                                <field name="product_id" />
+                                <field name="quantity" sum="Quantity Total" />
+                                <field name="uom_id" />
+                                <field name="fee" string="Fee" sum="Fee Total" />
+                                <field name="note" optional="hide" />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <field name="create_transfer" invisible="1" />
+                <!--<button name="create_transfer_from_ticket" string="Create Transfer" type="object"-->
+                <!--        class="oe_highlight" attrs="{'invisible': [('create_transfer', '=', False)]}"/>-->
+                <button
+                    name="create_transfer_from_ticket"
+                    string="Create Transfer"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="not create_transfer"
+                />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="action_view_transfer"
+                    icon="fa-truck"
+                    type="object"
+                    invisible="not transfer_count or transfer_count == 0"
+                >
+                    <field name="transfer_count" string="Transfer" widget="statinfo" />
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute
+                    name="context"
+                >{'res_partner_search_mode': 'customer', 'show_address': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="helpdesk_ticket_view_form_inherit_helpdesk_invoicing"
+        model="ir.ui.view"
+    >
+        <field name="name">helpdesk.ticket.detail.inherit.helpdesk_sale</field>
+        <field name="model">helpdesk.ticket</field>
+        <field
+            name="inherit_id"
+            ref="helpdesk_sale.helpdesk_ticket_view_form_inherit_helpdesk_invoicing"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_order_id']" position="after">
+                <field name="product_id" groups="stock.group_stock_user" domain="[]" />
+                <field name="so_id" />
+                <field name="date_order" />
+                <field name="done_date" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_tickets_view_tree_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.tree.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="employee_id" />
+                <field name="color" widget="color_picker" invisible="1" />
+                <field name="loyalty_level_id" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="create_date" />
+                <field name="date_order" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <!--<xpath expr="//list" position="attributes">-->
+            <!--  <attribute name="bg_colors">color</attribute>-->
+            <!--</xpath>-->
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.kanban.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_kanban" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='commercial_partner_id']" position="after">
+                    <field display="full" name="employee_id" bold="True" />
+                    <field display="full" name="create_date" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="helpdesk_team_view_form_inherit" model="ir.ui.view">
+        <field name="name">nsv.helpdesk.team.form.inherit</field>
+        <field name="model">helpdesk.team</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="partner_id" string="Branch" />
+            </xpath>
+            <xpath expr="//div[@id='after-sales']/setting[last()]" position="after">
+                <div class="col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="filter_failure_report" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="filter_failure_report" />
+                        <div class="text-muted">
+                        Add helpdesk team to product failure report
+                    </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='after-sales']" position="after">
+                <h2>Delivery</h2>
+                <div class="row mt32 o_settings_container" id="delivery">
+                    <div class="col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="create_transfer" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="create_transfer" />
+                            <div class="text-muted">
+                             Allow create transfer from ticket
+                         </div>
+                        </div>
+                        <!--<label for="picking_type_id" attrs="{'invisible': [('create_transfer', '=', False)]}"/>-->
+                        <label for="picking_type_id" invisible="not create_transfer" />
+                        <!--<field name="picking_type_id"-->
+                        <!--       attrs="{'invisible': [('create_transfer', '=', False)], 'required': [('create_transfer', '=', True)]}"/>-->
+                        <field
+                            name="picking_type_id"
+                            invisible="not create_transfer"
+                            required="create_transfer"
+                        />
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='productivity']/div" position="after">
+                <div class="col-lg-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <label for="user_id" />
+                        <div class="text-muted">
+                         Default assigned person when selecting team.
+                     </div>
+                        <div>
+                            <field
+                                name="user_id"
+                                class="mt16"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='productivity']" position="after">
+                <h2>Brand</h2>
+                <div class="row mt16 o_settings_container" id="brand">
+                    <div class="col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="brand_id" />
+                            <div class="text-muted">
+                             Default brand when selecting team.
+                         </div>
+                            <div>
+                                <field
+                                    name="brand_id"
+                                    class="mt16 o_light_label"
+                                    options="{'no_create': True, 'no_create_edit': True}"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_view_list_inherit" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.type.list.inherit</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field
+            name="inherit_id"
+            ref="helpdesk_ticket_type.helpdesk_ticket_type_view_list"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="filter_failure_report" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_tickets_view_search_inherit_nsv_customize" model="ir.ui.view">
+        <field
+            name="name"
+        >helpdesk.ticket.search.base.inherit.helpdesk.ticket.type</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search_base" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="id" string="ID" />
+            </field>
+        </field>
+    </record>
+
+    <record id="helpdesk.helpdesk_team_dashboard_action_main" model="ir.actions.act_window">
+        <field name="domain">[('message_partner_ids.user_ids', 'in', [uid])]</field>
+    </record>
+</odoo>

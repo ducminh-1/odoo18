@@ -1,0 +1,76 @@
+{
+  "Contact": {
+    "ContactId": 8454772,
+    "UserId": 26762,
+    "ContactGroupId": 45365,
+    "ContactName": "Trần văn a",
+    "LastName": "Trần",
+    "FirstName": "văn a",
+    "Email": "",
+    "Mobile": "0912345678",
+    "Carrier": "Vinaphone",
+    "Note": "",
+    "BirthDate": null,
+    "Gender": "",
+    "CreateDate": "2021-04-23T02:52:21.94",
+    "CreateFromSourceId": 1,
+    "CreateFromSource": "User Create",
+    "IP": "",
+    "Location": "",
+    "Unsubscribe": false,
+    "Active": true,
+    "SuppressionMail": false,
+    "IsDelete": false,
+    "CustomFields": [
+      {
+        "ContactId": 8454772,
+        "CustomFieldId": 21,
+        "CustomFieldName": "Address",
+        "CustomFieldValue": "18A/67 nguyễn thi minh khai"
+      },
+      {
+        "ContactId": 8454772,
+        "CustomFieldId": 11694,
+        "CustomFieldName": "Buyfrom",
+        "CustomFieldValue": "Mua tại nguyễn kim"
+      },
+      {
+        "ContactId": 8454772,
+        "CustomFieldId": 11695,
+        "CustomFieldName": "Buydate",
+        "CustomFieldValue": "30-04-2021"
+      },
+      {
+        "ContactId": 8454772,
+        "CustomFieldId": 11696,
+        "CustomFieldName": "Serialno",
+        "CustomFieldValue": "235SSG"
+      },
+      {
+        "ContactId": 8454772,
+        "CustomFieldId": 11847,
+        "CustomFieldName": "Model",
+        "CustomFieldValue": "A23"
+      }
+    ],
+    "CustomFieldInString": "[{\"ContactId\":8454772,\"CustomFieldId\":21,\"CustomFieldName\":\"Address\",\"CustomFieldValue\":\"18A/67 nguyễn thi minh khai\"},{\"ContactId\":8454772,\"CustomFieldId\":11694,\"CustomFieldName\":\"Buyfrom\",\"CustomFieldValue\":\"Mua tại nguyễn kim\"},{\"ContactId\":8454772,\"CustomFieldId\":11695,\"CustomFieldName\":\"Buydate\",\"CustomFieldValue\":\"30-04-2021\"},{\"ContactId\":8454772,\"CustomFieldId\":11696,\"CustomFieldName\":\"Serialno\",\"CustomFieldValue\":\"235SSG\"},{\"ContactId\":8454772,\"CustomFieldId\":11847,\"CustomFieldName\":\"Model\",\"CustomFieldValue\":\"A23\"}]",
+    "IsVerified": true,
+    "FormId": null,
+    "CampaignId": 49471,
+    "Datatable": null,
+    "Facebook": "",
+    "Zalo": ""
+  },
+  "Event": {
+    "BaseType": 1,
+    "BaseDay": 0,
+    "BaseNewsletterId": null,
+    "BaseLink": "",
+    "BaseCustomFieldId": 1,
+    "BaseSpecialDay": null,
+    "ResponderName": "Thư tự động 2021-04-23 09:49",
+    "SendTimeType": 1,
+    "Timer": 0,
+    "EnableWeekDay": 127
+  }
+}

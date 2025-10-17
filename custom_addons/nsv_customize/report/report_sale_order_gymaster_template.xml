@@ -1,0 +1,438 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="nsv_report_sale_order_gymaster">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="nsv_customize.nsv_sale_gymaster_external_layout">
+                    <t
+                        t-set="doc"
+                        t-value="doc.with_context(lang=doc.partner_id.lang)"
+                    />
+                    <div
+                        class="row row mt32 mb32"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;"
+                    >
+                        <div class="col-12">
+                            <p class="text-dark">
+                                <b>Khách hàng: </b>
+                                <span t-field="doc.partner_id" />
+                            </p>
+                            <p
+                                t-if="doc.partner_id == doc.partner_shipping_id"
+                                class="text-dark"
+                            >
+                                <b>Địa chỉ giao hàng: </b>
+                                <span t-field="doc.partner_id.partner_address" />
+                            </p>
+                            <p t-else="" class="text-dark">
+                                <b>Địa chỉ: </b>
+                                <span t-field="doc.partner_id.partner_address" />
+                            </p>
+                            <p t-if="doc.partner_id.vat">
+                                <b>MST: </b>
+                                <span t-field="doc.partner_id.vat" />
+                            </p>
+                            <p t-if="doc.partner_id != doc.partner_shipping_id">
+                                <b class="text-dark">Địa chỉ giao hàng: </b>
+                                <span
+                                    t-field="doc.partner_shipping_id.partner_address"
+                                />
+                            </p>
+                            <p>
+                                <b>Người liên hệ: </b>
+                                <span t-field="doc.partner_shipping_id.title" />
+                                <span t-field="doc.partner_shipping_id.name" />
+                            </p>
+                            <p t-if="doc.partner_shipping_id.function">
+                                <b>Bộ phận: </b>
+                                <span t-field="doc.partner_shipping_id.function" />
+                            </p>
+                            <p t-if="doc.partner_shipping_id.phone">
+                                <b>Số điện thoại: </b>
+                                <span t-field="doc.partner_shipping_id.phone" />
+                            </p>
+                            <p t-if="doc.partner_shipping_id.mobile">
+                                <b>Di động: </b>
+                                <span t-field="doc.partner_shipping_id.mobile" />
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 14px;"
+                    >
+                        <div class="oe_structure" />
+
+                        <h2 class="mt16">
+                            <t
+                                t-if="not (env.context.get('proforma', False) or is_pro_forma)"
+                            >
+                                <span
+                                    t-if="doc.state not in ['draft','sent']"
+                                >Đơn hàng # </span>
+                                <span
+                                    t-if="doc.state in ['draft','sent']"
+                                >Báo giá # </span>
+                            </t>
+                            <t
+                                t-if="env.context.get('proforma', False) or is_pro_forma"
+                            >
+                                <span>Pro-Forma Invoice # </span>
+                            </t>
+                            <span t-field="doc.name" />
+                        </h2>
+
+                        <div class="row mt32 mb32" id="informations">
+                            <div
+                                t-if="doc.client_order_ref"
+                                class="col-auto mw-100 mb-2"
+                            >
+                                <strong>Your Reference:</strong>
+                                <p class="m-0" t-field="doc.client_order_ref" />
+                            </div>
+                            <div
+                                t-if="doc.date_order and doc.state not in ['draft','sent']"
+                                class="col-auto mw-100 mb-2"
+                                style="white-space: nowrap;"
+                            >
+                                <strong>Ngày đặt hàng:</strong>
+                                <p
+                                    class="m-0"
+                                    t-field="doc.date_order"
+                                    t-options="{'format': 'dd/MM/yyyy'}"
+                                />
+                            </div>
+                            <div
+                                t-if="doc.date_order and doc.state in ['draft','sent']"
+                                class="col-auto mw-100 mb-2"
+                                style="white-space: nowrap;"
+                            >
+                                <strong>Ngày báo giá:</strong>
+                                <p
+                                    class="m-0"
+                                    t-field="doc.date_order"
+                                    t-options="{'format': 'dd/MM/yyyy'}"
+                                />
+                            </div>
+                            <div
+                                t-if="doc.validity_date and doc.state in ['draft', 'sent']"
+                                class="col-auto mw-100 mb-2"
+                                name="expiration_date"
+                                style="white-space: nowrap;"
+                            >
+                                <strong>Ngày hết hạn:</strong>
+                                <p
+                                    class="m-0"
+                                    t-field="doc.validity_date"
+                                    t-options="{'format': 'dd/MM/yyyy'}"
+                                />
+                            </div>
+                            <div
+                                t-if="doc.user_id.name"
+                                class="col-auto mw-100 mb-2"
+                                style="white-space: nowrap;"
+                            >
+                                <strong>NV Kinh doanh:</strong>
+                                <p class="m-0" t-field="doc.user_id" />
+                            </div>
+                        </div>
+
+                        <!-- Is there a discount on at least one line? -->
+                        <t
+                            t-set="display_discount"
+                            t-value="any([l.discount for l in doc.order_line])"
+                        />
+
+                        <table
+                            class="o_has_total_table table o_main_table table-borderless"
+                        >
+                            <thead>
+                                <tr>
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-bottom"
+                                    >Sản Phẩm</th>
+                                    <th
+                                        name="th_quantity"
+                                        class="fw-bold text-end border-bottom"
+                                    >Số Lượng</th>
+                                    <th
+                                        name="th_priceunit"
+                                        class="fw-bold text-end border-bottom"
+                                    >Đơn Giá</th>
+                                    <th
+                                        name="th_discount"
+                                        t-if="display_discount"
+                                        class="fw-bold text-end border-bottom"
+                                        groups="product.group_discount_per_so_line"
+                                    >
+                                        <span>Giảm %</span>
+                                    </th>
+                                    <th
+                                        name="th_taxes"
+                                        class="fw-bold text-end border-bottom"
+                                    >Thuế</th>
+                                    <th
+                                        name="th_subtotal"
+                                        class="fw-bold text-end border-bottom"
+                                    >
+                                        <t
+                                            groups="account.group_show_line_subtotals_tax_excluded"
+                                        >Thành tiền</t>
+                                        <t
+                                            groups="account.group_show_line_subtotals_tax_included"
+                                        >Thành tiền</t>
+                                    </th>
+                                    <th
+                                        name="th_weight"
+                                        class="fw-bold text-end border-bottom"
+                                    >Khối lượng</th>
+                                    <th
+                                        name="th_volume"
+                                        class="fw-bold text-end border-bottom"
+                                    >Thể tích</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-set="current_subtotal" t-value="0" />
+
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t
+                                        t-set="current_subtotal"
+                                        t-value="current_subtotal + line.price_subtotal"
+                                        groups="account.group_show_line_subtotals_tax_excluded"
+                                    />
+                                    <t
+                                        t-set="current_subtotal"
+                                        t-value="current_subtotal + line.price_total"
+                                        groups="account.group_show_line_subtotals_tax_included"
+                                    />
+
+                                    <tr
+                                        t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''"
+                                    >
+                                        <t t-if="not line.display_type">
+                                            <td name="td_name" class="border-bottom">
+                                                <span t-field="line.name" />
+                                            </td>
+                                            <td
+                                                name="td_quantity"
+                                                class="border-bottom text-end"
+                                            >
+                                                <span t-field="line.product_uom_qty" />
+                                                <span
+                                                    t-field="line.product_uom"
+                                                    groups="uom.group_uom"
+                                                />
+                                            </td>
+                                            <td
+                                                name="td_priceunit"
+                                                class="text-end border-bottom"
+                                            >
+                                                <span t-field="line.price_unit" />
+                                            </td>
+                                            <td
+                                                t-if="display_discount"
+                                                class="text-end border-bottom"
+                                                groups="product.group_discount_per_so_line"
+                                            >
+                                                <span t-field="line.discount" />
+                                            </td>
+                                            <td
+                                                name="td_taxes"
+                                                class="text-end border-bottom"
+                                            >
+                                                <span
+                                                    t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"
+                                                />
+                                            </td>
+                                            <td
+                                                name="td_subtotal"
+                                                class="text-end o_price_total border-bottom"
+                                            >
+                                                <span
+                                                    t-field="line.price_subtotal"
+                                                    groups="account.group_show_line_subtotals_tax_excluded"
+                                                />
+                                                <span
+                                                    t-field="line.price_total"
+                                                    groups="account.group_show_line_subtotals_tax_included"
+                                                />
+                                            </td>
+                                            <td
+                                                name="td_weight"
+                                                class="text-end border-bottom"
+                                            >
+                                                <span t-field="line.weight" />
+                                            </td>
+                                            <td
+                                                name="td_volume"
+                                                class="text-end border-bottom"
+                                            >
+                                                <span t-field="line.volume" />
+                                            </td>
+                                        </t>
+                                        <t t-if="line.display_type == 'line_section'">
+                                            <td
+                                                name="td_section_line"
+                                                class="border-bottom"
+                                                colspan="99"
+                                            >
+                                                <span t-field="line.name" />
+                                            </td>
+                                            <t t-set="current_section" t-value="line" />
+                                            <t t-set="current_subtotal" t-value="0" />
+                                        </t>
+                                        <t t-if="line.display_type == 'line_note'">
+                                            <td
+                                                name="td_note_line"
+                                                class="border-bottom"
+                                                colspan="99"
+                                            >
+                                                <span t-field="line.name" />
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <!--<t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">-->
+                                    <!--    <tr class="is-subtotal text-right">-->
+                                    <!--        <td name="td_section_subtotal" colspan="99">-->
+                                    <!--            <strong class="mr16">Tổng</strong>-->
+                                    <!--            <span t-esc="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>-->
+                                    <!--        </td>-->
+                                    <!--    </tr>-->
+                                    <!--</t>-->
+                                </t>
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>Tổng</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong
+                                            t-esc="sum(doc.order_line.mapped('product_uom_qty'))"
+                                        />
+                                    </td>
+                                    <td />
+                                    <td />
+                                    <td />
+                                    <td class="text-right">
+                                        <span
+                                            t-esc="'%.4f' % sum(doc.order_line.mapped('weight'))"
+                                        />
+                                    </td>
+                                    <td class="text-right">
+                                        <span
+                                            t-esc="'%.4f' % sum(doc.order_line.mapped('volume'))"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="clearfix" name="so_total_summary">
+                            <div id="total" class="row mt-n3" name="total">
+                                <div
+                                    t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto"
+                                >
+                                    <table class="o_total_table table table-borderless">
+                                        <!-- Tax totals -->
+                                        <t t-call="sale.document_tax_totals">
+                                            <t
+                                                t-set="tax_totals"
+                                                t-value="doc.tax_totals"
+                                            />
+                                            <t
+                                                t-set="currency"
+                                                t-value="doc.currency_id"
+                                            />
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            t-if="doc.signature"
+                            class="mt32 ml64 mr4"
+                            name="signature"
+                        >
+                            <div class="offset-8">
+                                <strong>Chữ ký</strong>
+                            </div>
+                            <div class="offset-8">
+                                <img
+                                    t-att-src="image_data_uri(doc.signature)"
+                                    style="max-height: 4cm; max-width: 8cm;"
+                                />
+                            </div>
+                            <div class="offset-8 text-center">
+                                <p t-field="doc.signed_by" />
+                            </div>
+                        </div>
+
+                        <div class="oe_structure" />
+
+                        <p t-field="doc.note" />
+                        <p t-if="doc.payment_term_id.note">
+                            <span t-field="doc.payment_term_id.note" />
+                        </p>
+                        <p
+                            id="fiscal_position_remark"
+                            t-if="doc.fiscal_position_id and doc.fiscal_position_id.sudo().note"
+                        >
+                            <strong>Fiscal Position Remark:</strong>
+                            <span t-field="doc.fiscal_position_id.sudo().note" />
+                        </p>
+                        <br />
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <div>
+                                    <b>Người mua</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div>
+                                    <b>Người bán</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                		.col-xs-4 {
+						  position: relative;
+						  float: left;
+						  width: 33.33333333%;
+						}
+						.col-xs-3{
+						  position: relative;
+						  float: left;
+						  width: 25%;
+						}
+                		.text-center {
+	                		text-align: center;
+	                	}
+                    </style>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_sale_order_gymaster" model="ir.actions.report">
+        <field name="name">Bán Hàng / Gymaster</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.nsv_report_sale_order_gymaster</field>
+        <field name="report_file">nsv_customize.nsv_report_sale_order_gymaster</field>
+        <field
+            name="print_report_name"
+        >'Bán Hàng / Gymaster - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_sale_order" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

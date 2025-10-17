@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sms_tsms_view_form_inherit" model="ir.ui.view">
+        <field name="name">sms.sms.form.inherit</field>
+        <field name="model">sms.sms</field>
+        <field name="inherit_id" ref="sms.sms_tsms_view_form" />
+        <field name="arch" type="xml">
+            <button name="send" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </button>
+            <xpath expr="//button[@name='send']" position='after'>
+                <button
+                    name="send_vihat_esms"
+                    string="Send SMS"
+                    type="object"
+                    icon="fa-cogs"
+                    class="oe_highlight"
+                />
+            </xpath>
+            <field name="number" position='after'>
+                <field name="sms_brandname_id" required="1" />
+                <field name="vihat_sms_id" invisible="1" />
+                <field name="date_exec" invisible="1" readonly="True" />
+            </field>
+            <xpath expr="//sheet/group[2]" position='after'>
+                <notebook>
+                    <page name="zns" string='ZNS Value'>
+                        <field name="zns_template_id" />
+                        <field name='zns_template_val_ids' readonly="1">
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <field name="name" />
+                                        <field name="value" />
+                                    </group>
+                                </sheet>
+                            </form>
+                            <list>
+                                <field name="name" />
+                                <field name="value" />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

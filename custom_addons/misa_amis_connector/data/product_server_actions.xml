@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_push_product_inventory_item_to_misa" model="ir.actions.server">
+        <field name="name">Push Product to MISA</field>
+        <field name="model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+action = records.action_push_inventory_item_to_misa()
+        </field>
+    </record>
+</odoo>

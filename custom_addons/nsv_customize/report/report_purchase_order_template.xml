@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template
+        id='report_purchase_order'
+        inherit_id='purchase.report_purchaseorder_document'
+    >
+        <xpath expr="//thead//tr/th[@name='th_subtotal']" position="after">
+            <th name="th_weight" class="text-end">
+                <strong>Weight</strong>
+            </th>
+            <th name="th_olume" class="text-end">
+                <strong>Volume</strong>
+            </th>
+        </xpath>
+        <xpath expr="//tbody//span[@t-field='line.price_subtotal']" position="after">
+            <td class="text-end">
+                <span t-field="line.weight" />
+            </td>
+            <td class="text-end">
+                <span t-field="line.volume" />
+            </td>
+        </xpath>
+        <xpath expr="//tbody//t[2]" position="after">
+            <tr>
+                <td class="text-end" id="total">
+                    <b>Tổng</b>
+                </td>
+                <td class="text-center">
+                    <span t-esc="sum(o.order_line.mapped('product_qty'))" />
+                </td>
+                <td />
+                <td />
+                <td />
+                <td />
+                <td class="text-end">
+                    <span t-esc="sum(o.order_line.mapped('weight'))" />
+                </td>
+                <td class="text-end">
+                    <span t-esc="sum(o.order_line.mapped('volume'))" />
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,21 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_channel_user,sale_channel,model_sale_channel,base.group_user,1,1,1,0
+access_sale_channel_manager,sale_channel,model_sale_channel,base.group_system,1,1,1,1
+access_helpdesk_ticket_detail_user,helpdesk.ticket.detail.user,model_helpdesk_ticket_detail,helpdesk.group_helpdesk_user,1,1,1,1
+sale.access_product_template_sale_manager,product.template salemanager,product.model_product_template,sales_team.group_sale_manager,1,0,0,0
+purchase.access_product_template_purchase_manager,product.template purchase_manager,product.model_product_template,purchase.group_purchase_manager,1,0,0,0
+stock.access_product_template_stock_manager,product.template stock_manager,product.model_product_template,stock.group_stock_manager,1,0,0,0
+purchase.access_product_product_purchase_manager,product.product purchase_manager,product.model_product_product,purchase.group_purchase_manager,1,0,0,0
+sale.access_product_product_sale_manager,product.product salemanager,product.model_product_product,sales_team.group_sale_manager,1,0,0,0
+stock.access_product_product_stock_manager,product.product stock_manager,product.model_product_product,stock.group_stock_manager,1,0,0,0
+access_product_template_stock_create_edit,product.product crud,product.model_product_product,nsv_customize.group_create_edit_product,1,1,1,1
+access_product_product_stock_create_edit,product.template crud,product.model_product_template,nsv_customize.group_create_edit_product,1,1,1,1
+access_loyalty_level_user,loyalty.level.user,model_loyalty_level,base.group_user,1,0,0,0
+access_loyalty_level_manager,loyalty.level.manager,model_loyalty_level,base.group_erp_manager,1,1,1,1
+access_account_asset_user,account.asset,account_asset.model_account_asset,account.group_account_user,1,1,1,0
+access_brand_name,access_brand_name,model_brand_name,base.group_user,1,1,1,1
+access_res_size_user,res_size,model_res_size,base.group_user,1,1,1,0
+access_res_size_user_admin,access_res_size_user_admin,model_res_size,base.group_erp_manager,1,1,1,1
+access_product_failure_report,access_product_failure_report,model_product_failure_report,base.group_user,1,1,1,1
+access_partner_hobby,access_partner_hobby,model_partner_hobby,,1,1,1,1
+access_matter_concern,access_matter_concern,model_matter_concern,,1,1,1,1

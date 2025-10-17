@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="nsv_report_helpdesk_ticket_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_helpdesk_external_layout">
+                    <t t-set="doc" t-value="o" />
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="text-center">
+                            <b style="font-size: 20px;">PHIẾU SỬA CHỮA / BẢO HÀNH</b>
+                        </div>
+                        <div class="mt16 mb16">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="b">
+                                        <b>Số phiếu: </b>
+                                        <span>#</span>
+                                        <span t-field="doc.id" />
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-dark">
+                                        <b>Ngày lập: </b>
+                                        <span
+                                            t-field="doc.create_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                                <div class="col-5">
+                                    <p class="text-dark">
+                                        <b>Hết hạn: </b>
+                                        <span
+                                            t-if="doc.expiry_date"
+                                            t-field="doc.expiry_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div>
+                                        <b>Khách hàng: </b>
+                                        <span t-field="doc.partner_id.display_name" />
+                                    </div>
+                                    <!--									<t t-if="doc.partner_id.function"> <span> - </span><span t-field="doc.partner_id.function"/></t>-->
+                                </div>
+                                <div class="col-5">
+                                    <div class="text-dark">
+                                        <b>Loại phiếu: </b>
+                                        <span t-field="doc.ticket_type_id" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="b">
+                                        <b>Địa chỉ: </b>
+                                        <span
+                                            t-field="doc.partner_id.partner_address"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="b">
+                                        <b>Ngày mua hàng: </b>
+                                        <span
+                                            t-field="doc.date_order"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Điện thoại: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Di động: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div style="margin-bottom: 20px;">
+                                        <b>Nội dung: </b>
+                                        <span t-field="doc.description" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table
+                            t-if="doc.ticket_detail_ids"
+                            class="o_total_table table table-borderless"
+                        >
+                            <thead>
+                                <tr style="color: rgb(0,0,0)">
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Mô tả</th>
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Sản Phẩm</th>
+                                    <th
+                                        name="th_quantity"
+                                        class="fw-bold text-end border-top"
+                                        style="white-space: nowrap;"
+                                    >SL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.ticket_detail_ids" t-as="line">
+                                    <tr>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.name" />
+                                        </td>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.product_id" />
+                                        </td>
+                                        <td
+                                            name="td_quantity"
+                                            class="text-end border-top"
+                                            style="white-space: nowrap;"
+                                        >
+                                            <span t-field="line.quantity" />
+                                            <span t-field="line.uom_id" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <!-- 						<div class="text-left">
+							<i>Nhờ những đóng góp của quý khách hàng, đối tác, chúng tôi cải thiện, </i>
+							<i>đáp ứng tốt hơn nhu cầu của Quý khách hàng về chất lượng dịch vụ.</i>
+						</div> -->
+                        <!-- 						<div class="row text-center">
+							<div class="col-12 text-center">
+								<i>Sự hài lòng của quý khách hàng về Nhân viên Giao nhận/Kỹ thuật</i>
+							</div>
+						</div> -->
+                        <!-- 						<div class="row text-center">
+							<div class="col-12">
+								<ul class="list-inline mb4">
+									<li class="list-inline-item"><i class="fa fa-square-o" role="img" aria-label="Tốt" title="Tốt"/><i> Tốt</i></li>
+									<li class="list-inline-item"> - </li>
+									<li class="list-inline-item"><i class="fa fa-square-o" role="img" aria-label="Khá" title="Khá"/><i> Khá</i></li>
+									<li class="list-inline-item"> - </li>
+									<li class="list-inline-item"><i class="fa fa-square-o" role="img" aria-label="Trung Bình" title="Trung Bình"/><i> Trung Bình</i></li>
+									<li class="list-inline-item"> - </li>
+									<li class="list-inline-item"><i class="fa fa-square-o" role="img" aria-label="Kém" title="Kém"/><i> Kém</i></li>
+								</ul>
+							</div>
+						</div> -->
+
+                        <div class="row text-center">
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Người lập phiếu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Khách hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div style="">
+                                    <b>Nhân viên Giao nhận/Kỹ thuật</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="nsv_report_helpdesk_product_withdrawal_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_helpdesk_external_layout">
+                    <t t-set="doc" t-value="o" />
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="text-center">
+                            <b
+                                style="font-size: 20px;text-transform: uppercase;"
+                            >PHIẾU RÚT HÀNG</b>
+                        </div>
+                        <div class="mt16 mb16">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="b">
+                                        <b>Số phiếu: </b>
+                                        <span>#</span>
+                                        <span t-field="doc.id" />
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-dark">
+                                        <b>Ngày lập: </b>
+                                        <span
+                                            t-field="doc.create_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                                <div class="col-5">
+                                    <p class="text-dark">
+                                        <b>Hết hạn: </b>
+                                        <span
+                                            t-if="doc.expiry_date"
+                                            t-field="doc.expiry_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div>
+                                        <b>Khách hàng: </b>
+                                        <span t-field="doc.partner_id.display_name" />
+                                    </div>
+                                    <!--									<t t-if="doc.partner_id.function"> <span> - </span><span t-field="doc.partner_id.function"/></t>-->
+                                </div>
+                                <div class="col-5">
+                                    <div class="text-dark">
+                                        <b>Loại phiếu: </b>
+                                        <span t-field="doc.ticket_type_id" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="b">
+                                        <b>Địa chỉ: </b>
+                                        <span
+                                            t-field="doc.partner_id.partner_address"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Điện thoại: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Di động: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <b>Nội dung: </b>
+                                        <span t-field="doc.description" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <b>Người tạo: </b>
+                                        <span t-field="doc.create_uid" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div
+                                        t-if="doc.create_uid.partner_id.phone"
+                                        style="margin-bottom: 20px;"
+                                    >
+                                        <b>Thông tin liên hệ: </b>
+                                        <span
+                                            t-field="doc.create_uid.partner_id.phone"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table
+                            t-if="doc.ticket_detail_ids"
+                            class="o_total_table table table-borderless"
+                        >
+                            <thead>
+                                <tr style="color: rgb(0,0,0)">
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Mô tả</th>
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Sản Phẩm</th>
+                                    <th
+                                        name="th_quantity"
+                                        class="fw-bold text-end border-top"
+                                        style="white-space: nowrap;"
+                                    >SL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.ticket_detail_ids" t-as="line">
+                                    <tr>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.name" />
+                                        </td>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.product_id" />
+                                        </td>
+                                        <td
+                                            name="td_quantity"
+                                            class="text-end border-top"
+                                            style="white-space: nowrap;"
+                                        >
+                                            <span t-field="line.quantity" />
+                                            <span t-field="line.uom_id" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row text-center">
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Người lập phiếu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Khách hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div style="">
+                                    <b>Nhân viên Giao nhận/Kỹ thuật</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="nsv_report_helpdesk_error_change_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="nsv_customize.nsv_helpdesk_external_layout">
+                    <t t-set="doc" t-value="o" />
+                    <div
+                        class="page"
+                        style="font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri; font-size: 15px;line-height: 1.7;"
+                    >
+                        <div class="text-center">
+                            <b
+                                style="font-size: 20px;text-transform: uppercase;"
+                            >PHIẾU ĐỔI LỖI</b>
+                        </div>
+                        <div class="mt16 mb16">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="b">
+                                        <b>Số phiếu: </b>
+                                        <span>#</span>
+                                        <span t-field="doc.id" />
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-dark">
+                                        <b>Ngày lập: </b>
+                                        <span
+                                            t-field="doc.create_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                                <div class="col-5">
+                                    <p class="text-dark">
+                                        <b>Hết hạn: </b>
+                                        <span
+                                            t-if="doc.expiry_date"
+                                            t-field="doc.expiry_date"
+                                            t-options="{'format': 'dd/MM/yyyy'}"
+                                        />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div>
+                                        <b>Khách hàng: </b>
+                                        <span t-field="doc.partner_id.display_name" />
+                                    </div>
+                                    <!--									<t t-if="doc.partner_id.function"> <span> - </span><span t-field="doc.partner_id.function"/></t>-->
+                                </div>
+                                <div class="col-5">
+                                    <div class="text-dark">
+                                        <b>Loại phiếu: </b>
+                                        <span t-field="doc.ticket_type_id" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="b">
+                                        <b>Địa chỉ: </b>
+                                        <span
+                                            t-field="doc.partner_id.partner_address"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Điện thoại: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="b" t-if="doc.partner_id.phone">
+                                        <b>Di động: </b>
+                                        <span t-field="doc.partner_id.phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <b>Nội dung: </b>
+                                        <span t-field="doc.description" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <b>Người tạo: </b>
+                                        <span t-field="doc.create_uid" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div
+                                        t-if="doc.create_uid.partner_id.phone"
+                                        style="margin-bottom: 20px;"
+                                    >
+                                        <b>Thông tin liên hệ: </b>
+                                        <span
+                                            t-field="doc.create_uid.partner_id.phone"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table
+                            t-if="doc.ticket_detail_ids"
+                            class="o_total_table table table-borderless"
+                        >
+                            <thead>
+                                <tr style="color: rgb(0,0,0)">
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Mô tả</th>
+                                    <th
+                                        name="th_description"
+                                        class="fw-bold text-start border-top"
+                                    >Sản Phẩm</th>
+                                    <th
+                                        name="th_quantity"
+                                        class="fw-bold text-end border-top"
+                                        style="white-space: nowrap;"
+                                    >SL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.ticket_detail_ids" t-as="line">
+                                    <tr>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.name" />
+                                        </td>
+                                        <td name="td_name" class="border-top">
+                                            <span t-field="line.product_id" />
+                                        </td>
+                                        <td
+                                            name="td_quantity"
+                                            class="text-end border-top"
+                                            style="white-space: nowrap;"
+                                        >
+                                            <span t-field="line.quantity" />
+                                            <span t-field="line.uom_id" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row text-center">
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Người lập phiếu</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div>
+                                    <b>Khách hàng</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                            <div class="col-4" style="white-space: nowrap;">
+                                <div style="">
+                                    <b>Nhân viên Giao nhận/Kỹ thuật</b>
+                                </div>
+                                <div>
+                                    <i>(Ký, họ tên)</i>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Print 'Phiếu Hỗ trợ' -->
+    <!--<report-->
+    <!--        id="action_report_helpdesk_ticket"-->
+    <!--        model="helpdesk.ticket"-->
+    <!--        string="Phiếu Hỗ Trợ"-->
+    <!--        report_type="qweb-pdf"-->
+    <!--        name="nsv_customize.nsv_report_helpdesk_ticket_template"-->
+    <!--        file="nsv_customize.nsv_report_helpdesk_ticket_template"-->
+    <!--        menu="True"-->
+    <!--        paperformat="nsv_customize.nsv_paperformat_a5_landscap"-->
+    <!--    />-->
+    <record id="action_report_helpdesk_ticket" model="ir.actions.report">
+        <field name="name">Phiếu Hỗ Trợ</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >nsv_customize.nsv_report_helpdesk_ticket_template</field>
+        <field
+            name="report_file"
+        >nsv_customize.nsv_report_helpdesk_ticket_template</field>
+        <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nsv_paperformat_a5_landscap" />
+    </record>
+
+    <!--<report-->
+    <!--        id="action_report_helpdesk_product_withdrawal"-->
+    <!--        model="helpdesk.ticket"-->
+    <!--        string="Phiếu Rút Hàng"-->
+    <!--        report_type="qweb-pdf"-->
+    <!--        name="nsv_customize.nsv_report_helpdesk_product_withdrawal_template"-->
+    <!--        file="nsv_customize.nsv_report_helpdesk_product_withdrawal_template"-->
+    <!--        menu="True"-->
+    <!--        paperformat="nsv_customize.nsv_paperformat_a4_default"-->
+    <!--    />-->
+    <record id="action_report_helpdesk_product_withdrawal" model="ir.actions.report">
+        <field name="name">Phiếu Rút Hàng</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >nsv_customize.nsv_report_helpdesk_product_withdrawal_template</field>
+        <field
+            name="report_file"
+        >nsv_customize.nsv_report_helpdesk_product_withdrawal_template</field>
+        <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nsv_paperformat_a4_default" />
+    </record>
+
+    <!--<report-->
+    <!--           id="action_report_helpdesk_error_change"-->
+    <!--           model="helpdesk.ticket"-->
+    <!--           string="Phiếu Đổi Lỗi"-->
+    <!--           report_type="qweb-pdf"-->
+    <!--           name="nsv_customize.nsv_report_helpdesk_error_change_template"-->
+    <!--           file="nsv_customize.nsv_report_helpdesk_error_change_template"-->
+    <!--           menu="True"-->
+    <!--           paperformat="nsv_customize.nsv_paperformat_a4_default"-->
+    <!--       />-->
+    <record id="action_report_helpdesk_error_change" model="ir.actions.report">
+        <field name="name">Phiếu Đổi Lỗi</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >nsv_customize.nsv_report_helpdesk_error_change_template</field>
+        <field
+            name="report_file"
+        >nsv_customize.nsv_report_helpdesk_error_change_template</field>
+        <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nsv_paperformat_a4_default" />
+    </record>
+</odoo>

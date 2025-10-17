@@ -1,0 +1,2144 @@
+# Translation of Odoo Server.
+
+#. module: nsv_customize
+#: model:mail.template,subject:nsv_customize.rating_ticket_request_email_template_2
+msgid ""
+"${object.company_id.name or object.user_id.company_id.name or 'Hỗ trợ'}: Yêu"
+" cầu đánh giá chất lượng dịch vụ"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "&amp;nbsp;<span> </span>&amp;nbsp;"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "(<i>Gỡ</i>)"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "(Hoặc bộ phận có nhu cầu nhập)<br/><i>(Ký, họ tên)</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid ""
+"- Số chứng từ gốc kèm theo:<span style=\"margin-left:80px\">Chứng từ "
+"gốc</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "- Tổng số tiền(Viết bằng chữ):"
+msgstr ""
+
+#. module: nsv_customize
+#: model:mail.template,body_html:nsv_customize.rating_ticket_request_email_template_2
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<div>\n"
+"        % set access_token = object.rating_get_access_token()\n"
+"        % set partner = object.rating_get_partner_id()\n"
+"        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%; margin:0;\">\n"
+"        <tbody>\n"
+"            <tr>\n"
+"                <td valign=\"top\" style=\"font-size: 14px;\">\n"
+"                    <b>Cám ơn quý khách đã tin tưởng và lựa chọn sản phẩm của Công ty Nguồn Sống Việt.</b><br/><br/>\n"
+"                    <p>\n"
+"                        <span>Nhằm nâng cao chất lượng dịch vụ, mong Quý khách gửi đánh giá chi tiết nhất để chúng </span>\n"
+"                        <span>để chúng tôi khắc phục ngay điều chưa tốt và phát huy điều đang làm tốt.</span>\n"
+"                    </p>\n"
+"                    <br/>\n"
+"                </td>\n"
+"            </tr>\n"
+"            <tr><td style=\"text-align: center;\">\n"
+"                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" summary=\"o_mail_notification\" style=\"width:100%; margin: 32px 0px 32px 0px;\">\n"
+"                    <tr>\n"
+"                        <td style=\"font-size: 14px;\">\n"
+"                            <i>Hãy cho chúng tôi biết đánh giá của quý khách bằng cách chọn một trong những biểu tượng bên dưới.</i><br/><br/>\n"
+"                        </td>\n"
+"                    </tr>\n"
+"                    <tr><td style=\"font-size: 14px;\">\n"
+"                        <table style=\"width:100%;text-align:center;\">\n"
+"                            <tr>\n"
+"                                <td>\n"
+"                                    <a href=\"/rating/${access_token}/10\">\n"
+"                                        <img alt=\"Satisfied\" src=\"/rating/static/src/img/rating_10.png\" title=\"Hài lòng\"/>\n"
+"                                    </a>\n"
+"                                </td>\n"
+"                                <td>\n"
+"                                    <a href=\"/rating/${access_token}/5\">\n"
+"                                        <img alt=\"Not satisfied\" src=\"/rating/static/src/img/rating_5.png\" title=\"Chấp nhận được\"/>\n"
+"                                    </a>\n"
+"                                </td>\n"
+"                                <td>\n"
+"                                    <a href=\"/rating/${access_token}/1\">\n"
+"                                        <img alt=\"Highly Dissatisfied\" src=\"/rating/static/src/img/rating_1.png\" title=\"Tệ, quá tệ\"/>\n"
+"                                    </a>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td></tr>\n"
+"                </table>\n"
+"            </td></tr>\n"
+"            <tr><td valign=\"top\" style=\"font-size: 14px;\">\n"
+"                Xin chân thành cảm ơn Quý khách !\n"
+"                <br/>\n"
+"            </td></tr>\n"
+"        </tbody>\n"
+"        </table>\n"
+"    </div>\n"
+"            "
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b class=\"text-dark\">Địa chỉ giao hàng: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b style=\"font-size: 20px;\">PHIẾU SỬA CHỮA / BẢO HÀNH</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+msgid "<b style=\"font-size: 20px;text-transform: uppercase;\">PHIẾU RÚT HÀNG</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+msgid "<b style=\"font-size: 20px;text-transform: uppercase;\">PHIẾU ĐỔI LỖI</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Bộ phận: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Di động: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Hết hạn: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Khách hàng: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Khách hàng</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<b>Kế toán trưởng</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Loại phiếu: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>MST: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<b>Mẫu số: 01-VT</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Ngày lập: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Người bán</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<b>Người giao hàng</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Người liên hệ: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<b>Người lập biểu</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<b>Người lập phiếu</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Người mua</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<b>Người nhận hàng</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+msgid "<b>Người tạo: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Nhân viên Giao nhận/Kỹ thuật</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Nội dung: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Số phiếu: </b><span>#</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Số điện thoại: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+msgid "<b>Thông tin liên hệ: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<b>Thủ kho</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<b>Thủ trưởng đơn vị</b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<b>Điện thoại: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Địa chỉ giao hàng: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<b>Địa chỉ: </b>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "<i class=\"fa fa-at\" role=\"img\" aria-label=\"Email\" title=\"Email\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "<i class=\"fa fa-globe\" role=\"img\" aria-label=\"Website\" title=\"Website\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "<i class=\"fa fa-phone\" role=\"img\" aria-label=\"Phone\" title=\"Phone\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<i class=\"fa fa-square-o\" role=\"img\" aria-label=\"Khá\" title=\"Khá\"/><i> Khá</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<i class=\"fa fa-square-o\" role=\"img\" aria-label=\"Kém\" title=\"Kém\"/><i> Kém</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid ""
+"<i class=\"fa fa-square-o\" role=\"img\" aria-label=\"Trung Bình\" "
+"title=\"Trung Bình\"/><i> Trung Bình</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<i class=\"fa fa-square-o\" role=\"img\" aria-label=\"Tốt\" title=\"Tốt\"/><i> Tốt</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid ""
+"<i>(Ban hành theo QĐ số 15/2006 /QĐ-BTC ngày 20/03/2006 của Bộ trưởng "
+"BTC)</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "<i>(Ký, họ tên)</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<i>(Ký, họ tên, đóng dấu)</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<i>(Lắp)</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid ""
+"<i>Nhờ những đóng góp của quý khách hàng, đối tác, chúng tôi cải thiện, </i>\n"
+"\t\t\t\t\t\t\t<i>đáp ứng tốt hơn nhu cầu của Quý khách hàng về chất lượng dịch vụ.</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+msgid "<i>Sự hài lòng của quý khách hàng về Nhân viên Giao nhận/Kỹ thuật</i>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">Add Parts</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">Remove Parts</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<span class=\"title\"><b>PHIẾU NHẬP KHO</b></span><br/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid ""
+"<span class=\"title\"><b>PHIẾU XUẤT KHO</b></span>\n"
+"\t                \t\t\t<br/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+msgid ""
+"<span> | </span>\n"
+"                        <span>ĐT: </span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<span>- Diễn giải:</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<span>- Họ và tên người giao:</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid ""
+"<span>- Theo ........số.........ngày........tháng........năm............của:</span>\n"
+"                \t\t\t\t\t<span class=\"info-content\"/>\n"
+"                \t\t\t\t\t<span class=\"underlined\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "<span>- Địa điểm nguồn:</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<span>Giảm %</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+msgid "<span>MST: </span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<span>PHIẾU THANH TOÁN</span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<span>Pro-Forma Invoice # </span>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong class=\"mr16\">Tổng</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Chữ ký</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_statement
+msgid "<strong>Ending Balance</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Ghi chú: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Hạn bảo hành:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Khách hàng: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Linh kiện</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>NV Kinh doanh:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Ngày báo giá:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Ngày hết hạn:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Ngày in:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Ngày thanh toán: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Ngày đặt hàng:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Nhà cung cấp: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Nội dung thanh toán: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Phí dịch vụ</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Phương thức thanh toán: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_statement
+msgid "<strong>Starting Balance</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Sản phẩm sửa:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Số Lot/Seri:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "<strong>Số tiền thanh toán: </strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Thành tiền</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "<strong>Tổng chưa thuế</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Tổng</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "<strong>Your Reference:</strong>"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_warehouse__analytic_tag_id
+msgid "Account Tag"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_stock_warehouse_form_inherit
+msgid "Accounting Analytics"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_needaction
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__active
+msgid "Active"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_exception_decoration
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_state
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_type_icon
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__add_repair_src_location_id
+msgid "Add Part From Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__add_repair_des_location_id
+msgid "Add Part To Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__add_repair_des_location_id
+msgid "Add Repair Des Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__add_repair_src_location_id
+msgid "Add Repair Src Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Add a line"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_crm_team__member_ids
+msgid ""
+"Add members to automatically assign their documents to this sales team. You "
+"can only be member of one team."
+msgstr ""
+
+#. module: nsv_customize
+#: model:res.groups,name:nsv_customize.group_validate_transfer_operations
+msgid "Allow To Validate Transfer Operations"
+msgstr ""
+
+#. module: nsv_customize
+#: model:res.groups,name:nsv_customize.group_view_product_standard_prices
+msgid "Allow To View Standard Prices"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_team__analytic_account_id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__account_tag_id
+msgid "Analytic Account Tag"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_account_analytic_tag
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_fee__analytic_tag_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_line__analytic_tag_ids
+msgid "Analytic Tags"
+msgstr "Từ khóa khoản mục"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_hr_applicant
+msgid "Applicant"
+msgstr "Ứng viên"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_approval_approver
+msgid "Approver"
+msgstr "Người phê duyệt"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_view_form
+msgid "Archived"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_attachment_count
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_statement
+msgid "Bank Statement"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_team__partner_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_team_view_form_inherit
+msgid "Branch"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.act_window,name:nsv_customize.action_open_brand_name
+#: model:ir.model,name:nsv_customize.model_brand_name
+#: model:ir.ui.menu,name:nsv_customize.brand_name_config
+msgid "Brand Name"
+msgstr "Thương hiệu"
+
+#. module: nsv_customize
+#: model_terms:ir.actions.act_window,help:nsv_customize.action_open_brand_name
+msgid "Brand Name."
+msgstr "Thương hiệu"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Báo giá #"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "Báo giá sửa chữa #:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__name
+msgid "Chanel"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.act_window,name:nsv_customize.action_sale_channel
+#: model:ir.model.fields,field_description:nsv_customize.field_account_bank_statement_line__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_payment__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report__channel_id
+#: model:ir.model.fields.selection,name:nsv_customize.selection__account_analytic_tag__tag_type__channel
+#: model:ir.ui.menu,name:nsv_customize.menu_sale_channel
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_tree_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_view_form
+msgid "Channel"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_team__member_ids
+msgid "Channel Members"
+msgstr "Thành viên của Kênh"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__channel_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__channel_account_tag_id
+msgid "Channel Tag"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_res_company
+msgid "Companies"
+msgstr "Công ty"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__company_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__company_id
+msgid "Company"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_res_config_settings
+msgid "Config Settings"
+msgstr "Thiết lập cấu hình"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_res_partner
+msgid "Contact"
+msgstr "Liên hệ"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_crm_lead2opportunity_partner
+msgid "Convert Lead to Opportunity (not in mass)"
+msgstr "Chuyển khách hàng tiềm năng thành cơ hội (không nhiều)"
+
+#. module: nsv_customize
+#: model:res.groups,name:nsv_customize.group_create_edit_product
+msgid "Create & Edit Product"
+msgstr "Tạo và chỉnh sửa sản phẩm"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__create_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__create_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__create_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__create_uid
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__create_date
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__create_date
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__create_date
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__create_date
+msgid "Created on"
+msgstr "Ngày tạo"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__customer_address
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Customer Address"
+msgstr "Địa chỉ khách hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__customer_phone
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__customer_phone
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Customer Phone"
+msgstr "Sđt khách hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_picking__order_ref
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+msgid "Customer Reference"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Các khoản khác"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__done_date
+msgid "Date Done"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "Default location configuration"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_helpdesk_ticket_detail__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_order_view_form_inherit
+msgid "Delivery Date"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__name
+msgid "Description"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_account_invoice_report__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_approval_approver__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead2opportunity_partner__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_team__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_team__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_product_template__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_fee__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_line__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_location__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_quant__display_name
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_warehouse__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/res_partner.py:0
+#, python-format
+msgid "Duplicated Error: The phone \"%s\" is already existed. Please check again!"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/res_partner.py:0
+#, python-format
+msgid "Duplicated Error: VAT \"%s\" is already existed. Please check again!"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_bank_statement_line__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_invoice_report__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_payment__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__employee_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report__employee_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_tree_inherit
+msgid "Employee"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_hr_contract
+msgid "Employee Contract"
+msgstr "Hợp đồng nhân viên"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_order_view_form_inherit
+msgid "Expected:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__expiry_date
+msgid "Expired Date"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__extra_allowance
+msgid "Extra Allowance"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Fee"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Fee Total"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_view_form
+msgid ""
+"Follow this sale channel to automatically track the events associated to "
+"users of this team."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_follower_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_channel_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_partner_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__activity_type_icon
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "From Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__gasoline_allowance
+msgid "Gasoline Allowance"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.view_brand_name_form
+msgid "HSM Branch"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__fee
+msgid "Helpdesk Fee"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_helpdesk_team
+msgid "Helpdesk Team"
+msgstr "Nhóm hỗ trợ"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Thẻ hỗ trợ"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_helpdesk_ticket_detail
+msgid "Helpdesk Ticket Detail"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_invoice_report__id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__id
+#: model:ir.model.fields,field_description:nsv_customize.field_approval_approver__id
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__id
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead2opportunity_partner__id
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead__id
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_team__id
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_team__id
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__id
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__id
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant__id
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__id
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__id
+#: model:ir.model.fields,field_description:nsv_customize.field_product_template__id
+#: model:ir.model.fields,field_description:nsv_customize.field_purchase_order__id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_fee__id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_line__id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__id
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__id
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__id
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order_line__id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report__id
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_location__id
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_picking__id
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_quant__id
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_warehouse__id
+msgid "ID"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_exception_icon
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__activity_exception_icon
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_needaction
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_unread
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_needaction
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_has_error
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_has_sms_error
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_has_error
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant__interview_address
+msgid "Interview Address"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant__interview_time
+msgid "Interview Time"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant__interviewer
+msgid "Interviewer"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_stock_location
+msgid "Inventory Locations"
+msgstr "Địa điểm Kiểm kê"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_bank_statement_line__invoice_number
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__invoice_number
+#: model:ir.model.fields,field_description:nsv_customize.field_account_payment__invoice_number
+#: model:ir.model.fields,field_description:nsv_customize.field_purchase_order__invoice_number
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__invoice_number
+msgid "Invoice Number"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Thống kê hóa đơn"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_is_follower
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_account_move
+msgid "Journal Entry"
+msgstr "Bút toán sổ nhật ký"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Kho"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Khách hàng:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__channel_id
+#: model:ir.model.fields,field_description:nsv_customize.field_res_users__channel_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.view_sales_order_filter_inherit
+msgid "Kênh"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_analytic_tag____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_account_invoice_report____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_approval_approver____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead2opportunity_partner____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_team____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_team____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_applicant____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_product_template____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_fee____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_line____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_location____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_quant____last_update
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_warehouse____last_update
+msgid "Last Modified on"
+msgstr "Sửa lần cuối vào"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__write_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__write_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__write_uid
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__write_date
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__write_date
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__write_date
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Tiềm năng/Cơ hội"
+
+#. module: nsv_customize
+#: model:ir.ui.menu,name:nsv_customize.menu_location_report
+msgid "Locations"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "Logo"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.loyalty_level_view_tree
+msgid "Loyalty Chanel"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_loyalty_level
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__loyalty_level_id
+#: model:ir.model.fields,field_description:nsv_customize.field_res_users__loyalty_level_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.loyalty_level_view_form
+msgid "Loyalty Level"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.act_window,name:nsv_customize.action_loyalty_level_view
+#: model:ir.ui.menu,name:nsv_customize.menu_loyalty_level
+msgid "Loyalty Levels"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "MST:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_main_attachment_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_has_error
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Mã hàng"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Mã kho"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Mã số"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "Mô tả"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_loyalty_level__name
+msgid "Name"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__name
+#: model_terms:ir.ui.view,arch_db:nsv_customize.view_brand_name_form
+msgid "Name"
+msgstr "Tên thương hiệu"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_date_deadline
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_summary
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_type_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "Người nhận tiền"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "Người nộp tiền"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid "No account defined for product \"%s\"."
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid "No product defined on fees."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__note
+msgid "Note"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_needaction_counter
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_has_error_counter
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_needaction_counter
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_has_error_counter
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__message_unread_counter
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Nội dung:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_statement
+msgid "PHIẾU THANH TOÁN"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_bank_statement_line__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_payment__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order_line__pos_account_tag_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_report__pos_account_tag_id
+#: model:ir.model.fields.selection,name:nsv_customize.selection__account_analytic_tag__tag_type__pos
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_tree_inherit
+msgid "POS"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__payment_term_id
+msgid "Payment Terms"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.action_report_helpdesk_ticket
+msgid "Phiếu Hỗ Trợ"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.account_report_picking_in
+msgid "Phiếu Nhập Kho"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.action_report_helpdesk_product_withdrawal
+msgid "Phiếu Rút Hàng"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.action_report_payment_receipt
+msgid "Phiếu Thanh Toán"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.account_report_picking_out
+msgid "Phiếu Xuất Kho"
+msgstr "Phiếu Nhập Kho"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+msgid "Phiếu sửa chữa #:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.action_report_account_statement
+msgid "Phiếu thu - chi"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.report,name:nsv_customize.action_report_helpdesk_error_change
+msgid "Phiếu Đổi Lỗi"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.view_brand_name_list
+msgid "Physician Rank"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Phụ cấp công việc"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid "Please define an accounting sales journal for the company %s (%s)."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.view_sales_order_filter_inherit
+msgid "Pos tag"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__product_id
+msgid "Product"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_quant__product_categ_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_quant_search_view_inherit
+msgid "Product Category"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_product_template
+msgid "Product Template"
+msgstr "Mẫu sản phẩm"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_purchase_order
+msgid "Purchase Order"
+msgstr "Đơn mua hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Quantity Total"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_stock_quant
+msgid "Quants"
+msgstr "Số lượng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__rm_repair_src_location_id
+msgid "Remove Part From Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__rm_repair_des_location_id
+msgid "Remove Part To Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "Repair"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_repair_fee
+msgid "Repair Fees"
+msgstr "Phí sửa"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_repair_line
+msgid "Repair Line (parts)"
+msgstr "Hạng mục sửa chữa (bộ phận)"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_repair_order
+msgid "Repair Order"
+msgstr "Lệnh sữa chữa"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__respons_allowance
+msgid "Responsibility Allowance"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__activity_user_id
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__rm_repair_des_location_id
+msgid "Rm Repair Des Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__rm_repair_src_location_id
+msgid "Rm Repair Src Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "SL"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_has_sms_error
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "STT"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_sale_channel
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_tree
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_view_form
+msgid "Sale Channel"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.actions.act_window,name:nsv_customize.action_sale_order_lines
+#: model:ir.ui.menu,name:nsv_customize.menu_sale_order_lines
+msgid "Sale Items"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_bank_statement_line__sale_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_move__sale_id
+#: model:ir.model.fields,field_description:nsv_customize.field_account_payment__sale_id
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+msgid "Sale Order"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_sale_report
+msgid "Sales Analysis Report"
+msgstr "Báo cáo phân tích hoạt động kinh doanh"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sale_channel_view_form
+msgid "Sales Channel name..."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_sale_order
+msgid "Sales Order"
+msgstr "Đơn bán hàng"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Chi tiết đơn hàng"
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_crm_team
+msgid "Sales Team"
+msgstr "Đội ngũ bán hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_stock_quant__product_categ_id
+msgid "Select category for the current product"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__sequence
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "Set the location where added parts are"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "Set the location where removed parts are"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_picking__shipping_address
+msgid "Shipping Address"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead2opportunity_partner__stage_id
+#: model:ir.model.fields,field_description:nsv_customize.field_crm_lead2opportunity_partner_mass__stage_id
+msgid "Stage"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__activity_state
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_error_change_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_product_withdrawal_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_helpdesk_ticket_template
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Sản Phẩm"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Số Lượng"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_account_move_form_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_purchase_order_form_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_order_view_form_inherit
+msgid "Số hoá đơn"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_res_partner__bought_amount
+#: model:ir.model.fields,help:nsv_customize.field_res_users__bought_amount
+msgid "Số liệu hệ thống cũ"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Số lô/sê-ri"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Số lượng"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Số phiếu:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Số đơn hàng:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "TK có"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "TK nợ"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_account_analytic_tag__tag_type
+msgid "Tag Type"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__telephone_allowance
+msgid "Telephone Allowance"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_repair_order__analytic_account_id
+msgid "The analytic account related to a sales order."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_crm_team__analytic_account_id
+msgid "The analytic account related to a sales team."
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__company_id
+msgid "The company is automatically set from your user preferences."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Thuế"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Thành tiền"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_application_view_form_inherit
+msgid "Thời gian phỏng vấn"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_payment_receipt_document
+msgid "Thủ quỹ"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket__ticket_detail_ids
+#: model_terms:ir.ui.view,arch_db:nsv_customize.helpdesk_ticket_view_form_detail_inherit
+msgid "Ticket Details"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__ticket_id
+msgid "Ticket Reference"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.res_config_settings_view_form_inherit
+msgid "To Location"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__toxic_allowance
+msgid "Toxic Allowance"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "Trang: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_stock_picking
+msgid "Transfer"
+msgstr "Điều chuyển"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Trách nhiệm"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__activity_exception_decoration
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Tên hàng"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Tên vật tư"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Tổng cộng:"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__bought_amount
+#: model:ir.model.fields,field_description:nsv_customize.field_res_users__bought_amount
+msgid "Tổng tiền tích luỹ"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid ""
+"Unable to cancel this repair order because a invoice related to it is posted"
+" !"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_helpdesk_ticket_detail__uom_id
+msgid "Unit of Measure "
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_unread
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__message_unread_counter
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_hr_contract__social_ins_wage
+msgid "Wage BHXH"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model,name:nsv_customize.model_stock_warehouse
+#: model:ir.model.fields,field_description:nsv_customize.field_repair_order__warehouse_id
+#: model:ir.model.fields,field_description:nsv_customize.field_stock_location__warehouse_id
+msgid "Warehouse"
+msgstr "Kho"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_brand_name__website_message_ids
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_channel__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_brand_name__website_message_ids
+#: model:ir.model.fields,help:nsv_customize.field_sale_channel__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Xăng"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/sale_order.py:0
+#, python-format
+msgid ""
+"You can not cancel the Sale Order which is related to (a) posted once "
+"invoice(s) !"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/sale_order.py:0
+#, python-format
+msgid "You can not cancel the Sale Order which is related to a done picking !"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/purchase_order.py:0
+#, python-format
+msgid ""
+"You can not delete a purchase order which is related to a picking or a "
+"invoice."
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/sale_order.py:0
+#, python-format
+msgid "You can not delete a sales order which is invoiced already."
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/sale_order.py:0
+#, python-format
+msgid "You can not delete a sales order which is related to a picking."
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid "You can not delete the repair order with Stock Move done !"
+msgstr ""
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/repair_order.py:0
+#, python-format
+msgid "You have to select an invoice address in the repair form."
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_helpdesk_external_layout
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_external_layout
+msgid "ĐT:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "ĐVT"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Điểm bán:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Điện thoại"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Điện thoại:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Đvt"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Đơn Giá"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_repairorder_document_inherit
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_in
+msgid "Đơn giá"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_report_saleorder_document_inherit
+msgid "Đơn hàng #"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Địa chỉ giao hàng:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_application_view_form_inherit
+msgid "Địa điểm phỏng vấn"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.report_picking_out
+msgid "Địa điểm đích:"
+msgstr ""
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_hr_contract_view_form_inherit
+msgid "Độc hại"
+msgstr ""
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__birthday
+msgid "Date of Birth"
+msgstr "Ngày sinh"
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/res_partner.py:0
+#, python-format
+msgid "Birthday Customer - %s"
+msgstr "Sinh nhật khách hàng - %s"
+
+#. module: nsv_customize
+#: model:ir.actions.server,name:nsv_customize.ir_cron_lead_partner_birthday_ir_actions_server
+#: model:ir.cron,cron_name:nsv_customize.ir_cron_lead_partner_birthday
+#: model:ir.cron,name:nsv_customize.ir_cron_lead_partner_birthday
+msgid "Leads Partner Birthday"
+msgstr "Tiềm năng Sinh nhật khách hàng"
+
+#. module: nsv_customize
+#: code:addons/dev_addons/nsv_customize/models/ir_attachment.py:0
+#: code:addons/nsv_customize/models/ir_attachment.py:0
+#, python-format
+msgid "You are not allowed to delete this attachment."
+msgstr "Bạn không được phép xóa tệp đính kèm này."
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__is_have_applicable_loyalty_counpon_program
+msgid "Is Have Applicable Loyalty Counpon Program"
+msgstr "Có chương trình khuyến mãi hạng thẻ khả dụng"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_order_view_form_inherit
+msgid ""
+"<span class=\"fa fa-info-circle\"/> There is applicable loyalty coupon "
+"program(s) for this order"
+msgstr ""
+"<span class=\"fa fa-info-circle\"/> Có chương trình khuyến mãi hạng thẻ "
+"khả dụng cho đơn hàng này"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.nsv_sale_order_view_form_inherit
+msgid "View"
+msgstr "Xem"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__applicable_loyalty_coupon_program_display_string
+msgid "Applicable Loyalty Coupon Display String"
+msgstr "Chương trình khuyến mãi hạng thẻ khả dụng"
+
+#. module: nsv_customize
+#: code:addons/dev_addons/nsv_customize/models/sale_order.py:0
+#: code:addons/nsv_customize/models/sale_order.py:0
+#, python-format
+msgid "Use following code:"
+msgstr "Sử dụng mã sau:"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_company__months_to_downgrade
+#: model:ir.model.fields,field_description:nsv_customize.field_res_config_settings__months_to_downgrade
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sms_res_config_settings_view_form_inherit
+msgid "Months to downgrade"
+msgstr "Số tháng để hạ hạng"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sms_res_config_settings_view_form_inherit
+msgid "<span class=\"o_form_label\">Months to downgrade</span>"
+msgstr "<span class=\"o_form_label\">Số tháng để hạ hạng</span>"
+
+#. module: nsv_customize
+#: model:ir.model.fields,help:nsv_customize.field_res_company__months_to_downgrade
+#: model:ir.model.fields,help:nsv_customize.field_res_config_settings__months_to_downgrade
+msgid "Number of months without orders"
+msgstr "Số tháng không phát sinh đơn hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_res_partner__last_downgrade_date
+#: model:ir.model.fields,field_description:nsv_customize.field_res_users__last_downgrade_date
+msgid "Last Downgrade Date"
+msgstr "Ngày hạ hạng cuối cùng"
+
+#. module: nsv_customize
+#: model_terms:ir.ui.view,arch_db:nsv_customize.sms_res_config_settings_view_form_inherit
+msgid ""
+"Set the number of months without order to downgrade a customer to a lower "
+"loyalty level."
+msgstr "Cài đặt số tháng không phát sinh đơn hàng để hạ hạng khách hàng xuống hạng thẻ thấp hơn."
+
+#. module: nsv_customize
+#: model:ir.actions.server,name:nsv_customize.action_confirm
+msgid "Confirm Order"
+msgstr "Xác nhận đơn hàng"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__ticket_count
+#: model:ir.model.fields,field_description:nsv_customize.field_sale_order__ticket_ids
+msgid "Tickets"
+msgstr "Thẻ"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_coupon_generate_wizard__program_coupon_prefix
+#: model:ir.model.fields,field_description:nsv_customize.field_coupon_program__coupon_prefix
+msgid "Coupon Prefix"
+msgstr "Tiền tố mã giảm giá"
+
+#. module: nsv_customize
+#: model:ir.model.fields,field_description:nsv_customize.field_coupon_program__show_coupon_prefix
+msgid "Show Coupon Prefix"
+msgstr "Hiển thị tiền tố mã giảm"
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/coupon_program.py:0
+#, python-format
+msgid "The coupon prefix must be unique!"
+msgstr "Tiền tố mã giảm giá phải là duy nhất!"
+
+#. module: nsv_customize
+#: model:ir.actions.server,name:nsv_customize.action_unlock
+msgid "Unlock Order"
+msgstr "Hủy khóa"
+
+#. module: nsv_customize
+#: model:ir.actions.server,name:nsv_customize.action_lock
+msgid "Lock Order"
+msgstr "Khóa"
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/res_partner.py:0
+#, python-format
+msgid "Invalid phone number in 'Phone'. Please enter a valid Vietnamese phone number."
+msgstr "Số điện thoại không hợp lệ trong mục 'Điện thoại'. Vui lòng nhập số điện thoại Việt Nam hợp lệ"
+
+#. module: nsv_customize
+#: code:addons/nsv_customize/models/res_partner.py:0
+#, python-format
+msgid "Invalid phone number in 'Mobile'. Please enter a valid Vietnamese phone number."
+msgstr "Số điện thoại không hợp lệ trong mục 'Di động'. Vui lòng nhập số điện thoại Việt Nam hợp lệ"

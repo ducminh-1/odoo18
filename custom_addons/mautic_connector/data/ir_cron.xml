@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="auto_migrate_lead_from_mautic" model="ir.cron">
+        <field name="name">Cron Job: Mautic Lead Migrattion</field>
+        <field name="model_id" ref="model_mautic_migrate_config" />
+        <field name="state">code</field>
+        <field name="code">model._cron_auto_migrate_lead()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <!--<field name="numbercall">-1</field>-->
+        <field name="active" eval="True" />
+        <field name="doall" eval="False" />
+    </record>
+</odoo>

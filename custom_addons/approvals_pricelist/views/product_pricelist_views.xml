@@ -1,0 +1,181 @@
+<odoo>
+    <record id="product_pricelist_view_tree" model="ir.ui.view">
+        <field name="name">product.pricelist.tree.inherit.approvals_pricelist</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='company_id']" position="after">
+                <field name="request_status" />
+            </xpath>
+            <xpath expr="/list" position="attributes">
+                <attribute name="duplicate">false</attribute>
+                <attribute
+                    name="decoration-danger"
+                >request_status == 'refused'</attribute>
+                <attribute
+                    name="decoration-success"
+                >request_status == 'approved'</attribute>
+                <attribute
+                    name="decoration-warning"
+                >request_status == 'pending'</attribute>
+                <attribute name="decoration-info">request_status == 'new'</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_pricelist_view" model="ir.ui.view">
+        <field name="name">product.pricelist.form.inherit.approvals_pricelist</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view" />
+        <field name="arch" type="xml">
+            <xpath expr="/form" position="attributes">
+                <attribute name="duplicate">false</attribute>
+            </xpath>
+            <xpath expr="/form/header" position="inside">
+                <field name="approver_ids" invisible="1" />
+                <field name="request_status" invisible="1" />
+                <field name="user_status" invisible="1" />
+                <button
+                    name="button_edit"
+                    string="Update"
+                    type="object"
+                    invisible="request_status != 'approved'"
+                    class="btn-primary"
+                />
+                <button
+                    name="action_submit"
+                    string="Submit"
+                    type="object"
+                    invisible="not approver_ids or request_status != 'new'"
+                    class="btn-primary"
+                />
+                <button
+                    name="action_approve"
+                    string="Approve"
+                    type="object"
+                    invisible="request_status in ['approved', 'refused', 'cancel'] or user_status != 'pending'"
+                />
+                <button
+                    name="action_refuse"
+                    string="Refuse"
+                    type="object"
+                    invisible="request_status in ['approved', 'refused', 'cancel'] or user_status != 'pending'"
+                    data-hotkey="x"
+                />
+                <field name="request_status" widget="statusbar" />
+            </xpath>
+            <xpath
+                expr="//group[@name='pricelist_settings']/field[@name='company_id']"
+                position="after"
+            >
+                <field name="apply_partner_ids" widget="many2many_tags" />
+            </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page string="Approver(s)" name="approvers">
+                    <field name="user_status" invisible="1" />
+                    <field name="pricelist_approval" invisible="1" />
+                    <field
+                        name="approver_ids"
+                        mode="list,kanban"
+                        context="{'default_res_model': 'product.pricelist'}"
+                        required="1"
+                    >
+                        <list
+                            editable="bottom"
+                            decoration-success="status=='approved'"
+                            decoration-warning="status in ['pending', 'waiting']"
+                            decoration-danger="status=='refused'"
+                            no_open="1"
+                            delete="false"
+                        >
+                            <field name="sequence" widget="handle" />
+                            <field
+                                name="existing_user_ids"
+                                invisible="1"
+                                column_invisible="1"
+                            />
+                            <field
+                                name="user_id"
+                                string="approver"
+                                readonly="status not in ['new']"
+                            />
+                            <field name="required" />
+                            <field name="status" />
+                            <field
+                                name="company_id"
+                                invisible="1"
+                                column_invisible="1"
+                            />
+                            <field
+                                name="res_model"
+                                invisible="1"
+                                column_invisible="1"
+                            />
+                        </list>
+                        <kanban class="o_kanban_mobile">
+                            <field name="company_id" invisible="1" />
+                            <field name="user_id" />
+                            <field name="status" />
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div class="oe_kanban_card oe_kanban_global_click">
+                                        <div class="o_kanban_content">
+                                            <t t-esc="record.user_id.value" />
+                                            <t t-if="record.status.raw_value">
+                                                <t
+                                                    t-set="classname"
+                                                    t-value="{'approved': 'text-bg-success', 'pending': 'text-bg-warning', 'refused': 'text-bg-danger'}[record.status.raw_value] || 'text-bg-light'"
+                                                />
+                                                <span
+                                                    t-esc="record.status.raw_value"
+                                                    t-attf-class="float-end rounded-pill {{ classname }}"
+                                                />
+                                            </t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                        <form>
+                            <group>
+                                <field name="company_id" invisible="1" />
+                                <field name="existing_user_ids" invisible="1" />
+                                <field name="user_id" />
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="/form/sheet" position="after">
+                <field name="can_view_lognote" invisible="1" />
+            </xpath>
+            <xpath expr="//chatter" position="attributes">
+                <attribute name="invisible">not can_view_lognote</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_pricelist_view_search" model="ir.ui.view">
+        <field
+            name="name"
+        >product.pricelist.view.search.inherit.approvals_pricelist</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="/search" position="inside">
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Status"
+                        name="group_request_status"
+                        domain="[]"
+                        context="{'group_by': 'request_status'}"
+                    />
+                    <filter
+                        string="Pricelist Name"
+                        name="group_name"
+                        domain="[]"
+                        context="{'group_by': 'name'}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

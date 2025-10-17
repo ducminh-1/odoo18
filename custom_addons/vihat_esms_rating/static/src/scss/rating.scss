@@ -1,0 +1,29 @@
+/* Rating feedback */
+.o_rating_page_submit {
+    .image_rating {
+        filter: grayscale(50%);
+        width: 80%;
+    }
+
+    .o_rating_label.active {
+        filter: drop-shadow(0 0 5px black) grayscale(0%);
+        -webkit-filter: drop-shadow(0 0 5px black);
+        .image_rating {
+            filter: none;
+        }
+    }
+
+    .o_rating_label {
+        width: 100%;
+    }
+
+    .image_rating:hover {
+        filter: none;
+    }
+
+    // @media only screen and (max-width: 600px) {
+    //     .image_rating {
+    //       width: 10%;
+    //     }
+    //   }
+}

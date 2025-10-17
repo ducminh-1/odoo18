@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="loyalty_program_view_form_inherit_nsv_customize" model="ir.ui.view">
+        <field name="name">loyalty.program.form.inherit.nsv_customize</field>
+        <field name="model">loyalty.program</field>
+        <field name="inherit_id" ref="loyalty.loyalty_program_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="is_loyalty_program" />
+                <!--<field name="coupon_prefix" attrs="{'invisible': [('show_coupon_prefix', '=', False)]}"/>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

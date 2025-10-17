@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="slide_link_inherit" inherit_id="website_slides.course_slides_list_slide">
+       <xpath expr="//div[@class='text-truncate me-auto']" position="replace">
+            <div class="text-truncate me-auto">
+                <t t-if="not invite_preview and (slide.is_preview or channel.is_member or channel.can_publish) and slide.slide_complete">
+                    <a class="o_wslides_js_slides_list_slide_link"
+                    t-attf-href="/slides/slide/#{slug(slide)}">
+                        <span t-field="slide.name"/>
+                    </a>
+                </t>
+                <t t-else="">
+                    <span class="disabled-link">
+                        <span t-esc="slide.name"/>
+                    </span>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="slide_fullscreen_sidebar_category_inherit" inherit_id="website_slides.slide_fullscreen_sidebar_category">
+        <xpath expr="//li[@t-att-data-id='slide.id']" position="attributes">
+            <attribute name="t-att-data-slide-complete">slide.slide_complete</attribute>
+        </xpath>
+    </template>
+</odoo>

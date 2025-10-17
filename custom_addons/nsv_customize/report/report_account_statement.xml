@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="nsv_report_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <div
+                            class="border border-top-0 border-right-0 border-left-0 border-info"
+                        >
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="text-right w-100">
+                                        <strong>
+                                            <span
+                                                t-if="o.journal_id.type == 'bank'"
+                                            >Bank Statement</span>
+                                            <span t-else="">PHIẾU THANH TOÁN</span>
+                                        </strong>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 pb-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>
+                                        <strong>
+                                            <span t-field="o.journal_id" />
+                                            <t t-if="o.journal_id.bank_account_id"> -
+                                                <span
+                                                t-field="o.journal_id.bank_account_id"
+                                            />
+                                            </t>
+                                            <t t-if="o.journal_id.code"> -
+                                                <span t-field="o.journal_id.code" />
+                                            </t>
+                                        </strong>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>
+                                        <strong>
+                                            <t t-if="o.name">
+                                                <span t-field="o.name" />
+                                            - </t>
+                                            <span t-field="o.date" />
+                                        </strong>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table
+                            class="table table-lg m-0 table-borderless border border-right-0 border-left-0 border-info"
+                        >
+                            <tbody>
+                                <tr>
+                                    <td class="pt-2 pb-2 pl-0 pr-0">
+                                        <table class="table table-borderless m-0">
+                                            <tr>
+                                                <td class="p-0 w-25">
+                                                    <strong>Starting Balance</strong>
+                                                </td>
+                                                <td class="p-0">
+                                                    <strong>
+                                                        <span
+                                                            t-esc="o.line_ids and o.line_ids.sorted(lambda line: line.date)[0].date"
+                                                            t-options='{"widget": "date"}'
+                                                        />
+                                                    </strong>
+                                                </td>
+                                                <td class="text-right p-0">
+                                                    <strong>
+                                                        <span
+                                                            t-field="o.balance_start"
+                                                        />
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-0 w-25">
+                                                    <strong>Ending Balance</strong>
+                                                </td>
+                                                <td class="p-0">
+                                                    <strong>
+                                                        <span
+                                                            t-esc="o.line_ids and o.line_ids.sorted(lambda line: line.date)[-1].date"
+                                                            t-options='{"widget": "date"}'
+                                                        />
+                                                    </strong>
+                                                </td>
+                                                <td class="text-right p-0">
+                                                    <strong>
+                                                        <span
+                                                            t-field="o.balance_end_real"
+                                                        />
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-borderless m-0">
+                            <tbody>
+                                <tr t-foreach="o.line_ids" t-as="line" class="pb-2">
+                                    <td class="pl-0 pr-0">
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <td class="p-0 w-25">
+                                                    <span
+                                                        class="d-block font-weight-bold"
+                                                        t-field="line.date"
+                                                    />
+                                                </td>
+                                                <td class="p-0">
+                                                    <span
+                                                        class="d-block font-weight-bold"
+                                                        t-if="line.partner_id"
+                                                        t-field="line.partner_id"
+                                                    />
+                                                    <!--<span class="d-block" t-if="line.bank_account_id" t-field="line.bank_account_id"/>-->
+                                                    <span
+                                                        class="d-block"
+                                                        t-if="line.name"
+                                                        t-field="line.name"
+                                                    />
+                                                    <!--<span class="d-block" t-if="line.note" t-field="line.note"/>-->
+                                                </td>
+                                                <td class="text-right p-0">
+                                                    <span
+                                                        class="d-block font-weight-bold"
+                                                        t-field="line.amount"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <!--<report-->
+    <!--    id="action_report_account_statement"-->
+    <!--    model="account.bank.statement"-->
+    <!--    string="Phiếu thu - chi"-->
+    <!--    name="nsv_customize.nsv_report_statement"-->
+    <!--    file="nsv_customize.nsv_report_statement"-->
+    <!--    report_type="qweb-pdf"-->
+    <!--/>-->
+    <record id="action_report_account_statement" model="ir.actions.report">
+        <field name="name">Phiếu thu - chi</field>
+        <field name="model">account.bank.statement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nsv_customize.nsv_report_statement</field>
+        <field name="report_file">nsv_customize.nsv_report_statement</field>
+        <field name="binding_model_id" ref="account.model_account_bank_statement" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

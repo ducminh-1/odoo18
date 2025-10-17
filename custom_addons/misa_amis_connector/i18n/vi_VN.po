@@ -1,0 +1,1087 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* misa_amis_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-09 21:23+0000\n"
+"PO-Revision-Date: 2025-07-09 21:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__vat_rate
+msgid "% Thuế GTGT"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__access_code
+msgid "Access Code"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__access_token
+msgid "Access Token"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__access_token_expiry
+msgid "Access Token Expiry"
+msgstr ""
+
+#. module: misa_amis_connector
+#. odoo-python
+#: code:addons/misa_amis_connector/models/misa_app.py:0
+msgid "Access token not found in the response."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__account_move_ids
+msgid "Account Move"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__amount_oc
+msgid "Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__app_id
+msgid "App"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__app_name
+msgid "App Name"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__branch_ids
+msgid "Branch"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_app_view_form
+msgid "Branches"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3572
+msgid "Bán dịch vụ trong nước - Chuyển khoản"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3571
+msgid "Bán dịch vụ trong nước - Tiền mặt"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3570
+msgid "Bán dịch vụ trong nước chưa thu tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3537
+msgid "Bán hàng hóa, dịch vụ trong nước - Chuyển khoản"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3531
+msgid "Bán hàng hóa, dịch vụ trong nước - Tiền mặt"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3530
+msgid "Bán hàng hóa, dịch vụ trong nước chưa thu tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3536
+msgid "Bán hàng nhận ủy thác xuất khẩu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3532
+msgid "Bán hàng xuất khẩu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3538
+msgid "Bán hàng đại lý bán đúng giá - Chuyển khoản"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3534
+msgid "Bán hàng đại lý bán đúng giá - Chưa thu tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__reftype__3535
+msgid "Bán hàng đại lý bán đúng giá - Tiền mặt"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.actions.server,name:misa_amis_connector.action_unset_is_invoice_machine
+msgid "Bỏ đặt là hóa đơn máy tính tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_make_sa_voucher
+msgid "Cancel"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: misa_amis_connector
+#. odoo-python
+#: code:addons/misa_amis_connector/models/misa_sa_voucher.py:0
+msgid "Cannot post more than %(max)s vouchers for app %(app_name)s."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__discount_amount
+msgid "Chiết khấu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_account_invoice_filter
+msgid "Chưa đồng bộ MISA"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_bank_statement_line__misa_sa_voucher_ids
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move__misa_sa_voucher_ids
+msgid "Chứng từ bán hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: misa_amis_connector
+#. odoo-python
+#: code:addons/misa_amis_connector/models/misa_app.py:0
+msgid "Could not establish the connection to the API."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__count
+msgid "Count"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_make_sa_voucher
+msgid "Create Draft"
+msgstr "Tạo nháp"
+
+#. module: misa_amis_connector
+#: model:ir.actions.act_window,name:misa_amis_connector.action_view_inv_make_sa_vouchers
+msgid "Create MISA SA Voucher(s)"
+msgstr "Tạo Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__create_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__create_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__create_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__create_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__create_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__create_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__create_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__create_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__partner_id
+msgid "Customer"
+msgstr "Khách hàng"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_bank_statement_line__can_create_misa_sa_voucher
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move__can_create_misa_sa_voucher
+msgid "Có thể tạo Chứng từ bán hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__discount_amount_oc
+msgid "Discount Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__display_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__display_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__display_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__display_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__state__draft
+msgid "Draft"
+msgstr "Nháp"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher_line__inventory_item_type__2
+msgid "Dịch vụ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__exchange_rate_operator
+msgid "Exchange Rate Operator"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_app_view_form
+msgid "Get Branches"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_in_reforder
+msgid "Giờ nhập xuất kho"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__invoice_reftype__3560
+msgid "Hóa đơn bán hàng hóa, dịch vụ trong nước"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_account_invoice_filter
+msgid "Hóa đơn máy tính tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__id
+msgid "ID"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__org_refid
+msgid "ID chứng từ dữ liệu gốc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_inv_make_sa_voucher
+msgid "IV Make SA Voucher"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__message_has_error
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_stock_location
+msgid "Inventory Locations"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_is_invoice_machine
+msgid "Invoice Is Invoice Machine"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_is_paid
+msgid "Invoice Is Paid"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_is_posted
+msgid "Invoice Is Posted"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_is_posted_last_year
+msgid "Invoice Is Posted Last Year"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__invoice_line_ids
+msgid "Invoice Lines"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_payment_method
+msgid "Invoice Payment Method"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__stock_code
+msgid "Kho"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__include_invoice__2
+msgid "Không có hoá đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__include_invoice__0
+msgid "Không kèm hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__is_sale_with_outward
+msgid "Kiêm phiếu xuất"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_inv_series
+msgid "Ký hiệu hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__write_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__write_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__write_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__write_uid
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__write_uid
+msgid "Last Updated by"
+msgstr "Được cập nhật lần cuối bởi"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__write_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__write_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__write_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__write_date
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__write_date
+msgid "Last Updated on"
+msgstr "Được cập nhật lần cuối vào"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_reftype
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_reftype
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__reftype
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__voucher_type
+msgid "Loại chứng từ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Loại chứng từ gốc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__inventory_item_type
+msgid "Loại hàng hóa/dịch vụ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_bank_statement_line__is_invoice_machine
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move__is_invoice_machine
+msgid "Là hóa đơn máy tính tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__include_invoice
+msgid "Lập kèm hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.actions.act_window,name:misa_amis_connector.misa_app_action
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_app_view_form
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_app_view_list
+msgid "MISA App"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_misa_branch
+msgid "MISA Branch"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "MISA SA Voucher"
+msgstr "Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move_line__misa_sa_voucher_lines
+msgid "MISA SA Voucher Lines"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.actions.act_window,name:misa_amis_connector.misa_sa_voucher_action
+msgid "MISA SA Vouchers"
+msgstr "Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__main_convert_rate
+msgid "Main Convert Rate"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__main_quantity
+msgid "Main Quantity"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__main_unit_name
+msgid "Main Unit Name"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__main_unit_price
+msgid "Main Unit Price"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__misa_id
+msgid "Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_analytic_account__misa_app_id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__misa_app_id
+#: model:ir.ui.menu,name:misa_amis_connector.menu_misa_app
+msgid "Misa App"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_analytic_account__misa_branch_id
+msgid "Misa Branch"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_misa_sa_voucher
+msgid "Misa SA Voucher"
+msgstr "Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_misa_sa_voucher_line
+msgid "Misa SA Voucher Line"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.ui.menu,name:misa_amis_connector.menu_misa_sa_vouchers
+msgid "Misa SA Vouchers"
+msgstr "Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.ui.menu,name:misa_amis_connector.menu_misa_configuration
+msgid "Misa Settings"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__move_id
+msgid "Move"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_account__misa_account_number
+msgid "Mã Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__inventory_item_code
+msgid "Mã hàng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_product__misa_inventory_item_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_template__misa_inventory_item_code
+msgid "Mã hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_stock_location__misa_stock_code
+msgid "Mã kho Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__account_object_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_account_object_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_account_object_code
+msgid "Mã khách hàng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_partner__misa_account_object_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_users__misa_account_object_code
+msgid "Mã khách hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__account_object_tax_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_account_object_tax_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_account_object_tax_code
+msgid "Mã số thuế"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_partner__misa_account_object_tax_code
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_users__misa_account_object_tax_code
+msgid "Mã số thuế Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_inv_template_no
+msgid "Mẫu số hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_branch__name
+msgid "Name"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher_line__inventory_item_type__3
+msgid "Nguyên vật liệu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_refdate
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__refdate
+msgid "Ngày chứng từ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_posted_date
+msgid "Ngày hoạch toán"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_inv_date
+msgid "Ngày hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__posted_date
+msgid "Ngày hạch toán"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__include_invoice__1
+msgid "Nhận kèm hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#. odoo-python
+#: code:addons/misa_amis_connector/models/misa_app.py:0
+msgid "No branches found in the MISA API."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__org_company_code
+msgid "Org Company Code"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Phiếu thu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Phiếu xuất"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Post"
+msgstr "Gửi"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__state__posted
+msgid "Posted"
+msgstr "Đã gửi"
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_product_template
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__product_id
+msgid "Product"
+msgstr "Sản phẩm"
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_product_product
+msgid "Product Variant"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__voucher_type__13
+msgid "SA Voucher"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_move_form
+msgid "SA Vouchers"
+msgstr "Chứng từ bán hàng Misa"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__sale_id
+msgid "Sale Order"
+msgstr "Đơn hàng bán"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__team_id
+msgid "Sales Team"
+msgstr "Nhóm bán hàng"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__state
+msgid "State"
+msgstr "Trạng thái"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__account_move__misa_post_status__success
+msgid "Success"
+msgstr "Thành công"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_refno_finance
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_refno_finance
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__refno_finance
+msgid "Số chứng từ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__org_refno
+msgid "Số chứng từ dữ liệu gốc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_sa_voucher_form
+msgid "Số chứng từ gốc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_inv_no
+msgid "Số hóa đơn"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__quantity
+msgid "Số lượng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_bank_statement_line__misa_sa_voucher_count
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move__misa_sa_voucher_count
+msgid "Số lượng Chứng từ bán hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__debit_account
+msgid "TK Công nợ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__credit_account
+msgid "TK Doanh thu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__vat_account
+msgid "TK Thuế GTGT"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_app__tenant_code
+msgid "Tenant Code"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.misa_app_view_form
+msgid "Test Connection"
+msgstr ""
+
+#. module: misa_amis_connector
+#. odoo-python
+#: code:addons/misa_amis_connector/models/misa_app.py:0
+msgid "The communication with the API failed. Details: %s"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher_line__inventory_item_type__1
+msgid "Thành phẩm"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__amount
+msgid "Thành tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__vat_amount
+msgid "Tiền thuế GTGT"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_amount
+msgid "Total Amount"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_amount_oc
+msgid "Total Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_discount_amount
+msgid "Total Discount Amount"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_discount_amount_oc
+msgid "Total Discount Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_sale_amount
+msgid "Total Sale Amount"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_sale_amount_oc
+msgid "Total Sale Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_vat_amount
+msgid "Total Vat Amount"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__total_vat_amount_oc
+msgid "Total Vat Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_bank_statement_line__misa_post_status
+#: model:ir.model.fields,field_description:misa_amis_connector.field_account_move__misa_post_status
+msgid "Trạng thái MISA"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__description
+msgid "Tên hàng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_product__misa_inventory_item_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_template__misa_inventory_item_name
+msgid "Tên hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__account_object_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_account_object_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_account_object_name
+msgid "Tên khách hàng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_partner__misa_account_object_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_users__misa_account_object_name
+msgid "Tên khách hàng Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__org_reftype_name
+msgid "Tên loại chứng từ dữ liệu gốc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_move_form
+msgid "Tạo chứng từ Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__discount_rate
+msgid "Tỷ lệ chiết khấu"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_inv_make_sa_voucher__valid_account_move_ids
+msgid "Valid Account Moves"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__vat_amount_oc
+msgid "Vat Amount Oc"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__voucher_id
+msgid "Voucher"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__voucher_line_ids
+msgid "Voucher Lines"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher_line__inventory_item_type__0
+msgid "Vật tư hàng hóa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__warehouse_id
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__warehouse_id
+msgid "Warehouse"
+msgstr "Kho"
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,help:misa_amis_connector.field_misa_sa_voucher__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields.selection,name:misa_amis_connector.selection__misa_sa_voucher__in_outward_reftype__2020
+msgid "Xuất kho bán hàng"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model,name:misa_amis_connector.model_misa_app
+msgid "misa.app"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__unit_name
+msgid "ĐVT"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_product__misa_inventory_unit_name
+#: model:ir.model.fields,field_description:misa_amis_connector.field_product_template__misa_inventory_unit_name
+msgid "ĐVT Misa"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model_terms:ir.ui.view,arch_db:misa_amis_connector.view_account_invoice_filter
+msgid "Đã đồng bộ MISA"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher_line__unit_price
+msgid "Đơn giá"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.actions.server,name:misa_amis_connector.action_set_is_invoice_machine
+msgid "Đặt là hóa đơn máy tính tiền"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__account_object_address
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__in_outward_account_object_address
+#: model:ir.model.fields,field_description:misa_amis_connector.field_misa_sa_voucher__invoice_account_object_address
+msgid "Địa chỉ"
+msgstr ""
+
+#. module: misa_amis_connector
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_partner__misa_account_object_address
+#: model:ir.model.fields,field_description:misa_amis_connector.field_res_users__misa_account_object_address
+msgid "Địa chỉ khách hàng Misa"
+msgstr ""

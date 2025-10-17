@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_failure_product_report"
+        parent="helpdesk.helpdesk_ticket_report_menu_main"
+        action="nsv_customize.action_product_failure_report_all"
+        sequence="1"
+    />
+</odoo>

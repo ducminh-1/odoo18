@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_account_form" model="ir.ui.view">
+        <field name="name">account.account.form.inherit.misa_amis_connector</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="arch" type="xml">
+            <field name="account_type" position="after">
+                <field name="misa_account_number" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_list" model="ir.ui.view">
+        <field name="name">account.account.list.inherit.misa_amis_connector</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_list" />
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="misa_account_number" />
+            </field>
+        </field>
+    </record>
+</odoo>

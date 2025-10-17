@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_make_sa_voucher" model="ir.ui.view">
+        <field name="name">SA Voucher Form</field>
+        <field name="model">inv.make_sa_voucher</field>
+        <field name="arch" type="xml">
+            <form>
+                <!--<div class="alert alert-warning pb-1" role="alert" invisible="not display_draft_invoice_warning">-->
+                <!--    <p>There are existing <a name="view_draft_invoices" type="object">Draft Invoices</a> for this Sale Order.</p>-->
+                <!--    <p invisible="advance_payment_method != 'delivered'">-->
+                <!--        The new invoice will deduct draft invoices linked to this sale order.-->
+                <!--    </p>-->
+                <!--</div>-->
+                <group>
+                    <field name="account_move_ids" invisible="1" />
+                    <field name="count" invisible="count == 1" />
+                </group>
+                <footer>
+                    <button
+                        name="create_misa_sa_vouchers"
+                        type="object"
+                        string="Create Draft"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_inv_make_sa_vouchers" model="ir.actions.act_window">
+        <field name="name">Create MISA SA Voucher(s)</field>
+        <field name="res_model">inv.make_sa_voucher</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="sale.model_account_move" />
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>
