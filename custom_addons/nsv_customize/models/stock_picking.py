@@ -8,7 +8,7 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     shipping_address = fields.Char(
-        related="partner_id.street", string="Shipping Address"
+      string="Shipping Address"
     )
     order_ref = fields.Char(
         related="sale_id.client_order_ref", string="Customer Reference"

@@ -5,9 +5,29 @@ class SlideChannel(models.Model):
     _inherit = "slide.channel"
 
     allowed_department_ids = fields.Many2many('hr.department', string="Department")
-    job_ids = fields.Many2many('hr.job', string="Job Position")
+    job_ids = fields.Many2many('hr.job', string="Job Position",)
     sequential_learning = fields.Boolean(string="Sequential Learning")
     date_published = fields.Datetime(string="Published Date", store=True)
+
+
+    # @api.onchange('job_ids')
+    # def _onchange_job_ids(self):
+    #     for record in self:
+    #         employees = self.env['hr.employee'].sudo().search([
+    #             ('job_id', 'in', record.job_ids.ids)
+    #         ])
+    #         partners = employees.mapped('user_id.partner_id')
+    #         for partner in partners:
+    #             existing = self.env['slide.channel.partner'].sudo().search([
+    #                 ('channel_id', '=', record.id),
+    #                 ('partner_id', '=', partner.id)
+    #             ])
+    #             if not existing:
+    #                 self.env['slide.channel.partner'].sudo().create({
+    #                     'channel_id': record.id,
+    #                     'partner_id': partner.id,
+    #                 })
+
 
     @api.onchange('is_published')
     def _onchange_is_published(self):
@@ -71,16 +91,35 @@ class SlideSlide(models.Model):
 class SlideQuestion(models.Model):
     _inherit = "slide.question"
 
-    answer_id = fields.Many2one('slide.answer', string="Correct Answer")
+    # answer_id = fields.Many2one('slide.answer', string="Correct Answer")
+    is_correct = fields.Boolean()
+
+    text_value = fields.Char("Answer", compute='_compute_text_value')
+
+    @api.depends('answer_ids.is_correct', 'answer_ids.text_value')
+    def _compute_text_value(self):
+        for question in self:
+            correct = question.answer_ids.filtered(lambda a: a.text_value and a.is_correct)
+            question.text_value = correct.mapped('text_value')[0] if correct else ''
 
 
-# class SlideSlidePartner(models.Model):
-#     _inherit = 'slide.slide.partner'
+class SlideChannelPartner(models.Model):
+    _inherit = 'slide.channel.partner'
 
-#     prerequisite_slide_ids = fields.Many2many(
-#         comodel_name='slide.slide',
-#         related='slide_id.prerequisite_slide_ids',
-#         string="Prerequisite Slides",
-#         store=True,   # nếu cần search domain
-#         readonly=True,
-#     )
+    assigned_date = fields.Datetime(string="Assigned Date")
+    completion_date = fields.Datetime(string="Completion Date", compute='_compute_completion_date', store=True)
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('assigned_date'):
+            vals['assigned_date'] = fields.Datetime.now()
+        return super().create(vals)    
+
+    @api.depends('member_status')
+    def _compute_completion_date(self):
+        completed  = self.search([('member_status', '=', 'completed')], limit=1)
+        for rec in self:
+            if completed:
+                rec.completion_date = fields.Datetime.now()
+            else:
+                rec.completion_date = False

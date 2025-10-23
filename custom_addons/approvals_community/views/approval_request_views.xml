@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_approval_request_list" model="ir.ui.view">
+        <field name="name">approval.request.list</field>
+        <field name="model">approval.request</field>
+        <field name="arch" type="xml">
+            <list string="Approval Requests">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="request_owner_id"/>
+                <field name="state" widget="badge" 
+                       decoration-success="state == 'approved'"
+                       decoration-danger="state == 'refused'" 
+                       decoration-warning="state in ['pending', 'submitted']"/>
+                <field name="date"/>
+                <field name="amount"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_approval_request_form" model="ir.ui.view">
+        <field name="name">approval.request.form</field>
+        <field name="model">approval.request</field>
+        <field name="arch" type="xml">
+            <form string="Approval Request">
+                <header>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="draft,submitted,pending,approved,refused,cancel" 
+                           clickable="true"/>
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="state in ['submitted', 'approved', 'cancel']"/>
+                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="state in ['approved', 'refused', 'cancel']"/>
+                    <button name="action_refuse" string="Refuse" type="object" class="btn-secondary" invisible="state in ['approved', 'refused', 'cancel']"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-secondary" invisible="state in ['draft', 'cancel']"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" class="btn-secondary" invisible="state != 'cancel'" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="category_id" required="1"/>
+                            <field name="request_owner_id" required="1"/>
+                            <field name="date_confirmed"/>
+                            <label for="date_start" string="Period"/>
+                            <div>
+                                <div>
+                                    <label for="date_start" class="col-lg-2" string="From:"/>
+                                    <field name="date_start" class="oe_inline" readonly="state != 'draft'"/>
+                                </div>
+                                <div>
+                                    <label for="date_end" class="col-lg-2" string="to:"/>
+                                    <field name="date_end" class="oe_inline" readonly="state != 'draft'"/>
+                                </div>
+                            </div>
+                        </group>    
+                        <!-- <group>
+                            <field name="state" readonly="1"/>
+                            <field name="quantity" 
+                                   invisible="not category_id.requires_quantity"/>
+                            <field name="amount" 
+                                   invisible="not category_id.requires_amount"/>
+                            <field name="attachment_number" widget="statinfo" string="Attachments"/>
+                        </group> -->
+                    </group>
+                    <notebook>
+                        <page string="Description" name="description">
+                            <group>
+                                <field name="description" nolabel="1" placeholder="Please provide a detailed reason for this approval request..."/>
+                            </group>
+                        </page>
+                        <page string="Approver(s)" name="approvers">
+                            <group>
+                                <field name="approver_ids" nolabel="1">
+                                    <list editable="bottom">
+                                        <field name="user_id"/>
+                                        <field name="required"/>
+                                        <field name="status" widget="badge" 
+                                            decoration-success="status == 'approved'"
+                                            decoration-danger="status == 'refused'"/>
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_approval_request_search" model="ir.ui.view">
+        <field name="name">approval.request.search</field>
+        <field name="model">approval.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Approval Requests">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="request_owner_id"/>
+                <field name="state"/>
+                <filter string="My Requests" name="my_requests" domain="[('request_owner_id', '=', uid)]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Refused" name="refused" domain="[('state', '=', 'refused')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Category" name="group_by_category" context="{'group_by': 'category_id'}"/>
+                    <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Owner" name="group_by_owner" context="{'group_by': 'request_owner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_approval_request" model="ir.actions.act_window">
+        <field name="name">Approval Requests</field>
+        <field name="res_model">approval.request</field>
+        <field name="view_mode">list,form,calendar,pivot,graph,kanban</field>
+        <field name="context">{'search_default_my_requests': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first approval request
+            </p>
+        </field>
+    </record>
+
+    <record id="approval_request_action" model="ir.actions.act_window">
+        <field name="name">My Requests</field>
+        <field name="res_model">approval.request</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('request_owner_id','=',uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Approvals Requests
+            </p>
+            <p>
+                Let's go to the <a type="action" class="text-primary" name="%(approvals_community.approval_category_action_new_request)d">new request</a> menu
+            </p>
+        </field>
+    </record>
+
+    
+    <record id="approval_request_action_to_review_category" model="ir.actions.act_window">
+        <field name="name">Approvals to review</field>
+        <field name="res_model">approval.request</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="domain">['&amp;',('approver_ids.user_id','=',uid),('state','=','pending')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new approvals to review 
+            </p>
+        </field>
+
+    </record>
+
+    <record id="approval_request_action_to_review" model="ir.actions.act_window">
+        <field name="name">My Requests</field>
+        <field name="res_model">approval.request</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('request_owner_id','=',uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Approvals Requests
+            </p>
+            <p>
+                Let's go to the <a type="action" class="text-primary" name="%(approvals_community.approval_category_action_new_request)d">new request</a> menu
+            </p>
+        </field>
+    </record>
+
+    <record id="approval_request_action_all" model="ir.actions.act_window">
+        <field name="name">All Approvals</field>
+        <field name="res_model">approval.request</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Approvals
+            </p>
+            <p>
+                Let's go to the <a type="action" class="text-primary" name="%(approvals_community.approval_category_action_new_request)d">new request</a> menu
+            </p>
+        </field>
+    </record>
+
+    <record id="approval_request_view_kanban" model="ir.ui.view">
+        <field name="name">approval.request.view.kanban</field>
+        <field name="model">approval.request</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="o_modules_kanban" default_group_by="state" default_order="create_date desc" 
+            group_create="false" group_edit="false" group_delete="false" sample="1">
+                <field name="state"/>
+                <templates>
+                    <!-- <t t-name="menu">
+                        <a t-if="widget.editable" role="menuitem" type="open" class="dropdown-item">Edit Request</a>
+                        <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                        <a name="action_approve" type="object" invisible="user_status != 'pending'"
+                            role="menuitem" class="dropdown-item">Approve</a>
+                        <a name="action_refuse" type="object" invisible="user_status != 'pending'"
+                            role="menuitem" class="dropdown-item">Refuse</a>
+                        <a name="action_withdraw" type="object" invisible="request_status == 'new' or user_status in ['waiting', 'pending', 'cancel']"
+                            role="menuitem" class="dropdown-item">Withdraw</a>
+                    </t> -->
+                    <t t-name="card">
+                        <div class="ribbon ribbon-top-right" invisible="state not in ['approved', 'refused', 'cancel']">
+                            <field name="state" t-if="record.state.raw_value == 'approved'" class="text-bg-success"/>
+                            <field name="state" t-if="record.state.raw_value == 'refused'" class="text-bg-danger"/>
+                            <field name="state" t-if="record.state.raw_value == 'cancel'" class="text-bg-warning"/>
+                        </div>
+                        <field name="name" class="fw-bolder fs-5"/>
+                        <field name="category_id" class="text-muted"/>
+                        <div class="d-flex text-muted">
+                            <field name="date_start" widget="date" class="me-1"/>-<field name="date_end" widget="date" class="ms-1"/>
+                        </div>
+                        <footer class="pt-0">
+                            <field name="activity_ids" widget="kanban_activity"/>
+                            <field name="request_owner_id" widget="many2one_avatar_user" class="ms-auto"/>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

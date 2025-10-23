@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_approval_request" model="ir.sequence">
+            <field name="name">Approval Request</field>
+            <field name="code">approval.request</field>
+            <field name="prefix">APR/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="mail_activity_data_approval" model="mail.activity.type">
+            <field name="name">Approval</field>
+            <field name="icon">fa-check-circle</field>
+            <field name="sequence">4</field>
+            <field name="active">False</field>
+            <field name="res_model">approval.request</field>
+        </record>
+        
+        <record id="category_general" model="approval.category">
+            <field name="name">General Approval</field>
+            <field name="sequence">10</field>
+            <field name="approval_type">generic</field>
+            <field name="requires_amount">True</field>
+        </record>
+        
+        <record id="category_purchase" model="approval.category">
+            <field name="name">Purchase Request</field>
+            <field name="sequence">20</field>
+            <field name="approval_type">purchase</field>
+            <field name="requires_amount">True</field>
+            <field name="requires_quantity">True</field>
+        </record>
+        
+        <record id="category_expense" model="approval.category">
+            <field name="name">Expense Report</field>
+            <field name="sequence">30</field>
+            <field name="approval_type">expense</field>
+            <field name="requires_amount">True</field>
+        </record>
+    </data>
+</odoo>

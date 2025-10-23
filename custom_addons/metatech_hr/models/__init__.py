@@ -14,3 +14,4 @@ from . import hr_resume_line_type
 from . import hr_applicant
 from . import slide_channel
 from . import purchase_order
+from . import ir_attachment

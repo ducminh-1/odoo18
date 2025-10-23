@@ -38,4 +38,28 @@
             </field>
         </field>
     </record>
+<!-- View Tree Quizzes -->
+    <record id="slide_question_view_tree_report_inherit" model="ir.ui.view">
+        <field name="name">slide.question.view.tree.report.inherit</field>
+        <field name="model">slide.question</field>
+        <field name="inherit_id" ref="website_slides.slide_question_view_tree_report" />
+        <field name="arch" type="xml">
+            <field name="done_count" position="after">
+                <field name="text_value" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_slide_channel_partner_pivot_inherit" model="ir.ui.view">
+        <field name="name">slide.channel.partner.pivot.inherit</field>
+        <field name="model">slide.channel.partner</field>
+        <field name="inherit_id" ref="website_slides.slide_channel_partner_view_pivot"/>
+        <field name="arch" type="xml">
+            <xpath expr="//pivot" position="inside">
+                <field name="assigned_date" type="row"/>
+                <field name="completion_date" type="row"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

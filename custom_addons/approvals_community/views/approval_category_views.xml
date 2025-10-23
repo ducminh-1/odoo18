@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="approval_category_action_new_request" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="path">approvals</field>
+        <field name="res_model">approval.category</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+    <record id="view_approval_category_list" model="ir.ui.view">
+        <field name="name">approval.category.list</field>
+        <field name="model">approval.category</field>
+        <field name="arch" type="xml">
+            <list string="Approval Categories">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="approval_type"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="approval_minimum"/>
+                <field name="approval_maximum"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_approval_category_form" model="ir.ui.view">
+        <field name="name">approval.category.form</field>
+        <field name="model">approval.category</field>
+        <field name="arch" type="xml">
+            <form string="Approval Category">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="approval_type"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="approval_minimum"/>
+                            <field name="approval_maximum"/>
+                            <field name="auto_approval"/>
+                            <field name="double_validation"/>
+                        </group>
+                    </group>
+                    <group string="Requirements">
+                        <field name="requires_attachment"/>
+                        <field name="requires_quantity"/>
+                        <field name="requires_amount"/>
+                    </group>
+                    <group string="Approvers">
+                        <field name="approver_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Access Rights">
+                        <field name="group_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_approval_category_search" model="ir.ui.view">
+        <field name="name">approval.category.search</field>
+        <field name="model">approval.category</field>
+        <field name="arch" type="xml">
+            <search string="Search Approval Categories">
+                <field name="name"/>
+                <field name="approval_type"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Type" name="group_by_type" context="{'group_by': 'approval_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_approval_category" model="ir.actions.act_window">
+        <field name="name">Approval Categories</field>
+        <field name="res_model">approval.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first approval category
+            </p>
+        </field>
+    </record>
+
+    <record id="action_open_approval_category" model="ir.actions.server">
+        <field name="name">Open Approval Category</field>
+        <field name="model_id" ref="model_approval_category"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                "type": "ir.actions.act_window",
+                "res_model": "approval.category",
+                "views": [[False, "form"]],
+                "target": "new",
+                "res_id": records.id,
+            }
+        </field>
+    </record>
+
+    <record id="view_approval_category_kanban_custom" model="ir.ui.view">
+        <field name="name">approval.category.kanban.custom</field>
+        <field name="model">approval.category</field>
+        <field name="arch" type="xml">
+            <kanban create="false" can_open="0" class="o_modules_kanban">
+                <templates>
+                    <t t-name="menu" groups="approvals_community.group_approval_user">
+                        <a t-if="widget.editable"
+                            role="menuitem"
+                            type="action"
+                            name="%(approvals_community.action_open_approval_category)d"
+                            class="dropdown-item">Edit</a>
+                        <a t-if="record.active.raw_value"
+                            role="menuitem" 
+                            type="archive"
+                            class="dropdown-item">Archive</a>
+                        <a t-if="!record.active.raw_value"
+                            role="menuitem"
+                            type="unarchive"
+                            class="dropdown-item">Unarchive</a>
+                    </t>
+                    <t t-name="card" class="flex-row">
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <aside>
+                            <field name="image" widget="image" class="mt-2"/>
+                        </aside>
+                        <main class="ms-4">
+                            <field name="name" class="fw-bold fs-5"/>
+                            <field name="description" class="text-muted lh-1 mb-1 mt-1"/>
+                            <footer t-if="!selection_mode">
+                                <button type="object" class="btn btn-primary btn-sm" name="action_new_request" context="{'category_id':id}">New Request</button>
+                                <button type="action" class="btn btn-sm btn-secondary ms-auto" name="%(approvals_community.approval_request_action_to_review_category)d">To Review: <field name="pending_count"/></button>
+                            </footer>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

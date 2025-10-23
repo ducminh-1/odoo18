@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_approvals_root" name="Approvals" sequence="10"/>
+
+    <menuitem
+        id="approvals_category_menu_new"
+        parent="menu_approvals_root"
+        name="Dashboard"
+        action="approval_category_action_new_request"
+        sequence="1"/>
+    
+    <menuitem
+        id="approvals_approval_menu"
+        parent="menu_approvals_root"
+        name="My Approvals"
+        sequence="8"/>
+
+    <menuitem
+        id="approvals_request_menu_my"
+        parent="approvals_approval_menu"
+        name="My Requests"
+        action="approval_request_action"
+        sequence="10"/>
+
+    <menuitem
+        id="approvals_menu_manager"
+        parent="menu_approvals_root"
+        name="Manager"
+        sequence="20"/>
+
+
+    <menuitem 
+        id="approvals_approval_menu_to_review"
+        name="Approvals to review" 
+        parent="approvals_menu_manager"
+        action="approval_request_action_to_review_category"
+        sequence="10"/>   
+
+    <menuitem 
+        id="menu_approvals_requests"
+        name="All Approvals" 
+        parent="approvals_menu_manager"
+        action="approval_request_action_all"
+        groups="group_approval_manager"
+        sequence="20"/>      
+       
+    <menuitem 
+        id="menu_approvals_configuration"
+        name="Configuration" 
+        parent="menu_approvals_root"
+        groups="group_approval_manager"
+        sequence="20"/>
+              
+    <menuitem 
+        id="menu_approvals_categories"
+        name="Categories" 
+        parent="menu_approvals_configuration"
+        action="action_approval_category"
+        sequence="10"/>
+</odoo>

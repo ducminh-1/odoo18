@@ -57,6 +57,7 @@
                                         t-field="o.origin"
                                     /></t>
                                 </p>
+                                <p>Số hóa đơn: <span t-field="o.sale_id.invoice_number"/></p>
                             </div>
                         </div>
                         <div class="row mt16 mb32">
@@ -371,6 +372,7 @@
                                         t-field="o.origin"
                                     /></t>
                                 </p>
+                                <p>Số hóa đơn: <span t-field="o.sale_id.invoice_number"/></p>
                             </div>
                         </div>
                         <div class="row mt16 mb32">
