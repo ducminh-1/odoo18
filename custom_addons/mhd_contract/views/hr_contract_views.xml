@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <group name="salary" position="inside">
+                <field name="ssnid_amount" />
+				<field name="phu_cap_tien_an" />
+				<field name="phu_cap_cong_viec" />
+				<field name="phu_cap_xang_xe" />
+                <field name="phu_cap_trach_nhiem" />
+                <field name="phu_cap_khac" />
+                <field name="phu_cap_dien_thoai" />
+                <field name="phu_cap_tien_nha" />
+                <field name="nguoi_phu_thuoc" />
+            </group>
+            <group name="yearly_benefits" position="inside">
+                <field name="is_ssnid" />
+                <field name="is_bhyt_only" />
+                <field name="is_bhtnn_only" />
+                <field name="is_trade_union" />
+            </group>
+        </field>
+    </record>
+</odoo>

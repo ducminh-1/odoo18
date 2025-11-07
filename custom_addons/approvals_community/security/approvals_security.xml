@@ -12,5 +12,16 @@
             <field name="category_id" ref="base.module_category_approvals"/>
             <field name="implied_ids" eval="[(4, ref('group_approval_user'))]"/>
         </record>
+
+        <record id="approval_request_request_approver_rule" model="ir.rule">
+            <field name="name">Approval Request: request approver rule</field>
+            <field name="model_id" ref="model_approval_request"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+            <field name="domain_force">['|',('request_owner_id', '=', user.id),('approver_ids.user_id','=', user.id)]</field>
+        </record>
     </data>
 </odoo>

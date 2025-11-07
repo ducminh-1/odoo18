@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="hr_payslip_confirmation_search_view" model="ir.ui.view">
+		<field name="name">hr.payslip.confirmation.search.view</field>
+		<field name="model">hr.payslip.confirmation</field>
+		<field name="arch" type="xml">
+			<search string="Payslip Confirmations">
+				<field name="payslip_id"/>
+				<field name="employee_id"/>
+				<field name="status"/>
+				<field name="create_date"/>
+				<separator/>
+				<group expand="0">
+					<filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
+					<filter string="Pending" name="pending" domain="[('status', '=', 'pending')]"/>
+					<filter string="Rejected" name="rejected" domain="[('status', '=', 'rejected')]"/>
+					<!--<filter string="My Confirmations" name="my_confirmations" domain="[('employee_id.user_id', '=', user.id)]"/>-->
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record id="hr_payslip_confirmation_view_form" model="ir.ui.view">
+		<field name="name">hr.payslip.confirmation.view.form</field>
+		<field name="model">hr.payslip.confirmation</field>
+		<field name="arch" type="xml">
+			<form string="Payslip Confirmation">
+				<header/>
+
+				<sheet>
+					<div class="oe_button_box" name="button_box"/>
+					<group>
+						<field name="payslip_id" readonly="1"/>
+					</group>
+				</sheet>
+				<chatter/>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_payslip_confirmation_view_list" model="ir.ui.view">
+		<field name="name">hr.payslip.confirmation.view.list</field>
+		<field name="model">hr.payslip.confirmation</field>
+		<field name="arch" type="xml">
+			<list string="Payslip Confirmations">
+				<field name="payslip_id"/>
+				<field name="employee_id"/>
+				<field name="status"/>
+				<field name="create_date"/>
+			</list>
+		</field>
+	</record>
+
+	<record id="hr_payslip_confirmation_action" model="ir.actions.act_window">
+		<field name="name">Payslip Confirmations</field>
+		<field name="res_model">hr.payslip.confirmation</field>
+		<field name="view_mode">list,form</field>
+	</record>
+
+	<menuitem id="hr_payslip_confirmation_menu_root" name="Payslip Confirmations" parent="hr_payroll_community.menu_hr_payroll_community_root" sequence="3" action="hr_payslip_confirmation_action" />
+
+</odoo>

@@ -28,35 +28,40 @@
         <field name="arch" type="xml">
             <form string="Approval Category">
                 <sheet>
-                    <group>
-                        <group>
+                    <field name="image" widget="image" class="oe_avatar" options='{"preview_image": "image", "size": [80, 80]}'/>
+                    <div class="oe_title">
+                        <label for="name" string="Approval Type"/>
+                        <h1>
                             <field name="name"/>
-                            <field name="sequence"/>
-                            <field name="active"/>
-                            <field name="approval_type"/>
-                        </group>
-                        <group>
-                            <field name="user_id"/>
-                            <field name="approval_minimum"/>
-                            <field name="approval_maximum"/>
-                            <field name="auto_approval"/>
-                            <field name="double_validation"/>
-                        </group>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                        <field name="approval_type"/>
                     </group>
-                    <group string="Requirements">
-                        <field name="requires_attachment"/>
-                        <field name="requires_quantity"/>
-                        <field name="requires_amount"/>
-                    </group>
-                    <group string="Approvers">
-                        <field name="approver_ids" widget="many2many_tags"/>
-                    </group>
-                    <group string="Access Rights">
-                        <field name="group_ids" widget="many2many_tags"/>
-                    </group>
-                    <group string="Description">
-                        <field name="description"/>
-                    </group>
+                    <notebook>
+                        <page string="Options">
+                            <group>
+                                <field name="user_id"/>
+                                <field name="approval_minimum"/>
+                                <field name="approval_maximum"/>
+                                <field name="approver_sequence"/>
+                            </group>
+                            <group string="Approvers">
+                                <field name="approver_ids" nolabel="1">
+                                    <list editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="user_id"/>
+                                        <field name="required"/>
+                                    </list>
+                                </field>
+                            </group>
+                            <group string="Description">
+                                <field name="description"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

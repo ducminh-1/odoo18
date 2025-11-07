@@ -24,6 +24,7 @@ export class Approval extends Component {
         await this.env.services.orm.call("approval.approver", "action_approve", [
             this.props.activity.approval.id,
         ]);
+        console.log('aaaa')
         this.props.activity.remove();
         this.props.onChange();
     }

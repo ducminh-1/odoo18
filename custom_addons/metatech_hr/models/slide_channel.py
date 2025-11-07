@@ -10,25 +10,6 @@ class SlideChannel(models.Model):
     date_published = fields.Datetime(string="Published Date", store=True)
 
 
-    # @api.onchange('job_ids')
-    # def _onchange_job_ids(self):
-    #     for record in self:
-    #         employees = self.env['hr.employee'].sudo().search([
-    #             ('job_id', 'in', record.job_ids.ids)
-    #         ])
-    #         partners = employees.mapped('user_id.partner_id')
-    #         for partner in partners:
-    #             existing = self.env['slide.channel.partner'].sudo().search([
-    #                 ('channel_id', '=', record.id),
-    #                 ('partner_id', '=', partner.id)
-    #             ])
-    #             if not existing:
-    #                 self.env['slide.channel.partner'].sudo().create({
-    #                     'channel_id': record.id,
-    #                     'partner_id': partner.id,
-    #                 })
-
-
     @api.onchange('is_published')
     def _onchange_is_published(self):
         if self.is_published and not self.date_published:
@@ -50,6 +31,23 @@ class SlideChannel(models.Model):
             for slide in channel.slide_ids:
                 slide.prerequisite_slide_ids = [(5, 0, 0)]
 
+    def _action_add_member(self):
+        for record in self:        
+            attendees_to_reinvite = self.env['slide.channel.partner'].search([
+                ('member_status', '=', 'joined'),
+                ('channel_id', '=', self.id),
+                ('partner_id', 'in', self.partner_ids.ids)])
+            job_ids = self.job_ids.employee_ids
+            partners = job_ids.mapped('user_id')
+            new_partners = partners - attendees_to_reinvite.partner_id
+            for partner in new_partners:
+                self.env['slide.channel.partner'].sudo().create({
+                    'channel_id': record.id,
+                    'partner_id': partner.id,
+                    'member_status': 'joined'
+                })
+            partner._create_activity()    
+
     @api.model
     def write(self, vals):
         if 'is_published' in vals and vals['is_published']:
@@ -61,6 +59,8 @@ class SlideChannel(models.Model):
                 self._auto_set_prerequisites()
             else:
                 self._clear_prerequisites()
+        if 'job_ids' in vals:
+            self._action_add_member()
         return res
 
         

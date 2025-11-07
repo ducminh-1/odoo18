@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_approvals_root" name="Approvals" sequence="10"/>
+    <menuitem 
+        id="menu_approvals_root"
+        web_icon="approvals_community,static/description/icon.png"
+        name="Approvals"
+        sequence="10"/>
 
     <menuitem
         id="approvals_category_menu_new"

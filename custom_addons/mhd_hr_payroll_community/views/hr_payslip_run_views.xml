@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_payslip_run_form_inherit_import" model="ir.ui.view">
+        <field name="name">hr.payslip.run.inherit</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll_community.hr_payslip_run_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header[1]" position="inside">
+                <button string="Mark As Done" name="done_payslip_run" type="object" invisible="state != 'draft'"
+                        class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

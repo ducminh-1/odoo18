@@ -1,0 +1,116 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mhd_attendance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-27 07:39+0000\n"
+"PO-Revision-Date: 2025-10-27 07:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mhd_attendance
+#: model:ir.model,name:mhd_attendance.model_hr_attendance
+msgid "Attendance"
+msgstr "Chấm công"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid "Check-in and check-out dates must be the same!"
+msgstr "Đăng nhập và đăng xuất phải cùng một ngày!"
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__attendance_date
+msgid "Date"
+msgstr "Ngày"
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_contract__deduct_late_early
+msgid "Deduct Late/Early Leave"
+msgstr "Khấu trừ Đi muộn/Về sớm"
+
+#. module: mhd_attendance
+#: model:ir.model.fields,help:mhd_attendance.field_hr_attendance__working_schedule_id
+msgid ""
+"Define the working schedule of the resource. If not set, the resource will "
+"have fully flexible working hours."
+msgstr ""
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__early_hours
+msgid "Early Leave Hours"
+msgstr "Số giờ về sớm"
+
+#. module: mhd_attendance
+#: model:ir.model,name:mhd_attendance.model_hr_contract
+msgid "Employee Contract"
+msgstr "Hợp đồng lao động"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/controllers/main.py:0
+msgid "Geolocation data is required for manual attendance selection."
+msgstr "Định vị là bắt buộc để chọn chấm công thủ công."
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/controllers/main.py:0
+msgid "Geolocation data is required for systray attendance."
+msgstr "Định vị là bắt buộc để chấm công từ hệ thống."
+
+#. module: mhd_attendance
+#: model:ir.model.fields,help:mhd_attendance.field_hr_contract__deduct_late_early
+msgid ""
+"If checked, late arrival and early leave hours will be calculated for this "
+"contract."
+msgstr "Nếu chọn, giờ đến muộn và giờ về sớm sẽ được tính cho hợp đồng này."
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__late_hours
+msgid "Late Hours"
+msgstr "Số giờ đi muộn"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid "No standard check in found!"
+msgstr "Không tìm thấy giờ đăng nhập tiêu chuẩn!"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid "No standard check out found!"
+msgstr "Không tìm thấy giờ đăng xuất tiêu chuẩn!"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid "No working schedule found for employee %s"
+msgstr "Không tìm thấy lịch làm việc cho nhân viên %s"
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__working_schedule_id
+msgid "Working Schedule"
+msgstr "Lịch làm việc"
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid ""
+"You cannot create attendance records when you have full-day time off for "
+"that day."
+msgstr "Bạn không thể chấm công khi bạn đã nghỉ cả ngày."
+
+#. module: mhd_attendance
+#. odoo-python
+#: code:addons/mhd_attendance/models/hr_attendance.py:0
+msgid ""
+"You cannot create attendance records when you have time off for that day."
+msgstr "Bạn không thể chấm công khi bạn đã nghỉ vào ngày đó."

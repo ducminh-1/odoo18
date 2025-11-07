@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_overtime_view_form" model="ir.ui.view">
+        <field name="name">hr.overtime.view.form</field>
+        <field name="model">hr.overtime</field>
+		<field name="inherit_id" ref="ohrms_overtime.hr_overtime_view_form"/>
+        <field name="arch" type="xml">
+			<xpath expr="//header/field[@name='state']" position="attributes">
+				<attribute name="statusbar_visible">draft,f_approve,approved,done</attribute>
+			</xpath>
+			<xpath expr="//button[@name='action_submit_to_finance']" position="after">
+				<button name="action_reset_to_draft" 
+					string="Reset to Draft"
+					type="object"
+					class="btn-primary"
+					invisible="state in ['draft', 'approved']"/>
+				<button name="action_cancel" 
+					string="Cancel"
+					type="object"
+					class="btn-primary"
+					invisible="state in ['draft', 'cancel']"/>
+			</xpath>
+			<xpath expr="//button[@name='action_approve']" position="attributes">
+				<attribute name="invisible" add="type_manager_id != uid" separator=" or "/>
+			</xpath>
+			<xpath expr="//button[@name='action_reject']" position="attributes">
+				<attribute name="invisible" add="type_manager_id != uid" separator=" or "/>
+			</xpath>
+			<header position="inside">
+				<button name="action_manager_approve" string="Approve"
+						type="object" class="btn-primary"
+					groups="hr_holidays.group_hr_holidays_user"
+					invisible="state != 'before_f_approve'"/>
+			</header>
+			<xpath expr="//group//field[@name='manager_id']" position="after">
+				<field name="financer_id" readonly="state == 'f_approve'"/>
+			</xpath>
+        </field>
+    </record>
+
+	<record id="hr_overtime_view_list_inherit" model="ir.ui.view">
+        <field name="name">hr.overtime.view.list.inherit</field>
+        <field name="model">hr.overtime</field>
+		<field name="inherit_id" ref="ohrms_overtime.hr_overtime_view_tree"/>
+        <field name="arch" type="xml">
+			<xpath expr="//field[@name='employee_id']" position="before">
+				<field name="name"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

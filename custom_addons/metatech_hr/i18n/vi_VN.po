@@ -20,6 +20,12 @@ msgstr ""
 msgid "Acronym"
 msgstr "Viết tắt"
 
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee__identification_id
+#: model:ir.model.fields,field_description:hr.field_res_users__identification_id
+msgid "Identification No"
+msgstr "Số CMND"
+
 #. module: metatech_hr
 #. odoo-javascript
 #: code:addons/metatech_hr/static/src/fields/resume_one2many/resume_one2many_custom.xml:0

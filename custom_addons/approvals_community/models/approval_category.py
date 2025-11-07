@@ -16,6 +16,7 @@ class ApprovalCategory(models.Model):
         ('leave', 'Leave'),
         ('custom', 'Custom')
     ], string='Type', default='generic', required=True) 
+    image = fields.Binary(string='Image')
     requires_attachment = fields.Boolean(string='Requires Attachment')
     requires_quantity = fields.Boolean(string='Requires Quantity')
     requires_amount = fields.Boolean(string='Requires Amount')
@@ -24,13 +25,7 @@ class ApprovalCategory(models.Model):
     auto_approval = fields.Boolean(string='Auto Approval')
     double_validation = fields.Boolean(string='Double Validation')
     user_id = fields.Many2one('res.users', string='Approval Responsible')
-    approver_ids = fields.Many2many(
-        'res.users', 
-        'approval_category_approver_rel',
-        'category_id', 
-        'user_id', 
-        string='Approvers'
-    )
+    approver_ids = fields.One2many('approval.approver', 'approver_category_id', string="Approvers")
     group_ids = fields.Many2many(
         'res.groups',
         'approval_category_group_rel',
@@ -41,6 +36,7 @@ class ApprovalCategory(models.Model):
     request_fields = fields.Text(string='Request Fields Configuration')
     pending_count = fields.Integer(string="To Review", compute="_compute_pending_count")
     image = fields.Binary(string='Image')
+    approver_sequence = fields.Boolean(string="Approver Sequence")
 
     def _compute_pending_count(self):
         domain = [('state', '=', 'submitted'), ('approver_ids.user_id', '=', self.env.user.id)]

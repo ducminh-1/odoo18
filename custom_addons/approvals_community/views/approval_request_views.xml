@@ -13,7 +13,6 @@
                        decoration-danger="state == 'refused'" 
                        decoration-warning="state in ['pending', 'submitted']"/>
                 <field name="date"/>
-                <field name="amount"/>
             </list>
         </field>
     </record>
@@ -25,51 +24,43 @@
             <form string="Approval Request">
                 <header>
                     <field name="state" widget="statusbar" 
-                           statusbar_visible="draft,submitted,pending,approved,refused,cancel" 
+                           statusbar_visible="new,submitted,pending,approved,refused,cancel" 
                            clickable="true"/>
-                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="state in ['submitted', 'approved', 'cancel']"/>
-                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="state in ['approved', 'refused', 'cancel']"/>
-                    <button name="action_refuse" string="Refuse" type="object" class="btn-secondary" invisible="state in ['approved', 'refused', 'cancel']"/>
-                    <button name="action_cancel" string="Cancel" type="object" class="btn-secondary" invisible="state in ['draft', 'cancel']"/>
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="state in ['submitted', 'approved', 'refused', 'cancel']"/>
+                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="state in ['new', 'refused', 'cancel'] or user_status != 'pending'"/>
+                    <button name="action_refuse" string="Refuse" type="object" class="btn-secondary" invisible="state in ['new', 'approved', 'refused', 'cancel'] or user_status != 'pending'"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-secondary" invisible="state in ['new', 'cancel']"/>
                     <button name="action_reset_to_draft" string="Reset to Draft" type="object" class="btn-secondary" invisible="state != 'cancel'" />
                 </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name" readonly="1"/>
-                            <field name="category_id" required="1"/>
-                            <field name="request_owner_id" required="1"/>
+                            <field name="category_id" required="1" readonly="state == 'approved'"/>
+                            <field name="request_owner_id" required="1" readonly="state == 'approved'"/>
                             <field name="date_confirmed"/>
                             <label for="date_start" string="Period"/>
                             <div>
                                 <div>
                                     <label for="date_start" class="col-lg-2" string="From:"/>
-                                    <field name="date_start" class="oe_inline" readonly="state != 'draft'"/>
+                                    <field name="date_start" class="oe_inline" readonly="state != 'new'"/>
                                 </div>
                                 <div>
                                     <label for="date_end" class="col-lg-2" string="to:"/>
-                                    <field name="date_end" class="oe_inline" readonly="state != 'draft'"/>
+                                    <field name="date_end" class="oe_inline" readonly="state != 'new'"/>
                                 </div>
                             </div>
                         </group>    
-                        <!-- <group>
-                            <field name="state" readonly="1"/>
-                            <field name="quantity" 
-                                   invisible="not category_id.requires_quantity"/>
-                            <field name="amount" 
-                                   invisible="not category_id.requires_amount"/>
-                            <field name="attachment_number" widget="statinfo" string="Attachments"/>
-                        </group> -->
                     </group>
                     <notebook>
                         <page string="Description" name="description">
                             <group>
-                                <field name="description" nolabel="1" placeholder="Please provide a detailed reason for this approval request..."/>
+                                <field name="description" nolabel="1" readonly="state == 'approved'" placeholder="Please provide a detailed reason for this approval request..."/>
                             </group>
                         </page>
                         <page string="Approver(s)" name="approvers">
                             <group>
-                                <field name="approver_ids" nolabel="1">
+                                <field name="approver_ids" nolabel="1" readonly="state != 'new'">
                                     <list editable="bottom">
                                         <field name="user_id"/>
                                         <field name="required"/>
@@ -140,7 +131,7 @@
         <field name="name">Approvals to review</field>
         <field name="res_model">approval.request</field>
         <field name="view_mode">list,form,kanban</field>
-        <field name="domain">['&amp;',('approver_ids.user_id','=',uid),('state','=','pending')]</field>
+        <field name="domain">['&amp;',('approver_ids.user_id','=',uid),('state','=','submitted')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No new approvals to review 
@@ -186,16 +177,14 @@
             group_create="false" group_edit="false" group_delete="false" sample="1">
                 <field name="state"/>
                 <templates>
-                    <!-- <t t-name="menu">
+                    <t t-name="menu">
                         <a t-if="widget.editable" role="menuitem" type="open" class="dropdown-item">Edit Request</a>
                         <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>
                         <a name="action_approve" type="object" invisible="user_status != 'pending'"
                             role="menuitem" class="dropdown-item">Approve</a>
                         <a name="action_refuse" type="object" invisible="user_status != 'pending'"
                             role="menuitem" class="dropdown-item">Refuse</a>
-                        <a name="action_withdraw" type="object" invisible="request_status == 'new' or user_status in ['waiting', 'pending', 'cancel']"
-                            role="menuitem" class="dropdown-item">Withdraw</a>
-                    </t> -->
+                    </t>
                     <t t-name="card">
                         <div class="ribbon ribbon-top-right" invisible="state not in ['approved', 'refused', 'cancel']">
                             <field name="state" t-if="record.state.raw_value == 'approved'" class="text-bg-success"/>
