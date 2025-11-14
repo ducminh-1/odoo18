@@ -16,30 +16,26 @@ class HrOvertime(models.Model):
         tracking=True)
     type_manager_id = fields.Many2one('res.users', string="Manager", related='overtime_type_id.manager_id', store=True)
     type = fields.Selection([('cash', 'Cash'), ('leave', 'Leave')], default="cash", required=True, string="Type", help="Type of the overtime request")
-    financer_id = fields.Many2one('res.users', string="Financer")
 
     ### OVERRIDE ###
 
     def action_reset_to_draft(self):
         self.sudo().write({'state': 'draft'})
-        return True
+        self.activity_update()
 
     def action_submit_to_finance(self):
         res = super().action_submit_to_finance()
         self.sudo().write({'state': 'before_f_approve'})
-        user_id = self.financer_id
-        self._create_activity(user_id=user_id)
+        self.activity_update()
         return res
 
     def action_manager_approve(self):
         self.sudo().write({'state': 'f_approve'})
-        user_id = self.manager_id
-        self._create_activity(user_id=user_id)
-        return True
+        self.activity_update()
     
     def action_cancel(self):
         self.sudo().write({'state': 'cancel'})
-        return True
+        self.activity_update()
 
     @api.onchange('overtime_type_id')
     def _get_hour_amount(self):
@@ -50,9 +46,27 @@ class HrOvertime(models.Model):
             if self.contract_id and self.contract_id.over_day:
                 self.cash_day_amount = self.contract_id.over_day * self.days_no_tmp
 
-    def _create_activity(self, user_id):
+    def activity_update(self):
+        hr_overtime_feedback = self.env['hr.overtime']
+        hr_overtime_activity_unlink = self.env['hr.overtime']
         for overtime in self:
-            overtime.activity_schedule(
-                'mhd_ohrms_overtime.mail_activity_data_overtime',
-                user_id=user_id.id)
-            
+            if overtime.state in ['before_f_approve', 'f_approve']:
+                overtime.activity_schedule(
+                    'mhd_ohrms_overtime.mail_activity_data_overtime',
+                    user_id=overtime.sudo()._get_responsible_for_approval().id or self.env.user.id)
+            elif overtime.state == 'approved':
+                hr_overtime_feedback |= overtime
+            elif overtime.state in ['draft', 'cancel']:
+                hr_overtime_activity_unlink |= overtime
+        if hr_overtime_feedback:
+            hr_overtime_feedback.activity_feedback(['mhd_ohrms_overtime.mail_activity_data_overtime'])
+        if hr_overtime_activity_unlink:
+            hr_overtime_activity_unlink.activity_unlink(['mhd_ohrms_overtime.mail_activity_data_overtime'])
+    
+    def _get_responsible_for_approval(self):
+        self.ensure_one()
+        if self.state == 'before_f_approve':
+            return self.manager_id
+        elif self.state == 'f_approve':
+            return self.type_manager_id
+        return None

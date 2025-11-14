@@ -1,0 +1,126 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nos_document_dates
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-15 08:12+0000\n"
+"PO-Revision-Date: 2025-10-15 08:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">End Date:</span>"
+msgstr "<span class=\"o_kanban_record_label\">Ngày kết thúc:</span>"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">Start Date:</span>"
+msgstr "<span class=\"o_kanban_record_label\">Ngày bắt đầu:</span>"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">Validity:</span>"
+msgstr "<span class=\"o_kanban_record_label\">Hiệu lực:</span>"
+
+#. module: nos_document_dates
+#: model:ir.model.fields.selection,name:nos_document_dates.selection__documents_document__status_validity__about_to_expire
+msgid "About to Expire"
+msgstr "Sắp hết hạn"
+
+#. module: nos_document_dates
+#: model:ir.model,name:nos_document_dates.model_documents_document
+msgid "Document"
+msgstr "Tài liệu"
+
+#. module: nos_document_dates
+#: model:ir.actions.server,name:nos_document_dates.ir_cron_data_ir_actions_server
+msgid "Documents: Update Validity Status"
+msgstr "Tài liệu: Cập nhật trạng thái hiệu lực"
+
+#. module: nos_document_dates
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__end_date
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_search
+msgid "End Date"
+msgstr "Ngày kết thúc"
+
+#. module: nos_document_dates
+#: model:ir.model.fields.selection,name:nos_document_dates.selection__documents_document__status_validity__expired
+msgid "Expired"
+msgstr "Hết hạn"
+
+#. module: nos_document_dates
+#: model:ir.model.fields.selection,name:nos_document_dates.selection__documents_document__status_validity__no_validity
+msgid "No Validity"
+msgstr "Không có hiệu lực"
+
+#. module: nos_document_dates
+#. odoo-javascript
+#: code:addons/nos_document_dates/static/src/views/document_inspector.xml:0
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__start_date
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_search
+msgid "Start Date"
+msgstr "Ngày bắt đầu"
+
+#. module: nos_document_dates
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__status_validity
+msgid "Status Validity"
+msgstr "Trạng thái hiệu lực"
+
+#. module: nos_document_dates
+#. odoo-javascript
+#: code:addons/nos_document_dates/static/src/views/document_inspector.xml:0
+msgid "Status:"
+msgstr "Trạng thái"
+
+#. module: nos_document_dates
+#: model:ir.model.constraint,message:nos_document_dates.constraint_documents_document_check_date
+msgid "The start date must be before or equal to the end date."
+msgstr "Ngày bắt đầu phải trước hoặc bằng ngày kết thúc."
+
+#. module: nos_document_dates
+#: model:ir.model.fields.selection,name:nos_document_dates.selection__documents_document__status_validity__valid
+msgid "Valid"
+msgstr "Còn hiệu lực"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_search
+msgid "Validity"
+msgstr "Hiệu lực"
+
+#. module: nos_document_dates
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__handover_date
+msgid "Handover Date"
+msgstr "Thời gian bàn giao"
+
+#. module: nos_document_dates
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__profile_code
+msgid "Profile Code"
+msgstr "Mã hồ sơ"
+
+#. module: nos_document_dates
+#: model:ir.model.fields,field_description:nos_document_dates.field_documents_document__contract_code
+msgid "Contract Code"
+msgstr "Mã hợp đồng"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">Handover Date:</span>"
+msgstr "Thời gian bàn giao:"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">Profile Code:</span>"
+msgstr "Mã hồ sơ:"
+
+#. module: nos_document_dates
+#: model_terms:ir.ui.view,arch_db:nos_document_dates.document_view_kanban
+msgid "<span class=\"o_kanban_record_label\">Contract Code:</span>"
+msgstr "Mã hợp đồng:"

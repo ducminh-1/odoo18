@@ -32,9 +32,6 @@
 					groups="hr_holidays.group_hr_holidays_user"
 					invisible="state != 'before_f_approve'"/>
 			</header>
-			<xpath expr="//group//field[@name='manager_id']" position="after">
-				<field name="financer_id" readonly="state == 'f_approve'"/>
-			</xpath>
         </field>
     </record>
 

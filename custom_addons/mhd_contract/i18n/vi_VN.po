@@ -98,3 +98,8 @@ msgstr "Ngân hàng"
 #: model:ir.model.fields,field_description:mhd_contract.field_hr_employee__bank_accc_number
 msgid "Account Number"
 msgstr "Số tài khoản"
+
+#. module: mhd_contract
+#: model:ir.model.fields.selection,name:mhd_contract.selection__hr_employee__certificate__college
+msgid "College"
+msgstr "Cao đẳng"

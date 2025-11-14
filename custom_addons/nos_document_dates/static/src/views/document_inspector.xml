@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-inherit="documents.DocumentsDetailsPanel" t-inherit-mode="extension">
+        <xpath expr="//div[@t-if='record?.data']/div[2]" position="before">
+            <t t-if="record?.data">
+                <div
+                    t-if="record.data.type !== 'folder'"
+                    class="basic-info mb-3 d-flex justify-content-between"
+                >
+                    <!-- Expiry Date Information -->
+                    <div class="d-flex me-2 align-items-center">
+                        <span class="fw-bold me-2">Start Date</span>
+                        <div class="o_field_widget o_field_date">
+                            <DateTimeField
+                                name="'start_date'"
+                                startDateField="'start_date'"
+                                endDateField="'end_date'"
+                                record="record"
+                                readonly="userPermissionViewOnly"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+                <div
+                    t-if="record.data.type !== 'folder'"
+                    class="basic-info d-flex mb-3 justify-content-between flex-wrap"
+                >
+                    <!-- Handover Date -->
+                    <div class="d-flex me-2 align-items-center">
+                        <span class="fw-bold me-2">Handover Date</span>
+                        <div class="o_field_widget o_field_date">
+                            <DateTimeField
+                                name="'handover_date'"
+                                startDateField="'handover_date'"
+                                record="record"
+                                readonly="userPermissionViewOnly"
+                            />
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between flex-wrap">
+
+                        <div class="d-flex me-2 align-items-center flex-grow-1">
+                            <span class="fw-bold me-2">Profile Code</span>
+                            <div class="o_field_widget o_field_char">
+                                <CharField
+                                    name="'profile_code'"
+                                    record="record"
+                                    readonly="userPermissionViewOnly"
+                                />
+                            </div>
+                        </div>
+                        <!-- Contract Code -->
+                        <div class="d-flex me-2 align-items-center flex-grow-1">
+                            <span class="fw-bold me-2">Contract Code</span>
+                            <div class="o_field_widget o_field_char">
+                                <CharField
+                                    name="'contract_code'"
+                                    record="record"
+                                    readonly="userPermissionViewOnly"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>          
+        </xpath>
+        <!-- Status row -->
+        <xpath expr="//div[@t-if='record?.data']/div[2]" position="after">
+            <t t-if="record?.data">
+                <div
+                    t-if="record.data.type !== 'folder'"
+                    class="basic-info mb-3"
+                    id="nos_status_row"
+                >
+                    <div class="d-flex align-items-center">
+                        <span class="fw-bold me-2">Status:</span>
+                        <t t-set="badge_class" t-value="record.data.status_validity === 'valid' ? 'text-bg-success' : record.data.status_validity === 'expired' ? 'text-bg-danger' : record.data.status_validity === 'about_to_expire' ? 'text-bg-warning' : 'text-bg-secondary'"/>
+                        <span t-attf-class="badge #{badge_class}" t-att-style="'border-radius: 10px;'">
+                            <Field name="'status_validity'" record="record" readonly="true"/>
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

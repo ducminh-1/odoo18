@@ -22,6 +22,12 @@
                 <field name="is_bhtnn_only" />
                 <field name="is_trade_union" />
             </group>
+            <xpath expr="//group[@name='salary']//div" position="replace">
+                <div class="o_row" name="wage">
+                    <field name="wage" nolabel="1"/>
+                    <span>/ month</span>
+                </div>
+            </xpath>
         </field>
     </record>
 </odoo>

@@ -9,6 +9,9 @@
                 <field name="late_hours" widget="float_time"/>
                 <field name="early_hours" widget="float_time"/>
             </field>
+            <field name="worked_hours" position="after">
+                <field name="attendance_hours" widget="float_time"/>
+            </field>
         </field>
     </record>
 
@@ -29,9 +32,15 @@
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree_management"/>
         <field name="arch" type="xml">
+            <xpath expr="/list" position="attributes">
+                <attribute name="decoration-danger">attendance_hours &gt;= 12</attribute>
+            </xpath>
             <field name="worked_hours" position="after">
                   <field name="late_hours" widget="float_time"/>
                   <field name="early_hours" widget="float_time"/>
+            </field>
+            <field name="worked_hours" position="after">
+                <field name="attendance_hours" widget="float_time"/>
             </field>
         </field>
     </record>
@@ -41,10 +50,19 @@
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="/list" position="attributes">
+                <attribute name="decoration-danger">attendance_hours &gt;= 12</attribute>
+            </xpath>
             <field name="worked_hours" position="after">
                   <field name="late_hours" widget="float_time"/>
                   <field name="early_hours" widget="float_time"/>
             </field>
+            <field name="worked_hours" position="after">
+                <field name="attendance_hours" widget="float_time"/>
+            </field>
+            <xpath expr="//header" position="inside">
+                <button class="btn-secondary" string="Recalculate Attendance" name="action_recalculate_att" type="object"/>
+            </xpath>
         </field>
     </record>
 

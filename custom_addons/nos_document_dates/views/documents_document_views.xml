@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="document_view_search" model="ir.ui.view">
+        <field name="name">Document search view</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_search" />
+        <field name="arch" type="xml">
+            <filter name="filter_file_extension" position="after">
+                <filter
+                    string="Validity"
+                    name="validity_filter"
+                    context="{'group_by': 'status_validity'}"
+                />
+                <filter
+                    string="Start Date"
+                    name="start_date_filter"
+                    context="{'group_by': 'start_date'}"
+                />
+                <filter
+                    string="End Date"
+                    name="end_date_filter"
+                    context="{'group_by': 'end_date'}"
+                />
+                <filter 
+                    string="Handover Date"
+                    name="handover_date"
+                    context="{'group_by': 'handover_date'}"/>
+            </filter>
+            <field name="partner_id" position="after">
+                <field name="profile_code"/>
+                <field name="contract_code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="documents_view_list" model="ir.ui.view">
+        <field name="name">documents list</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.documents_view_list" />
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="status_validity" />
+                <field name="handover_date"/>
+                <field name="profile_code"/>
+                <field name="contract_code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="document_view_form" model="ir.ui.view">
+        <field name="name">documents form</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_form" />
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="status_validity" />
+                <field name="handover_date"/>
+                <field name="profile_code"/>
+                <field name="contract_code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="document_view_kanban" model="ir.ui.view">
+        <field name="name">documents.document kanban</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="handover_date"/>
+                <field name="profile_code"/>
+                <field name="contract_code"/>
+            </xpath>
+            <xpath
+                expr="//div[@class='o_kanban_record_body text-truncate']"
+                position="inside"
+            >
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.start_date.raw_value"
+                    id="start_date"
+                >
+                    <span class="o_kanban_record_label">Start Date:</span>
+                    <field name="start_date" />
+                </div>
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.end_date.raw_value"
+                    id="end_date"
+                >
+                    <span class="o_kanban_record_label">End Date:</span>
+                    <field name="end_date" />
+                </div>
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.status_validity.raw_value"
+                    id="status_validity"
+                >
+                    <span class="o_kanban_record_label">Validity:</span>
+                    <field name="status_validity" />
+                </div>
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.handover_date.raw_value"
+                    id="handover_date"
+                >
+                    <span class="o_kanban_record_label">Handover Date:</span>
+                    <field name="handover_date" />
+                </div>
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.profile_code.raw_value"
+                    id="profile_code"
+                >
+                    <span class="o_kanban_record_label">Profile Code:</span>
+                    <field name="profile_code" />
+                </div>
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.contract_code.raw_value"
+                    id="contract_code"
+                >
+                    <span class="o_kanban_record_label">Contract Code:</span>
+                    <field name="contract_code" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

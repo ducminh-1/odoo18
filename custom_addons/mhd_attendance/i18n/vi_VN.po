@@ -114,3 +114,8 @@ msgstr "Bạn không thể chấm công khi bạn đã nghỉ cả ngày."
 msgid ""
 "You cannot create attendance records when you have time off for that day."
 msgstr "Bạn không thể chấm công khi bạn đã nghỉ vào ngày đó."
+
+#. module: mhd_attendance
+#: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__attendance_hours
+msgid "Attendance Hours"
+msgstr "Số giờ chấm công"

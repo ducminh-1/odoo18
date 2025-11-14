@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="document_view_search" model="ir.ui.view">
+        <field name="name">Document search view</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_search" />
+        <field name="arch" type="xml">
+            <filter name="filter_file_extension" position="after">
+                <filter
+                    string="Department"
+                    name="department_filter"
+                    context="{'group_by': 'department_id'}"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <record id="documents_view_list" model="ir.ui.view">
+        <field name="name">documents list</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.documents_view_list" />
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="department_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="document_view_form" model="ir.ui.view">
+        <field name="name">documents form</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_form" />
+        <field name="arch" type="xml">
+            <field name="owner_id" position="after">
+                <field name="department_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="document_view_kanban" model="ir.ui.view">
+        <field name="name">documents.document kanban</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="start_date" />
+                <field name="end_date" />
+            </xpath>
+            <xpath
+                expr="//div[@class='o_kanban_record_body text-truncate']"
+                position="inside"
+            >
+                <div
+                    class="o_kanban_record_bottom d-flex align-items-center gap-2"
+                    t-if="record.department_id.raw_value"
+                    id="department_id"
+                >
+                    <span class="o_kanban_record_label">Department:</span>
+                    <field name="department_id" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

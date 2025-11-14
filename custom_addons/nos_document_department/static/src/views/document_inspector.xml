@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-inherit="documents.DocumentsDetailsPanel" t-inherit-mode="extension">
+        <!-- Insert Department before Status -->
+        <xpath expr="//div[@id='nos_status_row']" position="before">
+            
+            <t t-if="record?.data">
+                <div
+                    t-if="record.data.type !== 'folder'"
+                    class="basic-info mb-2"
+                >
+                    <div class="d-flex align-items-center">
+                        <span class="fw-bold me-2">Department</span>
+                        <Field name="'department_id'" record="record" readonly="userPermissionViewOnly"/>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>
