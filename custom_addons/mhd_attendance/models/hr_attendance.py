@@ -549,5 +549,16 @@ class HrAttendance(models.Model):
 
 
     def action_recalculate_att(self):
-        dayoff = self.get_time_off()
+        for att in self:  
+            # Callback function compute
+            att._compute_worked_hours()
+            att._compute_late_early_hours()
+            att._compute_attendance_hours()
+
+            att.write({
+                'worked_hours': att.worked_hours,
+                'late_hours': att.late_hours,
+                'early_hours': att.early_hours,
+                'attendance_hours': att.attendance_hours,
+            })
         

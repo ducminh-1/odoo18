@@ -9,7 +9,7 @@
                 <field name="date_of_issue_id"/>
                 <field name="place_of_issue_id"/>
                 <field name="bank_id"/>
-                <field name="bank_accc_number"/>
+                <field name="bank_acc_number"/>
             </xpath>
         </field>
     </record>

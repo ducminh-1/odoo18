@@ -119,3 +119,8 @@ msgstr "Bạn không thể chấm công khi bạn đã nghỉ vào ngày đó."
 #: model:ir.model.fields,field_description:mhd_attendance.field_hr_attendance__attendance_hours
 msgid "Attendance Hours"
 msgstr "Số giờ chấm công"
+
+#. module: mhd_attendance
+#: model_terms:ir.ui.view,arch_db:mhd_attendance.view_attendance_tree
+msgid "Recalculate Attendance"
+msgstr "Tính toán lại chấm công"

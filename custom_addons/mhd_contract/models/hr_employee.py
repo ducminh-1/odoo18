@@ -11,5 +11,5 @@ class HrContract(models.Model):
     date_of_issue_id = fields.Date(string='Date of Issue CCCD Card', groups='hr.group_hr_user', tracking=True)
     place_of_issue_id = fields.Char(string='Place of Issue CCCD Card', groups='hr.group_hr_user', tracking=True)
     bank_id = fields.Many2one('res.bank', string='Bank')
-    bank_accc_number = fields.Char(string='Account Number')
+    bank_acc_number = fields.Char(string='Account Number')
     certificate = fields.Selection(selection_add=[('college', 'College')], string='Certificate Level')

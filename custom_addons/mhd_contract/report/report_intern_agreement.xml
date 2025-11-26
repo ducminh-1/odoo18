@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_intern_agreement" model="ir.actions.report">
+        <field name="name">Print Intern Contract</field>
+        <field name="model">hr.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mhd_contract.report_intern_agreement</field>
+        <field name="report_file">mhd_contract.report_intern_agreement</field>
+        <field name="paperformat_id" ref="mhd_contract.paperformat_intern_agreement"/>
+        <field name="print_report_name">'Intern Agreement - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_contract"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_intern_agreement">
+        <t t-call="web.basic_layout">
+            <div class="page" style="font-size:14px; line-height:22px;">
+                <t t-foreach="docs" t-as="doc">
+                    <div style="text-align:center; line-height:20px; page-break-inside: avoid;">
+                        <span style="font-weight:bold; font-size:16px;">
+                            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                        </span><br/>
+                        <span>Độc lập - Tự do - Hạnh phúc</span><br/>
+                        <span>------------------------------------</span>
+                    </div>
+                    <table class="table table-borderless" style="width:100%; margin-top:10px;">
+                        <tr>
+                            <td style="width:60%; border:none; padding:2px 0;">
+                                <strong>Tên đơn vị:</strong> CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD.
+                            </td>
+                            <td style="width:40%; text-align:right; border:none; padding:2px 0;">
+                                <strong>Số:</strong> ............./202.........../HĐLĐ-MHD
+                            </td>
+                        </tr>
+                    </table>
+                    <p>- Căn cứ giấy giới thiệu số .......... của Trường ............. ngày ........... của {tên};</p>
+                    <p>- Căn cứ nhu cầu tiếp nhận sinh viên tại doanh nghiệp;</p>
+                    <h3 style="text-align:center; font-weight:bold; margin-bottom:0;">
+                        THỎA THUẬN THỰC TẬP
+                    </h3>
+                    <br/>
+                    <h4 style="font-size:15px; font-weight:bold;">BÊN A: BÊN TUYỂN DỤNG THỰC TẬP SINH</h4>
+                    <table class="table table-borderless" style="width:100%; border-collapse:collapse; line-height:22px;">
+                        <tr>
+                            <td style="width:35%;">Ông:</td>
+                            <td><strong>Trần Khánh Du</strong> – Quốc tịch: Việt Nam</td>
+                        </tr>  
+                        <tr>
+                            <td>Chức vụ:</td>
+                            <td>Chủ tịch HĐTV kiêm Giám đốc</td>
+                        </tr>
+                        <tr>
+                            <td>Đại diện cho:</td>
+                            <td>Công ty TNHH Thẩm Định Giá MHD</td>
+                        </tr>
+                        <tr>
+                            <td>Điện thoại:</td>
+                            <td>(028) 3515 3516</td>
+                        </tr>
+                          <tr>
+                            <td>Địa chỉ:</td>
+                            <td>52 Trần Bình Trọng, P. Bình Lợi Trung, TP. Hồ Chí Minh</td>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <h4 style="font-size:15px; font-weight:bold;">BÊN B: BÊN THỰC TẬP SINH</h4>
+
+                    <table class="table table-borderless" style="width:100%; border-collapse:collapse; line-height:22px;">
+                        <tr>
+                            <td style="width:35%;">Họ tên:</td>
+                            <td><t t-esc="doc.employee_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td>Quốc tịch:</td>
+                            <td>Việt Nam</td>
+                        </tr>
+                        <tr>
+                            <td>Sinh ngày:</td>
+                            <td><t t-esc="doc.employee_id.birthday"/></td>
+                        </tr>
+                        <tr>
+                            <td>Số CMND/CCCD:</td>
+                            <td>
+                                <t t-esc="doc.employee_id.identification_id"/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Cấp ngày:</td>
+                            <td><t t-esc="doc.employee_id.date_of_issue_id"/></td>
+                            <td style="padding-left:40px;">do</td>
+                            <td>Cục trưởng cục  cảnh sát Quản lý hành chính về trật tự xã hội.</td>
+                        </tr>
+                        <tr>
+                            <td>Sinh viên trường:</td>
+                            <td><t t-esc="doc.employee_id.study_school"/></td>
+                        </tr>
+                        <tr>
+                            <td>Lớp:</td>
+                            <td>.................</td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ thường trú:</td>
+                            <td><t t-esc="doc.employee_id.private_street"/></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <p style="text-align:justify;">
+                        Thỏa thuận ký kết thỏa thuận thực tập sinh và cam kết làm đúng những điều khoản sau đây:
+                    </p>
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 1: Mục đích và căn cứ thực tập</h4>
+                    <p style="text-align:justify;">
+                        Bên B thực tập tại bên A theo nội dung giới thiệu từ Trường <t t-esc="doc.employee_id.study_school"/>,
+                        phục vụ yêu cầu phần/thực hành/thực tế ngành học của sinh viên.<br/>
+                        Mục tiêu: Tiếp nhận thực tế công việc, phát triển kỹ năng nghề nghiệp, phục vụ việc đánh giá kết quả học phần thực tập của nhà trường.
+                    </p>
+                    <div class="page-break-inside:avoid;">
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 2: Thời hạn thực tập</h4>
+                    </div>
+                    <p>Thời gian thực tập: <t t-esc="doc.date_start.strftime('%d/%m/%Y')"/></p>
+                    <p>Bộ phận thực tập: <t t-esc="doc.job_id.name"/></p>
+                    <p>Địa điểm làm việc: Công ty TNHH Thẩm Định Giá MHD.</p>
+                    <div class="page-break-inside: before;">
+                        <br/>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 3: Nội dung thực tập</h4>
+                    </div>
+                    <p>Nội dung chính:</p>
+                    <p>- Tìm hiểu quy trình hoạt động của bộ phận thẩm định giá.</p>
+                    <p>- Thực hành các công việc hướng dẫn của cán bộ phụ trách.</p>
+                    <p>- Được đào tạo về công việc liên quan đến lĩnh vực thẩm định giá.</p>
+
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 4: Quyền lợi và hỗ trợ</h4>
+
+                    <p style="text-align:justify;">
+                        Bên B không nhận tiền lương vì đây là chương trình thực tập không hình thành quan hệ lao động.
+                    </p>
+
+                    <p>Hỗ trợ thực tập: <t t-esc="doc.wage"/> đồng/tháng.</p>
+
+                    <p>Hỗ trợ khác:</p>
+                    <p>+ Tiền cơm: 730.000 đồng/tháng.</p>
+                    <p>+ Tiền điện thoại: 100.000 đồng/tháng.</p>
+
+                    <p style="text-align:justify;">
+                        Đây là khoản hỗ trợ để bù đắp cho chi phí đi lại, khấu hao máy tính cá nhân,... của Thực tập sinh trong Thời gian thực tập. Công ty sẽ khấu trừ từ hỗ trợ thực tập của Thực tập sinh tiền thuế thu nhập cá nhân mà Thực tập sinh phải trả theo quy định của pháp luật thuế thu nhập cá nhân hiện hành, nếu có.
+                        Hình thức đánh giá/thực hiện báo cáo: theo hướng dẫn của nhà trường và quy định nội bộ của doanh nghiệp.
+                    </p>
+
+                    <p>Phương thức thanh toán: Tiền mặt hoặc chuyển khoản.</p>
+                    <p>Thời hạn thanh toán: Công ty thanh toán hỗ trợ thực tập cho Thực tập sinh vào ngày 05 hàng tháng.</p>
+
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 5: Quyền và nghĩa vụ của Thực tập sinh</h4>
+
+                    <p><strong>4.1 Quyền lợi:</strong></p>
+                    <p>- Được Công ty hướng dẫn công việc trong thời gian thực tập.</p>
+                    <p>- Được quyền tham gia các khóa học ngoại khóa phục vụ cho quá trình thực tập do Công ty tổ chức.</p>
+                    <p>- Được tham gia thực hiện các công việc của Công ty và có sự hướng dẫn của nhân viên phụ trách trực tiếp của Công ty tùy thuộc vào sự quyết định của Công ty tại từng thời điểm.</p>
+                    <p>- Được Công ty đóng dấu và ký xác nhận thực tập sau khi kết thúc thời gian thực tập.</p>
+                    <p>- Được quyền nghỉ những ngày lễ, tết theo các quy định của pháp luật.</p>
+                    <p>- Sau khi kết thúc thời gian thực tập, nếu Thực tập sinh hoàn thành tốt các nhiệm vụ được giao và mong muốn làm việc lâu dài tại Công ty thì sẽ được Công ty xem xét, cân nhắc.</p>
+                    <p><strong>2. Nghĩa vụ:</strong></p>
+                    <p>- Tuân thủ nội quy, kỷ luật của Bên A</p>
+                    <p>- Thực hiện đầy đủ nội dung thực tập.</p>
+                    <p>- Chủ động phối hơp với người hướng dẫn và báo cáo đúng hạn.</p>
+                    <p>- Tham gia đầy đủ các khóa học nâng cao kỹ năng, chuyên môn mà Công ty tổ chức.</p>
+                    <p>- Bồi thường vi phạm và vật chất: Căn cứ vào Bộ luật lao động của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam.</p>
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 6: Nghĩa vụ và quyền hạn của Công ty</h4>
+                    <p>- Công ty tạo điều kiện thuận lợi cho Thực tập sinh được học tập và làm việc.</p>
+                    <p>- Đóng dấu và ký xác nhận thực tập cho Thực tập sinh sau khi kết thúc thỏa thuận thực tập sinh.</p>
+                    <p>- Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho thực tập sinh theo thỏa thuận, thỏa ước lao động tập thể (nếu có).</p>
+                    <p><strong>Quyền hạn:</strong></p>
+                    <p>- Công ty có quyền xem xét và xử lý kỷ luật hoặc chấm dứt thỏa thuận trong trường hợp Thực tập sinh vi phạm thỏa thuận, nội quy, quy chế Công ty và theo quy định của Pháp luật.</p>
+                    <p>- Yêu cầu Thực tập sinh bồi thường thiệt hại khi Thực tập sinh gây ra thiệt hại theo nội quy, quy chế của Công ty và quy định của Bộ luật lao động hiện hành.</p>
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 7: Bảo hiểm và chi phí khác</h4>
+                    <p>Bên B tự chịu trách nhiệm về bảo hiểm y tế, tai nạn cá nhân (trừ khi nhà trường đã đóng).</p>
+                    <p>Bên A không có nghĩa vụ đóng BHXH, BHYT, BHTN cho Bên B vì không có hợp đồng lao động và không phát sinh tiền công.</p>
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 8: Chấm dứt thỏa thuận thực tập</h4>
+                    <p>Thỏa thuận kết thúc khi:</p>
+                    <p>+ Hết hạn thực tập.</p>
+                    <p>+ Hai bên hoặc nhà trường yêu cầu kết thúc sớm.</p>
+                    <p>+ Bên B vi phạm nghiêm trọng nội quy và bị đơn phương chấm dứt quyền thực tập.</p>
+                    <h4 style="font-size:15px; font-weight:bold;">Điều 9: Điều khoản thi hành</h4>
+                    <p style="text-align:justify;">
+                        Thỏa thuận này chỉ nhằm mục đích phục vụ chương trình học tập thực tế của sinh viên, không làm phát sinh quan hệ lao động và không thuộc đối tượng tham gia BHXH, BHYT, BHTN bắt buộc theo quy định của pháp luật hiện hành.<br/>
+                        Thỏa thuận này có hiệu lực kể từ ngày <t t-esc="doc.date_start.strftime('%d')"/> tháng <t t-esc="doc.date_start.strftime('%m')"/> năm <t t-esc="doc.date_start.strftime('%Y')"/><br/>
+                        Thỏa thuận này được lập thành (02) hai bản gốc có giá trị pháp lí ngang nhau. Mỗi bên giữ (01) một bản gốc.
+                    </p>
+
+                    <br/><br/>
+                    <table class="table table-borderless" style="width:100%; border-collapse:collapse; text-align:center;">
+                        <tr>
+                            <td><strong>Bên B</strong><br/>(Ký tên)<br/><br/><br/>__________________</td>
+                            <td><strong>Bên A</strong><br/>(Ký tên – đóng dấu)<br/><br/><br/><strong>TRẦN KHÁNH DU</strong></td>
+                        </tr>
+                    </table>
+                </t>   
+            </div>
+        </t>
+    </template> 
+</odoo>

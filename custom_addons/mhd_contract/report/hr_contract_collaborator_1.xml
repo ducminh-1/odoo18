@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_contract_collaborator_1" model="ir.actions.report">
+        <field name="name">Print Collaborator Contract 01</field>
+        <field name="model">hr.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mhd_contract.report_collaborator_contract_1</field>
+        <field name="report_file">mhd_contract.report_collaborator_contract_1</field>
+        <field name="paperformat_id" ref="paperformat_collaborator_contract_1"/>
+        <field name="print_report_name">'Collaborator Contract 01 - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_contract"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_collaborator_contract_1">
+        <t t-call="web.basic_layout">
+            <div class="page" style="font-size: 14px; line-height: 22px;">
+            <!-- Header -->
+                <t t-foreach="docs" t-as="doc">
+                    <p style="text-align:left;">
+                        CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD<br/>
+                        MST: 0312231570<br/>
+                        52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM
+                    </p>
+                    <table class="table table-borderless" style="width:100%;">
+                        <tr style="text-align:center;">
+                            <td style="width:50%;">
+                                Số: ……/2025/HĐCTV-MHD
+                            </td>
+                            <td style="width:50%;">
+                                Tp. Hồ Chí Minh, ngày …. tháng …. năm 202…
+                            </td>
+                        </tr>
+                    </table> 
+
+                    <h4 style="text-align:center; margin-top:10px;">
+                        CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br/>
+                        <span style="font-size:13px;">Độc lập – Tự do – Hạnh phúc</span><br/>
+                        ----------------------------
+                    </h4>
+
+                    <h3 style="text-align:center; margin-top:20px;">HỢP ĐỒNG CỘNG TÁC VIÊN</h3>
+
+                    <p>
+                        - Căn cứ vào Luật dân sự số 91/2015/QH13 được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam khóa XIII, kỳ họp thứ 10 thông qua ngày 24 tháng 11 năm 2015;<br/>
+                        - Căn cứ vào Luật thương mại số 36/2005/QH10 được Quốc hội nước Cộng hòa xã hội chủ nghĩa Việt Nam khóa X, kỳ họp thứ 11 thông qua ngày 14 tháng 06 năm 2005;<br/>
+                        - Căn cứ vào khả năng nhu cầu của hai bên.
+                    </p>
+
+                    <p>
+                        Hôm nay, ngày ….. tháng ….. năm 2025 tại văn phòng Công ty TNHH Thẩm Định Giá MHD, chúng tôi gồm:
+                    </p>
+
+                    <!-- BÊN A -->
+                    <h4>BÊN A: CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD</h4>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>Địa chỉ:</td>
+                            <td>52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Số điện thoại:</td>
+                            <td>(028) 3515.3516</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Mã số thuế:</td>
+                            <td>0312231570</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Tài khoản số:</td>
+                            <td>007.100.131.6688</td>
+                            <td >Tại NH:</td>
+                            <td >Vietcombank CN HCM</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Đại diện bởi:</td>
+                            <td class="font-weight: bold">TRẦN KHÁNH DU</td>
+                            <td>Chức vụ:</td>
+                            <td>Giám đốc.</td>
+                        </tr>
+                    </table>
+
+                    <!-- BÊN B -->
+                    <h4>BÊN B: (CỘNG TÁC VIÊN)</h4>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td style="width:20%">Họ tên:</td>
+                            <td><t t-esc="doc.employee_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td>Sinh ngày:</td>
+                            <td><t t-esc="doc.employee_id.birthday"/></td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ thường trú:</td>
+                            <td><t t-esc="doc.employee_id.private_street"/></td>
+                        </tr>
+                        <tr>
+                            <td>Số CCCD:</td>
+                            <td><t t-esc="doc.employee_id.identification_id"/></td>
+                            <td style="width:10%;">Nơi cấp:</td>
+                            <td style="padding-right:20px;"><t t-esc="doc.employee_id.date_of_issue_id"/></td>
+                        </tr>
+                        <tr>
+                            <td>Cấp ngày:</td>
+                            <td><t t-esc="doc.employee_id.place_of_issue_id"/></td>
+                        </tr>
+                    </table>
+
+                    <p>
+                        Sau đây được gọi là Cộng tác viên (CTV).<br/>
+                        Sau khi thỏa thuận hai bên thống nhất ký kết Hợp đồng cộng tác viên với những điều khoản như sau:
+                    </p>
+
+                    <h4>Điều 1. Nội dung công việc của Bên B</h4>
+                    <p>
+                        Bên B đồng ý làm cộng tác viên cho Bên A, hỗ trợ bên A các vấn đề có liên quan đến dự án:<br/>
+                        + …………………………………………………….. với các nội dung công việc như sau:<br/>
+                        - Chỉnh sửa tên file theo tên tài sản có sẵn.<br/>
+                        Hình thức thực hiện: Làm việc độc lập, giờ giấc làm việc tự do không chịu sự điều hành trực tiếp và thường xuyên từ Bên A.
+                    </p>
+
+                    <h4>Điều 2. Địa điểm và thời gian làm việc</h4>
+                    <p>
+                        Bên B có thể tự chọn nơi làm việc.<br/>
+                        Thời gian làm việc linh hoạt, do bên B chủ động sắp xếp để hoàn thành công việc.
+                    </p>
+
+                    <div style="page-break-inside: always;">
+                        <h4>
+                            Điều 3. Thời gian, thù lao của cộng tác viên và phương thức thanh toán
+                        </h4>
+                    </div>
+                    <h5>3.1. Thời gian thực hiện</h5>
+                    <p>
+                        Thời hạn: Từ ngày …… tháng …… năm ……… đến ngày …………. tháng …….. năm 202……….. 
+                    </p>
+
+                    <h5>3.2. Thù lao của cộng tác viên</h5>
+                    <p>
+                        Bên A trả thù lao cho Bên B theo từng sản phẩm/đợt nghiệm thu:<br/>
+                        - Mức thù lao đối với sửa tên file là 200.000 vnđ trên 300 file.<br/>
+                        - Mức thù lao đối với nhập liệu trên phần mềm Công ty là 200.000 vnđ trên 350 file.<br/>
+                        Khi nhận bàn giao sản phẩm bên A kiểm kê file được bàn giao và tính số thù lao tương ứng theo số file nhận được.<br/>
+                        Bên A sẽ thực hiện khấu trừ tại nguồn khoản thuế thu nhập cá nhân trước khi chi trả thù lao cho bên B.Khoản thuế này bên A sẽ nộp vào ngân sách nhà nước theo quy định Luật thuế Thu nhập cá nhân.
+                    </p>
+
+                    <h5>3.3. Phương thức thanh toán</h5>
+                    <p>
+                        Bên A sẽ thanh toán cho Bên B sau khi đã khấu trừ 10% thuế thu nhập cá nhân.<br/>
+                        Phương thức thanh toán: Tiền mặt hoặc chuyển khoản.
+                    </p>
+
+                    <h4>Điều 4. Quyền và nghĩa vụ của Bên A</h4>
+                    <p>
+                        4.1. Quyền của Bên A<br/>
+                            - Bên A có quyền đơn phương chấm dứt hợp đồng cộng tác viên với Bên B khi Bên B vi phạm nghĩa vụ bảo mật thông tin của Bên A hoặc Bên B không đáp ứng được các thỏa thuận đã ký theo hợp đồng này;<br/>
+                            - Bên A không chịu trách nhiệm về các khoản chi phí khác cho Bên B trong quá trình thực hiện thỏa thuận theo hợp đồng này;<br/>
+                            - Bên A có quyền đòi bồi thường, khiếu nại với cơ quan có thẩm quyền để bảo vệ quyền lợi của minh nếu bên B vi phạm pháp luật hay các điều khoản của hợp đồng này.
+
+                        4.2. Nghĩa vụ của Bên A:<br/>
+                            - Cung cấp cho bên B thông tin, tài liệu cần thiết để thực hiện công việc. Bảo đảm việc làm cho bên B theo Hợp đồng đã ký.<br/>
+                            - Thanh toán tiền đầy đủ và đúng hạn cho bên B.<br/>
+                            - Đóng các khoản thuế đầy đủ theo quy định của pháp luật.<br/>
+                            - Tạo điều kiện để Bên B thực hiện thỏa thuận được thuận lợi nhất.
+                    </p>
+
+                    <h4>Điều 5. Quyền và nghĩa vụ của Bên B</h4>
+                    <p>
+                        5.1. Quyền của Bên B:<br/>
+                            - Yêu cầu Bên A thanh toán đầy đủ và đúng hạn các khoản thù lao đã thỏa thuận theo Hợp đồng này<br/><br/>
+
+                        5.2. Nghĩa vụ của Bên B:<br/>
+                            Không giao cho người khác thực hiện thay công việc nếu không có sự đồng ý của bên A.<br/>
+                            Bồi thường thiệt hại cho bên A nếu làm mất, hư hỏng tài liệu, phương tiện được giao hoặc tiết lộ bí mật thông tin.<br/>
+                            Đóng các khoản thuế đầy đủ theo quy định của pháp luật.<br/>
+                            Tự chịu các khoản chi phí đi lại, điện thoại, nhân sự...và các chi phí khác không ghi trong hợp đồng này liên quan đến thỏa thuận hợp tác với Bên A;<br/>
+                            Tuân thủ triệt để các quy định về bảo mật thông tin liên quan đến vụ việc thực hiện thỏa thuận theo hợp đồng này.
+                    </p>
+
+                    <h4>Điều 6. Bảo mật thông tin</h4>
+                    <p>
+                        Trong thời gian thực hiện và khi chấm dứt hợp đồng này, Bên B cam kết giữ bí mật và không tiết lộ bất kỳ các thông tin, tài liệu nào cho bên thứ ba liên quan đến vụ việc nếu không được Bên A chấp nhận;<br/>
+                        Trường hợp Bên B vi phạm quy định về bảo mật thông tin, Bên A có quyền chấm dứt hợp đồng và yêu cầu Bên B bồi thường thiệt hại theo quy định của pháp luật.
+                    </p>
+
+                    <h4>Điều 7. Điều khoản chung</h4>
+                    <p>
+                        1. Trong quá trình thực hiện, nếu một trong hai bên đơn phương chấm dứt hợp đồng này thì phải thông báo cho bên kia bằng văn bản trước 07 ngày làm việc để hai bên cùng thống nhất giải quyết;<br/>
+                        2. Trường hợp phát sinh tranh chấp trong quá trình thực hiện hợp đồng hai bên sẽ thương lượng và đàm phán trên tinh thần hợp tác và đảm bảo quyền lợi của cả hai bên. Nếu tranh chấp không giải quyết đươc bằng thương lượng, các bên sẽ yêu cầu tòa án có thẩm quyển giải quyết. Phán quyết của Tòa án có tính chất bắt buộc đối với các bên.
+                    </p>
+
+                    <h4>Điều 8. Hiệu lực và thời hạn hợp đồng</h4>
+                    <p>
+                        Hợp đồng có hiệu lực ngay khi các bên thực hiện ký kết hợp đồng này;<br/>
+                        Thỏa thuận này sẽ tự động hết hiệu lực ngay khi các bên (Bên A và Bên B) đã hoàn tất các thỏa thuận được ghi trong hợp đồng này.
+                    </p>
+
+                    <h4>Điều 9. Điều khoản thi hành</h4>
+                    <p>
+                        Hai bên cam kết thực hiện đúng các điều khoản đã thỏa thuận trong Hợp đồng này;<br/>
+                        Mọi sửa đổi, bổ sung liên quan đến nội dung hợp đồng này phải được hai bên thống nhất và thể hiện bằng văn bản;<br/>
+                        Hợp đồng này gồm 2 bản có giá trị pháp lý như nhau, mỗi bên giữ một bản.
+                    </p>
+
+                    <table class="table table-borderless" style="width:100%; margin-top:20px;">
+                        <tr>
+                            <td style="width:50%; text-align:center;">
+                                <strong>CỘNG TÁC VIÊN</strong><br/><br/><br/><br/>
+                            </td>
+
+                            <td style="width:50%; text-align:center;">
+                                <strong>ĐẠI DIỆN CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD</strong><br/>
+                                <strong>GIÁM ĐỐC</strong><br/><br/><br/><br/>
+                                <span>TRẦN KHÁNH DU</span>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+
+</odoo>

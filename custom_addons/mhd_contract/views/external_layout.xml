@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="external_layout_inherit" inherit_id="web.external_layout">
+        <xpath expr="//div[@class='header']" position="replace">
+            <t t-call="mhd_contract.report_collaborator_contract"/>
+        </xpath>
+    </template>
+</odoo>

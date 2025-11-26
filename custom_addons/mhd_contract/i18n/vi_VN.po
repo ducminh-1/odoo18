@@ -103,3 +103,73 @@ msgstr "Số tài khoản"
 #: model:ir.model.fields.selection,name:mhd_contract.selection__hr_employee__certificate__college
 msgid "College"
 msgstr "Cao đẳng"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_contract_collaborator
+msgid "'Collaborator Contract - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng cộng tác viên - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_contract_collaborator_1
+msgid "'Collaborator Contract 01 - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng cộng tác viên 01 - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_contract_collaborator_salary
+msgid "'Collaborator Contract Salary - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng cộng tác viên thù lao - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_indefinite_employment_contract
+msgid "'Indefinite Employment Contract - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng lao động không xác định thời hạn - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_term_employment_contract
+msgid "'Term Employment Contract - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng lao động xác định thời hạn - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_intern_agreement
+msgid "'Intern Agreement - %s' % (object.name).replace('/', '')"
+msgstr "'Thỏa thuận thực tập - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,print_report_name:mhd_contract.hr_probation_contract
+msgid "'Probation Contract - %s' % (object.name).replace('/', '')"
+msgstr "'Hợp đồng thử việc - %s' % (object.name).replace('/', '')"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_contract_collaborator
+msgid "Print Collaborator Contract"
+msgstr "Hợp động cộng tác viên"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_contract_collaborator_1
+msgid "Print Collaborator Contract 01"
+msgstr "Hợp đồng cộng tác viên 01"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_contract_collaborator_salary
+msgid "Print Collaborator Contract Salary"
+msgstr "Hợp đồng cộng tác viên thù lao"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_indefinite_employment_contract
+msgid "Print Indefinite Employment Contract"
+msgstr "Hợp đồng lao động không xác định thời hạn"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_term_employment_contract
+msgid "Print Term Employment Contract"
+msgstr "Hợp đồng lao động xác định thời hạn"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_intern_agreement
+msgid "Print Intern Contract"
+msgstr "Thỏa thuận thực tập"
+
+#. module: mhd_contract
+#: model:ir.actions.report,name:mhd_contract.hr_probation_contract
+msgid "Print Probation Contract"
+msgstr "Hợp đồng thử việc"

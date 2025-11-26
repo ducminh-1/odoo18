@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_collaborator_contract" model="report.paperformat">
+        <field name="name">Collaborator Contract</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_collaborator_contract_1" model="report.paperformat">
+        <field name="name">Collaborator Contract</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_collaborator_contract_salary" model="report.paperformat">
+        <field name="name">Collaborator Contract Salary</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_indefinite_employment_contract" model="report.paperformat">
+        <field name="name">Indefinite Employment Contract</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_term_employment_contract" model="report.paperformat">
+        <field name="name">Term Employment Contract</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_probation_contract" model="report.paperformat">
+        <field name="name">Probation Contract</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+
+    <record id="paperformat_intern_agreement" model="report.paperformat">
+        <field name="name">Intern Agreement</field>
+        <field name="default" eval="True"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+    </record>
+</odoo>

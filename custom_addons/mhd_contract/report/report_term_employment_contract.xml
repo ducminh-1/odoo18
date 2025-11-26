@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_term_employment_contract" model="ir.actions.report">
+        <field name="name">Print Term Employment Contract</field>
+        <field name="model">hr.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mhd_contract.report_term_employment_contract</field>
+        <field name="report_file">mhd_contract.report_term_employment_contract</field>
+        <field name="paperformat_id" ref="mhd_contract.paperformat_term_employment_contract"/>
+        <field name="print_report_name">'Term Employment Contract - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_contract"/>
+        <field name="binding_type">report</field>
+    </record>    
+
+    <template id="report_term_employment_contract">
+        <t t-call="web.basic_layout">
+            <div class="page" style="font-size:14px; line-height:22px;">
+                <t t-foreach="docs" t-as="doc">
+                    <div style="text-align:center; line-height:20px; page-break-inside: avoid;">
+                        <span style="font-weight:bold; font-size:16px;">
+                            CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                        </span><br/>
+                        <span>Độc lập - Tự do - Hạnh phúc</span><br/>
+                        <span>------------------------------------</span>
+                    </div>
+                    <table class="table table-borderless" style="width:100%; margin-top:10px;">
+                        <tr>
+                            <td style="width:60%; border:none; padding:2px 0;">
+                                <strong>Tên đơn vị:</strong> CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD.
+                            </td>
+                            <td style="width:40%; text-align:right; border:none; padding:2px 0;">
+                                <strong>Số:</strong> ......../202........../HĐLĐ-MHD
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h3 style="text-align:center; margin-top:15px; font-weight:bold;">
+                        HỢP ĐỒNG LAO ĐỘNG
+                    </h3>
+                    <table class="table-borderless" style="width:100%; border-collapse:collapse; font-size:14px; line-height:20px;">
+                        <!-- BÊN A -->
+                        <tr>
+                            <td style="width:25%;">Chúng tôi, một bên là Ông:</td>
+                            <td style="width:35%;"><strong>Trần Khánh Du</strong></td>
+                            <td style="width:15%;">Quốc tịch:</td>
+                            <td style="width:25%;">Việt Nam</td>
+                        </tr>
+
+                        <tr>
+                            <td>Chức vụ:</td>
+                            <td colspan="3">Giám đốc</td>
+                        </tr>
+
+                        <tr>
+                            <td>Đại diện cho:</td>
+                            <td colspan="3">Công ty TNHH Thẩm Định Giá MHD</td>
+                        </tr>
+
+                        <tr>
+                            <td>Điện thoại:</td>
+                            <td colspan="3">(028) 3515 3516</td>
+                        </tr>
+
+                        <tr>
+                            <td>Địa chỉ:</td>
+                            <td colspan="3">52 Trần Bình Trọng, P. Bình Lợi Trung, TP. Hồ Chí Minh</td>
+                        </tr>
+
+                        <!-- BÊN B -->
+                        <tr>
+                            <td>Và một bên là Ông:</td>
+                            <td><t t-esc="doc.employee_id.name"/></td>
+                            <td>Quốc tịch:</td>
+                            <td>Việt Nam</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sinh ngày:</td>
+                            <td><t t-esc="doc.employee_id.birthday.strftime('%d/%m/%Y')"/></td>
+                            <td>Nghề nghiệp:</td>
+                            <td><t t-esc="doc.job_id.name"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>Địa chỉ thường trú:</td>
+                            <td colspan="3"><t t-esc="doc.employee_id.private_street"/></td>
+                        </tr>
+
+                        <!-- CCCD -->
+                        <tr>
+                            <td>Số CCCD:</td>
+                            <td><t t-esc="doc.employee_id.identification_id"/></td>
+                            <td>Cấp ngày:</td>
+                            <td><t t-esc="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="3">Do Bộ Công An cấp.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sổ lao động (nếu có):</td>
+                            <td colspan="3">…………………………</td>
+                        </tr>
+
+                    </table>
+                    <h4 style="font-weight:bold;">Điều 1: Thời hạn và công việc hợp đồng</h4>
+                    <p>- Loại hợp đồng lao động: 01 (một) năm.</p>
+                    <p>- Thời gian làm việc chính thức: bắt đầu từ <t t-esc="doc.date_start.strftime('%d/%m/%Y')"/> đến <t t-esc="doc.date_end.strftime('%d/%m/%Y')"/></p>
+                    <p>- Địa điểm làm việc: Công ty TNHH Thẩm Định Giá MHD.</p>
+                    <p>- Chức danh chuyên môn: <t t-esc="doc.job_id.name"/></p>
+                    <p>- Công việc phải làm: Theo bản mô tả công việc và sự phân công của Ban Giám đốc Công ty.</p>
+
+                    <h4 style="font-weight:bold; margin-top:10px;">Điều 2: Chế độ làm việc</h4>
+                    <p>- Thời gian làm việc: Từ thứ 2 đến thứ 6 và một ngày thứ 7 đầu tiên của tháng.</p>
+                    <p>+ Sáng: từ 8h đến 12h.</p>
+                    <p>+ Chiều: từ 13h30 đến 17h30.</p>
+
+                    <h4 style="font-weight:bold; margin-top:10px;">Điều 3: Nghĩa vụ và quyền lợi của người lao động</h4>
+
+                    <p><strong>1. Quyền lợi:</strong></p>
+                    <p>- Phương tiện đi lại làm việc: Tự túc.</p>
+                    <p>- Mức lương: <t t-esc="doc.wage"/> VND 
+                        (Bằng chữ: ......................).
+                    </p>
+                    <p>- Hình thức trả lương: Tiền mặt hoặc chuyển khoản.</p>
+                    <p>- Được trả lương vào ngày 05 hàng tháng.</p>
+                    <p>- Chế độ nâng lương: Tùy thuộc vào khả năng của nhân viên và tùy vào sự thỏa thuận của người lao động và Công ty.</p>
+                    <p>- Chế độ nghỉ ngơi (nghỉ hàng tuần, phép năm, lễ tết...):
+                        <br/>+ 12 ngày phép/năm.
+                        <br/>+ Các ngày lễ tết theo quy định hiện hành.
+                    </p>
+                    <p>Các ngày lễ tết theo quy định hiện hành.</p>
+
+                    <p><strong>2. Nghĩa vụ:</strong></p>
+                    <p>- Hoàn thành những công việc đã cam kết trong hợp đồng lao động.</p>
+                    <p>- Chấp hành lệnh điều hành sản xuất - kinh doanh, nội quy kỷ luật lao động, an toàn lao động ...</p>
+                    <p>- Bồi thường vi phạm và vật chất: Căn cứ vào Bộ luật lao động của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam, Công ty sẽ giải quyết mọi vi phạm (nếu có) của người lao động trừ trường hợp có sự thỏa thuận khác.</p>
+
+                    <h4 style="font-weight:bold; margin-top:10px;">Điều 4: Nghĩa vụ và quyền hạn của người sử dụng lao động</h4>
+                    <p><strong>1. Nghĩa vụ:</strong></p>
+                    <p>- Bảo đảm việc làm và thực hiện đầy đủ những điều đã cam kết trong hợp đồng.</p>
+                    <p>- Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho người lao động theo hợp đồng lao động, nội quy, quy chế Công ty, thỏa ước lao động tập thể (nếu có).</p>
+
+                    <p><strong>2. Quyền hạn:</strong></p>
+                    <p>- Điều hành người lao động hoàn thành công việc theo hợp đồng (bố trí, điều chuyển, tạm ngừng việc).</p>
+                    <p>- Tạm hoãn, chấm dứt hợp đồng lao động, kỷ luật người lao động theo quy định của pháp luật, thỏa ước lao động tập thể (nếu có) và nội quy lao động của doanh nghiệp.</p>
+
+                    <h4 style="font-weight:bold; margin-top:10px;">Điều 5: Các nội dung khác</h4>
+                    <p>Ngoài các khoản tiền lương mà người lao động nhận được tại điều 3 của hợp đồng lao động này, người lao động còn được nhận các khoản chế độ khác như sau:</p>
+                    <p><strong>1.Chế độ</strong></p>
+                    <p>- Ăn trưa: 730.000đ (Bảy trăm ba mươi ngàn đồng).</p>
+                    <p>- Điện thoại: 500.000đ (Năm trăm ngàn đồng).</p>
+                    <p>- Xăng xe: 300.000đ (Ba trăm ngàn đồng).</p>
+                    <p><strong>2.Các khoản phúc lợi khác:</strong><p>Theo quy chế lương thưởng của Công ty ban hành trên từng thời kì.</p></p>
+                    <p><strong>3. Tiền thưởng, lễ, tết:</strong><p>Được hưởng theo quy chế lương thưởng chung của toàn công ty và tùy vào tình hình hoạt động kinh doanh của Công ty.</p></p>
+
+                    <h4 style="font-weight:bold; margin-top:10px;">Điều 6: Điều khoản thi hành</h4>
+                    <p>- Những vấn đề về lao động không ghi trong hợp đồng lao động này thì áp dụng theo nội quy lao động, quy chế lương thưởng của công ty, thỏa ước lao động, trường hợp chưa có thỏa ước tập thể thì áp dụng quy định của pháp luật lao động.</p>
+                    <p>- Hợp đồng lao động được làm thành 02 bản có giá trị ngang nhau, mỗi bên giữ 01 bản và có hiệu lực từ ngày <t t-esc="doc.date_start.strftime('%d')"/> tháng <t t-esc="doc.date_start.strftime('%m')"/> năm <t t-esc="doc.date_start.strftime('%Y')"/>
+                        Khi hai bên ký kết phụ lục hợp đồng lao động thì nội dung của phụ lục hợp đồng lao động cũng có giá trị như các nội dung của bản hợp đồng lao động này.</p>
+                    <p>Hợp đồng này làm tại Văn Phòng Công ty TNHH Thẩm Định Giá MHD, ngày ..... tháng ..... năm 2025.</p>
+                    <br/><br/>
+
+                    <table class="table table-borderless" style="width:100%; text-align:center; margin-top:20px;">
+                        <tr>
+                            <td style="width:50%; border:none;">
+                                <strong>Người lao động</strong><br/>
+                                (Ký tên)<br/><br/><br/><br/>
+                                <t t-esc="doc.employee_id.name"/>
+                            </td>
+                            <td style="width:50%; border:none;">
+                                <strong>Người sử dụng lao động</strong><br/>
+                                (Ký tên, đóng dấu)<br/><br/><br/><br/>
+                                <strong>Trần Khánh Du</strong>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>
