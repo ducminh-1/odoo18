@@ -16,27 +16,27 @@
 
     <template id="report_collaborator_contract">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <!-- <div class="header" style="width:100%; margin-bottom:20px;">
-                    <table class="table-borderless" style="width:100%; border-collapse:collapse;">
-                        <tr>
-                            <td style="width: 8rem;">
-                                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
-                                            style="max-width: 8rem; height: auto;" alt="Company Logo"/>
-                                    </td>
-                            <td style="text-align:center; vertical-align:middle;">   
-                                <p style="text-align:left;">
-                                    CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD<br/>
-                                    MST: 0312231570<br/>
-                                    52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM
-                                </p>
-                            </td>
-
-                            <td style="width:25%;"></td>
-                        </tr>
-                    </table>
-                </div> -->
-                <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">     
+                <t t-call="web.basic_layout">
+                    <div class="o_header" style="width:100%; margin-bottom:20px;">
+                        <table class="table-borderless" style="width:100%; border-collapse:collapse;">
+                            <tr>
+                                <td style="width: 8rem;">
+                                            <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                                style="max-width: 8rem; height: auto;" alt="Company Logo"/>
+                                        </td>
+                                <td style="text-align:center; vertical-align:middle; padding-left:20px;">   
+                                    <p style="text-align:left; width:120%;">
+                                        CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD<br/>
+                                        MST: 0312231570<br/>
+                                        52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM
+                                    </p>
+                                </td>
+    
+                                <td style="width:25%;"></td>
+                            </tr>
+                        </table>
+                    </div> 
                     <div class="page" style="font-size: 14px; line-height: 22px;">
                         <style>
 
@@ -67,82 +67,91 @@
                         <p>
                             Hôm nay, ngày ….. tháng ….. năm 2025 tại văn phòng Công ty TNHH Thẩm Định Giá MHD, chúng tôi gồm:
                         </p>
-                        <p><strong>MHD</strong>, chúng tôi gồm:</p>
-                        <h4>BÊN A: CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">BÊN A: CÔNG TY TNHH THẨM ĐỊNH GIÁ MHD</h4>
                         <table class="table table-borderless">
-                            <tr>
-                                <td>Địa chỉ:</td>
-                                <td>52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>Số điện thoại:</td>
-                                <td>(028) 3515.3516</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>Mã số thuế:</td>
-                                <td>0312231570</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>Tài khoản số:</td>
-                                <td>007.100.131.6688</td>
-                                <td >Tại NH:</td>
-                                <td >Vietcombank CN HCM</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>Đại diện bởi:</td>
-                                <td class="font-weight: bold">TRẦN KHÁNH DU</td>
-                                <td>Chức vụ:</td>
-                                <td>Giám đốc.</td>
-                            </tr>
-                        </table>
-                        <h4>BÊN B: (CỘNG TÁC VIÊN)</h4>
-                        <table class="table table-borderless">
-                            <tr>
-                                <td style="width:20%">Họ tên:</td>
-                                <td><t t-esc="doc.employee_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td>Sinh ngày:</td>
-                                <td><t t-esc="doc.employee_id.birthday"/></td>
-                            </tr>
-                            <tr>
-                                <td>Địa chỉ thường trú:</td>
-                                <td><t t-esc="doc.employee_id.private_street"/></td>
-                            </tr>
-                            <tr>
-                                <td>Số CCCD:</td>
-                                <td><t t-esc="doc.employee_id.identification_id"/></td>
-                                <td style="width:10%;">Nơi cấp:</td>
-                                <td style="padding-right:20px;"><t t-esc="doc.employee_id.place_of_issue_id"/></td>
-                            </tr>
-                            <tr>
-                                <td>Cấp ngày:</td>
-                                <td><t t-esc="doc.employee_id.date_of_issue_id"/></td>
-                            </tr>
-                        </table>
+                            <tbody>
+                                <tr>
+                                    <td>Địa chỉ:</td>
+                                    <td colspan="3">52 Trần Bình Trọng, Phường 5, Quận Bình Thạnh, Tp.HCM</td>
+                                </tr>
 
+                                <tr>
+                                    <td>Số điện thoại:</td>
+                                    <td colspan="3">(028) 3515.3516</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mã số thuế:</td>
+                                    <td colspan="3">0312231570</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Tài khoản số:</td>
+                                    <td>007.100.131.6688</td>
+                                    <td>Tại NH:</td>
+                                    <td>Vietcombank CN HCM</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Đại diện bởi:</td>
+                                    <td><strong>TRẦN KHÁNH DU</strong></td>
+                                    <td>Chức vụ:</td>
+                                    <td>Giám đốc</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 style="font-size:15px; font-weight:bold;">BÊN B: (CỘNG TÁC VIÊN)</h4>
+                        <table class="table table-borderless" style="width:100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%;">Họ tên:</td>
+                                    <td colspan="3"><t t-esc="doc.employee_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Sinh ngày:</td>
+                                    <td colspan="3">
+                                        <t t-if="doc.employee_id.birthday"
+                                        t-out="doc.employee_id.birthday.strftime('%d/%m/%Y')"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ thường trú:</td>
+                                    <td colspan="3"><t t-esc="doc.employee_id.private_street"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Số CCCD:</td>
+                                    <td><t t-esc="doc.employee_id.identification_id"/></td>
+
+                                    <td style="width:18%;">Nơi cấp:</td>
+                                    <td><t t-esc="doc.employee_id.place_of_issue_id"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Cấp ngày:</td>
+                                    <td colspan="3">
+                                        <t t-if="doc.employee_id.date_of_issue_id"
+                                        t-out="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <p>
                             Sau đây được gọi là Cộng tác viên (CTV).<br/>
                             Sau khi thỏa thuận hai bên thống nhất ký kết Hợp đồng cộng tác viên với những điều khoản như sau:
                         </p>
-                        <h4>Điều 1. Nội dung công việc của Bên B</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 1. Nội dung công việc của Bên B</h4>
                         <p>
                             Bên B đồng ý hợp tác thực hiện công việc có tính chất độc lập, tự chủ thời gian, không chịu sự quản lý trực tiếp của bên A để hỗ trợ các vấn đề có liên quan đến dịch vụ thẩm định giá theo Hợp đồng thẩm định giá số ………………… với các nội dung công việc như sau:<br/>  
                             Cung cấp giá khảo sát thị trường các tuyến đường thuộc 9 huyện trên địa bàn tỉnh Gia Lai, bao gồm các huyện sau Chư Prông, Pleiku, Chư Pưh, Đức Cơ, Ia Pa, Phú Thiện, Thị xã Ayun Pa, Chư Sê, Krông Pa.
                         </p>
 
-                        <h4>Điều 2. Trang bị dụng cụ làm việc, phương tiện đi lại</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 2. Trang bị dụng cụ làm việc, phương tiện đi lại</h4>
                         <p>
                             - Bên B tự trang bị và tự chịu trách nhiệm về dụng cụ, phương tiện đi lại để thực hiện công việc.<br/>
                             - Bên A không cung cấp văn phòng, thiết bị, phương tiện hay công cụ lao động cho bên B.
                         </p>
 
                         <div style="page-break-inside: always;">
-                            <h4>
+                            <h4 style="font-size:15px; font-weight:bold;">
                                 Điều 3. Thù lao cộng tác viên
                             </h4>
                         </div>
@@ -160,48 +169,48 @@
                             - Hình thức thanh toán: Bên A thanh toán cho bên B bằng hình thức chuyển khoản qua tài khoản ngân hàng của bên B đã nêu tại phần mở đầu Hợp đồng.
                         </p>
 
-                        <h4>Điều 4. Quyền và nghĩa vụ của Bên A</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 4. Quyền và nghĩa vụ của Bên A</h4>
+                        <h5 style="font-size:15px; font-weight:bold;">4.1. Quyền của Bên A</h5>
                         <p>
-                            4.1. Quyền của Bên A<br/>
-                                - Bên A có quyền đơn phương chấm dứt hợp đồng cộng tác viên với Bên B khi Bên B vi phạm nghĩa vụ bảo mật thông tin của Bên A hoặc Bên B không đáp ứng được các thỏa thuận đã ký theo hợp đồng này;<br/>
-                                - Bên A không chịu trách nhiệm về các khoản chi phí khác cho Bên B trong quá trình thực hiện thỏa thuận theo hợp đồng này;<br/>
-                                - Bên A không can thiệp, không kiểm soát thời gian làm việc của Bên A;
-
-
-                            4.2. Nghĩa vụ của Bên A:<br/>
-                                - Thanh toán đầy đủ, đúng hạn các khoản thù lao đã thỏa thuận cho bên B theo nội dung của hợp đồng và theo từng phụ lục hợp đồng cụ thể (nếu có);<br/>
-                                - Bên A phối hợp, cung cấp thông tin và tài liệu cần thiết.
+                            - Bên A có quyền đơn phương chấm dứt hợp đồng cộng tác viên với Bên B khi Bên B vi phạm nghĩa vụ bảo mật thông tin của Bên A hoặc Bên B không đáp ứng được các thỏa thuận đã ký theo hợp đồng này;<br/>
+                            - Bên A không chịu trách nhiệm về các khoản chi phí khác cho Bên B trong quá trình thực hiện thỏa thuận theo hợp đồng này;<br/>
+                            - Bên A không can thiệp, không kiểm soát thời gian làm việc của Bên A;
                         </p>
-
-                        <h4>Điều 5. Quyền và nghĩa vụ của Bên B</h4>
+                        <h5 style="font-size:15px; font-weight:bold;">4.2. Nghĩa vụ của Bên A</h5>
                         <p>
-                            5.1. Quyền của Bên B:<br/>
-                                - Yêu cầu Bên A thanh toán đầy đủ và đúng hạn các khoản thù lao đã thỏa thuận theo Hợp đồng này;<br/><br/>
-
-                            5.2. Nghĩa vụ của Bên B:<br/>
-                                - Cung cấp dữ liệu cho bên A đúng và đủ thông tin.<br/>
-                                - Tuân thủ triệt để các quy định về bảo mật thông tin liên quan đến vụ việc thực hiện thỏa thuận theo hợp đồng này;                
+                            - Thanh toán đầy đủ, đúng hạn các khoản thù lao đã thỏa thuận cho bên B theo nội dung của hợp đồng và theo từng phụ lục hợp đồng cụ thể (nếu có);<br/>
+                            - Bên A phối hợp, cung cấp thông tin và tài liệu cần thiết.
+                        </p>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 5. Quyền và nghĩa vụ của Bên B</h4>
+                        <h5 style="font-size:15px; font-weight:bold;">5.1. Quyền của Bên B:</h5>
+                        <p>
+                            - Yêu cầu Bên A thanh toán đầy đủ và đúng hạn các khoản thù lao đã thỏa thuận theo Hợp đồng này;
+                        </p>
+                        <h5 style="font-size:15px; font-weight:bold;">5.2. Nghĩa vụ của Bên B:</h5>
+                        <p>
+                            - Cung cấp dữ liệu cho bên A đúng và đủ thông tin.<br/>
+                            - Tuân thủ triệt để các quy định về bảo mật thông tin liên quan đến vụ việc thực hiện thỏa thuận theo hợp đồng này;                
                         </p>
                         <div class="page-break-inside:avoid;"/>
-                        <h4>Điều 6. Bảo mật thông tin</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 6. Bảo mật thông tin</h4>
                         <p>
                             - Trong thời gian thực hiện và khi chấm dứt hợp đồng này, Bên B cam kết giữ bí mật và không tiết lộ bất kỳ các thông tin, tài liệu nào cho bên thứ ba liên quan đến vụ việc nếu không được Bên A chấp nhận.<br/>
                             - Trường hợp Bên B vi phạm quy định về bảo mật thông tin, Bên A có quyền chấm dứt hợp đồng và yêu cầu Bên B bồi thường thiệt hại theo quy định của pháp luật.
                         </p>
 
-                        <h4>Điều 7. Điều khoản chung</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 7. Điều khoản chung</h4>
                         <p>
                             1. Trong quá trình thực hiện, nếu một trong hai bên đơn phương chấm dứt hợp đồng này thì phải thông báo cho bên kia bằng văn bản trước 07 ngày làm việc để hai bên cùng thống nhất giải quyết;<br/>
                             2. Trường hợp phát sinh tranh chấp trong quá trình thực hiện hợp đồng hai bên sẽ thương lượng và đàm phán trên tinh thần hợp tác và đảm bảo quyền lợi của cả hai bên. Nếu tranh chấp không giải quyết đươc bằng thương lượng, các bên sẽ yêu cầu tòa án có thẩm quyển giải quyết. Phán quyết của Tòa án có tính chất bắt buộc đối với các bên.
                         </p>
 
-                        <h4>Điều 8. Hiệu lực và thời hạn hợp đồng</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 8. Hiệu lực và thời hạn hợp đồng</h4>
                         <p>
                             Hợp đồng có hiệu lực ngay khi các bên thực hiện ký kết hợp đồng này;<br/>
                             Thỏa thuận này sẽ tự động hết hiệu lực ngay khi các bên (Bên A và Bên B) đã hoàn tất các thỏa thuận được ghi trong hợp đồng này.
                         </p>
 
-                        <h4>Điều 9. Điều khoản thi hành</h4>
+                        <h4 style="font-size:15px; font-weight:bold;">Điều 9. Điều khoản thi hành</h4>
                         <p>
                             Hai bên cam kết thực hiện đúng các điều khoản đã thỏa thuận trong Hợp đồng này;<br/>
                             Mọi sửa đổi, bổ sung liên quan đến nội dung hợp đồng này phải được hai bên thống nhất và thể hiện bằng văn bản;<br/>
@@ -210,7 +219,7 @@
 
                         <table class="table table-borderless" style="width:100%; margin-top:20px;">
                             <tr>
-                                <td style="width:50%; text-align:center;">
+                                <td style="width:50%; text-align:center; padding-top:46px;">
                                     <strong>CỘNG TÁC VIÊN</strong><br/><br/><br/><br/>
                                 </td>
 
@@ -225,6 +234,14 @@
                             </tr>
                         </table>
                     </div>
+                    <style>
+                        * {
+                            font-family: "Times New Roman", Times, serif !important;
+                        }
+                        b, strong {
+                            font-weight: bold !important;
+                        }
+                    </style>
                 </t>
             </t>
         </t>

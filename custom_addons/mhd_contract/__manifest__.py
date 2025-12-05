@@ -19,8 +19,6 @@
         "report/report_term_employment_contract.xml",
         "report/report_probation_contract.xml",
         "report/report_intern_agreement.xml",
-        # "views/external_layout.xml",
-        "report/report_layout_template.xml",
     ],
     "application": True,
     "installable": True,

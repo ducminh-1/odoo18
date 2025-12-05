@@ -408,7 +408,7 @@ class HrAttendance(models.Model):
                 ('employee_id', '=', attendance.employee_id.id),
                 # ('request_unit_half', '=', True),
                 ('request_unit_hours', '=', False),
-                ('state', '=', 'validate'),
+                ('state', 'in', ('confirm', 'validate1', 'validate')),
                 ('date_from', '<=', attendance.attendance_date),
                 '|',
                 ('date_to', '=', False),
@@ -421,7 +421,7 @@ class HrAttendance(models.Model):
             time_off = self.env['hr.leave'].search([
                 ('employee_id', '=', attendance.employee_id.id),
                 ('request_unit_hours', '=', True),
-                ('state', '=', 'validate'),
+                ('state', 'in', ('confirm', 'validate1', 'validate')),
                 ('date_from', '<=', attendance.attendance_date),
                 '|',
                 ('date_to', '=', False),

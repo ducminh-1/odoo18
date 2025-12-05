@@ -40,11 +40,11 @@
                     </h3>
                     <br/>
                     <h4 style="font-size:15px; font-weight:bold;">BÊN A: BÊN TUYỂN DỤNG THỰC TẬP SINH</h4>
-                    <table class="table table-borderless" style="width:100%; border-collapse:collapse; line-height:22px;">
+                    <table class="table-borderless" style="width:100%; border-collapse:collapse; line-height:22px; font-size:14px;">
                         <tr>
-                            <td style="width:35%;">Ông:</td>
+                            <td style="width:20%;">Ông:</td>
                             <td><strong>Trần Khánh Du</strong> – Quốc tịch: Việt Nam</td>
-                        </tr>  
+                        </tr>
                         <tr>
                             <td>Chức vụ:</td>
                             <td>Chủ tịch HĐTV kiêm Giám đốc</td>
@@ -57,7 +57,7 @@
                             <td>Điện thoại:</td>
                             <td>(028) 3515 3516</td>
                         </tr>
-                          <tr>
+                        <tr>
                             <td>Địa chỉ:</td>
                             <td>52 Trần Bình Trọng, P. Bình Lợi Trung, TP. Hồ Chí Minh</td>
                         </tr>
@@ -67,9 +67,9 @@
 
                     <h4 style="font-size:15px; font-weight:bold;">BÊN B: BÊN THỰC TẬP SINH</h4>
 
-                    <table class="table table-borderless" style="width:100%; border-collapse:collapse; line-height:22px;">
+                    <table class="table-borderless" style="width:100%; border-collapse:collapse; line-height:22px; font-size:14px;">
                         <tr>
-                            <td style="width:35%;">Họ tên:</td>
+                            <td style="width:20%;">Họ tên:</td>
                             <td><t t-esc="doc.employee_id.name"/></td>
                         </tr>
                         <tr>
@@ -78,19 +78,23 @@
                         </tr>
                         <tr>
                             <td>Sinh ngày:</td>
-                            <td><t t-esc="doc.employee_id.birthday"/></td>
+                            <td>
+                                <t t-if="doc.employee_id.birthday"
+                                t-out="doc.employee_id.birthday.strftime('%d/%m/%Y')"/>
+                            </td>
                         </tr>
                         <tr>
                             <td>Số CMND/CCCD:</td>
-                            <td>
-                                <t t-esc="doc.employee_id.identification_id"/>
-                            </td>
+                            <td><t t-esc="doc.employee_id.identification_id"/></td>
                         </tr>
-                         <tr>
+                        <tr>
                             <td>Cấp ngày:</td>
-                            <td><t t-esc="doc.employee_id.date_of_issue_id"/></td>
-                            <td style="padding-left:40px;">do</td>
-                            <td>Cục trưởng cục  cảnh sát Quản lý hành chính về trật tự xã hội.</td>
+                            <td>
+                                <t t-if="doc.employee_id.date_of_issue_id"
+                                t-out="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/>
+                            </td>
+                            <td style="width:5%; text-align:right;"></td>
+                            <td>do Cục trưởng cục Cảnh sát Quản lý hành chính về trật tự xã hội.</td>
                         </tr>
                         <tr>
                             <td>Sinh viên trường:</td>
@@ -136,7 +140,7 @@
                         Bên B không nhận tiền lương vì đây là chương trình thực tập không hình thành quan hệ lao động.
                     </p>
 
-                    <p>Hỗ trợ thực tập: <t t-esc="doc.wage"/> đồng/tháng.</p>
+                    <p>Hỗ trợ thực tập: <t t-esc="'{:,.0f}'.format(doc.wage)"/> đồng/tháng.</p>
 
                     <p>Hỗ trợ khác:</p>
                     <p>+ Tiền cơm: 730.000 đồng/tháng.</p>
@@ -152,24 +156,25 @@
 
                     <h4 style="font-size:15px; font-weight:bold;">Điều 5: Quyền và nghĩa vụ của Thực tập sinh</h4>
 
-                    <p><strong>4.1 Quyền lợi:</strong></p>
+                    <p><strong>5.1 Quyền lợi:</strong></p>
                     <p>- Được Công ty hướng dẫn công việc trong thời gian thực tập.</p>
                     <p>- Được quyền tham gia các khóa học ngoại khóa phục vụ cho quá trình thực tập do Công ty tổ chức.</p>
                     <p>- Được tham gia thực hiện các công việc của Công ty và có sự hướng dẫn của nhân viên phụ trách trực tiếp của Công ty tùy thuộc vào sự quyết định của Công ty tại từng thời điểm.</p>
                     <p>- Được Công ty đóng dấu và ký xác nhận thực tập sau khi kết thúc thời gian thực tập.</p>
                     <p>- Được quyền nghỉ những ngày lễ, tết theo các quy định của pháp luật.</p>
                     <p>- Sau khi kết thúc thời gian thực tập, nếu Thực tập sinh hoàn thành tốt các nhiệm vụ được giao và mong muốn làm việc lâu dài tại Công ty thì sẽ được Công ty xem xét, cân nhắc.</p>
-                    <p><strong>2. Nghĩa vụ:</strong></p>
+                    <p><strong>5.2 Nghĩa vụ:</strong></p>
                     <p>- Tuân thủ nội quy, kỷ luật của Bên A</p>
                     <p>- Thực hiện đầy đủ nội dung thực tập.</p>
                     <p>- Chủ động phối hơp với người hướng dẫn và báo cáo đúng hạn.</p>
                     <p>- Tham gia đầy đủ các khóa học nâng cao kỹ năng, chuyên môn mà Công ty tổ chức.</p>
                     <p>- Bồi thường vi phạm và vật chất: Căn cứ vào Bộ luật lao động của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam.</p>
                     <h4 style="font-size:15px; font-weight:bold;">Điều 6: Nghĩa vụ và quyền hạn của Công ty</h4>
+                    <p style="font-weight:bold;">6.1 Nghĩa vụ:</p>
                     <p>- Công ty tạo điều kiện thuận lợi cho Thực tập sinh được học tập và làm việc.</p>
                     <p>- Đóng dấu và ký xác nhận thực tập cho Thực tập sinh sau khi kết thúc thỏa thuận thực tập sinh.</p>
                     <p>- Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho thực tập sinh theo thỏa thuận, thỏa ước lao động tập thể (nếu có).</p>
-                    <p><strong>Quyền hạn:</strong></p>
+                    <p><strong>6.2 Quyền hạn:</strong></p>
                     <p>- Công ty có quyền xem xét và xử lý kỷ luật hoặc chấm dứt thỏa thuận trong trường hợp Thực tập sinh vi phạm thỏa thuận, nội quy, quy chế Công ty và theo quy định của Pháp luật.</p>
                     <p>- Yêu cầu Thực tập sinh bồi thường thiệt hại khi Thực tập sinh gây ra thiệt hại theo nội quy, quy chế của Công ty và quy định của Bộ luật lao động hiện hành.</p>
                     <h4 style="font-size:15px; font-weight:bold;">Điều 7: Bảo hiểm và chi phí khác</h4>
@@ -186,16 +191,22 @@
                         Thỏa thuận này có hiệu lực kể từ ngày <t t-esc="doc.date_start.strftime('%d')"/> tháng <t t-esc="doc.date_start.strftime('%m')"/> năm <t t-esc="doc.date_start.strftime('%Y')"/><br/>
                         Thỏa thuận này được lập thành (02) hai bản gốc có giá trị pháp lí ngang nhau. Mỗi bên giữ (01) một bản gốc.
                     </p>
-
-                    <br/><br/>
                     <table class="table table-borderless" style="width:100%; border-collapse:collapse; text-align:center;">
                         <tr>
-                            <td><strong>Bên B</strong><br/>(Ký tên)<br/><br/><br/>__________________</td>
+                            <td><strong>Bên B</strong><br/>(Ký tên)<br/><br/><br/><t t-esc="doc.employee_id.name"/></td>
                             <td><strong>Bên A</strong><br/>(Ký tên – đóng dấu)<br/><br/><br/><strong>TRẦN KHÁNH DU</strong></td>
                         </tr>
                     </table>
                 </t>   
             </div>
+            <style>
+                * {
+                    font-family: "Times New Roman", Times, serif !important;
+                }
+                b, strong {
+                    font-weight: bold !important;
+                }
+            </style>
         </t>
     </template> 
 </odoo>
