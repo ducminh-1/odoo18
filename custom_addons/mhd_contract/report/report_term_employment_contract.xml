@@ -103,10 +103,8 @@
                             <td>Sổ lao động (nếu có):</td>
                             <td colspan="3">.................</td>
                         </tr>
-                        <tr>
-                            <td>Thỏa thuận ký kết hợp đồng lao động và cam kết làm đúng những điều khoản sau đây:</td>
-                        </tr>
                     </table>
+                    <p>Thỏa thuận ký kết hợp đồng lao động và cam kết làm đúng những điều khoản sau đây:</p>
                     <h4 style="font-size:15px; font-weight:bold;">Điều 1: Thời hạn và công việc hợp đồng</h4>
                     <p>- Loại hợp đồng lao động: 01 (một) năm.</p>
                     <p>- Thời gian làm việc chính thức: bắt đầu từ <t t-esc="doc.date_start.strftime('%d/%m/%Y')"/> đến <t t-if="doc.date_end" t-out="doc.date_end.strftime('%d/%m/%Y')"/></p>

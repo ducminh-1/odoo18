@@ -89,7 +89,7 @@
                         </tr>
                         <tr>
                             <td>Cấp ngày:</td>
-                            <td>
+                            <td style="width:20%">
                                 <t t-if="doc.employee_id.date_of_issue_id"
                                 t-out="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/>
                             </td>
@@ -126,7 +126,6 @@
                     <p>Bộ phận thực tập: <t t-esc="doc.job_id.name"/></p>
                     <p>Địa điểm làm việc: Công ty TNHH Thẩm Định Giá MHD.</p>
                     <div class="page-break-inside: before;">
-                        <br/>
                         <h4 style="font-size:15px; font-weight:bold;">Điều 3: Nội dung thực tập</h4>
                     </div>
                     <p>Nội dung chính:</p>

@@ -82,7 +82,7 @@
                             <tr>
                                 <td>Tài khoản số:</td>
                                 <td>007.100.131.6688</td>
-                                <td>Tại NH:</td>
+                                <td style="width:12%">Tại NH:</td>
                                 <td>Vietcombank CN HCM</td>
                             </tr>
                             <tr>
@@ -93,37 +93,54 @@
                             </tr>
                         </table>
                         <h4 style="font-size:15px; font-weight:bold;">BÊN B: (CỘNG TÁC VIÊN)</h4>
-                        <table class="table table-borderless" style="width:80%; font-size:14px; line-height:10px;">
+                        <table class="table-borderless" style="width:80%; border-collapse:collapse; font-size:14px; line-height:20px;">
                             <tr>
-                                <td style="width: 140px;">Họ tên:</td>
-                                <td colspan="3"><t t-esc="doc.employee_id.name"/></td>
+                                <td style="width:20%;">Họ tên:</td>
+                                <td colspan="3">
+                                    <t t-esc="doc.employee_id.name"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Sinh ngày:</td>
-                                <td colspan="3"><t t-if="doc.employee_id.birthday" t-out="doc.employee_id.birthday.strftime('%d/%m/%Y')"/></td>
+                                <td colspan="3">
+                                    <t t-if="doc.employee_id.birthday"
+                                    t-out="doc.employee_id.birthday.strftime('%d/%m/%Y')"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ thường trú:</td>
-                                <td colspan="3"><t t-esc="doc.employee_id.private_street"/></td>
+                                <td colspan="3">
+                                    <t t-esc="doc.employee_id.private_street"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Số CCCD:</td>
-                                <td><t t-esc="doc.employee_id.identification_id"/></td>
-                                <td style="width: 12%;">Nơi cấp:</td>
-                                <td ><t t-esc="doc.employee_id.place_of_issue_id"/></td>
+                                <td style="width:35%;">
+                                    <t t-esc="doc.employee_id.identification_id"/>
+                                </td>
+                                <td style="width:12%;">Nơi cấp:</td>
+                                <td>
+                                    <t t-esc="doc.employee_id.place_of_issue_id"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Cấp ngày:</td>
-                                <td><t t-if="doc.employee_id.date_of_issue_id" t-out="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/></td>
+                                <td colspan="3">
+                                    <t t-if="doc.employee_id.date_of_issue_id"
+                                    t-out="doc.employee_id.date_of_issue_id.strftime('%d/%m/%Y')"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Số tài khoản:</td>
-                                <td><t t-esc="doc.employee_id.bank_acc_number"/></td>
+                                <td>
+                                    <t t-esc="doc.employee_id.bank_acc_number"/>
+                                </td>
                                 <td>Tại NH:</td>
-                                <td><t t-esc="doc.employee_id.bank_id.name"/></td>
+                                <td>
+                                    <t t-esc="doc.employee_id.bank_id.name"/>
+                                </td>
                             </tr>
                         </table>
-
                         <p>
                             Sau đây được gọi là Cộng tác viên (CTV).<br/>
                             Sau khi thỏa thuận hai bên thống nhất ký kết Hợp đồng cộng tác viên với những điều khoản như sau:
